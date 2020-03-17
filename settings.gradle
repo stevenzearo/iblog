@@ -1,0 +1,3 @@
+rootProject.name = 'iblog'
+include 'backend:user-service'
+include 'backend:blog-service'

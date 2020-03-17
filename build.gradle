@@ -1,0 +1,19 @@
+apply from: file("${rootDir}/gradle/project.gradle")
+subprojects {
+    group 'org.example'
+    version '1.0-SNAPSHOT'
+
+    repositories {
+        mavenCentral()
+    }
+}
+configure(project(':backend:user-service')) {
+    dependencies {
+    }
+}
+
+configure(project(':backend:blog-service')) {
+    dependencies {
+    }
+}
+
