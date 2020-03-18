@@ -30,6 +30,7 @@ subprojects {
                 include 'conf/**/*.properties'
                 include 'src/main/java/**/*.java'
                 include 'src/main/**/*.properties'
+                exclude 'src/main/java/**/Application.java'
             }
         }
 

@@ -6,13 +6,18 @@ subprojects {
     repositories {
         mavenCentral()
     }
+
 }
-configure(project(':backend:user-service')) {
+configure(subprojects.findAll { it.name.endsWith('-db-migration') }) {
+    apply from: file("${rootDir}/gradle/db-migration.gradle")
+
     dependencies {
+        runtimeOnly "mysql:mysql-connector-java:${mysqlVersion}"
     }
 }
 
-configure(project(':backend:blog-service')) {
+configure(subprojects.findAll { it.name.endsWith('-interface') || it.name.matches(/(-|\w)+-interface-v\d+$/) }) {
+    apply from: file("${rootDir}/gradle/lib.gradle")
     dependencies {
     }
 }

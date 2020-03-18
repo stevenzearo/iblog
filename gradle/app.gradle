@@ -2,7 +2,7 @@
 def env = hasProperty('env') ? env : null
 
 apply plugin: 'application'
-mainClassName = 'Main'
+mainClassName = 'iblog.Application'
 
 tasks.named("processResources").configure {
     if (env != null) {

@@ -14,5 +14,5 @@ import org.springframework.web.bind.annotation.RestController;
 public interface UserWebService {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public User get(@PathVariable("id") Integer id);
+    User get(@PathVariable("id") Integer id);
 }

@@ -10,10 +10,12 @@ subprojects {
         compile group: 'org.springframework.boot', name: 'spring-boot-starter', version: springBootVersion
         testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: springBootVersion
         compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: springBootVersion
+//        compile group: 'org.springframework.boot', name: 'spring-boot-starter-web-services', version: springBootVersion
         compile group: 'org.springframework.boot', name: 'spring-boot-starter-logging', version: springBootVersion
         compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: springBootVersion
         compile group: 'org.mybatis.spring.boot', name: 'mybatis-spring-boot-starter', version: mybatisVersion
         compile group: 'mysql', name: 'mysql-connector-java', version: mysqlVersion
+//        compile group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: springBootVersion
     }
 }
 

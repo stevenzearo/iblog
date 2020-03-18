@@ -1,7 +1,5 @@
 package iblog.user.domain;
 
-import org.springframework.stereotype.Repository;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -27,12 +25,12 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
-            "id=" + id +
-            ", name='" + name + '\'' +
-            ", age=" + age +
-            ", email='" + email + '\'' +
-            ", password='" + password + '\'' +
-            '}';
+        return "User{"
+            + "id=" + id
+            + ", name='" + name + '\''
+            + ", age=" + age
+            + ", email='" + email + '\''
+            + ", password='" + password + '\''
+            + '}';
     }
 }
