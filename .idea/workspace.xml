@@ -2,24 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a8990fa-9ae1-49f9-b7bd-4e1036547d27" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/backend/blog-service/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/user-service/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/dockerimage.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/dockerimage.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/backend/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/app.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/check.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/check/checkstyle.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/check/pmd.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/check/spotbugs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/db-migration.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/frontend.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/lib.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/project.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -314,12 +298,20 @@
       <option name="project" value="LOCAL" />
       <updated>1584528124008</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="modify build file">
+      <created>1584589059506</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1584589059506</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="code format" />
-    <option name="LAST_COMMIT_MESSAGE" value="code format" />
+    <MESSAGE value="modify build file" />
+    <option name="LAST_COMMIT_MESSAGE" value="modify build file" />
   </component>
   <component name="WindowStateProjectService">
     <state x="626" y="119" key="#Application" timestamp="1584585001205">
@@ -330,30 +322,30 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="414" y="172" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1584527867957" />
-    <state x="397" y="49" key="CommitChangelistDialog2" timestamp="1584528123593">
+    <state x="397" y="49" key="CommitChangelistDialog2" timestamp="1584589059109">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="397" y="49" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1584528123593" />
+    <state x="397" y="49" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1584589059109" />
     <state x="690" y="222" key="FileChooserDialogImpl" timestamp="1584586949977">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="222" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1584586949977" />
-    <state width="1867" height="269" key="GridCell.Tab.0.bottom" timestamp="1584589034477">
+    <state width="1867" height="269" key="GridCell.Tab.0.bottom" timestamp="1584590397175">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1867" height="269" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1584589034477" />
-    <state width="1867" height="269" key="GridCell.Tab.0.center" timestamp="1584589034477">
+    <state width="1867" height="269" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1584590397175" />
+    <state width="1867" height="269" key="GridCell.Tab.0.center" timestamp="1584590397175">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1867" height="269" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1584589034477" />
-    <state width="1867" height="269" key="GridCell.Tab.0.left" timestamp="1584589034477">
+    <state width="1867" height="269" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1584590397175" />
+    <state width="1867" height="269" key="GridCell.Tab.0.left" timestamp="1584590397175">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1867" height="269" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1584589034477" />
-    <state width="1867" height="269" key="GridCell.Tab.0.right" timestamp="1584589034477">
+    <state width="1867" height="269" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1584590397175" />
+    <state width="1867" height="269" key="GridCell.Tab.0.right" timestamp="1584590397175">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1867" height="269" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1584589034477" />
+    <state width="1867" height="269" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1584590397175" />
     <state x="312" y="0" key="SettingsEditor" timestamp="1584586977242">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -362,10 +354,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="623" height="498" key="SwitcherDM/0.0.1920.1040@0.0.1920.1040" timestamp="1584582616573" />
-    <state x="452" y="192" key="Vcs.Push.Dialog.v2" timestamp="1584528125552">
+    <state x="452" y="192" key="Vcs.Push.Dialog.v2" timestamp="1584589061171">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="452" y="192" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1584528125552" />
+    <state x="452" y="192" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1584589061171" />
     <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1584580427929">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
