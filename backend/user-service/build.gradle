@@ -31,6 +31,29 @@ jar {
         attributes "Manifest-Version": project.version,
                 'Main-Class': 'iblog.Application',
                 'Class-Path': classpath
-//        attributes 'Class-Path':
     }
+}
+
+task overrideDevResources(type: Copy, group: 'Run Configurations', description: 'replace resources from conf/dev') {
+    println("> start replace resources")
+    def resources = fileTree('src/main/resources/')
+    resources.each {
+        println("> delete:" + it.name)
+        it.deleteOnExit()
+    }
+    from fileTree('conf/dev/')
+    into 'src/main/resources/'
+    println("> replace resources successfully")
+}
+
+task overrideTestResources(type: Copy, group: 'Run Configurations', description: 'replace resources from conf/dev') {
+    println("> start replace resources")
+    def resources = fileTree('src/main/resources/')
+    resources.each {
+        println("> delete:" + it.name)
+        it.deleteOnExit()
+    }
+    from fileTree('conf/test/')
+    into 'src/main/resources/'
+    println("> replace resources successfully")
 }
