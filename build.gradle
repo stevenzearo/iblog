@@ -1,8 +1,5 @@
 plugins {
-    id 'base'
     id 'java'
-    id 'idea'
-    id 'application'
 }
 
 allprojects {
@@ -14,12 +11,7 @@ allprojects {
 
 subprojects {
     apply plugin: 'java'
-    apply plugin: 'idea'
-    apply plugin: 'application'
-//    apply plugin: "io.spring.dependency-management"
     def springBootVersion = '2.1.9.RELEASE'
-//def mysqlVersion = '8.0.19'
-//def mybatisVersion = '2.1.1'
 
     repositories {
         mavenCentral()

@@ -1,10 +1,6 @@
 plugins {
-    id 'base'
     id 'java'
-    id 'idea'
-    id 'application'
 }
-
 repositories {
     mavenCentral()
 }
@@ -14,7 +10,7 @@ dependencies {
 }
 
 sourceSets {
-    mainClassName = 'iblog.Application'
+//    mainClassName = 'iblog.Application'
     main {
         java {
             srcDirs = ['src/main/java', 'src/main/resources']
@@ -24,7 +20,7 @@ sourceSets {
 
 jar {
     manifest {
-        attributes 'Main-Class': 'iblog.Application'
+//        attributes 'Main-Class': 'iblog.Application'
 //        attributes 'Class-Path':
     }
 }
