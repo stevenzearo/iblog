@@ -2,11 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a8990fa-9ae1-49f9-b7bd-4e1036547d27" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/backend/user-service/conf/dev/application.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/user-service/conf/test/application.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/start.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/user-service-db-migration/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/user-service-db-migration/conf/dev/resources/flyway.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/user-service-db-migration/conf/test/resources/flyway.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/user-service-db-migration/src/main/resources/db/migration/R__users.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/user-service-db-migration/src/main/resources/flyway.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/user-service/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/backend/user-service/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/backend/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/start.sh" beforeDir="false" afterPath="$PROJECT_DIR$/start.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +41,9 @@
         <task path="$PROJECT_DIR$/backend/blog-service">
           <activation />
         </task>
+        <task path="$PROJECT_DIR$/backend/user-service-db-migration">
+          <activation />
+        </task>
         <projects_view>
           <tree_state>
             <expand>
@@ -57,53 +65,22 @@
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="iblog" type="f1a62948:ProjectNode" />
                 <item name="backend" type="2d1252cf:ModuleNode" />
-                <item name="user-service" type="2d1252cf:ModuleNode" />
+                <item name="user-service-db-migration" type="2d1252cf:ModuleNode" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="iblog" type="f1a62948:ProjectNode" />
                 <item name="backend" type="2d1252cf:ModuleNode" />
-                <item name="user-service" type="2d1252cf:ModuleNode" />
+                <item name="user-service-db-migration" type="2d1252cf:ModuleNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="iblog" type="f1a62948:ProjectNode" />
                 <item name="backend" type="2d1252cf:ModuleNode" />
-                <item name="user-service" type="2d1252cf:ModuleNode" />
+                <item name="user-service-db-migration" type="2d1252cf:ModuleNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="application" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="iblog" type="f1a62948:ProjectNode" />
-                <item name="backend" type="2d1252cf:ModuleNode" />
-                <item name="user-service" type="2d1252cf:ModuleNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="other" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="iblog" type="f1a62948:ProjectNode" />
-                <item name="backend" type="2d1252cf:ModuleNode" />
-                <item name="user-service" type="2d1252cf:ModuleNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="run configurations" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="iblog" type="f1a62948:ProjectNode" />
-                <item name="backend" type="2d1252cf:ModuleNode" />
-                <item name="user-service" type="2d1252cf:ModuleNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="verification" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="iblog" type="f1a62948:ProjectNode" />
-                <item name="backend" type="2d1252cf:ModuleNode" />
-                <item name="user-service" type="2d1252cf:ModuleNode" />
-                <item name="Run Configurations" type="7b0102dc:RunConfigurationsNode" />
+                <item name="flyway" type="c8890929:TasksNode$1" />
               </path>
             </expand>
             <select />
@@ -125,7 +102,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/backend/user-service/conf/test" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/backend/user-service-db-migration/conf" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -133,19 +110,22 @@
     <property name="show.unlinked.gradle.project.popup" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\steve\IdeaProjects\iblog\backend" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\steve\IdeaProjects\iblog\backend\user-service-db-migration\conf" />
+      <recent name="C:\Users\steve\IdeaProjects\iblog\backend\user-service-db-migration\src\main\resources" />
+      <recent name="C:\Users\steve\IdeaProjects\iblog\gradle" />
       <recent name="C:\Users\steve\IdeaProjects\iblog\backend\user-service\conf\test" />
       <recent name="C:\Users\steve\IdeaProjects\iblog\backend\user-service\conf\dev" />
-      <recent name="C:\Users\steve\IdeaProjects\iblog\backend\user-service" />
-      <recent name="C:\Users\steve\IdeaProjects\iblog\backend" />
-      <recent name="C:\Users\steve\IdeaProjects\iblog\backend\blog-service" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.iblog:backend:user-service [overrideTestResources]">
-    <configuration name="iblog [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Gradle.iblog:backend:user-service-db-migration [flywayMigrate]">
+    <configuration name="iblog:backend:user-service-db-migration [flywayBaseline]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/backend/user-service-db-migration" />
         <option name="externalSystemIdString" value="GRADLE" />
         <option name="scriptParameters" />
         <option name="taskDescriptions">
@@ -153,7 +133,7 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value="build" />
+            <option value="flywayBaseline" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -161,10 +141,10 @@
       <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="iblog:backend:user-service [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="iblog:backend:user-service-db-migration [flywayInfo]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/backend/user-service" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/backend/user-service-db-migration" />
         <option name="externalSystemIdString" value="GRADLE" />
         <option name="scriptParameters" />
         <option name="taskDescriptions">
@@ -172,7 +152,7 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value="build" />
+            <option value="flywayInfo" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -180,10 +160,10 @@
       <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="iblog:backend:user-service [overrideDevResources]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="iblog:backend:user-service-db-migration [flywayMigrate]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/backend/user-service" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/backend/user-service-db-migration" />
         <option name="externalSystemIdString" value="GRADLE" />
         <option name="scriptParameters" />
         <option name="taskDescriptions">
@@ -191,7 +171,7 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value="overrideDevResources" />
+            <option value="flywayMigrate" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -199,10 +179,10 @@
       <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="iblog:backend:user-service [overrideResources]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="iblog:backend:user-service-db-migration [flywayRepair]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/backend/user-service" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/backend/user-service-db-migration" />
         <option name="externalSystemIdString" value="GRADLE" />
         <option name="scriptParameters" />
         <option name="taskDescriptions">
@@ -210,7 +190,7 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value="overrideResources" />
+            <option value="flywayRepair" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -218,10 +198,10 @@
       <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="iblog:backend:user-service [overrideTestResources]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="iblog:backend:user-service-db-migration [flywayValidate]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/backend/user-service" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/backend/user-service-db-migration" />
         <option name="externalSystemIdString" value="GRADLE" />
         <option name="scriptParameters" />
         <option name="taskDescriptions">
@@ -229,7 +209,7 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value="overrideTestResources" />
+            <option value="flywayValidate" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -239,11 +219,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.iblog:backend:user-service [overrideDevResources]" />
-        <item itemvalue="Gradle.iblog:backend:user-service [overrideTestResources]" />
-        <item itemvalue="Gradle.iblog:backend:user-service [overrideResources]" />
-        <item itemvalue="Gradle.iblog:backend:user-service [build]" />
-        <item itemvalue="Gradle.iblog [build]" />
+        <item itemvalue="Gradle.iblog:backend:user-service-db-migration [flywayBaseline]" />
+        <item itemvalue="Gradle.iblog:backend:user-service-db-migration [flywayMigrate]" />
+        <item itemvalue="Gradle.iblog:backend:user-service-db-migration [flywayValidate]" />
+        <item itemvalue="Gradle.iblog:backend:user-service-db-migration [flywayRepair]" />
+        <item itemvalue="Gradle.iblog:backend:user-service-db-migration [flywayInfo]" />
       </list>
     </recent_temporary>
   </component>
@@ -326,7 +306,14 @@
       <option name="project" value="LOCAL" />
       <updated>1584599918012</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="add environment change task, start.sh">
+      <created>1584603284978</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1584603284978</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -334,7 +321,8 @@
     <MESSAGE value="modify workflow file" />
     <MESSAGE value="add gradle-wrapper" />
     <MESSAGE value="modify build file" />
-    <option name="LAST_COMMIT_MESSAGE" value="modify build file" />
+    <MESSAGE value="add environment change task, start.sh" />
+    <option name="LAST_COMMIT_MESSAGE" value="add environment change task, start.sh" />
   </component>
   <component name="WindowStateProjectService">
     <state x="626" y="119" key="#Application" timestamp="1584585001205">
@@ -345,42 +333,42 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="414" y="172" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1584527867957" />
-    <state x="397" y="49" key="CommitChangelistDialog2" timestamp="1584599917695">
+    <state x="397" y="49" key="CommitChangelistDialog2" timestamp="1584603284659">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="397" y="49" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1584599917695" />
+    <state x="397" y="49" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1584603284659" />
     <state x="690" y="222" key="FileChooserDialogImpl" timestamp="1584586949977">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="222" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1584586949977" />
-    <state width="1867" height="269" key="GridCell.Tab.0.bottom" timestamp="1584602870211">
+    <state width="1867" height="269" key="GridCell.Tab.0.bottom" timestamp="1584611202832">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1867" height="269" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1584602870211" />
-    <state width="1867" height="269" key="GridCell.Tab.0.center" timestamp="1584602870210">
+    <state width="1867" height="269" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1584611202832" />
+    <state width="1867" height="269" key="GridCell.Tab.0.center" timestamp="1584611202832">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1867" height="269" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1584602870210" />
-    <state width="1867" height="269" key="GridCell.Tab.0.left" timestamp="1584602870210">
+    <state width="1867" height="269" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1584611202832" />
+    <state width="1867" height="269" key="GridCell.Tab.0.left" timestamp="1584611202831">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1867" height="269" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1584602870210" />
-    <state width="1867" height="269" key="GridCell.Tab.0.right" timestamp="1584602870211">
+    <state width="1867" height="269" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1584611202831" />
+    <state width="1867" height="269" key="GridCell.Tab.0.right" timestamp="1584611202832">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1867" height="269" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1584602870211" />
+    <state width="1867" height="269" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1584611202832" />
     <state x="312" y="0" key="SettingsEditor" timestamp="1584586977242">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="312" y="0" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1584586977242" />
-    <state width="623" height="498" key="SwitcherDM" timestamp="1584601907952">
+    <state width="623" height="498" key="SwitcherDM" timestamp="1584610546951">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="623" height="498" key="SwitcherDM/0.0.1920.1040@0.0.1920.1040" timestamp="1584601907952" />
-    <state x="452" y="192" key="Vcs.Push.Dialog.v2" timestamp="1584599919422">
+    <state width="623" height="498" key="SwitcherDM/0.0.1920.1040@0.0.1920.1040" timestamp="1584610546951" />
+    <state x="452" y="192" key="Vcs.Push.Dialog.v2" timestamp="1584603286550">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="452" y="192" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1584599919422" />
+    <state x="452" y="192" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1584603286550" />
     <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1584580427929">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -393,9 +381,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="587" y="222" width="746" height="596" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1584585973403" />
-    <state x="161" y="52" key="new project wizard" timestamp="1584581331763">
+    <state x="161" y="52" key="new project wizard" timestamp="1584607112658">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="161" y="52" key="new project wizard/0.0.1920.1040@0.0.1920.1040" timestamp="1584581331763" />
+    <state x="161" y="52" key="new project wizard/0.0.1920.1040@0.0.1920.1040" timestamp="1584607112658" />
   </component>
 </project>
