@@ -9,6 +9,5 @@ subprojects {
     dependencies {
         compile group: 'org.mybatis.spring.boot', name: 'mybatis-spring-boot-starter', version: mybatisVersion
         compile group: 'mysql', name: 'mysql-connector-java', version: mysqlVersion
-        compile 'org.flywaydb:flyway-gradle-plugin:6.1.3'
     }
 }

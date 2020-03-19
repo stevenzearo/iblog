@@ -45,7 +45,6 @@ tasks.withType(org.flywaydb.gradle.task.AbstractFlywayTask).configureEach {
                 properties.load(it)
             }
             properties.each { key, value ->
-                println(key + ":" + value)
                 project.ext[key as String] = value
             }
         }
