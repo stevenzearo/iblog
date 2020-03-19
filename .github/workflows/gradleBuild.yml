@@ -11,8 +11,6 @@ jobs:
     runs-on: ubuntu-18.04
 
     steps:
-    - name: setup gradle
-      run: apt update && apt install gradle-6.2.2
     - uses: actions/checkout@v2
     - name: Grant execute permission for gradlew
       run: chmod +x ./gradlew
