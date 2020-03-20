@@ -1,5 +1,5 @@
 subprojects {
-    def mysqlVersion = '8.0.19'
+    def mysqlVersion = '8.0.16'
     def mybatisVersion = '2.1.1'
 
     repositories {
