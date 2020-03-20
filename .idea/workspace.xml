@@ -1,19 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2a8990fa-9ae1-49f9-b7bd-4e1036547d27" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/devStart.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/testStart.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/backend/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/user-service-db-migration/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/backend/user-service-db-migration/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/user-service-db-migration/conf/dev/resources/flyway.properties" beforeDir="false" afterPath="$PROJECT_DIR$/backend/user-service-db-migration/conf/dev/resources/flyway.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/user-service-db-migration/conf/test/resources/flyway.properties" beforeDir="false" afterPath="$PROJECT_DIR$/backend/user-service-db-migration/conf/test/resources/flyway.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/user-service-db-migration/src/main/resources/flyway.properties" beforeDir="false" afterPath="$PROJECT_DIR$/backend/user-service-db-migration/src/main/resources/flyway.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/user-service/conf/dev/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/user-service/conf/dev/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/user-service/conf/test/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/user-service/conf/test/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/start.sh" beforeDir="false" />
-    </list>
+    <list default="true" id="2a8990fa-9ae1-49f9-b7bd-4e1036547d27" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -321,7 +309,14 @@
       <option name="project" value="LOCAL" />
       <updated>1584611261389</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="set dev and test settings">
+      <created>1584612113179</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1584612113179</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -331,7 +326,8 @@
     <MESSAGE value="modify build file" />
     <MESSAGE value="add environment change task, start.sh" />
     <MESSAGE value="add flyway migration settings" />
-    <option name="LAST_COMMIT_MESSAGE" value="add flyway migration settings" />
+    <MESSAGE value="set dev and test settings" />
+    <option name="LAST_COMMIT_MESSAGE" value="set dev and test settings" />
   </component>
   <component name="WindowStateProjectService">
     <state x="626" y="119" key="#Application" timestamp="1584585001205">
@@ -342,30 +338,30 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="414" y="172" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1584527867957" />
-    <state x="397" y="49" key="CommitChangelistDialog2" timestamp="1584611261034">
+    <state x="397" y="49" key="CommitChangelistDialog2" timestamp="1584612112771">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="397" y="49" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1584611261034" />
+    <state x="397" y="49" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1584612112771" />
     <state x="690" y="222" key="FileChooserDialogImpl" timestamp="1584586949977">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="222" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1584586949977" />
-    <state width="1867" height="269" key="GridCell.Tab.0.bottom" timestamp="1584611774756">
+    <state width="1867" height="269" key="GridCell.Tab.0.bottom" timestamp="1584612151269">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1867" height="269" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1584611774756" />
-    <state width="1867" height="269" key="GridCell.Tab.0.center" timestamp="1584611774756">
+    <state width="1867" height="269" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1584612151269" />
+    <state width="1867" height="269" key="GridCell.Tab.0.center" timestamp="1584612151269">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1867" height="269" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1584611774756" />
-    <state width="1867" height="269" key="GridCell.Tab.0.left" timestamp="1584611774756">
+    <state width="1867" height="269" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1584612151269" />
+    <state width="1867" height="269" key="GridCell.Tab.0.left" timestamp="1584612151269">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1867" height="269" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1584611774756" />
-    <state width="1867" height="269" key="GridCell.Tab.0.right" timestamp="1584611774756">
+    <state width="1867" height="269" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1584612151269" />
+    <state width="1867" height="269" key="GridCell.Tab.0.right" timestamp="1584612151269">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1867" height="269" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1584611774756" />
+    <state width="1867" height="269" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1584612151269" />
     <state x="312" y="0" key="SettingsEditor" timestamp="1584586977242">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -374,10 +370,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="623" height="498" key="SwitcherDM/0.0.1920.1040@0.0.1920.1040" timestamp="1584611532116" />
-    <state x="452" y="192" key="Vcs.Push.Dialog.v2" timestamp="1584611262859">
+    <state x="452" y="192" key="Vcs.Push.Dialog.v2" timestamp="1584612114524">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="452" y="192" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1584611262859" />
+    <state x="452" y="192" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1584612114524" />
     <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1584580427929">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
