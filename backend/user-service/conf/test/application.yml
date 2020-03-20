@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mysql://steve-mysql0.mysql.rds.aliyumcs.com:3306/iblog?serverTimezone=UTC
+    url: jdbc:mysql://steve-mysql0.mysql.rds.aliyuncs.com:3306/iblog?characterEncoding=utf8&useSSL=false&serverTimezone=UTC
     username: root_steve1
     password: root123!
     driver-class-name: com.mysql.cj.jdbc.Driver
