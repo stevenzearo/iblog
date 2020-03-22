@@ -1,5 +1,6 @@
 rootProject.name = 'iblog'
-include 'backend:user-service'
-include 'backend:blog-service'
-include 'backend:user-service-db-migration'
-
+include 'backend:user-service',
+        'backend:blog-service',
+        'backend:user-service-db-migration'
+include 'frontend:bo-iblog-site',
+        'frontend:iblog-site'

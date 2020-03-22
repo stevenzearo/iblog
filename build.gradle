@@ -1,34 +1,11 @@
-plugins {
-    id 'java'
-}
-
 allprojects {
+    apply plugin: 'idea'
     group 'steve.iblog'
     version '1.0-SNAPSHOT'
-    sourceCompatibility = JavaVersion.VERSION_11
-    targetCompatibility = JavaVersion.VERSION_11
 }
 
 subprojects {
-    apply plugin: 'java'
-    def springBootVersion = '2.1.9.RELEASE'
-
     repositories {
         mavenCentral()
     }
-
-    dependencies {
-        testCompile group: 'junit', name: 'junit', version: '4.12'
-        compile group: 'org.springframework.boot', name: 'spring-boot-starter-parent', version: springBootVersion, ext: 'pom'
-        compile group: 'org.springframework.boot', name: 'spring-boot-starter', version: springBootVersion
-        testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: springBootVersion
-        compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: springBootVersion
-//        compile group: 'org.springframework.boot', name: 'spring-boot-starter-web-services', version: springBootVersion
-        compile group: 'org.springframework.boot', name: 'spring-boot-starter-logging', version: springBootVersion
-        compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: springBootVersion
-//    compile group: 'org.mybatis.spring.boot', name: 'mybatis-spring-boot-starter', version: mybatisVersion
-//    compile group: 'mysql', name: 'mysql-connector-java', version: mysqlVersion
-//        compile group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: springBootVersion
-    }
-
 }
