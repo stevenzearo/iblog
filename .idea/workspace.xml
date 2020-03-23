@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a8990fa-9ae1-49f9-b7bd-4e1036547d27" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/backend/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/user-service-db-migration/src/main/resources/flyway.properties" beforeDir="false" afterPath="$PROJECT_DIR$/backend/user-service-db-migration/src/main/resources/flyway.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/user-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/user-service/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/user-service-db-migration/src/main/resources/flyway.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/user-service/src/main/resources/application.yml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +43,17 @@
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="iblog" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="iblog" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="iblog" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
@@ -125,8 +134,8 @@
       <recent name="C:\Users\steve\IdeaProjects\iblog\backend\user-service\conf\test" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.iblog:backend [projects]">
-    <configuration name="iblog [dependencies]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Gradle.iblog [build]">
+    <configuration name="iblog [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -137,7 +146,7 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value="dependencies" />
+            <option value="build" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -223,11 +232,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.iblog [build]" />
         <item itemvalue="Gradle.iblog:backend [projects]" />
         <item itemvalue="Gradle.iblog:backend:user-service [overrideTestResources]" />
         <item itemvalue="Gradle.iblog:backend:user-service-db-migration [overrideTestResources]" />
         <item itemvalue="Gradle.iblog:backend:user-service-db-migration [overrideDevResources]" />
-        <item itemvalue="Gradle.iblog [dependencies]" />
       </list>
     </recent_temporary>
   </component>
@@ -387,7 +396,14 @@
       <option name="project" value="LOCAL" />
       <updated>1584699123757</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="fixed build file">
+      <created>1584942205641</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1584942205641</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -414,7 +430,8 @@
     <MESSAGE value="modify flyway.properties" />
     <MESSAGE value="change mysql version" />
     <MESSAGE value="change application.yml settings" />
-    <option name="LAST_COMMIT_MESSAGE" value="change application.yml settings" />
+    <MESSAGE value="fixed build file" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed build file" />
   </component>
   <component name="WindowStateProjectService">
     <state x="626" y="119" key="#Application" timestamp="1584585001205">
@@ -425,34 +442,34 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="414" y="172" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1584527867957" />
-    <state x="397" y="49" key="CommitChangelistDialog2" timestamp="1584699123471">
+    <state x="397" y="49" key="CommitChangelistDialog2" timestamp="1584942205317">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="397" y="49" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1584699123471" />
-    <state x="220" y="91" key="DiffContextDialog" timestamp="1584699115736">
+    <state x="397" y="49" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1584942205317" />
+    <state x="220" y="91" key="DiffContextDialog" timestamp="1584942183180">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="220" y="91" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1584699115736" />
+    <state x="220" y="91" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1584942183180" />
     <state x="690" y="222" key="FileChooserDialogImpl" timestamp="1584586949977">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="222" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1584586949977" />
-    <state width="1867" height="269" key="GridCell.Tab.0.bottom" timestamp="1584942115475">
+    <state width="1867" height="269" key="GridCell.Tab.0.bottom" timestamp="1584942243456">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1867" height="269" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1584942115475" />
-    <state width="1867" height="269" key="GridCell.Tab.0.center" timestamp="1584942115475">
+    <state width="1867" height="269" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1584942243456" />
+    <state width="1867" height="269" key="GridCell.Tab.0.center" timestamp="1584942243456">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1867" height="269" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1584942115475" />
-    <state width="1867" height="269" key="GridCell.Tab.0.left" timestamp="1584942115475">
+    <state width="1867" height="269" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1584942243456" />
+    <state width="1867" height="269" key="GridCell.Tab.0.left" timestamp="1584942243456">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1867" height="269" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1584942115475" />
-    <state width="1867" height="269" key="GridCell.Tab.0.right" timestamp="1584942115475">
+    <state width="1867" height="269" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1584942243456" />
+    <state width="1867" height="269" key="GridCell.Tab.0.right" timestamp="1584942243456">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1867" height="269" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1584942115475" />
+    <state width="1867" height="269" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1584942243456" />
     <state x="312" y="0" key="SettingsEditor" timestamp="1584586977242">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -461,10 +478,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="623" height="498" key="SwitcherDM/0.0.1920.1040@0.0.1920.1040" timestamp="1584611532116" />
-    <state x="452" y="192" key="Vcs.Push.Dialog.v2" timestamp="1584699129612">
+    <state x="452" y="192" key="Vcs.Push.Dialog.v2" timestamp="1584942214823">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="452" y="192" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1584699129612" />
+    <state x="452" y="192" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1584942214823" />
     <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1584580427929">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
