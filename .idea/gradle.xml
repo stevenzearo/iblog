@@ -15,6 +15,9 @@
             <option value="$PROJECT_DIR$/backend/blog-service" />
             <option value="$PROJECT_DIR$/backend/user-service" />
             <option value="$PROJECT_DIR$/backend/user-service-db-migration" />
+            <option value="$PROJECT_DIR$/frontend" />
+            <option value="$PROJECT_DIR$/frontend/bo-iblog-site" />
+            <option value="$PROJECT_DIR$/frontend/iblog-site" />
           </set>
         </option>
         <option name="useQualifiedModuleNames" value="true" />

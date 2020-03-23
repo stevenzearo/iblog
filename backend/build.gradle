@@ -26,20 +26,20 @@ subprojects {
     }
 }
 
-project('blog-serivce') {
+project('blog-service') {
     dependencies {
 
     }
 }
 
-project('user-serivce') {
+project('user-service') {
     dependencies {
 
     }
 }
 
 
-project(':backend:user-serivce-db-migration') {
+project('user-service-db-migration') {
     dependencies {
 
     }
