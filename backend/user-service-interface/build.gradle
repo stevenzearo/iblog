@@ -1,21 +1,14 @@
 plugins {
     id 'java'
-    id 'war'
-    id 'idea'
-    id 'application'
 }
 
 sourceCompatibility = JavaVersion.VERSION_11
 targetCompatibility = JavaVersion.VERSION_11
 
 sourceSets {
-    mainClassName = 'app.Application'
     main {
         java {
             srcDirs = ['src/main/java']
-        }
-        resources {
-            srcDirs = ['src/main/resources']
         }
     }
 }
@@ -23,11 +16,7 @@ sourceSets {
 jar {
     manifest {
         def classpath = sourceSets.main.runtimeClasspath
-        classpath += sourceSets.test.runtimeClasspath
-        classpath += sourceSets.main.resources
-        classpath += configurations.compile.dependencies
         attributes "Manifest-Version": project.version,
-                'Main-Class': 'app.Application',
                 'Class-Path': classpath
     }
 }

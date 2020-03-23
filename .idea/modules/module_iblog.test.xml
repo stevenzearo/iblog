@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_iblog.test" default="compile.module.iblog.test">
+  <dirname property="module.iblog.test.basedir" file="${ant.file.module_iblog.test}"/>
+  
+  <property name="module.jdk.home.iblog.test" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.iblog.test" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.iblog.test" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.iblog.test" value="-encoding UTF-8 -source 11 -target 11 ${compiler.args}"/>
+  
+  <property name="iblog.test.output.dir" value="undefined"/>
+  <property name="iblog.test.testoutput.dir" value="undefined"/>
+  
+  <path id="iblog.test.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="iblog.test.module.production.classpath">
+    <path refid="${module.jdk.classpath.iblog.test}"/>
+  </path>
+  
+  <path id="iblog.test.runtime.production.module.classpath">
+    <path refid="iblog.main.runtime.production.module.classpath"/>
+  </path>
+  
+  <path id="iblog.test.module.classpath">
+    <path refid="${module.jdk.classpath.iblog.test}"/>
+  </path>
+  
+  <path id="iblog.test.runtime.module.classpath">
+    <path refid="iblog.main.runtime.module.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.iblog.test">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.iblog.test">
+    <patternset refid="excluded.from.module.iblog.test"/>
+  </patternset>
+  
+  
+  <target name="compile.module.iblog.test" depends="compile.module.iblog.test.production,compile.module.iblog.test.tests" description="Compile module iblog.test"/>
+  
+  <target name="compile.module.iblog.test.production" depends="register.custom.compilers,compile.module.iblog.main" description="Compile module iblog.test; production classes"/>
+  
+  <target name="compile.module.iblog.test.tests" depends="register.custom.compilers,compile.module.iblog.test.production" description="compile module iblog.test; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.iblog.test" description="cleanup module">
+    <delete dir="${iblog.test.output.dir}"/>
+    <delete dir="${iblog.test.testoutput.dir}"/>
+  </target>
+</project>

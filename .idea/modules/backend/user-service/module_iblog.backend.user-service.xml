@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_iblog.backend.user-service" default="compile.module.iblog.backend.user-service">
+  <dirname property="module.iblog.backend.user-service.basedir" file="${ant.file.module_iblog.backend.user-service}"/>
+  
+  <property name="module.jdk.home.iblog.backend.user-service" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.iblog.backend.user-service" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.iblog.backend.user-service" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.iblog.backend.user-service" value="-encoding UTF-8 -source 11 -target 11 ${compiler.args}"/>
+  
+  <property name="iblog.backend.user-service.output.dir" value="undefined"/>
+  <property name="iblog.backend.user-service.testoutput.dir" value="undefined"/>
+  
+  <path id="iblog.backend.user-service.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="iblog.backend.user-service.module.production.classpath">
+    <path refid="${module.jdk.classpath.iblog.backend.user-service}"/>
+  </path>
+  
+  <path id="iblog.backend.user-service.runtime.production.module.classpath"/>
+  
+  <path id="iblog.backend.user-service.module.classpath">
+    <path refid="${module.jdk.classpath.iblog.backend.user-service}"/>
+  </path>
+  
+  <path id="iblog.backend.user-service.runtime.module.classpath"/>
+  
+  
+  <patternset id="excluded.from.module.iblog.backend.user-service">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.iblog.backend.user-service">
+    <patternset refid="excluded.from.module.iblog.backend.user-service"/>
+  </patternset>
+  
+  
+  <target name="compile.module.iblog.backend.user-service" depends="compile.module.iblog.backend.user-service.production,compile.module.iblog.backend.user-service.tests" description="Compile module iblog.backend.user-service"/>
+  
+  <target name="compile.module.iblog.backend.user-service.production" depends="register.custom.compilers" description="Compile module iblog.backend.user-service; production classes"/>
+  
+  <target name="compile.module.iblog.backend.user-service.tests" depends="register.custom.compilers,compile.module.iblog.backend.user-service.production" description="compile module iblog.backend.user-service; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.iblog.backend.user-service" description="cleanup module">
+    <delete dir="${iblog.backend.user-service.output.dir}"/>
+    <delete dir="${iblog.backend.user-service.testoutput.dir}"/>
+  </target>
+</project>

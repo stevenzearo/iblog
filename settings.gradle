@@ -1,6 +1,8 @@
 rootProject.name = 'iblog'
 include 'backend:user-service',
+        'backend:user-service-interface',
         'backend:blog-service',
+        'backend:blog-service-interface',
         'backend:user-service-db-migration'
 include 'frontend:bo-iblog-site',
         'frontend:iblog-site'

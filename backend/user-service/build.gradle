@@ -1,6 +1,5 @@
 plugins {
     id 'java'
-    id 'war'
     id 'idea'
     id 'application'
 }
@@ -9,7 +8,7 @@ sourceCompatibility = JavaVersion.VERSION_11
 targetCompatibility = JavaVersion.VERSION_11
 
 sourceSets {
-    mainClassName = 'iblog.Application'
+    mainClassName = 'app.Application'
     main {
         java {
             srcDirs = ['src/main/java']
@@ -24,7 +23,7 @@ jar {
         classpath += sourceSets.main.resources
         classpath += configurations.compile.dependencies
         attributes "Manifest-Version": project.version,
-                'Main-Class': 'iblog.Application',
+                'Main-Class': 'app.Application',
                 'Class-Path': classpath
     }
 }
