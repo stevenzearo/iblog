@@ -5,4 +5,5 @@ include 'backend:user-service',
         'backend:blog-service-interface',
         'backend:user-service-db-migration'
 include 'frontend:bo-iblog-site',
-        'frontend:iblog-site'
+        'frontend:iblog-site',
+        'frontend:registry-site'

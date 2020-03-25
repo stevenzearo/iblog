@@ -1,7 +1,9 @@
+def springBootVersion = '2.1.9.RELEASE'
+def springCloudVersion = '2.2.0.RELEASE'
+
 subprojects {
     apply plugin: 'java'
 
-    def springBootVersion = '2.1.9.RELEASE'
 
     repositories {
         mavenCentral()
@@ -9,11 +11,10 @@ subprojects {
 
     dependencies {
         compile group: 'org.springframework.boot', name: 'spring-boot-starter-parent', version: springBootVersion, ext: 'pom'
-        compile group: 'org.springframework.boot', name: 'spring-boot-starter', version: springBootVersion
-        compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: springBootVersion
+        compile (group: 'org.springframework.boot', name: 'spring-boot-starter', version: springBootVersion)
+        compile (group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: springBootVersion)
 //        compile group: 'org.springframework.boot', name: 'spring-boot-starter-web-services', version: springBootVersion
-        compile group: 'org.springframework.boot', name: 'spring-boot-starter-logging', version: springBootVersion
-        compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: springBootVersion
+        compile (group: 'org.springframework.boot', name: 'spring-boot-starter-logging', version: springBootVersion)
 //    compile group: 'org.mybatis.spring.boot', name: 'mybatis-spring-boot-starter', version: mybatisVersion
 //    compile group: 'mysql', name: 'mysql-connector-java', version: mysqlVersion
 //        compile group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: springBootVersion
@@ -31,5 +32,16 @@ project('bo-iblog-site') {
 
 project('iblog-site') {
     dependencies {
+    }
+}
+
+project('registry-site') {
+    dependencies {
+        compile(group: 'org.springframework.cloud', name: 'spring-cloud-starter', version: springCloudVersion)
+        compile(group: 'org.springframework.cloud', name: 'spring-cloud-starter-config', version: springCloudVersion)
+//        compile(group: 'org.springframework.cloud', name: 'spring-cloud-starter-openfeign', version: springCloudVersion)
+        compile(group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-eureka-server', version: springCloudVersion) {
+            exclude group: 'com.google.code.gson', module: 'gson'
+        }
     }
 }

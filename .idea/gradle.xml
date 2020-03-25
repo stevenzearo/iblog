@@ -6,6 +6,7 @@
       <GradleProjectSettings>
         <option name="delegatedBuild" value="true" />
         <option name="testRunner" value="GRADLE" />
+        <option name="disableWrapperSourceDistributionNotification" value="true" />
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="modules">
@@ -20,8 +21,10 @@
             <option value="$PROJECT_DIR$/frontend" />
             <option value="$PROJECT_DIR$/frontend/bo-iblog-site" />
             <option value="$PROJECT_DIR$/frontend/iblog-site" />
+            <option value="$PROJECT_DIR$/frontend/registry-site" />
           </set>
         </option>
+        <option name="resolveExternalAnnotations" value="false" />
         <option name="useQualifiedModuleNames" value="true" />
       </GradleProjectSettings>
     </option>

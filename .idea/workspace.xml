@@ -2,56 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a8990fa-9ae1-49f9-b7bd-4e1036547d27" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/iblog.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/module_iblog.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules/backend/blog-service/module_iblog.backend.blog-service.main.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules/backend/blog-service/module_iblog.backend.blog-service.test.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules/backend/blog-service/module_iblog.backend.blog-service.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules/backend/module_iblog.backend.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules/backend/user-service/module_iblog.backend.user-service.main.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules/backend/user-service/module_iblog.backend.user-service.test.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules/backend/user-service/module_iblog.backend.user-service.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules/module_iblog.main.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules/module_iblog.test.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/blog-service-interface/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/blog-service/src/main/java/app/Application.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/user-service-interface/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/user-service-interface/src/main/java/app/user/api/user/GetUserResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/bo-iblog-site-frontend/.idea/bo-iblog-site-frontend.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/bo-iblog-site-frontend/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/bo-iblog-site-frontend/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/bo-iblog-site-frontend/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/bo-iblog-site-frontend/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/bo-iblog-site-frontend/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/bo-iblog-site/src/main/java/app/Application.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/bo-iblog-site/src/main/java/app/site/WebMVCConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/iblog-site-frontend/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/iblog-site-frontend/.idea/iblog-site-frontend.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/iblog-site-frontend/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/iblog-site-frontend/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/iblog-site-frontend/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/registry-site/src/main/java/app/Application.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/registry-site/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/blog-service/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/backend/blog-service/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/backend/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/user-service-db-migration/src/main/resources/flyway.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/user-service/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/backend/user-service/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/user-service/src/main/java/iblog/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/user-service/src/main/java/app/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/user-service/src/main/java/iblog/user/dao/jpa/UserJpaDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/user-service/src/main/java/app/user/dao/jpa/UserJpaDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/user-service/src/main/java/iblog/user/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/user-service/src/main/java/app/user/domain/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/user-service/src/main/java/iblog/user/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/user-service/src/main/java/app/user/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/user-service/src/main/java/iblog/user/web/UserWebService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/user-service-interface/src/main/java/app/user/api/UserWebService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/user-service/src/main/java/iblog/user/web/UserWebServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/user-service/src/main/java/app/user/web/UserWebServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/user-service/src/main/resources/application.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/bo-iblog-site/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/bo-iblog-site/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/user-service/src/main/java/app/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/user-service/src/main/java/app/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/user-service/src/main/java/app/user/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/user-service/src/main/java/app/user/domain/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -61,20 +20,6 @@
   </component>
   <component name="CodeStyleSettingsInfer">
     <option name="done" value="true" />
-  </component>
-  <component name="DatabaseView">
-    <option name="SHOW_INTERMEDIATE" value="true" />
-    <option name="GROUP_DATA_SOURCES" value="true" />
-    <option name="GROUP_SCHEMA" value="true" />
-    <option name="GROUP_CONTENTS" value="false" />
-    <option name="SORT_POSITIONED" value="false" />
-    <option name="SHOW_EMPTY_GROUPS" value="false" />
-    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
-    <option name="HIDDEN_KINDS">
-      <set />
-    </option>
-    <expand />
-    <select />
   </component>
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
@@ -99,10 +44,10 @@
         <task path="$PROJECT_DIR$/backend/user-service-db-migration">
           <activation />
         </task>
-        <task path="$PROJECT_DIR$/frontend">
+        <task path="$PROJECT_DIR$/frontend/registry-site">
           <activation />
         </task>
-        <task path="$PROJECT_DIR$/frontend/bo-iblog-site">
+        <task path="$PROJECT_DIR$/frontend">
           <activation />
         </task>
         <projects_view>
@@ -115,33 +60,169 @@
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="iblog" type="f1a62948:ProjectNode" />
+                <item name="backend" type="2d1252cf:ModuleNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="iblog" type="f1a62948:ProjectNode" />
+                <item name="backend" type="2d1252cf:ModuleNode" />
+                <item name="user-service" type="2d1252cf:ModuleNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="iblog" type="f1a62948:ProjectNode" />
+                <item name="backend" type="2d1252cf:ModuleNode" />
+                <item name="user-service" type="2d1252cf:ModuleNode" />
+                <item name="Source Sets" type="e897c970:GradleViewContributor$SourceSetsNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="iblog" type="f1a62948:ProjectNode" />
+                <item name="backend" type="2d1252cf:ModuleNode" />
+                <item name="user-service" type="2d1252cf:ModuleNode" />
+                <item name="Source Sets" type="e897c970:GradleViewContributor$SourceSetsNode" />
+                <item name="main" type="396b929e:GradleViewContributor$SourceSetNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="iblog" type="f1a62948:ProjectNode" />
+                <item name="backend" type="2d1252cf:ModuleNode" />
+                <item name="user-service" type="2d1252cf:ModuleNode" />
+                <item name="Source Sets" type="e897c970:GradleViewContributor$SourceSetsNode" />
+                <item name="main" type="396b929e:GradleViewContributor$SourceSetNode" />
+                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="iblog" type="f1a62948:ProjectNode" />
+                <item name="backend" type="2d1252cf:ModuleNode" />
+                <item name="user-service" type="2d1252cf:ModuleNode" />
+                <item name="Source Sets" type="e897c970:GradleViewContributor$SourceSetsNode" />
+                <item name="main" type="396b929e:GradleViewContributor$SourceSetNode" />
+                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
+                <item name="org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.1" type="cfea851d:ExternalSystemViewDefaultContributor$LibraryDependencyDataExternalSystemNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="iblog" type="f1a62948:ProjectNode" />
+                <item name="backend" type="2d1252cf:ModuleNode" />
+                <item name="user-service" type="2d1252cf:ModuleNode" />
+                <item name="Source Sets" type="e897c970:GradleViewContributor$SourceSetsNode" />
+                <item name="main" type="396b929e:GradleViewContributor$SourceSetNode" />
+                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
+                <item name="org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.1" type="cfea851d:ExternalSystemViewDefaultContributor$LibraryDependencyDataExternalSystemNode" />
+                <item name="org.springframework.boot:spring-boot-starter-jdbc:2.1.9.RELEASE" type="cfea851d:ExternalSystemViewDefaultContributor$LibraryDependencyDataExternalSystemNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="iblog" type="f1a62948:ProjectNode" />
+                <item name="backend" type="2d1252cf:ModuleNode" />
+                <item name="user-service" type="2d1252cf:ModuleNode" />
+                <item name="Source Sets" type="e897c970:GradleViewContributor$SourceSetsNode" />
+                <item name="main" type="396b929e:GradleViewContributor$SourceSetNode" />
+                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
+                <item name="org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.1" type="cfea851d:ExternalSystemViewDefaultContributor$LibraryDependencyDataExternalSystemNode" />
+                <item name="org.springframework.boot:spring-boot-starter-jdbc:2.1.9.RELEASE" type="cfea851d:ExternalSystemViewDefaultContributor$LibraryDependencyDataExternalSystemNode" />
+                <item name="org.springframework:spring-jdbc:5.1.10.RELEASE" type="cfea851d:ExternalSystemViewDefaultContributor$LibraryDependencyDataExternalSystemNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="iblog" type="f1a62948:ProjectNode" />
+                <item name="backend" type="2d1252cf:ModuleNode" />
+                <item name="user-service" type="2d1252cf:ModuleNode" />
+                <item name="Source Sets" type="e897c970:GradleViewContributor$SourceSetsNode" />
+                <item name="main" type="396b929e:GradleViewContributor$SourceSetNode" />
+                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
+                <item name="org.springframework.cloud:spring-cloud-starter:2.2.0.RELEASE" type="cfea851d:ExternalSystemViewDefaultContributor$LibraryDependencyDataExternalSystemNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="iblog" type="f1a62948:ProjectNode" />
+                <item name="backend" type="2d1252cf:ModuleNode" />
+                <item name="user-service" type="2d1252cf:ModuleNode" />
+                <item name="Source Sets" type="e897c970:GradleViewContributor$SourceSetsNode" />
+                <item name="main" type="396b929e:GradleViewContributor$SourceSetNode" />
+                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
+                <item name="org.springframework.cloud:spring-cloud-starter:2.2.0.RELEASE" type="cfea851d:ExternalSystemViewDefaultContributor$LibraryDependencyDataExternalSystemNode" />
+                <item name="org.springframework.cloud:spring-cloud-context:2.2.0.RELEASE" type="cfea851d:ExternalSystemViewDefaultContributor$LibraryDependencyDataExternalSystemNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="iblog" type="f1a62948:ProjectNode" />
+                <item name="backend" type="2d1252cf:ModuleNode" />
+                <item name="user-service" type="2d1252cf:ModuleNode" />
+                <item name="Source Sets" type="e897c970:GradleViewContributor$SourceSetsNode" />
+                <item name="main" type="396b929e:GradleViewContributor$SourceSetNode" />
+                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
+                <item name="org.springframework.cloud:spring-cloud-starter:2.2.0.RELEASE" type="cfea851d:ExternalSystemViewDefaultContributor$LibraryDependencyDataExternalSystemNode" />
+                <item name="org.springframework.security:spring-security-rsa:1.0.7.RELEASE" type="cfea851d:ExternalSystemViewDefaultContributor$LibraryDependencyDataExternalSystemNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="iblog" type="f1a62948:ProjectNode" />
+                <item name="backend" type="2d1252cf:ModuleNode" />
+                <item name="user-service" type="2d1252cf:ModuleNode" />
+                <item name="Source Sets" type="e897c970:GradleViewContributor$SourceSetsNode" />
+                <item name="main" type="396b929e:GradleViewContributor$SourceSetNode" />
+                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
+                <item name="org.springframework.cloud:spring-cloud-starter:2.2.0.RELEASE" type="cfea851d:ExternalSystemViewDefaultContributor$LibraryDependencyDataExternalSystemNode" />
+                <item name="org.springframework.security:spring-security-rsa:1.0.7.RELEASE" type="cfea851d:ExternalSystemViewDefaultContributor$LibraryDependencyDataExternalSystemNode" />
+                <item name="org.bouncycastle:bcpkix-jdk15on:1.60" type="cfea851d:ExternalSystemViewDefaultContributor$LibraryDependencyDataExternalSystemNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="iblog" type="f1a62948:ProjectNode" />
+                <item name="backend" type="2d1252cf:ModuleNode" />
+                <item name="user-service" type="2d1252cf:ModuleNode" />
+                <item name="Source Sets" type="e897c970:GradleViewContributor$SourceSetsNode" />
+                <item name="main" type="396b929e:GradleViewContributor$SourceSetNode" />
+                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
+                <item name="org.springframework.boot:spring-boot-starter-data-jpa:2.1.9.RELEASE" type="cfea851d:ExternalSystemViewDefaultContributor$LibraryDependencyDataExternalSystemNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="iblog" type="f1a62948:ProjectNode" />
+                <item name="backend" type="2d1252cf:ModuleNode" />
+                <item name="user-service" type="2d1252cf:ModuleNode" />
+                <item name="Source Sets" type="e897c970:GradleViewContributor$SourceSetsNode" />
+                <item name="main" type="396b929e:GradleViewContributor$SourceSetNode" />
+                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
+                <item name="org.springframework.boot:spring-boot-starter-data-jpa:2.1.9.RELEASE" type="cfea851d:ExternalSystemViewDefaultContributor$LibraryDependencyDataExternalSystemNode" />
+                <item name="org.springframework.data:spring-data-jpa:2.1.11.RELEASE" type="cfea851d:ExternalSystemViewDefaultContributor$LibraryDependencyDataExternalSystemNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="iblog" type="f1a62948:ProjectNode" />
+                <item name="backend" type="2d1252cf:ModuleNode" />
+                <item name="user-service" type="2d1252cf:ModuleNode" />
+                <item name="Source Sets" type="e897c970:GradleViewContributor$SourceSetsNode" />
+                <item name="main" type="396b929e:GradleViewContributor$SourceSetNode" />
+                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
+                <item name="org.springframework.boot:spring-boot-starter-data-jpa:2.1.9.RELEASE" type="cfea851d:ExternalSystemViewDefaultContributor$LibraryDependencyDataExternalSystemNode" />
+                <item name="org.hibernate:hibernate-core:5.3.12.Final" type="cfea851d:ExternalSystemViewDefaultContributor$LibraryDependencyDataExternalSystemNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="iblog" type="f1a62948:ProjectNode" />
+                <item name="backend" type="2d1252cf:ModuleNode" />
+                <item name="user-service" type="2d1252cf:ModuleNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="iblog" type="f1a62948:ProjectNode" />
-                <item name="frontend" type="2d1252cf:ModuleNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="iblog" type="f1a62948:ProjectNode" />
-                <item name="frontend" type="2d1252cf:ModuleNode" />
-                <item name="bo-iblog-site" type="2d1252cf:ModuleNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="iblog" type="f1a62948:ProjectNode" />
-                <item name="frontend" type="2d1252cf:ModuleNode" />
-                <item name="bo-iblog-site" type="2d1252cf:ModuleNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="iblog" type="f1a62948:ProjectNode" />
-                <item name="frontend" type="2d1252cf:ModuleNode" />
-                <item name="bo-iblog-site" type="2d1252cf:ModuleNode" />
+                <item name="backend" type="2d1252cf:ModuleNode" />
+                <item name="user-service" type="2d1252cf:ModuleNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
                 <item name="application" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="iblog" type="f1a62948:ProjectNode" />
+                <item name="backend" type="2d1252cf:ModuleNode" />
+                <item name="user-service" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
               </path>
             </expand>
             <select />
@@ -170,31 +251,29 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/backend/user-service-interface" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/backend/user-service/src/main/resources" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.5574977" />
-    <property name="settings.editor.selected.configurable" value="File.Encoding" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
     <property name="show.unlinked.gradle.project.popup" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\steve\IdeaProjects\iblog\backend" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\steve\IdeaProjects\iblog\backend\user-service-interface" />
-      <recent name="C:\Users\steve\IdeaProjects\iblog\frontend" />
+      <recent name="C:\Users\steve\IdeaProjects\iblog\backend\user-service\src\main\resources" />
       <recent name="C:\Users\steve\IdeaProjects\iblog" />
       <recent name="C:\Users\steve\IdeaProjects\iblog\backend\user-service-db-migration\src\main\resources" />
       <recent name="C:\Users\steve\IdeaProjects\iblog\backend\user-service-db-migration\conf" />
+      <recent name="C:\Users\steve\IdeaProjects\iblog\gradle" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\steve\IdeaProjects\iblog\backend" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.iblog [dependencies]">
+  <component name="RunManager" selected="Spring Boot.Application (3)">
     <configuration name="iblog [dependencies]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -233,7 +312,7 @@
       <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="iblog:backend:user-service [compileJava]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="iblog:backend:user-service [dependencies]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/backend/user-service" />
@@ -244,7 +323,7 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value="compileJava" />
+            <option value="dependencies" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -252,66 +331,53 @@
       <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="iblog:frontend:bo-iblog-site [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/frontend/bo-iblog-site" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="build" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="iblog:frontend:bo-iblog-site [run]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/frontend/bo-iblog-site" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="run" />
-          </list>
-        </option>
-        <option name="vmOptions" value="-Dfile.encoding=UTF-8" />
-      </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <configuration name="Application (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="iblog.backend.blog-service.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="app.Application" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <list>
-      <item itemvalue="Gradle.iblog [jar]" />
-      <item itemvalue="Gradle.iblog:backend:user-service [compileJava]" />
-      <item itemvalue="Gradle.iblog:frontend:bo-iblog-site [build]" />
-      <item itemvalue="Gradle.iblog:frontend:bo-iblog-site [run]" />
-      <item itemvalue="Spring Boot.Application" />
-      <item itemvalue="Gradle.iblog [dependencies]" />
-    </list>
+    <configuration name="Application (2)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="iblog.frontend.registry-site.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="app.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="app.Application" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Application (3)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="iblog.backend.user-service.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="app.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="app.Application" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="iblog.backend.user-service.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="iblog.Application" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Spring Boot.Application (3)" />
         <item itemvalue="Gradle.iblog [dependencies]" />
-        <item itemvalue="Gradle.iblog:frontend:bo-iblog-site [run]" />
-        <item itemvalue="Gradle.iblog:frontend:bo-iblog-site [build]" />
-        <item itemvalue="Gradle.iblog:backend:user-service [compileJava]" />
         <item itemvalue="Gradle.iblog [jar]" />
+        <item itemvalue="Gradle.iblog:backend:user-service [dependencies]" />
+        <item itemvalue="Spring Boot.Application (2)" />
       </list>
     </recent_temporary>
   </component>
@@ -327,17 +393,7 @@
       <list>
         <serviceView>
           <treeState>
-            <expand>
-              <path>
-                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="root:iblog" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              </path>
-              <path>
-                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="root:iblog" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-                <item name="com.intellij.database.console.session.MessageBusSession@606ba92b" type="9fbbdea:ServiceModel$ServiceNode" />
-              </path>
-            </expand>
+            <expand />
             <select />
           </treeState>
         </serviceView>
@@ -354,10 +410,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1584527252638</updated>
-      <workItem from="1584967116365" duration="104000" />
-      <workItem from="1584967223780" duration="2919000" />
-      <workItem from="1584970149255" duration="760000" />
-      <workItem from="1584971328953" duration="5971000" />
+      <workItem from="1585118177508" duration="12226000" />
     </task>
     <task id="LOCAL-00001" summary="code format">
       <created>1584528124008</created>
@@ -537,58 +590,70 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="626" y="119" key="#Application/0.0.1920.1040@0.0.1920.1040" timestamp="1584585001205" />
-    <state x="452" y="97" key="#Assign_Data_Sources" timestamp="1584967993916">
+    <state x="414" y="172" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1584527867957">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="452" y="97" key="#Assign_Data_Sources/0.0.1920.1040@0.0.1920.1040" timestamp="1584967993916" />
-    <state x="452" y="97" width="1101" height="846" key="#Project_Structure" timestamp="1584967107986">
+    <state x="414" y="172" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1584527867957" />
+    <state x="721" y="161" key="#com.intellij.ide.util.MemberChooser" timestamp="1585133594523">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="452" y="97" width="1101" height="846" key="#Project_Structure/0.0.1920.1040@0.0.1920.1040" timestamp="1584967107986" />
-    <state x="732" y="276" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1584971468079">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="732" y="276" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1584971468079" />
-    <state x="323" y="427" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1584972262875">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="323" y="427" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1584972262875" />
+    <state x="721" y="161" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1585133594523" />
     <state x="397" y="49" key="CommitChangelistDialog2" timestamp="1584958626835">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="397" y="49" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1584958626835" />
-    <state x="220" y="91" key="DiffContextDialog" timestamp="1584942183180">
+    <state x="220" y="91" width="1536" height="861" key="DiffContextDialog" timestamp="1585111523816">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="220" y="91" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1584942183180" />
+    <state x="220" y="91" width="1536" height="861" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585111523816" />
     <state x="690" y="222" key="FileChooserDialogImpl" timestamp="1584586949977">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="222" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1584586949977" />
-    <state width="1861" height="263" key="GridCell.Tab.0.bottom" timestamp="1584973071496">
+    <state width="1865" height="253" key="GridCell.Tab.0.bottom" timestamp="1585133713527">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1861" height="263" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1584973071496" />
-    <state width="1861" height="263" key="GridCell.Tab.0.center" timestamp="1584973071495">
+    <state width="1865" height="253" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1585133713527" />
+    <state width="1865" height="253" key="GridCell.Tab.0.center" timestamp="1585133713527">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1861" height="263" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1584973071495" />
-    <state width="1861" height="263" key="GridCell.Tab.0.left" timestamp="1584973071495">
+    <state width="1865" height="253" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1585133713527" />
+    <state width="1865" height="253" key="GridCell.Tab.0.left" timestamp="1585133713527">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1861" height="263" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1584973071495" />
-    <state width="1861" height="263" key="GridCell.Tab.0.right" timestamp="1584973071496">
+    <state width="1865" height="253" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1585133713527" />
+    <state width="1865" height="253" key="GridCell.Tab.0.right" timestamp="1585133713527">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1861" height="263" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1584973071496" />
-    <state x="312" y="0" key="SettingsEditor" timestamp="1584970859208">
+    <state width="1865" height="253" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1585133713527" />
+    <state width="1865" height="253" key="GridCell.Tab.1.bottom" timestamp="1585133713528">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="312" y="0" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1584970859208" />
-    <state width="623" height="796" key="SwitcherDM" timestamp="1584973478825">
+    <state width="1865" height="253" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1585133713528" />
+    <state width="1865" height="253" key="GridCell.Tab.1.center" timestamp="1585133713527">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="623" height="796" key="SwitcherDM/0.0.1920.1040@0.0.1920.1040" timestamp="1584973478825" />
+    <state width="1865" height="253" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1585133713527" />
+    <state width="1865" height="253" key="GridCell.Tab.1.left" timestamp="1585133713527">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1865" height="253" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1585133713527" />
+    <state width="1865" height="253" key="GridCell.Tab.1.right" timestamp="1585133713527">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1865" height="253" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1585133713527" />
+    <state x="602" y="167" key="MultipleFileMergeDialog" timestamp="1585111483092">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="602" y="167" key="MultipleFileMergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585111483092" />
+    <state x="312" y="0" key="SettingsEditor" timestamp="1585119369398">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="312" y="0" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1585119369398" />
+    <state width="623" height="567" key="SwitcherDM" timestamp="1585133614928">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="623" height="567" key="SwitcherDM/0.0.1920.1040@0.0.1920.1040" timestamp="1585133614928" />
     <state x="801" y="428" key="VCS.ChangelistChooser" timestamp="1584958635180">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -605,29 +670,21 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1584958595763" />
-    <state x="592" y="307" key="com.intellij.ide.util.TipDialog" timestamp="1584971334297">
+    <state x="592" y="307" key="com.intellij.ide.util.TipDialog" timestamp="1584579942990">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="592" y="307" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1584971334297" />
-    <state x="722" y="422" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1584972155709">
+    <state x="592" y="307" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1584579942990" />
+    <state x="722" y="422" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1585112541713">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="722" y="422" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1584972155709" />
-    <state x="587" y="222" width="875" height="654" key="find.popup" timestamp="1584969379604">
+    <state x="722" y="422" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1585112541713" />
+    <state x="587" y="222" width="1131" height="620" key="find.popup" timestamp="1585127887027">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="587" y="222" width="875" height="654" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1584969379604" />
-    <state x="13" y="0" key="new project wizard" timestamp="1584971983699">
+    <state x="587" y="222" width="1131" height="620" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1585127887027" />
+    <state x="161" y="52" key="new project wizard" timestamp="1585111179682">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="13" y="0" key="new project wizard/0.0.1920.1040@0.0.1920.1040" timestamp="1584971983699" />
-    <state x="532" y="237" key="run.anything.popup" timestamp="1584968377867">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="532" y="237" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1584968377867" />
-    <state x="525" y="5" width="867" height="1034" key="search.everywhere.popup" timestamp="1584973872727">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="525" y="5" width="867" height="1034" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1584973872727" />
+    <state x="161" y="52" key="new project wizard/0.0.1920.1040@0.0.1920.1040" timestamp="1585111179682" />
   </component>
 </project>
