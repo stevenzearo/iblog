@@ -2,7 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a8990fa-9ae1-49f9-b7bd-4e1036547d27" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/backend/user-service/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/bo-iblog-site/conf/dev/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/bo-iblog-site/conf/test/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/bo-iblog-site/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/registry-site/conf/dev/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/registry-site/conf/test/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/backend/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/user-service-interface/src/main/java/app/user/api/UserWebService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/user-service-interface/src/main/java/app/user/api/UserWebService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/user-service/conf/dev/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/user-service/conf/dev/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/user-service/src/main/java/app/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/user-service/src/main/java/app/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/user-service/src/main/java/app/user/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/user-service/src/main/java/app/user/domain/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/user-service/src/main/java/app/user/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/user-service/src/main/java/app/user/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/bo-iblog-site/src/main/java/app/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/bo-iblog-site/src/main/java/app/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/registry-site/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/registry-site/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,6 +56,9 @@
         <task path="$PROJECT_DIR$/frontend">
           <activation />
         </task>
+        <task path="$PROJECT_DIR$/frontend/bo-iblog-site">
+          <activation />
+        </task>
         <projects_view>
           <tree_state>
             <expand>
@@ -64,139 +82,6 @@
                 <item name="iblog" type="f1a62948:ProjectNode" />
                 <item name="backend" type="2d1252cf:ModuleNode" />
                 <item name="user-service" type="2d1252cf:ModuleNode" />
-                <item name="Source Sets" type="e897c970:GradleViewContributor$SourceSetsNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="iblog" type="f1a62948:ProjectNode" />
-                <item name="backend" type="2d1252cf:ModuleNode" />
-                <item name="user-service" type="2d1252cf:ModuleNode" />
-                <item name="Source Sets" type="e897c970:GradleViewContributor$SourceSetsNode" />
-                <item name="main" type="396b929e:GradleViewContributor$SourceSetNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="iblog" type="f1a62948:ProjectNode" />
-                <item name="backend" type="2d1252cf:ModuleNode" />
-                <item name="user-service" type="2d1252cf:ModuleNode" />
-                <item name="Source Sets" type="e897c970:GradleViewContributor$SourceSetsNode" />
-                <item name="main" type="396b929e:GradleViewContributor$SourceSetNode" />
-                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="iblog" type="f1a62948:ProjectNode" />
-                <item name="backend" type="2d1252cf:ModuleNode" />
-                <item name="user-service" type="2d1252cf:ModuleNode" />
-                <item name="Source Sets" type="e897c970:GradleViewContributor$SourceSetsNode" />
-                <item name="main" type="396b929e:GradleViewContributor$SourceSetNode" />
-                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
-                <item name="org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.1" type="cfea851d:ExternalSystemViewDefaultContributor$LibraryDependencyDataExternalSystemNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="iblog" type="f1a62948:ProjectNode" />
-                <item name="backend" type="2d1252cf:ModuleNode" />
-                <item name="user-service" type="2d1252cf:ModuleNode" />
-                <item name="Source Sets" type="e897c970:GradleViewContributor$SourceSetsNode" />
-                <item name="main" type="396b929e:GradleViewContributor$SourceSetNode" />
-                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
-                <item name="org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.1" type="cfea851d:ExternalSystemViewDefaultContributor$LibraryDependencyDataExternalSystemNode" />
-                <item name="org.springframework.boot:spring-boot-starter-jdbc:2.1.9.RELEASE" type="cfea851d:ExternalSystemViewDefaultContributor$LibraryDependencyDataExternalSystemNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="iblog" type="f1a62948:ProjectNode" />
-                <item name="backend" type="2d1252cf:ModuleNode" />
-                <item name="user-service" type="2d1252cf:ModuleNode" />
-                <item name="Source Sets" type="e897c970:GradleViewContributor$SourceSetsNode" />
-                <item name="main" type="396b929e:GradleViewContributor$SourceSetNode" />
-                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
-                <item name="org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.1" type="cfea851d:ExternalSystemViewDefaultContributor$LibraryDependencyDataExternalSystemNode" />
-                <item name="org.springframework.boot:spring-boot-starter-jdbc:2.1.9.RELEASE" type="cfea851d:ExternalSystemViewDefaultContributor$LibraryDependencyDataExternalSystemNode" />
-                <item name="org.springframework:spring-jdbc:5.1.10.RELEASE" type="cfea851d:ExternalSystemViewDefaultContributor$LibraryDependencyDataExternalSystemNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="iblog" type="f1a62948:ProjectNode" />
-                <item name="backend" type="2d1252cf:ModuleNode" />
-                <item name="user-service" type="2d1252cf:ModuleNode" />
-                <item name="Source Sets" type="e897c970:GradleViewContributor$SourceSetsNode" />
-                <item name="main" type="396b929e:GradleViewContributor$SourceSetNode" />
-                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
-                <item name="org.springframework.cloud:spring-cloud-starter:2.2.0.RELEASE" type="cfea851d:ExternalSystemViewDefaultContributor$LibraryDependencyDataExternalSystemNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="iblog" type="f1a62948:ProjectNode" />
-                <item name="backend" type="2d1252cf:ModuleNode" />
-                <item name="user-service" type="2d1252cf:ModuleNode" />
-                <item name="Source Sets" type="e897c970:GradleViewContributor$SourceSetsNode" />
-                <item name="main" type="396b929e:GradleViewContributor$SourceSetNode" />
-                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
-                <item name="org.springframework.cloud:spring-cloud-starter:2.2.0.RELEASE" type="cfea851d:ExternalSystemViewDefaultContributor$LibraryDependencyDataExternalSystemNode" />
-                <item name="org.springframework.cloud:spring-cloud-context:2.2.0.RELEASE" type="cfea851d:ExternalSystemViewDefaultContributor$LibraryDependencyDataExternalSystemNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="iblog" type="f1a62948:ProjectNode" />
-                <item name="backend" type="2d1252cf:ModuleNode" />
-                <item name="user-service" type="2d1252cf:ModuleNode" />
-                <item name="Source Sets" type="e897c970:GradleViewContributor$SourceSetsNode" />
-                <item name="main" type="396b929e:GradleViewContributor$SourceSetNode" />
-                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
-                <item name="org.springframework.cloud:spring-cloud-starter:2.2.0.RELEASE" type="cfea851d:ExternalSystemViewDefaultContributor$LibraryDependencyDataExternalSystemNode" />
-                <item name="org.springframework.security:spring-security-rsa:1.0.7.RELEASE" type="cfea851d:ExternalSystemViewDefaultContributor$LibraryDependencyDataExternalSystemNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="iblog" type="f1a62948:ProjectNode" />
-                <item name="backend" type="2d1252cf:ModuleNode" />
-                <item name="user-service" type="2d1252cf:ModuleNode" />
-                <item name="Source Sets" type="e897c970:GradleViewContributor$SourceSetsNode" />
-                <item name="main" type="396b929e:GradleViewContributor$SourceSetNode" />
-                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
-                <item name="org.springframework.cloud:spring-cloud-starter:2.2.0.RELEASE" type="cfea851d:ExternalSystemViewDefaultContributor$LibraryDependencyDataExternalSystemNode" />
-                <item name="org.springframework.security:spring-security-rsa:1.0.7.RELEASE" type="cfea851d:ExternalSystemViewDefaultContributor$LibraryDependencyDataExternalSystemNode" />
-                <item name="org.bouncycastle:bcpkix-jdk15on:1.60" type="cfea851d:ExternalSystemViewDefaultContributor$LibraryDependencyDataExternalSystemNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="iblog" type="f1a62948:ProjectNode" />
-                <item name="backend" type="2d1252cf:ModuleNode" />
-                <item name="user-service" type="2d1252cf:ModuleNode" />
-                <item name="Source Sets" type="e897c970:GradleViewContributor$SourceSetsNode" />
-                <item name="main" type="396b929e:GradleViewContributor$SourceSetNode" />
-                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
-                <item name="org.springframework.boot:spring-boot-starter-data-jpa:2.1.9.RELEASE" type="cfea851d:ExternalSystemViewDefaultContributor$LibraryDependencyDataExternalSystemNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="iblog" type="f1a62948:ProjectNode" />
-                <item name="backend" type="2d1252cf:ModuleNode" />
-                <item name="user-service" type="2d1252cf:ModuleNode" />
-                <item name="Source Sets" type="e897c970:GradleViewContributor$SourceSetsNode" />
-                <item name="main" type="396b929e:GradleViewContributor$SourceSetNode" />
-                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
-                <item name="org.springframework.boot:spring-boot-starter-data-jpa:2.1.9.RELEASE" type="cfea851d:ExternalSystemViewDefaultContributor$LibraryDependencyDataExternalSystemNode" />
-                <item name="org.springframework.data:spring-data-jpa:2.1.11.RELEASE" type="cfea851d:ExternalSystemViewDefaultContributor$LibraryDependencyDataExternalSystemNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="iblog" type="f1a62948:ProjectNode" />
-                <item name="backend" type="2d1252cf:ModuleNode" />
-                <item name="user-service" type="2d1252cf:ModuleNode" />
-                <item name="Source Sets" type="e897c970:GradleViewContributor$SourceSetsNode" />
-                <item name="main" type="396b929e:GradleViewContributor$SourceSetNode" />
-                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
-                <item name="org.springframework.boot:spring-boot-starter-data-jpa:2.1.9.RELEASE" type="cfea851d:ExternalSystemViewDefaultContributor$LibraryDependencyDataExternalSystemNode" />
-                <item name="org.hibernate:hibernate-core:5.3.12.Final" type="cfea851d:ExternalSystemViewDefaultContributor$LibraryDependencyDataExternalSystemNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="iblog" type="f1a62948:ProjectNode" />
-                <item name="backend" type="2d1252cf:ModuleNode" />
-                <item name="user-service" type="2d1252cf:ModuleNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
               </path>
               <path>
@@ -211,9 +96,77 @@
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="iblog" type="f1a62948:ProjectNode" />
                 <item name="backend" type="2d1252cf:ModuleNode" />
-                <item name="user-service" type="2d1252cf:ModuleNode" />
+                <item name="user-service-db-migration" type="2d1252cf:ModuleNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="iblog" type="f1a62948:ProjectNode" />
+                <item name="backend" type="2d1252cf:ModuleNode" />
+                <item name="user-service-db-migration" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="iblog" type="f1a62948:ProjectNode" />
+                <item name="backend" type="2d1252cf:ModuleNode" />
+                <item name="user-service-db-migration" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="flyway" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="iblog" type="f1a62948:ProjectNode" />
+                <item name="frontend" type="2d1252cf:ModuleNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="iblog" type="f1a62948:ProjectNode" />
+                <item name="frontend" type="2d1252cf:ModuleNode" />
+                <item name="bo-iblog-site" type="2d1252cf:ModuleNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="iblog" type="f1a62948:ProjectNode" />
+                <item name="frontend" type="2d1252cf:ModuleNode" />
+                <item name="bo-iblog-site" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="iblog" type="f1a62948:ProjectNode" />
+                <item name="frontend" type="2d1252cf:ModuleNode" />
+                <item name="bo-iblog-site" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="application" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="iblog" type="f1a62948:ProjectNode" />
+                <item name="frontend" type="2d1252cf:ModuleNode" />
+                <item name="bo-iblog-site" type="2d1252cf:ModuleNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
                 <item name="build" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="iblog" type="f1a62948:ProjectNode" />
+                <item name="frontend" type="2d1252cf:ModuleNode" />
+                <item name="registry-site" type="2d1252cf:ModuleNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="iblog" type="f1a62948:ProjectNode" />
+                <item name="frontend" type="2d1252cf:ModuleNode" />
+                <item name="registry-site" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="iblog" type="f1a62948:ProjectNode" />
+                <item name="frontend" type="2d1252cf:ModuleNode" />
+                <item name="registry-site" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="application" type="c8890929:TasksNode$1" />
               </path>
             </expand>
             <select />
@@ -245,65 +198,37 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/backend/user-service/src/main/resources" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/frontend/bo-iblog-site/conf/test" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
     <property name="show.unlinked.gradle.project.popup" value="true" />
   </component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\steve\IdeaProjects\iblog\backend\user-service\src\main\resources" />
-      <recent name="C:\Users\steve\IdeaProjects\iblog" />
-      <recent name="C:\Users\steve\IdeaProjects\iblog\backend\user-service-db-migration\src\main\resources" />
-      <recent name="C:\Users\steve\IdeaProjects\iblog\backend\user-service-db-migration\conf" />
-      <recent name="C:\Users\steve\IdeaProjects\iblog\gradle" />
+      <recent name="C:\Users\steve\IdeaProjects\iblog\frontend\bo-iblog-site\conf\test" />
+      <recent name="C:\Users\steve\IdeaProjects\iblog\frontend\registry-site\conf\test" />
+      <recent name="C:\Users\steve\IdeaProjects\iblog\frontend\registry-site\conf\dev" />
+      <recent name="C:\Users\steve\IdeaProjects\iblog\frontend\bo-iblog-site\conf\dev" />
+      <recent name="C:\Users\steve\IdeaProjects\iblog\frontend\bo-iblog-site\src\main\resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\steve\IdeaProjects\iblog\backend" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.Application (3)">
-    <configuration name="iblog [dependencies]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="dependencies" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="iblog [jar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="jar" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="iblog:backend:user-service [dependencies]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="Gradle.iblog:backend:user-service [run]">
+    <configuration name="iblog:backend:user-service [run]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/backend/user-service" />
@@ -314,7 +239,7 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value="dependencies" />
+            <option value="run" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -322,53 +247,104 @@
       <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="Application (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="iblog.backend.blog-service.main" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="app.Application" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+    <configuration name="iblog:backend:user-service-db-migration [flywayBaseline]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/backend/user-service-db-migration" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="flywayBaseline" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
     </configuration>
-    <configuration name="Application (2)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <module name="iblog.frontend.registry-site.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="app.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="SPRING_BOOT_MAIN_CLASS" value="app.Application" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+    <configuration name="iblog:backend:user-service-db-migration [flywayMigrate]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/backend/user-service-db-migration" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="flywayMigrate" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
     </configuration>
-    <configuration name="Application (3)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <module name="iblog.backend.user-service.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="app.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="SPRING_BOOT_MAIN_CLASS" value="app.Application" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+    <configuration name="iblog:frontend:bo-iblog-site [run]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/frontend/bo-iblog-site" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="run" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="iblog:frontend:registry-site [run]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/frontend/registry-site" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="run" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
     </configuration>
     <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="iblog.backend.user-service.main" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="iblog.Application" />
+      <module name="iblog.frontend.registry-site.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="app.Application" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Gradle.iblog:backend:user-service [run]" />
+      <item itemvalue="Gradle.iblog:frontend:registry-site [run]" />
+      <item itemvalue="Gradle.iblog:frontend:bo-iblog-site [run]" />
+      <item itemvalue="Spring Boot.Application" />
+      <item itemvalue="Gradle.iblog:backend:user-service-db-migration [flywayBaseline]" />
+      <item itemvalue="Gradle.iblog:backend:user-service-db-migration [flywayMigrate]" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.Application (3)" />
-        <item itemvalue="Gradle.iblog [dependencies]" />
-        <item itemvalue="Gradle.iblog [jar]" />
-        <item itemvalue="Gradle.iblog:backend:user-service [dependencies]" />
-        <item itemvalue="Spring Boot.Application (2)" />
+        <item itemvalue="Gradle.iblog:frontend:registry-site [run]" />
+        <item itemvalue="Gradle.iblog:backend:user-service-db-migration [flywayMigrate]" />
+        <item itemvalue="Gradle.iblog:backend:user-service-db-migration [flywayBaseline]" />
+        <item itemvalue="Gradle.iblog:frontend:bo-iblog-site [run]" />
+        <item itemvalue="Gradle.iblog:backend:user-service [run]" />
       </list>
     </recent_temporary>
   </component>
@@ -402,6 +378,8 @@
       <option name="presentableId" value="Default" />
       <updated>1584527252638</updated>
       <workItem from="1585118177508" duration="12436000" />
+      <workItem from="1585185200018" duration="10063000" />
+      <workItem from="1585289794314" duration="7300000" />
     </task>
     <task id="LOCAL-00001" summary="code format">
       <created>1584528124008</created>
@@ -588,18 +566,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="626" y="119" key="#Application/0.0.1920.1040@0.0.1920.1040" timestamp="1584585001205" />
-    <state x="414" y="172" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1584527867957">
+    <state x="452" y="98" key="#Project_Structure" timestamp="1585290249573">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="414" y="172" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1584527867957" />
+    <state x="452" y="98" key="#Project_Structure/0.0.1920.1040@0.0.1920.1040" timestamp="1585290249573" />
+    <state x="414" y="172" width="1093" height="698" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585290298937">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="414" y="172" width="1093" height="698" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585290298937" />
     <state x="721" y="161" key="#com.intellij.ide.util.MemberChooser" timestamp="1585133594523">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="721" y="161" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1585133594523" />
-    <state x="397" y="49" key="CommitChangelistDialog2" timestamp="1585133784933">
+    <state x="397" y="49" key="CommitChangelistDialog2" timestamp="1585133986603">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="397" y="49" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1585133784933" />
+    <state x="397" y="49" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1585133986603" />
     <state x="220" y="91" width="1536" height="861" key="DiffContextDialog" timestamp="1585111523816">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -608,50 +590,66 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="222" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1584586949977" />
-    <state width="1865" height="253" key="GridCell.Tab.0.bottom" timestamp="1585133929276">
+    <state width="1865" height="576" key="GridCell.Tab.0.bottom" timestamp="1585299515183">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1865" height="253" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1585133929276" />
-    <state width="1865" height="253" key="GridCell.Tab.0.center" timestamp="1585133929276">
+    <state width="1865" height="576" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1585299515183" />
+    <state width="1865" height="576" key="GridCell.Tab.0.center" timestamp="1585299515183">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1865" height="253" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1585133929276" />
-    <state width="1865" height="253" key="GridCell.Tab.0.left" timestamp="1585133929276">
+    <state width="1865" height="576" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1585299515183" />
+    <state width="1865" height="576" key="GridCell.Tab.0.left" timestamp="1585299515183">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1865" height="253" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1585133929276" />
-    <state width="1865" height="253" key="GridCell.Tab.0.right" timestamp="1585133929276">
+    <state width="1865" height="576" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1585299515183" />
+    <state width="1865" height="576" key="GridCell.Tab.0.right" timestamp="1585299515183">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1865" height="253" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1585133929276" />
-    <state width="1865" height="253" key="GridCell.Tab.1.bottom" timestamp="1585133929276">
+    <state width="1865" height="576" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1585299515183" />
+    <state width="1865" height="252" key="GridCell.Tab.1.bottom" timestamp="1585202381010">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1865" height="253" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1585133929276" />
-    <state width="1865" height="253" key="GridCell.Tab.1.center" timestamp="1585133929276">
+    <state width="1865" height="252" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1585202381010" />
+    <state width="1865" height="252" key="GridCell.Tab.1.center" timestamp="1585202381010">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1865" height="253" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1585133929276" />
-    <state width="1865" height="253" key="GridCell.Tab.1.left" timestamp="1585133929276">
+    <state width="1865" height="252" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1585202381010" />
+    <state width="1865" height="252" key="GridCell.Tab.1.left" timestamp="1585202381010">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1865" height="253" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1585133929276" />
-    <state width="1865" height="253" key="GridCell.Tab.1.right" timestamp="1585133929276">
+    <state width="1865" height="252" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1585202381010" />
+    <state width="1865" height="252" key="GridCell.Tab.1.right" timestamp="1585202381010">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1865" height="253" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1585133929276" />
+    <state width="1865" height="252" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1585202381010" />
+    <state width="1865" height="332" key="GridCell.Tab.2.bottom" timestamp="1585187686073">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1865" height="332" key="GridCell.Tab.2.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1585187686073" />
+    <state width="1865" height="332" key="GridCell.Tab.2.center" timestamp="1585187686073">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1865" height="332" key="GridCell.Tab.2.center/0.0.1920.1040@0.0.1920.1040" timestamp="1585187686073" />
+    <state width="1865" height="332" key="GridCell.Tab.2.left" timestamp="1585187686073">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1865" height="332" key="GridCell.Tab.2.left/0.0.1920.1040@0.0.1920.1040" timestamp="1585187686073" />
+    <state width="1865" height="332" key="GridCell.Tab.2.right" timestamp="1585187686073">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1865" height="332" key="GridCell.Tab.2.right/0.0.1920.1040@0.0.1920.1040" timestamp="1585187686073" />
     <state x="602" y="167" key="MultipleFileMergeDialog" timestamp="1585111483092">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="602" y="167" key="MultipleFileMergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585111483092" />
-    <state x="312" y="0" key="SettingsEditor" timestamp="1585119369398">
+    <state x="312" y="0" key="SettingsEditor" timestamp="1585190116559">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="312" y="0" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1585119369398" />
-    <state width="623" height="567" key="SwitcherDM" timestamp="1585133846037">
+    <state x="312" y="0" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1585190116559" />
+    <state width="623" height="567" key="SwitcherDM" timestamp="1585298987712">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="623" height="567" key="SwitcherDM/0.0.1920.1040@0.0.1920.1040" timestamp="1585133846037" />
+    <state width="623" height="567" key="SwitcherDM/0.0.1920.1040@0.0.1920.1040" timestamp="1585298987712" />
     <state x="801" y="428" key="VCS.ChangelistChooser" timestamp="1584958635180">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -660,29 +658,33 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="790" y="385" key="VCS.EditChangelistDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1584958655079" />
-    <state x="452" y="192" key="Vcs.Push.Dialog.v2" timestamp="1585133792550">
+    <state x="452" y="192" key="Vcs.Push.Dialog.v2" timestamp="1585133991091">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="452" y="192" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1585133792550" />
+    <state x="452" y="192" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1585133991091" />
     <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1584958595763">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1584958595763" />
-    <state x="592" y="307" key="com.intellij.ide.util.TipDialog" timestamp="1584579942990">
+    <state x="592" y="307" key="com.intellij.ide.util.TipDialog" timestamp="1585185293454">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="592" y="307" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1584579942990" />
-    <state x="722" y="422" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1585112541713">
+    <state x="592" y="307" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585185293454" />
+    <state x="722" y="422" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1585194428078">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="722" y="422" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1585112541713" />
-    <state x="587" y="222" width="1131" height="620" key="find.popup" timestamp="1585127887027">
+    <state x="722" y="422" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1585194428078" />
+    <state x="587" y="222" width="1131" height="620" key="find.popup" timestamp="1585190950619">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="587" y="222" width="1131" height="620" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1585127887027" />
+    <state x="587" y="222" width="1131" height="620" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1585190950619" />
     <state x="161" y="52" key="new project wizard" timestamp="1585111179682">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="161" y="52" key="new project wizard/0.0.1920.1040@0.0.1920.1040" timestamp="1585111179682" />
+    <state x="532" y="237" key="run.anything.popup" timestamp="1585298773625">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="532" y="237" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1585298773625" />
   </component>
 </project>

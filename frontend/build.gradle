@@ -1,5 +1,6 @@
-def springBootVersion = '2.1.9.RELEASE'
-def springCloudVersion = '2.2.0.RELEASE'
+def javaxVersion = '2.3.1'
+def springBootVersion = '2.2.5.RELEASE'
+def springCloudVersion = '2.2.2.RELEASE'
 
 subprojects {
     apply plugin: 'java'
@@ -10,6 +11,9 @@ subprojects {
     }
 
     dependencies {
+        compile (group: 'javax.xml.bind', name: 'jaxb-api', version: javaxVersion)
+        compile (group: 'com.sun.xml.bind', name: 'jaxb-impl', version: javaxVersion)
+        compile (group: 'org.glassfish.jaxb', name: 'jaxb-runtime', version: javaxVersion)
         compile group: 'org.springframework.boot', name: 'spring-boot-starter-parent', version: springBootVersion, ext: 'pom'
         compile (group: 'org.springframework.boot', name: 'spring-boot-starter', version: springBootVersion)
         compile (group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: springBootVersion)
@@ -27,6 +31,11 @@ project('bo-iblog-site') {
     dependencies {
         compile project(':backend:user-service-interface')
         compile project(':backend:blog-service-interface')
+        compile (group: 'org.springframework.cloud', name: 'spring-cloud-starter-openfeign', version: springCloudVersion)
+        compile(group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-eureka-client', version: springCloudVersion) {
+            exclude group: 'com.google.code.gson', module: 'gson'
+        }
+
     }
 }
 
