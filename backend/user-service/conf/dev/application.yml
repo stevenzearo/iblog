@@ -19,7 +19,7 @@ spring:
       ddl-auto: update
     database: mysql
 server:
-  port: 8444
+  port: 8401
   undertow:
     io-threads: 4
     worker-threads: 20
