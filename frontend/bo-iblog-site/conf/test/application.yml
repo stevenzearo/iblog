@@ -1,15 +1,40 @@
-server:
-  port: 8400
 spring:
+  profiles:
+    active: local
   cloud:
-    config:
-      enabled: false
-
+    loadbalancer:
+      ribbon:
+        enabled: false
+  data:
+    web:
+      pageable:
+        one-indexed-parameters:
+server:
+  port: 8410
+  undertow:
+    io-threads: 4
+    worker-threads: 20
+    buffer-size: 1024
+    direct-buffers: true
+logging:
+  level:
+    root: warn
+    org:
+      springframework:
+        web: debug
 eureka:
   instance:
     hostname: localhost
   client:
-    registerWithEureka: false
-    fetchRegistry: false
-    serviceUrl:
-      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+    eureka-server-port: 8400
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${eureka.client.eureka-server-port}/eureka/
+    register-with-eureka: false
+    fetch-registry: true
+
+ribbon:
+  eureka:
+    enabled: false
+UserWebService:
+  ribbon:
+    listOfService: http://localhost:8401

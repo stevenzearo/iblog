@@ -1,4 +1,8 @@
 spring:
+  application:
+    name: user-web-service
+  profiles:
+    active: local
   datasource:
     url: jdbc:mysql://steve-mysql0.mysql.rds.aliyuncs.com:3306/iblog?characterEncoding=utf8&useSSL=false&serverTimezone=UTC
     username: root_steve1
@@ -29,4 +33,10 @@ logging:
         web: debug
 eureka:
   instance:
-    hostname:
+    hostname: localhost
+  client:
+    eureka-server-port: 8400
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${eureka.client.eureka-server-port}/eureka/
+    register-with-eureka: true
+    fetch-registry: true

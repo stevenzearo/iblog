@@ -21,7 +21,7 @@ project('blog-service-interface') {
     dependencies {
         compile(group: 'org.springframework.boot', name: 'spring-boot-starter-parent', version: springBootVersion, ext: 'pom')
         compile(group: 'org.springframework.boot', name: 'spring-boot-starter', version: springBootVersion)
-        compile(group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: springBootVersion)
+//        compile(group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: springBootVersion)
     }
 }
 project('blog-service') {
@@ -51,7 +51,7 @@ project('user-service-interface') {
     dependencies {
         compile (group: 'org.springframework.boot', name: 'spring-boot-starter-parent', version: springBootVersion, ext: 'pom')
         compile (group: 'org.springframework.boot', name: 'spring-boot-starter', version: springBootVersion)
-        compile (group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: springBootVersion)
+//        compile (group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: springBootVersion)
         compile (group: 'org.springframework.boot', name: 'spring-boot-autoconfigure', version: springBootVersion)
 
         compile(group: 'org.springframework.cloud', name: 'spring-cloud-starter', version: springCloudVersion)
@@ -66,6 +66,7 @@ project('user-service') {
         compile (group: 'org.mybatis.spring.boot', name: 'mybatis-spring-boot-starter', version: mybatisVersion)
         compile (group: 'org.springframework.boot', name: 'spring-boot-starter-logging', version: springBootVersion)
         compile (group: 'mysql', name: 'mysql-connector-java', version: mysqlVersion)
+        compile (group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: springBootVersion)
 //        compile (group: 'org.springframework.data', name: 'spring-data-commons', version: springCloudVersion)
         compile (group: 'org.springframework.boot', name: 'spring-boot-starter-jdbc', version: springBootVersion)
         compile (group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: springBootVersion) // '2.1.11.RELEASE'

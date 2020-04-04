@@ -25,14 +25,12 @@ public class WebServiceInterceptor implements HandlerInterceptor {
     }
 
     private boolean processRequest(HttpServletRequest request, HttpServletResponse response) {
-        String from = request.getRequestURL().toString();
+        /*String from = request.getHeader("from");
         boolean isAllowed = false;
-        for (String allowedURL : AllowedRequestMeta.allowedFrom) {
-            if (from.startsWith(allowedURL)) {
-                isAllowed = true;
-                break;
-            }
+        if (from != null) {
+            isAllowed = AllowedRequestMeta.allowedFrom.contains(from);
         }
+
         if (!isAllowed) {
             try {
                 logger.warn(MarkerFactory.getMarker("FORBIDDEN_REQUEST"), String.format("forbidden request from %s", request.getRequestURL()));
@@ -42,6 +40,7 @@ public class WebServiceInterceptor implements HandlerInterceptor {
                 e.printStackTrace();
             }
         }
-        return isAllowed;
+        return isAllowed;*/
+        return true;
     }
 }

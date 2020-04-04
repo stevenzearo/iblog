@@ -37,4 +37,4 @@ ribbon:
     enabled: false
 UserWebService:
   ribbon:
-    listOfService: http://localhost:8444
+    listOfService: http://localhost:8401
