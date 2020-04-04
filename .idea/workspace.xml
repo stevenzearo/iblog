@@ -2,19 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a8990fa-9ae1-49f9-b7bd-4e1036547d27" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/backend/user-service-db-migration/src/main/resources/flyway.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/backend/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/user-service/conf/test/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/user-service/conf/test/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/user-service/src/main/java/app/user/AllowedRequestMeta.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/user-service/src/main/java/app/user/AllowedRequestMeta.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/user-service/src/main/java/app/user/WebServiceInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/user-service/src/main/java/app/user/WebServiceInterceptor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/user-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/user-service/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/devStart.sh" beforeDir="false" afterPath="$PROJECT_DIR$/devStart.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/bo-iblog-site/conf/dev/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/bo-iblog-site/conf/dev/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/bo-iblog-site/conf/test/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/bo-iblog-site/conf/test/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/bo-iblog-site/src/main/java/app/site/BOIBlogSiteAdapter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/bo-iblog-site/src/main/java/app/site/web/interceptor/WebServiceInterceptor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/testStart.sh" beforeDir="false" afterPath="$PROJECT_DIR$/testStart.sh" afterDir="false" />
     </list>
     <list id="28ce0cb4-3592-4ccb-8453-c88eeabc5916" name="ignore" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
@@ -316,7 +304,7 @@
       <workItem from="1585579207480" duration="4148000" />
       <workItem from="1585664307587" duration="6389000" />
       <workItem from="1585979817462" duration="2923000" />
-      <workItem from="1585982769112" duration="1791000" />
+      <workItem from="1585982769112" duration="3151000" />
     </task>
     <task id="LOCAL-00001" summary="code format">
       <created>1584528124008</created>
@@ -465,7 +453,21 @@
       <option name="project" value="LOCAL" />
       <updated>1585133785493</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="start bash modify">
+      <created>1585984766283</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1585984766283</updated>
+    </task>
+    <task id="LOCAL-00023" summary="start bash modify">
+      <created>1585989181317</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1585989181317</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -496,7 +498,8 @@
     <MESSAGE value="change mysql version" />
     <MESSAGE value="change application.yml settings" />
     <MESSAGE value="fixed build file" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed build file" />
+    <MESSAGE value="start bash modify" />
+    <option name="LAST_COMMIT_MESSAGE" value="start bash modify" />
   </component>
   <component name="WindowStateProjectService">
     <state x="626" y="119" key="#Application" timestamp="1584585001205">
@@ -515,10 +518,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="721" y="161" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1585665516520" />
-    <state x="0" y="49" key="CommitChangelistDialog2" timestamp="1585984706250">
+    <state x="0" y="49" key="CommitChangelistDialog2" timestamp="1585989639884">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="0" y="49" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1585984706250" />
+    <state x="0" y="49" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1585989639884" />
     <state x="220" y="91" width="1536" height="861" key="DiffContextDialog" timestamp="1585984704701">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -599,10 +602,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="790" y="385" width="490" height="281" key="VCS.EditChangelistDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585480459524" />
-    <state x="452" y="192" key="Vcs.Push.Dialog.v2" timestamp="1585583550609">
+    <state x="452" y="192" key="Vcs.Push.Dialog.v2" timestamp="1585989186326">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="452" y="192" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1585583550609" />
+    <state x="452" y="192" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1585989186326" />
     <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1584958595763">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

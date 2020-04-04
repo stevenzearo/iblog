@@ -4,6 +4,6 @@ chmod +x ./gradlew
 ./gradlew :backend:user-service:overrideTestResources
 ./gradlew :backend:user-service-db-migration:overrideTestResources
 ./gradlew :backend:user-service-db-migration:flywayMigrate
-./gradlew :frontend:registry-site:run
-./gradlew :backend:user-service:run
-./gradlew :frontend:bo-iblog-site:run
+nohup ./gradlew :frontend:registry-site:run &
+nohup ./gradlew :backend:user-service:run &
+nohup ./gradlew :frontend:bo-iblog-site:run &
