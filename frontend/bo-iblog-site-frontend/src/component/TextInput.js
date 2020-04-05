@@ -1,6 +1,6 @@
 import React from 'react';
 import $ from 'jquery';
-import '../index.css';
+import '../index/index.css';
 import './TextInput.css';
 
 class TextInput extends React.Component {

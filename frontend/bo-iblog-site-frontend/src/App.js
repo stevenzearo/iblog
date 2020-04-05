@@ -1,4 +1,5 @@
 import React from 'react';
+
 import logo from './logo.svg';
 import './App.css';
 import LoginPage from './login.js'
@@ -6,11 +7,8 @@ import RegisterPage from './register.js'
 
 function App() {
     return (
+
         <div className="App">
-            <div className="login">
-                <LoginPage/>
-                <RegisterPage/>
-            </div>
             <header className="App-header">
                 <img src={logo} className="App-logo" alt="logo"/>
                 <p>
@@ -24,6 +22,10 @@ function App() {
                 >
                     Learn React
                 </a>
+                <div className="login">
+                    <LoginPage/>
+                    <RegisterPage/>
+                </div>
             </header>
         </div>
     );

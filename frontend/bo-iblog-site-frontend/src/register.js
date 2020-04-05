@@ -1,21 +1,22 @@
 import React from 'react';
 import CryptoJS from 'crypto-js';
 import $ from 'jquery';
-import './index.css';
+import './index/index.css';
 import './component/SubmitButton.css';
-import TextInput from './component/TextInput'
+import './component/validateCode.css';
+import TextInput from './component/TextInput';
 
 const refreshSecond = 30;
 
 class RegisterPage extends React.Component {
-    constructor(props) {
+    /*constructor(props) {
         super(props);
-    }
+    }*/
 
     registerCheck = () => {
         var userName: string = $("#user-name").val();
         var password: string = $("#password").val();
-        var passwordToConfirm: string = $("#password-to-confirm").val();
+        // var passwordToConfirm: string = $("#password-to-confirm").val();
         var userValidateCode: string = $("#user-validate-code").val();
         if (userValidateCode.trim() === '') {
             alert("validate code can not be blank!");
@@ -46,17 +47,22 @@ class RegisterPage extends React.Component {
         alert(result.name + ":" + result.password)
     };
 
+    goHome = function() {
+        return window.location.href='/home';
+    }
     render() {
         return (
-            <div className='login-page'>
-                <TextInput id='user-name' name='user-name' label='用户名' type='text' placeholder='请输入用户名'/>
-                <TextInput id='password' name='password' label='密码' type='password' placeholder='请输入密码'/>
-                <TextInput id='password-to-confirm' name='password-to-confirm' label='确认密码' type='password' placeholder='请确认密码'/>
-                <ValidateCode/>
-                <TextInput id='user-validate-code' name='user-validate-code' label='validate code' type='text'
-                           placeholder='请输入验证码'/>
-                <button className='submit-button' onClick={this.loginCheck}>提交</button>
-            </div>
+                <div className='login-page'>
+                    <TextInput id='user-name' name='user-name' label='用户名' type='text' placeholder='请输入用户名'/>
+                    <TextInput id='password' name='password' label='密码' type='password' placeholder='请输入密码'/>
+                    <TextInput id='password-to-confirm' name='password-to-confirm' label='确认密码' type='password'
+                               placeholder='请确认密码'/>
+                    <ValidateCode/>
+                    <TextInput id='user-validate-code' name='user-validate-code' label='验证码' type='text'
+                               placeholder='请输入验证码'/>
+                    <button className='submit-button' onClick={this.loginCheck}>提交</button>
+                    <button className='submit-button' onClick={this.goHome}>Go Home</button>
+                </div>
         );
     }
 }
@@ -111,11 +117,16 @@ class ValidateCode extends React.Component {
     render() {
         var secondLeft = refreshSecond - this.state.timeCounter;
         return (
-            <div>
-                <label htmlFor='server-validate-code'>验证码</label>
-                <input id='server-validate-code' type='text' contentEditable={false} value={this.state.validateCode}/>
-                <span>{secondLeft > 0 ? secondLeft : 0}秒后可刷新</span>
-                <button disabled={!this.state.refreshable} onClick={this.refreshValidateCode}>重新获取验证码</button>
+            <div id='validate-code'>
+                <div className='validate-code'>
+                    <label htmlFor='server-validate-code'>验证码:</label>
+                    <span id='server-validate-code'>{this.state.validateCode}</span>
+                </div>
+                <div className='count-down'>
+                    <span>{secondLeft > 0 ? secondLeft : 0}秒后可刷新</span>
+
+                    <button disabled={!this.state.refreshable} onClick={this.refreshValidateCode}>重新获取验证码</button>
+                </div>
             </div>
         );
     }
