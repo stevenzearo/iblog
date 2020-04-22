@@ -3,7 +3,12 @@ include 'backend:user-service',
         'backend:user-service-interface',
         'backend:blog-service',
         'backend:blog-service-interface',
-        'backend:user-service-db-migration'
+        'backend:user-service-db-migration',
+        'backend:stock-service-interface',
+        'backend:stock-service',
+        'backend:stock-service-db-migration'
 include 'frontend:bo-iblog-site',
         'frontend:iblog-site',
         'frontend:registry-site'
+
+

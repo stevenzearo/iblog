@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.RestController;
  * @author steve
  */
 @RestController
-public class UserAJAXwebService {
+public class UserAJAXWebService {
     @Autowired(required = false)
     UserWebService userWebService;
 
     @RequestMapping("/user/{id}")
-    GetUserResponse getUser(@PathVariable("id") Integer id) {
+    GetUserResponse getUser(@PathVariable("id") Long id) {
         return userWebService.get(id);
     }
 }

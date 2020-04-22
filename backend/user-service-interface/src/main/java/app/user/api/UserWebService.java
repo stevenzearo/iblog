@@ -14,5 +14,5 @@ import org.springframework.web.bind.annotation.RestController;
 @FeignClient("user-web-service")
 public interface UserWebService {
     @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
-    GetUserResponse get(@PathVariable("id") Integer id);
+    GetUserResponse get(@PathVariable("id") Long id);
 }

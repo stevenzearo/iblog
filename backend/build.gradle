@@ -24,7 +24,39 @@ project('blog-service-interface') {
 //        compile(group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: springBootVersion)
     }
 }
+
 project('blog-service') {
+    dependencies {
+        compile(project(':backend:blog-service-interface'))
+        compile(group: 'org.mybatis.spring.boot', name: 'mybatis-spring-boot-starter', version: mybatisVersion)
+        compile(group: 'org.springframework.boot', name: 'spring-boot-starter-logging', version: springBootVersion)
+        compile(group: 'mysql', name: 'mysql-connector-java', version: mysqlVersion)
+
+        compile (group: 'org.springframework.boot', name: 'spring-boot-starter-jdbc', version: springBootVersion)
+        compile(group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: springBootVersion)
+        compile(group: 'org.springframework.cloud', name: 'spring-cloud-starter', version: springCloudVersion)
+        compile(group: 'org.springframework.cloud', name: 'spring-cloud-starter-config', version: springCloudVersion)
+        compile(group: 'org.springframework.cloud', name: 'spring-cloud-starter-openfeign', version: springCloudVersion) {
+            exclude group: 'com.google.code.gson', module: 'gson'
+        }
+//        compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-stream-kafka', version: springCloudVersion
+        compile(group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-eureka-client', version: springCloudVersion)
+//        compile group: 'org.springframework.cloud', name: 'spring-cloud-context', version: springCloudVersion
+
+        testCompile(group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: springBootVersion)
+        testCompile group: 'junit', name: 'junit', version: '4.12'
+    }
+}
+
+project('stock-service-interface') {
+    dependencies {
+        compile(group: 'org.springframework.boot', name: 'spring-boot-starter-parent', version: springBootVersion, ext: 'pom')
+        compile(group: 'org.springframework.boot', name: 'spring-boot-starter', version: springBootVersion)
+//        compile(group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: springBootVersion)
+    }
+}
+
+project('stock-service') {
     dependencies {
         compile(project(':backend:blog-service-interface'))
         compile(group: 'org.mybatis.spring.boot', name: 'mybatis-spring-boot-starter', version: mybatisVersion)

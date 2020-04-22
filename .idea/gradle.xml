@@ -15,6 +15,9 @@
             <option value="$PROJECT_DIR$/backend" />
             <option value="$PROJECT_DIR$/backend/blog-service" />
             <option value="$PROJECT_DIR$/backend/blog-service-interface" />
+            <option value="$PROJECT_DIR$/backend/stock-service" />
+            <option value="$PROJECT_DIR$/backend/stock-service-db-migration" />
+            <option value="$PROJECT_DIR$/backend/stock-service-interface" />
             <option value="$PROJECT_DIR$/backend/user-service" />
             <option value="$PROJECT_DIR$/backend/user-service-db-migration" />
             <option value="$PROJECT_DIR$/backend/user-service-interface" />

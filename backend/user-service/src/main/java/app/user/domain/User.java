@@ -16,7 +16,7 @@ public class User {
     @Id
     @GeneratedValue
     @Column(name = "id")
-    public Integer id;
+    public Long id;
 
     @Column(name = "name")
     public String name;

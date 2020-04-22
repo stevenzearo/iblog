@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class GetUserResponse {
-    public Integer id;
+    public Long id;
 
     public String name;
 

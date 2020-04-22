@@ -1,8 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2a8990fa-9ae1-49f9-b7bd-4e1036547d27" name="Default Changelist" comment="">
+    <list default="true" id="2a8990fa-9ae1-49f9-b7bd-4e1036547d27" name="Default Changelist" comment="start bash modify">
+      <change afterPath="$PROJECT_DIR$/backend/stock-service/src/main/java/app/Application.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/stock-service/src/main/java/app/stock/dao/jpa/StockDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/stock-service/src/main/java/app/stock/domain/Stock.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/stock-service/src/main/java/app/stock/service/StockService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/stock-service/src/main/java/app/stock/web/StockWebServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/backend/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/user-service-db-migration/src/main/resources/flyway.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/user-service-interface/src/main/java/app/user/api/UserWebService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/user-service-interface/src/main/java/app/user/api/UserWebService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/user-service-interface/src/main/java/app/user/api/user/GetUserResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/user-service-interface/src/main/java/app/user/api/user/GetUserResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/user-service/src/main/java/app/user/dao/jpa/UserJpaDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/user-service/src/main/java/app/user/dao/jpa/UserJpaDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/user-service/src/main/java/app/user/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/user-service/src/main/java/app/user/domain/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/user-service/src/main/java/app/user/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/user-service/src/main/java/app/user/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/user-service/src/main/java/app/user/web/UserWebServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/user-service/src/main/java/app/user/web/UserWebServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/user-service/src/main/resources/application.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/bo-iblog-site/src/main/java/app/site/api/UserAJAXwebService.java" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/bo-iblog-site/src/main/java/app/site/api/UserAJAXWebService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
     </list>
     <list id="28ce0cb4-3592-4ccb-8453-c88eeabc5916" name="ignore" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
@@ -47,6 +64,9 @@
         <task path="$PROJECT_DIR$/frontend/bo-iblog-site">
           <activation />
         </task>
+        <task path="$PROJECT_DIR$/frontend/iblog-site">
+          <activation />
+        </task>
         <projects_view>
           <tree_state>
             <expand>
@@ -57,37 +77,67 @@
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="iblog" type="f1a62948:ProjectNode" />
+                <item name="backend" type="2d1252cf:ModuleNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="iblog" type="f1a62948:ProjectNode" />
+                <item name="backend" type="2d1252cf:ModuleNode" />
+                <item name="user-service" type="2d1252cf:ModuleNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="iblog" type="f1a62948:ProjectNode" />
+                <item name="backend" type="2d1252cf:ModuleNode" />
+                <item name="user-service" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="iblog" type="f1a62948:ProjectNode" />
+                <item name="backend" type="2d1252cf:ModuleNode" />
+                <item name="user-service" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="distribution" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="iblog" type="f1a62948:ProjectNode" />
+                <item name="backend" type="2d1252cf:ModuleNode" />
+                <item name="user-service-db-migration" type="2d1252cf:ModuleNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="iblog" type="f1a62948:ProjectNode" />
+                <item name="backend" type="2d1252cf:ModuleNode" />
+                <item name="user-service-db-migration" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="iblog" type="f1a62948:ProjectNode" />
                 <item name="frontend" type="2d1252cf:ModuleNode" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="iblog" type="f1a62948:ProjectNode" />
                 <item name="frontend" type="2d1252cf:ModuleNode" />
-                <item name="bo-iblog-site" type="2d1252cf:ModuleNode" />
+                <item name="registry-site" type="2d1252cf:ModuleNode" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="iblog" type="f1a62948:ProjectNode" />
                 <item name="frontend" type="2d1252cf:ModuleNode" />
-                <item name="bo-iblog-site" type="2d1252cf:ModuleNode" />
-                <item name="Source Sets" type="e897c970:GradleViewContributor$SourceSetsNode" />
+                <item name="registry-site" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="iblog" type="f1a62948:ProjectNode" />
                 <item name="frontend" type="2d1252cf:ModuleNode" />
-                <item name="bo-iblog-site" type="2d1252cf:ModuleNode" />
-                <item name="Source Sets" type="e897c970:GradleViewContributor$SourceSetsNode" />
-                <item name="main" type="396b929e:GradleViewContributor$SourceSetNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="iblog" type="f1a62948:ProjectNode" />
-                <item name="frontend" type="2d1252cf:ModuleNode" />
-                <item name="bo-iblog-site" type="2d1252cf:ModuleNode" />
-                <item name="Source Sets" type="e897c970:GradleViewContributor$SourceSetsNode" />
-                <item name="main" type="396b929e:GradleViewContributor$SourceSetNode" />
-                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
+                <item name="registry-site" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="distribution" type="c8890929:TasksNode$1" />
               </path>
             </expand>
             <select />
@@ -99,6 +149,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -121,9 +172,10 @@
     <property name="RequestMappingsPanelWidth0" value="75" />
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/backend/user-service-db-migration/src/main/resources" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/backend/stock-service/src/main/java/app/stock/dao" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -138,11 +190,11 @@
       <recent name="C:\Users\steve\IdeaProjects\iblog\backend" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\steve\IdeaProjects\iblog\backend\user-service-db-migration\src\main\resources" />
-      <recent name="C:\Users\steve\IdeaProjects\iblog\backend\user-service\src\main\resources" />
-      <recent name="C:\Users\steve\IdeaProjects\iblog\frontend\bo-iblog-site\conf\test" />
-      <recent name="C:\Users\steve\IdeaProjects\iblog\frontend\registry-site\conf\test" />
-      <recent name="C:\Users\steve\IdeaProjects\iblog\frontend\registry-site\conf\dev" />
+      <recent name="C:\Users\steve\IdeaProjects\iblog\backend\stock-service\src\main\java\app\stock\dao" />
+      <recent name="C:\Users\steve\IdeaProjects\iblog\backend\stock-service\src\main\java\app\stock" />
+      <recent name="C:\Users\steve\IdeaProjects\iblog\backend\stock-service\src\main\java\app" />
+      <recent name="C:\Users\steve\IdeaProjects\iblog\backend\stock-service-interface" />
+      <recent name="C:\Users\steve\IdeaProjects\iblog\backend\stock-service-db-migration" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -152,8 +204,8 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.Application (2)">
-    <configuration name="iblog [overrideDevResources]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Gradle.iblog:backend:user-service [distZip]">
+    <configuration name="iblog [buildDependents]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -164,7 +216,7 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value="overrideDevResources" />
+            <option value="buildDependents" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -172,7 +224,64 @@
       <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="iblog:backend:user-service [run]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="iblog [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="iblog [distTar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="distTar" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="iblog [installDist]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="installDist" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="iblog:backend:user-service [distZip]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/backend/user-service" />
@@ -183,58 +292,13 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value="run" />
+            <option value="distZip" />
           </list>
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
       <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
       <method v="2" />
-    </configuration>
-    <configuration name="iblog:frontend:registry-site [run]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/frontend/registry-site" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="run" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="Application (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <module name="iblog.backend.user-service.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="app.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="SPRING_BOOT_MAIN_CLASS" value="app.Application" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Application (2)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <module name="iblog.frontend.bo-iblog-site.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="app.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="SPRING_BOOT_MAIN_CLASS" value="app.Application" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
     </configuration>
     <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="iblog.frontend.registry-site.main" />
@@ -244,20 +308,20 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Gradle.iblog:frontend:registry-site [run]" />
-      <item itemvalue="Gradle.iblog:backend:user-service [run]" />
-      <item itemvalue="Gradle.iblog [overrideDevResources]" />
+      <item itemvalue="Gradle.iblog [buildDependents]" />
+      <item itemvalue="Gradle.iblog [build]" />
+      <item itemvalue="Gradle.iblog [distTar]" />
+      <item itemvalue="Gradle.iblog [installDist]" />
+      <item itemvalue="Gradle.iblog:backend:user-service [distZip]" />
       <item itemvalue="Spring Boot.Application" />
-      <item itemvalue="Spring Boot.Application (1)" />
-      <item itemvalue="Spring Boot.Application (2)" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.Application (1)" />
-        <item itemvalue="Spring Boot.Application (2)" />
-        <item itemvalue="Gradle.iblog [overrideDevResources]" />
-        <item itemvalue="Gradle.iblog:backend:user-service [run]" />
-        <item itemvalue="Gradle.iblog:frontend:registry-site [run]" />
+        <item itemvalue="Gradle.iblog:backend:user-service [distZip]" />
+        <item itemvalue="Gradle.iblog [installDist]" />
+        <item itemvalue="Gradle.iblog [distTar]" />
+        <item itemvalue="Gradle.iblog [build]" />
+        <item itemvalue="Gradle.iblog [buildDependents]" />
       </list>
     </recent_temporary>
   </component>
@@ -304,7 +368,11 @@
       <workItem from="1585579207480" duration="4148000" />
       <workItem from="1585664307587" duration="6389000" />
       <workItem from="1585979817462" duration="2923000" />
-      <workItem from="1585982769112" duration="3151000" />
+      <workItem from="1585982769112" duration="9291000" />
+      <workItem from="1586093224499" duration="6916000" />
+      <workItem from="1586597046413" duration="1060000" />
+      <workItem from="1587477212985" duration="1547000" />
+      <workItem from="1587560721047" duration="3874000" />
     </task>
     <task id="LOCAL-00001" summary="code format">
       <created>1584528124008</created>
@@ -467,7 +535,21 @@
       <option name="project" value="LOCAL" />
       <updated>1585989181317</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="start bash modify">
+      <created>1585989640580</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1585989640580</updated>
+    </task>
+    <task id="LOCAL-00025" summary="test start bash modify">
+      <created>1586099042188</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1586099042188</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -499,17 +581,18 @@
     <MESSAGE value="change application.yml settings" />
     <MESSAGE value="fixed build file" />
     <MESSAGE value="start bash modify" />
-    <option name="LAST_COMMIT_MESSAGE" value="start bash modify" />
+    <MESSAGE value="test start bash modify" />
+    <option name="LAST_COMMIT_MESSAGE" value="test start bash modify" />
   </component>
   <component name="WindowStateProjectService">
     <state x="626" y="119" key="#Application" timestamp="1584585001205">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="626" y="119" key="#Application/0.0.1920.1040@0.0.1920.1040" timestamp="1584585001205" />
-    <state x="452" y="98" key="#Project_Structure" timestamp="1585290249573">
+    <state x="452" y="98" key="#Project_Structure" timestamp="1587563427758">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="452" y="98" key="#Project_Structure/0.0.1920.1040@0.0.1920.1040" timestamp="1585290249573" />
+    <state x="452" y="98" key="#Project_Structure/0.0.1920.1040@0.0.1920.1040" timestamp="1587563427758" />
     <state x="414" y="172" width="1093" height="698" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585290298937">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -518,50 +601,54 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="721" y="161" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1585665516520" />
-    <state x="0" y="49" key="CommitChangelistDialog2" timestamp="1585989639884">
+    <state x="318" y="427" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1586597949988">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="0" y="49" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1585989639884" />
-    <state x="220" y="91" width="1536" height="861" key="DiffContextDialog" timestamp="1585984704701">
+    <state x="318" y="427" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586597949988" />
+    <state x="0" y="49" key="CommitChangelistDialog2" timestamp="1586099041391">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="220" y="91" width="1536" height="861" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585984704701" />
+    <state x="0" y="49" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1586099041391" />
+    <state x="220" y="91" width="1536" height="861" key="DiffContextDialog" timestamp="1586099003346">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="220" y="91" width="1536" height="861" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586099003346" />
     <state x="690" y="222" key="FileChooserDialogImpl" timestamp="1584586949977">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="222" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1584586949977" />
-    <state width="1501" height="642" key="GridCell.Tab.0.bottom" timestamp="1585670804904">
+    <state width="1861" height="230" key="GridCell.Tab.0.bottom" timestamp="1586102541670">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1501" height="642" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1585670804904" />
-    <state width="1501" height="642" key="GridCell.Tab.0.center" timestamp="1585670804903">
+    <state width="1861" height="230" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1586102541670" />
+    <state width="1861" height="230" key="GridCell.Tab.0.center" timestamp="1586102541670">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1501" height="642" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1585670804903" />
-    <state width="1501" height="642" key="GridCell.Tab.0.left" timestamp="1585670804903">
+    <state width="1861" height="230" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1586102541670" />
+    <state width="1861" height="230" key="GridCell.Tab.0.left" timestamp="1586102541670">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1501" height="642" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1585670804903" />
-    <state width="1501" height="642" key="GridCell.Tab.0.right" timestamp="1585670804904">
+    <state width="1861" height="230" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1586102541670" />
+    <state width="1861" height="230" key="GridCell.Tab.0.right" timestamp="1586102541670">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1501" height="642" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1585670804904" />
-    <state width="1501" height="642" key="GridCell.Tab.1.bottom" timestamp="1585670804904">
+    <state width="1861" height="230" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1586102541670" />
+    <state width="1501" height="641" key="GridCell.Tab.1.bottom" timestamp="1586005861229">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1501" height="642" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1585670804904" />
-    <state width="1501" height="642" key="GridCell.Tab.1.center" timestamp="1585670804904">
+    <state width="1501" height="641" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1586005861229" />
+    <state width="1501" height="641" key="GridCell.Tab.1.center" timestamp="1586005861229">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1501" height="642" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1585670804904" />
-    <state width="1501" height="642" key="GridCell.Tab.1.left" timestamp="1585670804904">
+    <state width="1501" height="641" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1586005861229" />
+    <state width="1501" height="641" key="GridCell.Tab.1.left" timestamp="1586005861229">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1501" height="642" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1585670804904" />
-    <state width="1501" height="642" key="GridCell.Tab.1.right" timestamp="1585670804904">
+    <state width="1501" height="641" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1586005861229" />
+    <state width="1501" height="641" key="GridCell.Tab.1.right" timestamp="1586005861229">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1501" height="642" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1585670804904" />
+    <state width="1501" height="641" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1586005861229" />
     <state width="1501" height="642" key="GridCell.Tab.2.bottom" timestamp="1585670804904">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -582,18 +669,18 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="602" y="167" key="MultipleFileMergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585111483092" />
-    <state x="312" y="0" key="SettingsEditor" timestamp="1585579479720">
+    <state x="312" y="0" key="SettingsEditor" timestamp="1586597674444">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="312" y="0" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1585579479720" />
+    <state x="312" y="0" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1586597674444" />
     <state x="614" y="198" width="675" height="655" key="StructurePopup" timestamp="1585666920027">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="614" y="198" width="675" height="655" key="StructurePopup/0.0.1920.1040@0.0.1920.1040" timestamp="1585666920027" />
-    <state width="623" height="796" key="SwitcherDM" timestamp="1585981167932">
+    <state width="623" height="796" key="SwitcherDM" timestamp="1587564714125">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="623" height="796" key="SwitcherDM/0.0.1920.1040@0.0.1920.1040" timestamp="1585981167932" />
+    <state width="623" height="796" key="SwitcherDM/0.0.1920.1040@0.0.1920.1040" timestamp="1587564714125" />
     <state x="801" y="428" key="VCS.ChangelistChooser" timestamp="1584958635180">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -602,34 +689,34 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="790" y="385" width="490" height="281" key="VCS.EditChangelistDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585480459524" />
-    <state x="452" y="192" key="Vcs.Push.Dialog.v2" timestamp="1585989186326">
+    <state x="452" y="192" key="Vcs.Push.Dialog.v2" timestamp="1586099046473">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="452" y="192" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1585989186326" />
+    <state x="452" y="192" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1586099046473" />
     <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1584958595763">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1584958595763" />
-    <state x="592" y="307" key="com.intellij.ide.util.TipDialog" timestamp="1585983048570">
+    <state x="592" y="307" key="com.intellij.ide.util.TipDialog" timestamp="1586597052810">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="592" y="307" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585983048570" />
+    <state x="592" y="307" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586597052810" />
     <state x="722" y="422" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1585664480824">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="722" y="422" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1585664480824" />
-    <state x="587" y="222" width="1131" height="654" key="find.popup" timestamp="1585578067239">
+    <state x="587" y="222" width="1131" height="654" key="find.popup" timestamp="1586597484385">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="587" y="222" width="1131" height="654" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1585578067239" />
-    <state x="161" y="52" key="new project wizard" timestamp="1585111179682">
+    <state x="587" y="222" width="1131" height="654" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1586597484385" />
+    <state x="13" y="0" key="new project wizard" timestamp="1586597514190">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="161" y="52" key="new project wizard/0.0.1920.1040@0.0.1920.1040" timestamp="1585111179682" />
-    <state x="532" y="237" key="run.anything.popup" timestamp="1585580452682">
+    <state x="13" y="0" key="new project wizard/0.0.1920.1040@0.0.1920.1040" timestamp="1586597514190" />
+    <state x="532" y="237" key="run.anything.popup" timestamp="1587477847301">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="532" y="237" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1585580452682" />
+    <state x="532" y="237" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1587477847301" />
     <state x="525" y="5" width="867" height="1034" key="search.everywhere.popup" timestamp="1585581066741">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
