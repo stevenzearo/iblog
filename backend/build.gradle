@@ -11,17 +11,23 @@ subprojects {
     }
 
     dependencies {
-        compile (group: 'javax.xml.bind', name: 'jaxb-api', version: javaxVersion)
-        compile (group: 'com.sun.xml.bind', name: 'jaxb-impl', version: javaxVersion)
-        compile (group: 'org.glassfish.jaxb', name: 'jaxb-runtime', version: javaxVersion)
+        compile(group: 'javax.xml.bind', name: 'jaxb-api', version: javaxVersion)
+        compile(group: 'com.sun.xml.bind', name: 'jaxb-impl', version: javaxVersion)
+        compile(group: 'org.glassfish.jaxb', name: 'jaxb-runtime', version: javaxVersion)
     }
 }
 
 project('blog-service-interface') {
     dependencies {
-        compile(group: 'org.springframework.boot', name: 'spring-boot-starter-parent', version: springBootVersion, ext: 'pom')
+//        compile (group: 'org.springframework.boot', name: 'spring-boot-starter-parent', version: springBootVersion, ext: 'pom')
         compile(group: 'org.springframework.boot', name: 'spring-boot-starter', version: springBootVersion)
-//        compile(group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: springBootVersion)
+//        compile (group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: springBootVersion)
+        compile(group: 'org.springframework.boot', name: 'spring-boot-autoconfigure', version: springBootVersion)
+
+        compile(group: 'org.springframework.cloud', name: 'spring-cloud-starter', version: springCloudVersion)
+        compile group: 'org.springframework.cloud', name: 'spring-cloud-context', version: springCloudVersion
+        compile(group: 'org.springframework.cloud', name: 'spring-cloud-starter-config', version: springCloudVersion)
+        compile(group: 'org.springframework.cloud', name: 'spring-cloud-starter-openfeign', version: springCloudVersion)
     }
 }
 
@@ -31,17 +37,16 @@ project('blog-service') {
         compile(group: 'org.mybatis.spring.boot', name: 'mybatis-spring-boot-starter', version: mybatisVersion)
         compile(group: 'org.springframework.boot', name: 'spring-boot-starter-logging', version: springBootVersion)
         compile(group: 'mysql', name: 'mysql-connector-java', version: mysqlVersion)
-
-        compile (group: 'org.springframework.boot', name: 'spring-boot-starter-jdbc', version: springBootVersion)
+        compile(group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: springBootVersion)
+//        compile (group: 'org.springframework.data', name: 'spring-data-commons', version: springCloudVersion)
+        compile(group: 'org.springframework.boot', name: 'spring-boot-starter-jdbc', version: springBootVersion)
         compile(group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: springBootVersion)
-        compile(group: 'org.springframework.cloud', name: 'spring-cloud-starter', version: springCloudVersion)
-        compile(group: 'org.springframework.cloud', name: 'spring-cloud-starter-config', version: springCloudVersion)
-        compile(group: 'org.springframework.cloud', name: 'spring-cloud-starter-openfeign', version: springCloudVersion) {
+        // '2.1.11.RELEASE'
+
+//        compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-stream-kafka', version: springCloudVersion
+        compile(group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-eureka-client', version: springCloudVersion) {
             exclude group: 'com.google.code.gson', module: 'gson'
         }
-//        compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-stream-kafka', version: springCloudVersion
-        compile(group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-eureka-client', version: springCloudVersion)
-//        compile group: 'org.springframework.cloud', name: 'spring-cloud-context', version: springCloudVersion
 
         testCompile(group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: springBootVersion)
         testCompile group: 'junit', name: 'junit', version: '4.12'
@@ -50,16 +55,16 @@ project('blog-service') {
 
 project('stock-service-interface') {
     dependencies {
-        dependencies {
-            compile (group: 'org.springframework.boot', name: 'spring-boot-starter-parent', version: springBootVersion, ext: 'pom')
-            compile (group: 'org.springframework.boot', name: 'spring-boot-starter', version: springBootVersion)
-            compile (group: 'org.springframework.boot', name: 'spring-boot-autoconfigure', version: springBootVersion)
+//        compile (group: 'org.springframework.boot', name: 'spring-boot-starter-parent', version: springBootVersion, ext: 'pom')
+        compile(group: 'org.springframework.boot', name: 'spring-boot-starter', version: springBootVersion)
+//        compile (group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: springBootVersion)
+        compile(group: 'org.springframework.boot', name: 'spring-boot-autoconfigure', version: springBootVersion)
 
-            compile(group: 'org.springframework.cloud', name: 'spring-cloud-starter', version: springCloudVersion)
-            compile group: 'org.springframework.cloud', name: 'spring-cloud-context', version: springCloudVersion
-            compile (group: 'org.springframework.cloud', name: 'spring-cloud-starter-config', version: springCloudVersion)
-            compile (group: 'org.springframework.cloud', name: 'spring-cloud-starter-openfeign', version: springCloudVersion)
-        }    }
+        compile(group: 'org.springframework.cloud', name: 'spring-cloud-starter', version: springCloudVersion)
+        compile group: 'org.springframework.cloud', name: 'spring-cloud-context', version: springCloudVersion
+        compile(group: 'org.springframework.cloud', name: 'spring-cloud-starter-config', version: springCloudVersion)
+        compile(group: 'org.springframework.cloud', name: 'spring-cloud-starter-openfeign', version: springCloudVersion)
+    }
 }
 
 project('stock-service') {
@@ -68,17 +73,16 @@ project('stock-service') {
         compile(group: 'org.mybatis.spring.boot', name: 'mybatis-spring-boot-starter', version: mybatisVersion)
         compile(group: 'org.springframework.boot', name: 'spring-boot-starter-logging', version: springBootVersion)
         compile(group: 'mysql', name: 'mysql-connector-java', version: mysqlVersion)
-
-        compile (group: 'org.springframework.boot', name: 'spring-boot-starter-jdbc', version: springBootVersion)
+        compile(group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: springBootVersion)
+//        compile (group: 'org.springframework.data', name: 'spring-data-commons', version: springCloudVersion)
+        compile(group: 'org.springframework.boot', name: 'spring-boot-starter-jdbc', version: springBootVersion)
         compile(group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: springBootVersion)
-        compile(group: 'org.springframework.cloud', name: 'spring-cloud-starter', version: springCloudVersion)
-        compile(group: 'org.springframework.cloud', name: 'spring-cloud-starter-config', version: springCloudVersion)
-        compile(group: 'org.springframework.cloud', name: 'spring-cloud-starter-openfeign', version: springCloudVersion) {
+        // '2.1.11.RELEASE'
+
+//        compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-stream-kafka', version: springCloudVersion
+        compile(group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-eureka-client', version: springCloudVersion) {
             exclude group: 'com.google.code.gson', module: 'gson'
         }
-//        compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-stream-kafka', version: springCloudVersion
-        compile(group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-eureka-client', version: springCloudVersion)
-//        compile group: 'org.springframework.cloud', name: 'spring-cloud-context', version: springCloudVersion
 
         testCompile(group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: springBootVersion)
         testCompile group: 'junit', name: 'junit', version: '4.12'
@@ -88,33 +92,34 @@ project('stock-service') {
 
 project('stock-service-db-migration') {
     dependencies {
-        compile (group: 'mysql', name: 'mysql-connector-java', version: mysqlVersion)
+        compile(group: 'mysql', name: 'mysql-connector-java', version: mysqlVersion)
     }
 }
 
 project('user-service-interface') {
     dependencies {
-        compile (group: 'org.springframework.boot', name: 'spring-boot-starter-parent', version: springBootVersion, ext: 'pom')
-        compile (group: 'org.springframework.boot', name: 'spring-boot-starter', version: springBootVersion)
+//        compile (group: 'org.springframework.boot', name: 'spring-boot-starter-parent', version: springBootVersion, ext: 'pom')
+        compile(group: 'org.springframework.boot', name: 'spring-boot-starter', version: springBootVersion)
 //        compile (group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: springBootVersion)
-        compile (group: 'org.springframework.boot', name: 'spring-boot-autoconfigure', version: springBootVersion)
+        compile(group: 'org.springframework.boot', name: 'spring-boot-autoconfigure', version: springBootVersion)
 
         compile(group: 'org.springframework.cloud', name: 'spring-cloud-starter', version: springCloudVersion)
         compile group: 'org.springframework.cloud', name: 'spring-cloud-context', version: springCloudVersion
-        compile (group: 'org.springframework.cloud', name: 'spring-cloud-starter-config', version: springCloudVersion)
-        compile (group: 'org.springframework.cloud', name: 'spring-cloud-starter-openfeign', version: springCloudVersion)
+        compile(group: 'org.springframework.cloud', name: 'spring-cloud-starter-config', version: springCloudVersion)
+        compile(group: 'org.springframework.cloud', name: 'spring-cloud-starter-openfeign', version: springCloudVersion)
     }
 }
 project('user-service') {
     dependencies {
-        compile (project(':backend:user-service-interface'))
-        compile (group: 'org.mybatis.spring.boot', name: 'mybatis-spring-boot-starter', version: mybatisVersion)
-        compile (group: 'org.springframework.boot', name: 'spring-boot-starter-logging', version: springBootVersion)
-        compile (group: 'mysql', name: 'mysql-connector-java', version: mysqlVersion)
-        compile (group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: springBootVersion)
+        compile(project(':backend:user-service-interface'))
+        compile(group: 'org.mybatis.spring.boot', name: 'mybatis-spring-boot-starter', version: mybatisVersion)
+        compile(group: 'org.springframework.boot', name: 'spring-boot-starter-logging', version: springBootVersion)
+        compile(group: 'mysql', name: 'mysql-connector-java', version: mysqlVersion)
+        compile(group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: springBootVersion)
 //        compile (group: 'org.springframework.data', name: 'spring-data-commons', version: springCloudVersion)
-        compile (group: 'org.springframework.boot', name: 'spring-boot-starter-jdbc', version: springBootVersion)
-        compile (group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: springBootVersion) // '2.1.11.RELEASE'
+        compile(group: 'org.springframework.boot', name: 'spring-boot-starter-jdbc', version: springBootVersion)
+        compile(group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: springBootVersion)
+        // '2.1.11.RELEASE'
 
 //        compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-stream-kafka', version: springCloudVersion
         compile(group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-eureka-client', version: springCloudVersion) {
@@ -129,6 +134,6 @@ project('user-service') {
 
 project('user-service-db-migration') {
     dependencies {
-        compile (group: 'mysql', name: 'mysql-connector-java', version: mysqlVersion)
+        compile(group: 'mysql', name: 'mysql-connector-java', version: mysqlVersion)
     }
 }

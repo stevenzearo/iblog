@@ -14,10 +14,16 @@ import org.springframework.stereotype.Component;
  * @author steve
  */
 @Component
-public class StockWebServiceImpl implements StockWebService {
+public class
+StockWebServiceImpl implements StockWebService {
     private static Logger logger = LoggerFactory.logger(StockWebServiceImpl.class);
     @Autowired
     StockService stockService;
+
+    @Override
+    public String test() {
+        return "hello, world!";
+    }
 
     @Override
     public Long addStock(AddStockRequest request) {

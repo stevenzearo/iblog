@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @FeignClient("stock-web-service")
 public interface StockWebService {
+    @RequestMapping(value = "/stock/test", method = RequestMethod.GET)
+    String test(); // todo remove, for test
+
     @RequestMapping(value = "/stock/{id}", method = RequestMethod.POST)
     Long addStock(AddStockRequest request);
 

@@ -1,0 +1,56 @@
+plugins {
+    id 'java'
+    id 'idea'
+    id 'application'
+}
+
+sourceCompatibility = JavaVersion.VERSION_11
+targetCompatibility = JavaVersion.VERSION_11
+
+sourceSets {
+    mainClassName = 'app.Application'
+    main {
+        java {
+            srcDirs = ['src/main/java']
+        }
+        resources {
+            srcDirs = ['src/main/resources']
+        }
+    }
+}
+
+jar {
+    manifest {
+        def classpath = sourceSets.main.runtimeClasspath
+        classpath += sourceSets.test.runtimeClasspath
+        classpath += sourceSets.main.resources
+        classpath += configurations.compile.dependencies
+        attributes "Manifest-Version": project.version,
+                'Main-Class': 'app.Application',
+                'Class-Path': classpath
+    }
+}
+
+task overrideDevResources(type: Copy, group: 'Run Configurations', description: 'replace resources from conf/dev') {
+    println("> start replace resources")
+    def resources = fileTree('src/main/resources/')
+    resources.each {
+        println("> delete:" + it.name)
+        it.deleteOnExit()
+    }
+    from fileTree('conf/dev/')
+    into 'src/main/resources/'
+    println("> replace resources successfully")
+}
+
+task overrideTestResources(type: Copy, group: 'Run Configurations', description: 'replace resources from conf/dev') {
+    println("> start replace resources")
+    def resources = fileTree('src/main/resources/')
+    resources.each {
+        println("> delete:" + it.name)
+        it.deleteOnExit()
+    }
+    from fileTree('conf/test/')
+    into 'src/main/resources/'
+    println("> replace resources successfully")
+}

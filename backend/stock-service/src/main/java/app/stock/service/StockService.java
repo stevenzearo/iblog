@@ -21,7 +21,7 @@ public class StockService {
 
     public Long addStock(AddStockRequest request) {
         Stock stock = buildStock(request);
-        return stockDao.insert(stock);
+        return stockDao.save(stock).id;
     }
 
     private Stock buildStock(AddStockRequest request) {

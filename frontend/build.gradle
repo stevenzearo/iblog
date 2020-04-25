@@ -14,7 +14,7 @@ subprojects {
         compile (group: 'javax.xml.bind', name: 'jaxb-api', version: javaxVersion)
         compile (group: 'com.sun.xml.bind', name: 'jaxb-impl', version: javaxVersion)
         compile (group: 'org.glassfish.jaxb', name: 'jaxb-runtime', version: javaxVersion)
-        compile group: 'org.springframework.boot', name: 'spring-boot-starter-parent', version: springBootVersion, ext: 'pom'
+//        compile group: 'org.springframework.boot', name: 'spring-boot-starter-parent', version: springBootVersion, ext: 'pom'
         compile (group: 'org.springframework.boot', name: 'spring-boot-starter', version: springBootVersion)
         compile (group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: springBootVersion)
 //        compile group: 'org.springframework.boot', name: 'spring-boot-starter-web-services', version: springBootVersion
