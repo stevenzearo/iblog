@@ -16,24 +16,24 @@ import org.springframework.stereotype.Component;
 @Component
 public class
 StockWebServiceImpl implements StockWebService {
-    private static Logger logger = LoggerFactory.logger(StockWebServiceImpl.class);
-    @Autowired
-    StockService stockService;
+	private static Logger logger = LoggerFactory.logger(StockWebServiceImpl.class);
+	@Autowired
+	StockService stockService;
 
-    @Override
-    public String test() {
-        return "hello, world!";
-    }
+	@Override
+	public String test() {
+		return "hello, world!";
+	}
 
-    @Override
-    public Long addStock(AddStockRequest request) {
-        Long id = stockService.addStock(request);
-        logger.warn(String.format("stockId:%s", id));
-        return id;
-    }
+	@Override
+	public Long addStock(AddStockRequest request) {
+		Long id = stockService.addStock(request);
+		logger.warn(String.format("stockId:%s", id));
+		return id;
+	}
 
-    @Override
-    public SearchStockResponse search(SearchStockRequest request) {
-        return null;
-    }
+	@Override
+	public SearchStockResponse search(SearchStockRequest request) {
+		return new SearchStockResponse();
+	}
 }
