@@ -9,6 +9,7 @@ public class SearchStockResponse {
 	public List<Stock> stocks = List.of();
 
 	public static class Stock {
+		public Long id;
 		public String code;
 		public String blockCode;
 		public String name;
