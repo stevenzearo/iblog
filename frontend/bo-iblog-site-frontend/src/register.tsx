@@ -14,10 +14,10 @@ class RegisterPage extends React.Component {
     }*/
 
     registerCheck = () => {
-        var userName: string = $("#user-name").val();
-        var password: string = $("#password").val();
+        let userName: any = $("#user-name").val();
+        let password: any = $("#password").val();
         // var passwordToConfirm: string = $("#password-to-confirm").val();
-        var userValidateCode: string = $("#user-validate-code").val();
+        let userValidateCode: any = $("#user-validate-code").val();
         if (userValidateCode.trim() === '') {
             alert("validate code can not be blank!");
         }
@@ -43,13 +43,14 @@ class RegisterPage extends React.Component {
         })
     };
 
-    onSuccess = (result: User) => {
+    onSuccess = (result: any) => {
         alert(result.name + ":" + result.password)
     };
 
     goHome = function() {
         return window.location.href='/home';
-    }
+    };
+
     render() {
         return (
                 <div className='login-page'>
@@ -60,7 +61,7 @@ class RegisterPage extends React.Component {
                     <ValidateCode/>
                     <TextInput id='user-validate-code' name='user-validate-code' label='验证码' type='text'
                                placeholder='请输入验证码'/>
-                    <button className='submit-button' onClick={this.loginCheck}>提交</button>
+                    <button className='submit-button' onClick={this.registerCheck}>提交</button>
                     <button className='submit-button' onClick={this.goHome}>Go Home</button>
                 </div>
         );
@@ -68,7 +69,9 @@ class RegisterPage extends React.Component {
 }
 
 class ValidateCode extends React.Component {
-    constructor(props) {
+    private timeId: any;
+    public state: any;
+    constructor(props: any) {
         super(props);
         this.state = {
             timeCounter: 0,
@@ -79,7 +82,7 @@ class ValidateCode extends React.Component {
 
 
     tick() {
-        this.setState(function (state) {
+        this.setState(function (state: any) {
             var refreshable = false;
             if (state.timeCounter >= refreshSecond) refreshable = true;
             return {timeCounter: state.timeCounter++, refreshable: refreshable, validateCode: state.validateCode}
@@ -101,7 +104,7 @@ class ValidateCode extends React.Component {
     };
 
     refreshValidateCode = () => {
-        this.setState(function (state) {
+        this.setState(function (state: any) {
             var counter = state.timeCounter;
             if (counter <= 30) {
                 alert("please refresh later");
@@ -115,7 +118,8 @@ class ValidateCode extends React.Component {
     };
 
     render() {
-        var secondLeft = refreshSecond - this.state.timeCounter;
+        const state = this.state;
+        var secondLeft = refreshSecond - state.timeCounter;
         return (
             <div id='validate-code'>
                 <div className='validate-code'>

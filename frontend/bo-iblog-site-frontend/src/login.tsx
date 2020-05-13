@@ -8,8 +8,8 @@ import TextInput from './component/TextInput'
 class LoginPage extends React.Component {
 
     loginCheck = () => {
-        var userName: string = $("#user-name").val();
-        var password: string = $("#password").val();
+        let userName: any = $("#user-name").val();
+        let password: any = $("#password").val();
         if (userName.trim() === '' || password === '') {
             alert("user name and password can not be blank!");
             return;
@@ -29,7 +29,7 @@ class LoginPage extends React.Component {
         })
     };
 
-    onSuccess = (result: User) => {
+    onSuccess = (result: any) => {
         alert(result.name + ":" + result.password)
     };
 
