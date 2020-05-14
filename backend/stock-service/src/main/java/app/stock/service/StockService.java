@@ -26,12 +26,12 @@ public class StockService {
     }
 
     public GetStockResponse getStock(Long id) {
-        Stock stock = stockDao.getOne(id);
+        Stock stock = stockDao.getById(id);
         return buildGetStockResponse(stock);
     }
 
     public SearchStockResponse search(SearchStockRequest request) {
-        List<Stock> stocks = stockDao.searchByStockNameFuzzily(request.name);
+        List<Stock> stocks = stockDao.searchByNameLike(String.format("%%%s%%", request.name));
         SearchStockResponse response = new SearchStockResponse();
         response.stocks = stocks.stream().map(this::stockView).collect(Collectors.toList());
         return response;
@@ -61,15 +61,15 @@ public class StockService {
         stock.blockCode = request.blockCode;
         stock.name = request.name;
         stock.latest = request.latest;
-        stock.increased = request.increased;
-        stock.increasedRate = request.increasedRate;
+        stock.increased = request.latest - request.open;
+        stock.increasedRate = stock.increased / request.open;
         stock.open = request.open;
         stock.close = request.close;
         stock.high = request.high;
         stock.low = request.low;
         stock.volume = request.volume;
         stock.volumeRate = request.volumeRate;
-        stock.amount = request.amount;
+        stock.amount = request.latest * request.volume;
         return stock;
     }
 

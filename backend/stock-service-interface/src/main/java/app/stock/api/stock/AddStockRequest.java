@@ -1,7 +1,5 @@
 package app.stock.api.stock;
 
-import org.springframework.web.bind.annotation.RequestParam;
-
 /**
  * @author steve
  */
@@ -10,13 +8,26 @@ public class AddStockRequest {
     public String blockCode;
     public String name;
     public Double latest;
-    public Double increased;
-    public Double increasedRate;
     public Double open;
     public Double close;
     public Double high;
     public Double low;
     public Double volume;
     public Double volumeRate;
-    public Double amount;
+
+    @Override
+    public String toString() {
+        return "AddStockRequest{" +
+            "code='" + code + '\'' +
+            ", blockCode='" + blockCode + '\'' +
+            ", name='" + name + '\'' +
+            ", latest=" + latest +
+            ", open=" + open +
+            ", close=" + close +
+            ", high=" + high +
+            ", low=" + low +
+            ", volume=" + volume +
+            ", volumeRate=" + volumeRate +
+            '}';
+    }
 }
