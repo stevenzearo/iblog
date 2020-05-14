@@ -9,9 +9,6 @@ import TextInput from './component/TextInput';
 const refreshSecond = 30;
 
 class RegisterPage extends React.Component {
-    /*constructor(props) {
-        super(props);
-    }*/
 
     registerCheck = () => {
         let userName: any = $("#user-name").val();
@@ -34,36 +31,26 @@ class RegisterPage extends React.Component {
             'user_name': userName,
             'password': password
         };
-        $.ajax({
-            type: '',
-            url: '',
-            data: data,
-            success: this.onSuccess,
-            dataType: 'application/json'
-        })
+
     };
 
-    onSuccess = (result: any) => {
-        alert(result.name + ":" + result.password)
-    };
-
-    goHome = function() {
-        return window.location.href='/home';
+    goHome = function () {
+        return window.location.href = '/home';
     };
 
     render() {
         return (
-                <div className='login-page'>
-                    <TextInput id='user-name' name='user-name' label='用户名' type='text' placeholder='请输入用户名'/>
-                    <TextInput id='password' name='password' label='密码' type='password' placeholder='请输入密码'/>
-                    <TextInput id='password-to-confirm' name='password-to-confirm' label='确认密码' type='password'
-                               placeholder='请确认密码'/>
-                    <ValidateCode/>
-                    <TextInput id='user-validate-code' name='user-validate-code' label='验证码' type='text'
-                               placeholder='请输入验证码'/>
-                    <button className='submit-button' onClick={this.registerCheck}>提交</button>
-                    <button className='submit-button' onClick={this.goHome}>Go Home</button>
-                </div>
+            <div className='login-page'>
+                <TextInput id='user-name' name='user-name' label='用户名' type='text' placeholder='请输入用户名'/>
+                <TextInput id='password' name='password' label='密码' type='password' placeholder='请输入密码'/>
+                <TextInput id='password-to-confirm' name='password-to-confirm' label='确认密码' type='password'
+                           placeholder='请确认密码'/>
+                <ValidateCode/>
+                <TextInput id='user-validate-code' name='user-validate-code' label='验证码' type='text'
+                           placeholder='请输入验证码'/>
+                <button className='submit-button' onClick={this.registerCheck}>提交</button>
+                <button className='submit-button' onClick={this.goHome}>Go Home</button>
+            </div>
         );
     }
 }
@@ -71,6 +58,7 @@ class RegisterPage extends React.Component {
 class ValidateCode extends React.Component {
     private timeId: any;
     public state: any;
+
     constructor(props: any) {
         super(props);
         this.state = {
