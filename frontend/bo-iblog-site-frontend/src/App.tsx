@@ -13,19 +13,6 @@ function App() {
     return (
         <div className="App">
             <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo"/>
-                <p>
-                    Edit <code>src/App.js</code> and save to reload.
-                    {data == null ? "no value" : data.id + ":" + data.name + ":" + data.age + ":" + data.email}
-                </p>
-                <a
-                    className="App-link"
-                    href="https://reactjs.org"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Learn React
-                </a>
                 <div className="login">
                     <LoginPage/>
                     <RegisterPage/>
