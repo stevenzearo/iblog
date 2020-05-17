@@ -22,7 +22,7 @@ public interface StockWebService {
     String test(); // todo remove, for test
 
     @RequestMapping(value = "/stock", method = RequestMethod.POST)
-    Long addStock(@RequestBody AddStockRequest request);
+    Long addStock(@RequestBody AddStockRequest request) throws Exception;
 
     @RequestMapping(value = "/stock/{id}", method = RequestMethod.GET)
     GetStockResponse getStock(@PathVariable("id") Long id);

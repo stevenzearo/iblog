@@ -12,7 +12,7 @@ public class SearchStockResponse {
 	public static class Stock {
 		public Long id;
 		public String code;
-		public String marketId;
+		public Long marketId;
 		public String name;
 		public ZonedDateTime createTime;
 		public ZonedDateTime updatedTime;

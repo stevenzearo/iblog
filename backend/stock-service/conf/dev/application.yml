@@ -6,7 +6,7 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/iblog?serverTimezone=UTC
     username: root
-    password: zou1977710579
+    password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
     dbcp2:
       max-idle: 10

@@ -8,7 +8,7 @@ import java.time.ZonedDateTime;
 public class GetStockResponse {
     public Long id;
     public String code;
-    public String marketId;
+    public Long marketId;
     public String name;
     public ZonedDateTime createTime;
     public ZonedDateTime updatedTime;

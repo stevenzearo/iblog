@@ -16,6 +16,8 @@ public interface StockDao extends JpaRepository<Stock, Long> {
 
 	Stock getById(Long id);
 
+	Stock getFirstByCode(String code);
+
 	@Query(value = "select * from stocks where name like ?", nativeQuery = true)
 	List<Stock> searchByNameLike(String stockName);
 }

@@ -26,8 +26,8 @@ public class StockWebServiceImpl implements StockWebService {
     }
 
     @Override
-    public Long addStock(AddStockRequest request) {
-        Long id = stockService.addStock(request);
+    public Long addStock(AddStockRequest request) throws Exception {
+        Long id = stockService.create(request);
         logger.warn(String.format("stockId:%s", id));
         return id;
     }

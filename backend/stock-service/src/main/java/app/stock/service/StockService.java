@@ -21,7 +21,11 @@ public class StockService {
     @Autowired
     StockDao stockDao;
 
-    public Long addStock(AddStockRequest request) {
+    public Long create(AddStockRequest request) throws Exception {
+        Stock stockInDB = stockDao.getFirstByCode(request.code);
+        if (stockInDB != null) {
+            return -1L;
+        }
         Stock stock = buildStock(request);
         return stockDao.save(stock).id;
     }
@@ -54,6 +58,7 @@ public class StockService {
         stock.marketId = request.marketId;
         stock.name = request.name;
         stock.createTime = ZonedDateTime.now();
+        stock.createBy = request.createdBy;
         return stock;
     }
 

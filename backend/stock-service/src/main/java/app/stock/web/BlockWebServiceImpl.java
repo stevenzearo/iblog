@@ -18,7 +18,7 @@ public class BlockWebServiceImpl implements BlockWebService {
     BlockService blockService;
 
     @Override
-    public CreateBlockResponse create(CreateBlockRequest request) throws Exception {
+    public CreateBlockResponse create(CreateBlockRequest request) {
         CreateBlockResponse response = blockService.create(request);
         logger.info(String.format("created block, id = %d", response.id));
         return response;

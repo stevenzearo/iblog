@@ -22,7 +22,7 @@ public class Stock {
     public String code;
 
     @Column(name = "market_id")
-    public String marketId;
+    public Long marketId;
 
     @Column(name = "name")
     public String name;
