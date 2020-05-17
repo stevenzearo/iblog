@@ -1,33 +1,25 @@
 package app.stock.api.stock;
 
+import java.time.ZonedDateTime;
+
 /**
  * @author steve
  */
 public class AddStockRequest {
+    public Long id;
     public String code;
-    public String blockCode;
+    public String marketId;
     public String name;
-    public Double latest;
-    public Double open;
-    public Double close;
-    public Double high;
-    public Double low;
-    public Double volume;
-    public Double volumeRate;
+    public String createdBy;
 
     @Override
     public String toString() {
         return "AddStockRequest{" +
-            "code='" + code + '\'' +
-            ", blockCode='" + blockCode + '\'' +
+            "id=" + id +
+            ", code='" + code + '\'' +
+            ", marketId='" + marketId + '\'' +
             ", name='" + name + '\'' +
-            ", latest=" + latest +
-            ", open=" + open +
-            ", close=" + close +
-            ", high=" + high +
-            ", low=" + low +
-            ", volume=" + volume +
-            ", volumeRate=" + volumeRate +
+            ", createdBy='" + createdBy + '\'' +
             '}';
     }
 }

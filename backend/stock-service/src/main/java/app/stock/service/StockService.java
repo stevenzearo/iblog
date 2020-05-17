@@ -9,6 +9,7 @@ import app.stock.domain.Stock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -40,36 +41,19 @@ public class StockService {
     private GetStockResponse buildGetStockResponse(Stock stock) {
         GetStockResponse response = new GetStockResponse();
         response.code = stock.code;
-        response.blockCode = stock.blockCode;
+        response.marketId = stock.marketId;
         response.name = stock.name;
-        response.latest = stock.latest;
-        response.increased = stock.increased;
-        response.increasedRate = stock.increasedRate;
-        response.open = stock.open;
-        response.close = stock.close;
-        response.high = stock.high;
-        response.low = stock.low;
-        response.volume = stock.volume;
-        response.volumeRate = stock.volumeRate;
-        response.amount = stock.amount;
+        response.createTime = stock.createTime;
+        response.updatedTime = stock.updatedTime;
         return response;
     }
 
     private Stock buildStock(AddStockRequest request) {
         Stock stock = new Stock();
         stock.code = request.code;
-        stock.blockCode = request.blockCode;
+        stock.marketId = request.marketId;
         stock.name = request.name;
-        stock.latest = request.latest;
-        stock.increased = request.latest - request.open;
-        stock.increasedRate = stock.increased / request.open;
-        stock.open = request.open;
-        stock.close = request.close;
-        stock.high = request.high;
-        stock.low = request.low;
-        stock.volume = request.volume;
-        stock.volumeRate = request.volumeRate;
-        stock.amount = request.latest * request.volume;
+        stock.createTime = ZonedDateTime.now();
         return stock;
     }
 
@@ -77,18 +61,10 @@ public class StockService {
         SearchStockResponse.Stock stockView = new SearchStockResponse.Stock();
         stockView.id = stock.id;
         stockView.code = stock.code;
-        stockView.blockCode = stock.blockCode;
+        stockView.marketId = stock.marketId;
         stockView.name = stock.name;
-        stockView.latest = stock.latest;
-        stockView.increased = stock.increased;
-        stockView.increasedRate = stock.increasedRate;
-        stockView.open = stock.open;
-        stockView.close = stock.close;
-        stockView.high = stock.high;
-        stockView.low = stock.low;
-        stockView.volume = stock.volume;
-        stockView.volumeRate = stock.volumeRate;
-        stockView.amount = stock.amount;
+        stockView.createTime = stock.createTime;
+        stockView.updatedTime = stock.updatedTime;
         return stockView;
     }
 }

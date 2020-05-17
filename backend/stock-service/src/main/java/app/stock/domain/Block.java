@@ -11,8 +11,8 @@ import java.time.ZonedDateTime;
  * @author steve
  */
 @Entity
-@Table(name = "stocks")
-public class Stock {
+@Table(name = "blocks")
+public class Block {
     @Id
     @GeneratedValue
     @Column(name = "id")
@@ -21,21 +21,17 @@ public class Stock {
     @Column(name = "code")
     public String code;
 
-    @Column(name = "market_id")
-    public String marketId;
-
     @Column(name = "name")
     public String name;
 
-    @Column(name = "created_name")
+    @Column(name = "created_time")
     public ZonedDateTime createTime;
 
     @Column(name = "created_by")
     public String createBy;
 
-    @Column(name = "updated_name")
+    @Column(name = "updated_time")
     public ZonedDateTime updatedTime;
 
     @Column(name = "updated_by")
-    public String updatedBy;
-}
+    public String updatedBy;}

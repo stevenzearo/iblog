@@ -11,8 +11,8 @@ import java.time.ZonedDateTime;
  * @author steve
  */
 @Entity
-@Table(name = "stocks")
-public class Stock {
+@Table(name = "markets")
+public class Market {
     @Id
     @GeneratedValue
     @Column(name = "id")
@@ -20,9 +20,6 @@ public class Stock {
 
     @Column(name = "code")
     public String code;
-
-    @Column(name = "market_id")
-    public String marketId;
 
     @Column(name = "name")
     public String name;

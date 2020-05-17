@@ -5,6 +5,7 @@ import app.stock.api.stock.AddStockRequest;
 import app.stock.api.stock.GetStockResponse;
 import app.stock.api.stock.SearchStockRequest;
 import app.stock.api.stock.SearchStockResponse;
+import org.slf4j.ILoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
