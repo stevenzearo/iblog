@@ -25,4 +25,3 @@ This is a demo project of spring cloud
 2. service for services and gateways registry
 3. service for gateways invoke services
 4. site for monitor health of gateways and services
- 
