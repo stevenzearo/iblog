@@ -5,24 +5,25 @@ import './index/index.css';
 import './component/SubmitButton.css';
 import './component/validateCode.css';
 import TextInput from './component/TextInput';
+import {Route, Router, useHistory} from 'react-router-dom';
+import Home from "./home";
 
 const refreshSecond = 30;
 
 class RegisterPage extends React.Component {
-
     registerCheck = () => {
-        let userName: any = $("#user-name").val();
-        let password: any = $("#password").val();
-        // var passwordToConfirm: string = $("#password-to-confirm").val();
-        let userValidateCode: any = $("#user-validate-code").val();
+        let userName: any = $('#user-name').val();
+        let password: any = $('#password').val();
+        // var passwordToConfirm: string = $('#password-to-confirm').val();
+        let userValidateCode: any = $('#user-validate-code').val();
         if (userValidateCode.trim() === '') {
-            alert("validate code can not be blank!");
+            alert('validate code can not be blank!');
         }
 
         // todo check validate code
 
         if (userName.trim() === '' || password === '') {
-            alert("user name and password can not be blank!");
+            alert('user name and password can not be blank!');
             return;
         }
         password = CryptoJS.SHA256(password).toString();
@@ -31,11 +32,10 @@ class RegisterPage extends React.Component {
             'user_name': userName,
             'password': password
         };
-
     };
 
-    goHome = function () {
-        return window.location.href = '/home';
+    goHome= () => {
+        <Route exact path='/home' component={Home}/>
     };
 
     render() {
@@ -64,7 +64,7 @@ class ValidateCode extends React.Component {
         this.state = {
             timeCounter: 0,
             refreshable: false,
-            validateCode: "000000"
+            validateCode: '000000'
         }
     }
 
@@ -95,7 +95,7 @@ class ValidateCode extends React.Component {
         this.setState(function (state: any) {
             var counter = state.timeCounter;
             if (counter <= 30) {
-                alert("please refresh later");
+                alert('please refresh later');
                 return state;
             }
             // todo get new validate code

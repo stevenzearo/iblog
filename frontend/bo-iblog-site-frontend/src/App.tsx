@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-import LoginPage from './login'
 import RegisterPage from './register'
 
 function App() {
@@ -8,7 +7,6 @@ function App() {
         <div className="App">
             <header className="App-header">
                 <div className="login">
-                    <LoginPage/>
                     <RegisterPage/>
                 </div>
             </header>

@@ -1,10 +1,16 @@
 import React from 'react';
-import $ from 'jquery';
 import '../index/index.css';
 import './TextInput.css';
+import {TextInputProp, TextInputState} from "./TextInputProp";
 
-class TextInput extends React.Component {
-    constructor(props) {
+class TextInput extends React.Component<TextInputProp, TextInputState> {
+    public id: string | undefined;
+    public name: any;
+    public label: any;
+    public type: any;
+    public placeholder: string | undefined;
+
+    constructor(props: any) {
         super(props);
         this.id = props.id;
         this.name = props.name;
@@ -15,8 +21,8 @@ class TextInput extends React.Component {
     }
 
     setValue = () => {
-        this.setState(function (state) {
-            var text = $('#' + state.id).value;
+        this.setState(function (state: any) {
+            var text = state.id.value;
             state = {id: state.id, value: text};
             return state;
         });
