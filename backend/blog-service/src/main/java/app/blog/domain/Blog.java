@@ -34,7 +34,7 @@ public class Blog {
     public Integer unStars;
 
     @Field(value = "comments")
-    public List<Comment> comments;
+    public List<Comment> comments = List.of();
 
     @Field(value = "created_time", targetType = FieldType.DATE_TIME)
     public ZonedDateTime createdTime;
