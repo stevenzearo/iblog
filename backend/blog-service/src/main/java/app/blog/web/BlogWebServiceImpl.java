@@ -1,6 +1,7 @@
 package app.blog.web;
 
 import app.blog.api.BlogWebService;
+import app.blog.api.blog.CreateBlogRequest;
 import app.blog.api.blog.GetBlogResponse;
 import app.blog.service.BlogService;
 import org.slf4j.Logger;
@@ -21,5 +22,10 @@ public class BlogWebServiceImpl implements BlogWebService {
     public GetBlogResponse get(String id) {
         logger.info("get blog, id = {}", id);
         return blogService.get(id);
+    }
+
+    @Override
+    public void create(CreateBlogRequest request) {
+
     }
 }
