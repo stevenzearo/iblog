@@ -14,7 +14,7 @@ public class SearchBlogResponse {
         public String id;
         public Long userId;
         public byte[] content;
-        public List<String> tag;
+        public List<String> tags;
         public Integer stars;
         public Integer unStars;
         public List<Comment> comments = List.of();

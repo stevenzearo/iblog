@@ -2,7 +2,8 @@ package app.blog.api;
 
 import app.blog.api.blog.CreateBlogRequest;
 import app.blog.api.blog.GetBlogResponse;
-import org.springframework.cloud.openfeign.EnableFeignClients;
+import app.blog.api.blog.SearchBlogRequest;
+import app.blog.api.blog.SearchBlogResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,7 +22,9 @@ public interface BlogWebService {
     GetBlogResponse get(@PathVariable("id") String id);
 
     @RequestMapping(value = "/blog", method = RequestMethod.POST)
-    void create(@RequestBody CreateBlogRequest request);
+    String create(@RequestBody CreateBlogRequest request);
 
 
+    @RequestMapping(value = "/blog", method = RequestMethod.PUT)
+    SearchBlogResponse search(@RequestBody SearchBlogRequest request);
 }

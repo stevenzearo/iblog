@@ -14,5 +14,5 @@ public class SearchBlogRequest {
     @NonNull
     public Long skip;
     @NonNull
-    public Long limit;
+    public Integer limit;
 }

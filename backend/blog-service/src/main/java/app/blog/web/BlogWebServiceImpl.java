@@ -3,6 +3,8 @@ package app.blog.web;
 import app.blog.api.BlogWebService;
 import app.blog.api.blog.CreateBlogRequest;
 import app.blog.api.blog.GetBlogResponse;
+import app.blog.api.blog.SearchBlogRequest;
+import app.blog.api.blog.SearchBlogResponse;
 import app.blog.service.BlogService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,7 +27,14 @@ public class BlogWebServiceImpl implements BlogWebService {
     }
 
     @Override
-    public void create(CreateBlogRequest request) {
+    public String create(CreateBlogRequest request) {
+        String id = blogService.create(request);
+        logger.info("created blog, id = {}", id);
+        return id;
+    }
 
+    @Override
+    public SearchBlogResponse search(SearchBlogRequest request) {
+        return blogService.search(request);
     }
 }

@@ -24,8 +24,8 @@ public class Blog {
     @Field(value = "content", targetType = FieldType.BINARY)
     public byte[] content;
 
-    @Field(value = "tag", targetType = FieldType.ARRAY)
-    public List<String> tag;
+    @Field(value = "tags", targetType = FieldType.ARRAY)
+    public List<String> tags;
 
     @Field(value = "starts", targetType = FieldType.INT32)
     public Integer stars;

@@ -13,5 +13,7 @@ public class CreateBlogRequest {
     @NonNull
     public byte[] content;
     @NonNull
-    public List<String> tag;
+    public List<String> tags;
+    @NonNull
+    public String createdBy;
 }
