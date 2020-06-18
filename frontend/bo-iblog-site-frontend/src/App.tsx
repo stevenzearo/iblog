@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import RegisterPage from './register'
+import RegisterPage from './module/register/register'
 
 function App() {
     return (

@@ -29,5 +29,4 @@ export class UserWebService {
             dataType: 'application/json'
         })
     }
-
 }

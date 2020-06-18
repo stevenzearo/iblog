@@ -1,22 +1,21 @@
 import React from 'react';
 import ReactDOM from "react-dom";
-import { Router, Route } from 'react-router-dom';
-import { createBrowserHistory } from 'history';
+import {BrowserRouter, Route} from 'react-router-dom';
 import './index/index.css';
 import * as serviceWorker from './serviceWorker';
 import App from "./App";
-import Home from "./home";
+import Home from "./module/home/home";
 import LoginPage from "./login";
-import RegisterPage from "./register";
+import RegisterPage from "./module/register/register";
 
 ReactDOM.render(
     <React.StrictMode>
-        <Router history={createBrowserHistory()}>
+        <BrowserRouter>
             <Route exact path='/' component={App}/>
             <Route exact path='/home' component={Home}/>
             <Route exact path='/register' component={RegisterPage}/>
             <Route exact path='/login' component={LoginPage}/>
-        </Router>
+        </BrowserRouter>
     </React.StrictMode>,
     document.getElementById('root')
 );

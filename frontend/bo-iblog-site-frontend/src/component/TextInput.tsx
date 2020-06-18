@@ -17,7 +17,7 @@ class TextInput extends React.Component<TextInputProp, TextInputState> {
         this.label = props.label;
         this.type = props.type;
         this.placeholder = props.placeholder;
-        this.state = {id: props.id, value: ''}
+        this.state = {id: props.id, value: ''};
     }
 
     setValue = () => {

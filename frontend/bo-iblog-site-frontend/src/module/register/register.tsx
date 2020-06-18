@@ -1,12 +1,11 @@
 import React from 'react';
 import CryptoJS from 'crypto-js';
 import $ from 'jquery';
-import './index/index.css';
-import './component/SubmitButton.css';
-import './component/validateCode.css';
-import TextInput from './component/TextInput';
-import {Route, Router, useHistory} from 'react-router-dom';
-import Home from "./home";
+import '../../index/index.css';
+import '../../component/SubmitButton.css';
+import '../../component/validateCode.css';
+import TextInput from '../../component/TextInput';
+import {Link} from 'react-router-dom';
 
 const refreshSecond = 30;
 
@@ -34,22 +33,20 @@ class RegisterPage extends React.Component {
         };
     };
 
-    goHome= () => {
-        <Route exact path='/home' component={Home}/>
-    };
-
     render() {
         return (
             <div className='login-page'>
                 <TextInput id='user-name' name='user-name' label='用户名' type='text' placeholder='请输入用户名'/>
                 <TextInput id='password' name='password' label='密码' type='password' placeholder='请输入密码'/>
-                <TextInput id='password-to-confirm' name='password-to-confirm' label='确认密码' type='password'
-                           placeholder='请确认密码'/>
+                <PasswordConfirmation/>
                 <ValidateCode/>
                 <TextInput id='user-validate-code' name='user-validate-code' label='验证码' type='text'
                            placeholder='请输入验证码'/>
                 <button className='submit-button' onClick={this.registerCheck}>提交</button>
-                <button className='submit-button' onClick={this.goHome}>Go Home</button>
+
+                <Link to="/home">
+                    <button className='submit-button'>Go Home</button>
+                </Link>
             </div>
         );
     }
@@ -123,6 +120,40 @@ class ValidateCode extends React.Component {
         );
     }
 
+}
+
+class PasswordConfirmation extends React.Component<any, any> {
+    style: any = {float: 'none'};
+
+    constructor(props: any) {
+        super(props);
+        this.state = {
+            confirmStatus: false,
+            confirmResult: "please check whether confirmed password is the same as password!"
+        }
+    }
+
+    confirmPassword = () => {
+        const password: any = $("#password").val();
+        const passwordToConfirm: any = $("#password-to-confirm").val();
+        this.setState((state: any) => {
+            if (password && passwordToConfirm && password === passwordToConfirm) {
+                return {confirmStatus: true, confirmResult: "correct!"}
+            }
+            return {
+                confirmStatus: false,
+                confirmResult: "please check whether confirmed password is the same as password!"
+            };
+        })
+    };
+
+    render(): React.ReactNode {
+        return <div onBlur={this.confirmPassword} style={this.style}>
+            <TextInput id='password-to-confirm' name='password-to-confirm' label='确认密码' type='password'
+                       placeholder='请确认密码'/>
+            <span>{this.state.confirmResult}</span>
+        </div>
+    }
 }
 
 export default RegisterPage;
