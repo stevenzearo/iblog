@@ -1,6 +1,5 @@
 import React from 'react';
 import CryptoJS from 'crypto-js';
-import $ from 'jquery';
 import '../../index.css';
 import '../../component/SubmitButton.css';
 import './validateCode.css';
@@ -13,45 +12,39 @@ export interface RegisterPageProps {
 
 
 export interface RegisterPageState {
+    userName: string | any;
+    email: string | any;
+    password: string | any;
+    passwordToConfirm: String | any;
+    validateCode: String | any;
+    userValidateCode: String | any;
     confirmStatus: boolean;
     confirmResult: string;
 }
+
 // todo use state replace jquery
 class RegisterPage extends React.Component<RegisterPageProps, RegisterPageState> {
     constructor(props: any) {
         super(props);
         this.state = {
+            userName: "",
+            email: "",
+            password: "",
+            passwordToConfirm: "",
+            validateCode: "",
+            userValidateCode: "",
             confirmStatus: false,
             confirmResult: "please check whether confirmed password is the same as password!"
         }
     }
 
-    registerCheck = () => {
-        let userName: any = $('#user-name').val();
-        let password: any = $('#password').val();
-        // var passwordToConfirm: string = $('#password-to-confirm').val();
-        let userValidateCode: any = $('#user-validate-code').val();
-        if (userValidateCode.trim() === '') {
-            alert('validate code can not be blank!');
-        }
-
-        // todo check validate code
-
-        if (userName.trim() === '' || password === '') {
-            alert('user name and password can not be blank!');
-            return;
-        }
-        password = CryptoJS.SHA256(password).toString();
-        alert(userName + ':' + password);
-        /*var data = {
-            'user_name': userName,
-            'password': password
-        };*/
+    setUserName = (e: React.FocusEventHandler) => {
+        // var userName = e.prototype.val();
+        alert(1)
     };
-
     confirmPassword = () => {
-        const password: any = $("#password").val();
-        const passwordToConfirm: any = $("#password-to-confirm").val();
+        const password = this.state.password;
+        const passwordToConfirm = this.state.passwordToConfirm;
         this.setState((state: RegisterPageState) => {
             if (password && passwordToConfirm && password === passwordToConfirm) {
                 return {confirmStatus: true, confirmResult: "correct!"}
@@ -63,10 +56,30 @@ class RegisterPage extends React.Component<RegisterPageProps, RegisterPageState>
         })
     };
 
+    registerCheck = () => {
+        if (this.state.userValidateCode.trim() === '') {
+            alert('validate code can not be blank!');
+        }
+
+        // todo check validate code
+
+        if (this.state.userName.trim().isEmpty() || this.state.password.trim().isEmpty()) {
+            alert('user name and password can not be blank!');
+            return;
+        }
+        const password = CryptoJS.SHA256(this.state.password).toString();
+        alert(this.state.userName + ':' + password);
+        /*var data = {
+            'user_name': userName,
+            'password': password
+        };*/
+    };
+
     render() {
         return (
             <div className='login-page'>
-                <TextInput id='user-name' name='user-name' label='用户名' type='text' placeholder='请输入用户名'/>
+                <TextInput id='user-name' name='user-name' label='用户名' type='text' placeholder='请输入用户名'
+                           onBlur={this.setUserName}/>
                 <TextInput id='password' name='password' label='密码' type='password' placeholder='请输入密码'/>
                 <TextInput id='password-to-confirm' name='password-to-confirm' label='确认密码' type='password'
                            placeholder='请确认密码' onBlur={this.confirmPassword}/>
