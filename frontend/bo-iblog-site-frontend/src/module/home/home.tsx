@@ -1,5 +1,5 @@
 import React from 'react';
-import {User} from "../../model/User";
+import {User} from "./User";
 import {HomeProp, HomeState} from "./HomeProp";
 import {UserComponentProp, UserComponentState} from "./UserComponentProp";
 

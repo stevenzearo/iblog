@@ -4,8 +4,26 @@ import $ from 'jquery';
 import '../../index/index.css';
 import '../../component/SubmitButton.css';
 import TextInput from '../../component/TextInput'
+import {History} from "history";
 
-class LoginPage extends React.Component {
+export interface LoginPageProps {
+    history: History
+}
+
+export interface LoginPageState {
+    isToHome: boolean;
+    homePath: string | any;
+}
+
+class LoginPage extends React.Component<LoginPageProps, LoginPageState> {
+
+    constructor(props: LoginPageProps) {
+        super(props);
+        this.state = {
+            isToHome: false,
+            homePath: "/home"
+        }
+    }
 
     loginCheck = () => {
         let userName: any = $("#user-name").val();
@@ -15,22 +33,30 @@ class LoginPage extends React.Component {
             return;
         }
         password = CryptoJS.SHA256(password).toString();
-        alert(userName + ':' + password);
-        var data = {
+        // alert(userName + ':' + password);
+        /*var data = {
             'user_name': userName,
             'password': password
-        };
-        $.ajax({
+        };*/
+        /*$.ajax({
             type: 'GET',
             url: '',
             data: data,
             success: this.onSuccess,
             dataType: 'application/json'
-        })
+        })*/
+        this.onSuccess(null);
     };
 
     onSuccess = (result: any) => {
-        alert(result.name + ":" + result.password)
+        // alert(result?.name + ":" + result?.password);
+        this.setState((state: LoginPageState): LoginPageState => {
+            return {
+                isToHome: true,
+                homePath: state.homePath
+            };
+        });
+        this.props.history.push(this.state.homePath)
     };
 
     render() {

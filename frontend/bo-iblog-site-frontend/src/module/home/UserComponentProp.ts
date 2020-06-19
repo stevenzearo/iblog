@@ -1,4 +1,4 @@
-import {User} from "../../model/User";
+import {User} from "./User";
 
 export interface UserComponentProp {
     user: User | null;

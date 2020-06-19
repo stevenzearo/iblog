@@ -1,12 +1,28 @@
 import React from 'react';
 import '../index/index.css';
 import './TextInput.css';
-import {TextInputProp, TextInputState} from "./TextInputProp";
 
-export interface Interface {
-
+export interface TextInputProp {
+    id: string | undefined;
+    name: any;
+    label: any;
+    type: any;
+    placeholder: string | undefined;
+    onBlur?: (e: React.FocusEventHandler) => void;
 }
-class TextInput extends React.Component<TextInputProp, TextInputState> {
+
+export interface TextInputState {
+    id: string | any;
+    value: string | any;
+}
+
+export class TextInput extends React.Component<TextInputProp, TextInputState> {
+
+
+    constructor(props: Readonly<TextInputProp>) {
+        super(props);
+        this.state = {id: "", value: ""}
+    }
 
     setValue = () => {
         this.setState(function (state: any) {
@@ -20,7 +36,8 @@ class TextInput extends React.Component<TextInputProp, TextInputState> {
         return (
             <div className='text-input'>
                 <label htmlFor={this.props.id}>{this.props.label} :</label>
-                <input id={this.props.id} name={this.props.name} type={this.props.type} placeholder={this.props.placeholder}
+                <input id={this.props.id} name={this.props.name} type={this.props.type}
+                       placeholder={this.props.placeholder}
                        onBlur={this.setValue}/>
             </div>
         );
