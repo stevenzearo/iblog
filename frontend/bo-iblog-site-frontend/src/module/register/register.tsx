@@ -9,7 +9,24 @@ import {Link} from 'react-router-dom';
 
 const refreshSecond = 30;
 
-class RegisterPage extends React.Component {
+export interface RegisterPageProps {
+}
+
+
+export interface RegisterPageState {
+    confirmStatus: boolean;
+    confirmResult: string;
+}
+
+class RegisterPage extends React.Component<RegisterPageProps, RegisterPageState> {
+    constructor(props: any) {
+        super(props);
+        this.state = {
+            confirmStatus: false,
+            confirmResult: "please check whether confirmed password is the same as password!"
+        }
+    }
+
     registerCheck = () => {
         let userName: any = $('#user-name').val();
         let password: any = $('#password').val();
@@ -33,17 +50,32 @@ class RegisterPage extends React.Component {
         };
     };
 
+    confirmPassword = () => {
+        const password: any = $("#password").val();
+        const passwordToConfirm: any = $("#password-to-confirm").val();
+        this.setState((state: RegisterPageState) => {
+            if (password && passwordToConfirm && password === passwordToConfirm) {
+                return {confirmStatus: true, confirmResult: "correct!"}
+            }
+            return {
+                confirmStatus: false,
+                confirmResult: "please check whether confirmed password is the same as password!"
+            };
+        })
+    };
+
     render() {
         return (
             <div className='login-page'>
                 <TextInput id='user-name' name='user-name' label='用户名' type='text' placeholder='请输入用户名'/>
                 <TextInput id='password' name='password' label='密码' type='password' placeholder='请输入密码'/>
-                <PasswordConfirmation/>
+                <TextInput id='password-to-confirm' name='password-to-confirm' label='确认密码' type='password'
+                           placeholder='请确认密码' onBlur={this.confirmPassword}/>
                 <ValidateCode/>
                 <TextInput id='user-validate-code' name='user-validate-code' label='验证码' type='text'
                            placeholder='请输入验证码'/>
-                <button className='submit-button' onClick={this.registerCheck}>提交</button>
 
+                <button className='submit-button' onClick={this.registerCheck}>提交</button>
                 <Link to="/home">
                     <button className='submit-button'>Go Home</button>
                 </Link>
@@ -120,40 +152,6 @@ class ValidateCode extends React.Component {
         );
     }
 
-}
-
-class PasswordConfirmation extends React.Component<any, any> {
-    style: any = {float: 'none'};
-
-    constructor(props: any) {
-        super(props);
-        this.state = {
-            confirmStatus: false,
-            confirmResult: "please check whether confirmed password is the same as password!"
-        }
-    }
-
-    confirmPassword = () => {
-        const password: any = $("#password").val();
-        const passwordToConfirm: any = $("#password-to-confirm").val();
-        this.setState((state: any) => {
-            if (password && passwordToConfirm && password === passwordToConfirm) {
-                return {confirmStatus: true, confirmResult: "correct!"}
-            }
-            return {
-                confirmStatus: false,
-                confirmResult: "please check whether confirmed password is the same as password!"
-            };
-        })
-    };
-
-    render(): React.ReactNode {
-        return <div onBlur={this.confirmPassword} style={this.style}>
-            <TextInput id='password-to-confirm' name='password-to-confirm' label='确认密码' type='password'
-                       placeholder='请确认密码'/>
-            <span>{this.state.confirmResult}</span>
-        </div>
-    }
 }
 
 export default RegisterPage;

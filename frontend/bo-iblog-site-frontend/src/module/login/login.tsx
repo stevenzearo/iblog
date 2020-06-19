@@ -1,9 +1,9 @@
 import React from 'react';
 import CryptoJS from 'crypto-js';
 import $ from 'jquery';
-import './index/index.css';
+import '../../index/index.css';
 import './component/SubmitButton.css';
-import TextInput from './component/TextInput'
+import TextInput from '../../component/TextInput'
 
 class LoginPage extends React.Component {
 

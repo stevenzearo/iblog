@@ -5,7 +5,7 @@ import './index/index.css';
 import * as serviceWorker from './serviceWorker';
 import App from "./App";
 import Home from "./module/home/home";
-import LoginPage from "./login";
+import LoginPage from "./module/login/login";
 import RegisterPage from "./module/register/register";
 
 ReactDOM.render(

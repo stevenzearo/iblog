@@ -1,7 +1,7 @@
 import React from 'react';
 import {User} from "../../model/User";
 import {HomeProp, HomeState} from "./HomeProp";
-import {UserComponentProp, UserComponentState} from "../../UserComponentProp";
+import {UserComponentProp, UserComponentState} from "./UserComponentProp";
 
 class Home extends React.Component<HomeProp, HomeState> {
     public user: User | null;

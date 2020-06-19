@@ -4,6 +4,7 @@ export interface TextInputProp {
     label: any;
     type: any;
     placeholder: string | undefined;
+    onBlur?: (e: React.FocusEventHandler) => void;
 }
 
 export interface TextInputState {
