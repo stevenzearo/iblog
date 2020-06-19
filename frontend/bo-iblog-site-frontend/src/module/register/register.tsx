@@ -1,7 +1,7 @@
 import React from 'react';
 import CryptoJS from 'crypto-js';
 import $ from 'jquery';
-import '../../index/index.css';
+import '../../index.css';
 import '../../component/SubmitButton.css';
 import './validateCode.css';
 import TextInput from '../../component/TextInput';
@@ -16,7 +16,7 @@ export interface RegisterPageState {
     confirmStatus: boolean;
     confirmResult: string;
 }
-
+// todo use state replace jquery
 class RegisterPage extends React.Component<RegisterPageProps, RegisterPageState> {
     constructor(props: any) {
         super(props);
@@ -73,7 +73,6 @@ class RegisterPage extends React.Component<RegisterPageProps, RegisterPageState>
                 <ValidateCode refreshSecond={30}/>
                 <TextInput id='user-validate-code' name='user-validate-code' label='验证码' type='text'
                            placeholder='请输入验证码'/>
-
                 <button className='submit-button' onClick={this.registerCheck}>提交</button>
                 <Link to="/home">
                     <button className='submit-button'>Go Home</button>

@@ -1,7 +1,7 @@
 import React from 'react';
 import CryptoJS from 'crypto-js';
 import $ from 'jquery';
-import '../../index/index.css';
+import '../../index.css';
 import '../../component/SubmitButton.css';
 import TextInput from '../../component/TextInput'
 import {History} from "history";
