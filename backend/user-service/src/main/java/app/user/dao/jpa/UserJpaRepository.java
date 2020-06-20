@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
  * @author steve
  */
 @Repository
-public interface UserJpaDao extends JpaRepository<User, Integer> {
+public interface UserJpaRepository extends JpaRepository<User, Integer> {
     User getById(Long id);
 }
