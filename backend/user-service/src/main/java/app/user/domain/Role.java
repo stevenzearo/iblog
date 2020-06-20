@@ -6,6 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.time.ZonedDateTime;
 
 /**
  * @author steve
@@ -33,4 +34,25 @@ public class Role {
     @NotBlank
     @Column(name = "authority")
     public Authority authority;
+
+    @NotNull
+    @NotBlank
+    @Column(name = "created_by")
+    public String createBy;
+
+    @NotNull
+    @Column(name = "created_time")
+    public ZonedDateTime createdTime;
+
+    @Override
+    public String toString() {
+        return "Role{" +
+            "id='" + id + '\'' +
+            ", groupId='" + groupId + '\'' +
+            ", name='" + name + '\'' +
+            ", authority=" + authority +
+            ", createBy='" + createBy + '\'' +
+            ", createdTime=" + createdTime +
+            '}';
+    }
 }

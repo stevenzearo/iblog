@@ -6,6 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.time.ZonedDateTime;
 
 /**
  * @author steve
@@ -23,4 +24,23 @@ public class Group {
     @NotBlank
     @Column(name = "name")
     public String name;
+
+    @NotNull
+    @NotBlank
+    @Column(name = "created_by")
+    public String createBy;
+
+    @NotNull
+    @Column(name = "created_time")
+    public ZonedDateTime createdTime;
+
+    @Override
+    public String toString() {
+        return "Group{" +
+            "id='" + id + '\'' +
+            ", name='" + name + '\'' +
+            ", createBy='" + createBy + '\'' +
+            ", createdTime=" + createdTime +
+            '}';
+    }
 }

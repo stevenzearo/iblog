@@ -9,6 +9,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.time.ZonedDateTime;
 
 /**
  * @author steve
@@ -33,13 +34,13 @@ public class Admin {
 
     @NotNull
     @NotBlank
-    @Column(name = "password")
-    public String password;
+    @Column(name = "email")
+    public String email;
 
     @NotNull
     @NotBlank
-    @Column(name = "email")
-    public String email;
+    @Column(name = "password")
+    public String password;
 
     @NotNull
     @NotBlank
@@ -51,4 +52,28 @@ public class Admin {
     @Max(10)
     @Column(name = "iterated_times")
     public Integer iteratedTimes;
+
+    @NotNull
+    @NotBlank
+    @Column(name = "created_by")
+    public String createBy;
+
+    @NotNull
+    @Column(name = "created_time")
+    public ZonedDateTime createdTime;
+
+    @Override
+    public String toString() {
+        return "Admin{" +
+            "id='" + id + '\'' +
+            ", groupId='" + groupId + '\'' +
+            ", name='" + name + '\'' +
+            ", email='" + email + '\'' +
+            ", password='" + password + '\'' +
+            ", salt='" + salt + '\'' +
+            ", iteratedTimes=" + iteratedTimes +
+            ", createBy='" + createBy + '\'' +
+            ", createdTime=" + createdTime +
+            '}';
+    }
 }
