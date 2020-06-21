@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 @FeignClient(name = "admin-web-service")
 public interface BOAdminWebService {
     @RequestMapping(value = "/bo/admin", method = RequestMethod.POST)
-    void create(BOCreateAdminRequest request);
+    void create(BOCreateAdminRequest request) throws Exception;
 
     @RequestMapping(value = "/bo/admin", method = RequestMethod.GET)
     BOGetAdminByEmailResponse getByEmail(@RequestParam("email") String email);
