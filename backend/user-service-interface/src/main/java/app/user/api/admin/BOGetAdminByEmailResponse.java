@@ -1,6 +1,10 @@
 package app.user.api.admin;
 
+import app.user.api.admin.role.AuthorityView;
 import org.springframework.lang.NonNull;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author steve
@@ -8,16 +12,40 @@ import org.springframework.lang.NonNull;
 public class BOGetAdminByEmailResponse {
     @NonNull
     public String id;
-    @NonNull
-    public String groupId;
+
     @NonNull
     public String name;
+
     @NonNull
     public String email;
+
     @NonNull
     public String password;
+
     @NonNull
     public String salt;
+
     @NonNull
-    public String iteratedTime;
+    public Integer iteratedTimes;
+
+    @NonNull
+    public Group group;
+
+    public static class Group {
+        @NonNull
+        public String id;
+
+        @NonNull
+        public String name;
+
+        @NonNull
+        public List<Role> roles = new ArrayList<>();
+    }
+
+    public static class Role {
+        @NonNull
+        public String name;
+        @NonNull
+        public AuthorityView authority;
+    }
 }
