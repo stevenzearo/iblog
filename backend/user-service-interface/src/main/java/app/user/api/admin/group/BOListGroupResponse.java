@@ -18,8 +18,5 @@ public class BOListGroupResponse {
 
         @NonNull
         public String name;
-
-        @NonNull
-        public String requestedBy;
     }
 }
