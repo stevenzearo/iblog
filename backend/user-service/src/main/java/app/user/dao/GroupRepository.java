@@ -16,4 +16,6 @@ public interface GroupRepository extends JpaRepository<Group, String> {
     List<Group> find();
 
     Group getById(String id);
+
+    void removeById(String id);
 }

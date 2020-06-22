@@ -3,11 +3,14 @@ package app.user.service;
 import app.user.api.admin.group.BOCreateGroupRequest;
 import app.user.api.admin.group.BOGetGroupResponse;
 import app.user.api.admin.group.BOListGroupResponse;
-import app.user.api.admin.group.BORemoveGroupRequest;
+import app.user.api.admin.role.AuthorityView;
 import app.user.api.admin.role.BOCreateRoleRequest;
-import app.user.api.admin.role.BORemoveRoleRequest;
 import app.user.dao.GroupRepository;
+import app.user.dao.RoleRepository;
+import app.user.domain.Authority;
 import app.user.domain.Group;
+import app.user.domain.Role;
+import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.ZonedDateTime;
@@ -21,6 +24,8 @@ import java.util.stream.Collectors;
 public class BOGroupService {
     @Autowired
     GroupRepository groupRepository;
+    @Autowired
+    RoleRepository roleRepository;
 
     public String create(BOCreateGroupRequest request) {
         Group group = new Group();
@@ -45,18 +50,39 @@ public class BOGroupService {
     }
 
     public BOGetGroupResponse get(String id) {
-        return null;
+        Group group = groupRepository.getById(id);
+        List<Role> roles = roleRepository.findByGroupId(group.id);
+        BOGetGroupResponse response = new BOGetGroupResponse();
+        response.id = group.id;
+        response.name = group.name;
+        response.roles = roles.stream().map(role -> {
+            BOGetGroupResponse.Role roleView = new BOGetGroupResponse.Role();
+            roleView.name = role.name;
+            roleView.authority = AuthorityView.valueOf(role.authority.name());
+            return roleView;
+        }).collect(Collectors.toList());
+        return response;
     }
 
-    public void remove(String id, BORemoveGroupRequest request) {
-
+    public void remove(String id) {
+        groupRepository.removeById(id);
     }
 
-    public void createRole(String groupId, BOCreateRoleRequest request) {
-
+    public String createRole(String groupId, BOCreateRoleRequest request) {
+        Role role = new Role();
+        role.id = UUID.randomUUID().toString();
+        role.groupId = groupId;
+        role.name = request.name;
+        role.authority = Authority.valueOf(request.authority.name());
+        role.createBy = request.requestedBy;
+        role.createdTime = ZonedDateTime.now();
+        roleRepository.save(role);
+        return role.id;
     }
 
-    public void removeRole(String groupId, String id, BORemoveRoleRequest request) {
-
+    public void removeRole(String groupId, String id) throws Exception {
+        Group group = groupRepository.getById(groupId);
+        if (group == null) throw new Exception(String.format("group not found, id = %s", groupId));
+        roleRepository.removeById(id);
     }
 }

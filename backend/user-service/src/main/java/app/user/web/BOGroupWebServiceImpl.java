@@ -4,10 +4,9 @@ import app.user.api.BOGroupWebService;
 import app.user.api.admin.group.BOCreateGroupRequest;
 import app.user.api.admin.group.BOGetGroupResponse;
 import app.user.api.admin.group.BOListGroupResponse;
-import app.user.api.admin.group.BORemoveGroupRequest;
 import app.user.api.admin.role.BOCreateRoleRequest;
-import app.user.api.admin.role.BORemoveRoleRequest;
 import app.user.service.BOGroupService;
+import javassist.NotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,21 +32,24 @@ public class BOGroupWebServiceImpl implements BOGroupWebService {
 
     @Override
     public BOGetGroupResponse get(String id) {
-        return null;
+        return boGroupService.get(id);
     }
 
     @Override
-    public void remove(String id, BORemoveGroupRequest request) {
-
+    public void remove(String id) {
+        logger.info("removed group, id = {}", id);
+        boGroupService.remove(id);
     }
 
     @Override
     public void createRole(String groupId, BOCreateRoleRequest request) {
-
+        String roleId = boGroupService.createRole(groupId, request);
+        logger.info("created role, id = {}", roleId);
     }
 
     @Override
-    public void removeRole(String groupId, String id, BORemoveRoleRequest request) {
-
+    public void removeRole(String groupId, String id) throws Exception {
+        logger.info("removed role, id = {}", id);
+        boGroupService.removeRole(groupId, id);
     }
 }

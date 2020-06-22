@@ -12,4 +12,6 @@ import java.util.List;
 @Repository
 public interface RoleRepository extends JpaRepository<Role, String> {
     List<Role> findByGroupId(String groupId);
+
+    void removeById(String id);
 }
