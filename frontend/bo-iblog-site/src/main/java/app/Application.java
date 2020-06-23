@@ -6,6 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -23,7 +24,7 @@ public class Application {
     }
 
     // todo this is for test, will be removed
-    @RequestMapping("/")
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     String home() {
         return "Hello, world!";
     }

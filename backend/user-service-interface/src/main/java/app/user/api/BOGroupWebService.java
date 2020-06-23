@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author steve
  */
 @RestController
-@FeignClient("user-web-service")
+@FeignClient("group-web-service")
 public interface BOGroupWebService {
     @RequestMapping(value = "/bo/group", method = RequestMethod.POST)
     void create(@RequestBody BOCreateGroupRequest request);
