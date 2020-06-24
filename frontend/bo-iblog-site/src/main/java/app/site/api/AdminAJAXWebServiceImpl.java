@@ -7,7 +7,8 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class AdminAJAXWebServiceImpl implements AdminAJAXWebService {
-    void create() {
+    @Override
+    public void create() {
 
     }
 }
