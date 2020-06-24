@@ -36,12 +36,13 @@ project('bo-iblog-site') {
         compile(group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-eureka-client', version: springCloudVersion) {
             exclude group: 'com.google.code.gson', module: 'gson'
         }
-
+        compile project(':frontend:bo-iblog-site-interface')
     }
 }
 
 project('iblog-site') {
     dependencies {
+        compile project(':frontend:iblog-site-interface')
     }
 }
 

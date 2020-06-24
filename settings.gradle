@@ -8,7 +8,9 @@ include 'backend:user-service',
         'backend:stock-service',
         'backend:stock-service-db-migration'
 include 'frontend:bo-iblog-site',
+        'frontend:bo-iblog-site-interface',
         'frontend:iblog-site',
+        'frontend:iblog-site-interface',
         'frontend:registry-site'
 
 

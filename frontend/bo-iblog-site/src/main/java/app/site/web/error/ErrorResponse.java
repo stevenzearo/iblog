@@ -11,4 +11,12 @@ public class ErrorResponse {
         this.code = exception.getCode();
         this.message = exception.getMessage();
     }
+
+    @Override
+    public String toString() {
+        return "ErrorResponse{" +
+            "code=" + code +
+            ", message='" + message + '\'' +
+            '}';
+    }
 }
