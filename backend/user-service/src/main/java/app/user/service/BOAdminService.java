@@ -1,21 +1,20 @@
 package app.user.service;
 
+import app.user.PasswordEncryptException;
+import app.user.PasswordEncryptHelper;
 import app.user.api.admin.BOCreateAdminRequest;
 import app.user.api.admin.BOGetAdminByEmailResponse;
-import app.user.api.admin.role.AuthorityView;
+import app.user.AuthorityView;
 import app.user.dao.AdminRepository;
 import app.user.dao.GroupRepository;
 import app.user.dao.RoleRepository;
 import app.user.domain.Admin;
 import app.user.domain.Group;
 import app.user.domain.Role;
-import org.bouncycastle.jcajce.provider.digest.SHA256;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.security.MessageDigest;
 import java.time.ZonedDateTime;
-import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -40,35 +39,25 @@ public class BOAdminService {
         int byteVal = (int) Math.round(Math.random() * (int) Byte.MAX_VALUE) + 1; // 1 ~ 127
         char[] saltChar = Character.toChars(byteVal);
         String salt = new String(saltChar);
-        int iterated_times = (int) (Math.random() * MAX_ITERATED_TIME) + 1;
+        int iteratedTimes = (int) (Math.random() * MAX_ITERATED_TIME) + 1;
 
-        Admin admin = buildAdmin(request, salt, iterated_times);
+        Admin admin = buildAdmin(request, salt, iteratedTimes);
         adminRepository.save(admin);
         return admin.id;
     }
 
-    private Admin buildAdmin(BOCreateAdminRequest request, String salt, int iterated_times) {
+    private Admin buildAdmin(BOCreateAdminRequest request, String salt, int iteratedTimes) throws PasswordEncryptException {
         Admin admin = new Admin();
         admin.id = UUID.randomUUID().toString();
         admin.groupId = request.groupId;
         admin.name = request.name;
         admin.email = request.email;
         admin.salt = salt;
-        admin.iteratedTimes = iterated_times;
-        admin.password = encryptPassword(request.password, admin.salt, iterated_times);
+        admin.iteratedTimes = iteratedTimes;
+        admin.password = PasswordEncryptHelper.encryptPassword(request.password, admin.salt, iteratedTimes);
         admin.createBy = request.requestedBy;
         admin.createdTime = ZonedDateTime.now();
         return admin;
-    }
-
-    private String encryptPassword(String originPassword, String salt, int iterated_times) {
-        MessageDigest digest = new SHA256.Digest();
-        digest.update(salt.getBytes());
-        byte[] encryptedPasswordBytes = new byte[0];
-        for (int i = 0; i < iterated_times; i++) {
-            encryptedPasswordBytes = digest.digest(digest.digest(originPassword.getBytes()));
-        }
-        return Arrays.toString(encryptedPasswordBytes);
     }
 
     public BOGetAdminByEmailResponse getByEmail(String email) {

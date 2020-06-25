@@ -1,8 +1,8 @@
 package app.site.web;
 
-import app.site.web.error.ErrorResponse;
-import app.site.web.error.MethodNotAllowedException;
-import app.site.web.error.WebException;
+import app.web.error.ErrorResponse;
+import app.web.error.MethodNotAllowedException;
+import app.web.error.WebException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;

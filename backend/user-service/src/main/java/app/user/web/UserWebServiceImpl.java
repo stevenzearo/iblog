@@ -3,8 +3,8 @@ package app.user.web;
 import app.user.api.UserWebService;
 import app.user.api.user.GetUserResponse;
 import app.user.service.UserService;
-import org.hibernate.annotations.common.util.impl.LoggerFactory;
-import org.jboss.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class UserWebServiceImpl implements UserWebService {
-    private static Logger logger = LoggerFactory.logger(UserWebServiceImpl.class);
+    private static Logger logger = LoggerFactory.getLogger(UserWebServiceImpl.class);
     @Autowired
     UserService userService;
 

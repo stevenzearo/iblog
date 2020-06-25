@@ -1,6 +1,6 @@
 package app.user.api.admin.group;
 
-import app.user.api.admin.role.AuthorityView;
+import app.user.AuthorityView;
 import org.springframework.lang.NonNull;
 
 import java.util.ArrayList;

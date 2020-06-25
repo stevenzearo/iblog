@@ -1,4 +1,4 @@
-package app.site.web.error;
+package app.web.error;
 
 /**
  * @author steve

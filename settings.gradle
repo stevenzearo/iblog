@@ -12,5 +12,6 @@ include 'frontend:bo-iblog-site',
         'frontend:iblog-site',
         'frontend:iblog-site-interface',
         'frontend:registry-site'
+include 'common:common-lib'
 
 

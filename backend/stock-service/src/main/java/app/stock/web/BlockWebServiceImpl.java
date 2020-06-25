@@ -4,15 +4,15 @@ import app.stock.api.BlockWebService;
 import app.stock.api.block.CreateBlockRequest;
 import app.stock.api.block.CreateBlockResponse;
 import app.stock.service.BlockService;
-import org.hibernate.annotations.common.util.impl.LoggerFactory;
-import org.jboss.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * @author steve
  */
 public class BlockWebServiceImpl implements BlockWebService {
-    private static Logger logger = LoggerFactory.logger(StockWebServiceImpl.class);
+    private static Logger logger = LoggerFactory.getLogger(BlockWebServiceImpl.class);
 
     @Autowired
     BlockService blockService;

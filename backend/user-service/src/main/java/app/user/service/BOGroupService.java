@@ -3,14 +3,13 @@ package app.user.service;
 import app.user.api.admin.group.BOCreateGroupRequest;
 import app.user.api.admin.group.BOGetGroupResponse;
 import app.user.api.admin.group.BOListGroupResponse;
-import app.user.api.admin.role.AuthorityView;
+import app.user.AuthorityView;
 import app.user.api.admin.role.BOCreateRoleRequest;
 import app.user.dao.GroupRepository;
 import app.user.dao.RoleRepository;
 import app.user.domain.Authority;
 import app.user.domain.Group;
 import app.user.domain.Role;
-import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.ZonedDateTime;

@@ -14,6 +14,7 @@ subprojects {
         compile(group: 'javax.xml.bind', name: 'jaxb-api', version: javaxVersion)
         compile(group: 'com.sun.xml.bind', name: 'jaxb-impl', version: javaxVersion)
         compile(group: 'org.glassfish.jaxb', name: 'jaxb-runtime', version: javaxVersion)
+        compile project(':common:common-lib')
     }
 }
 

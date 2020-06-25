@@ -1,0 +1,12 @@
+subprojects {
+    apply plugin: 'java'
+
+    repositories {
+        mavenCentral()
+    }
+}
+
+project('common-lib') {
+    dependencies {
+    }
+}

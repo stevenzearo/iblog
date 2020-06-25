@@ -1,4 +1,4 @@
-package app.user.api.admin.role;
+package app.user;
 
 /**
  * @author steve
