@@ -14,6 +14,10 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class ErrorHandler {
     @ExceptionHandler(Exception.class)
     public ErrorResponse handleError(Exception exception) {
+        if (exception instanceof WebException) {
+            WebException webException = (WebException) exception;
+            handleError(webException);
+        }
         return new ErrorResponse(new WebException(exception.getMessage()));
     }
 

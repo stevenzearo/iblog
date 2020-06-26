@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * @author steve
  */
+// todo refactor
 @RestController
 public class StockAJAXWebService {
     @Autowired(required = false)

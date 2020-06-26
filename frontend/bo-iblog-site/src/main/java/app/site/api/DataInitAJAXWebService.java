@@ -22,6 +22,7 @@ import java.util.Iterator;
 /**
  * @author steve
  */
+// todo remove
 @RestController
 public class DataInitAJAXWebService {
     private static final String REQUESTED_BY = "bo-iblog-site";

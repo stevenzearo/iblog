@@ -1,10 +1,12 @@
 package app.site.service;
 
+import app.site.api.admin.CreateAdminAJAXRequest;
 import app.site.web.ErrorCodes;
 import app.site.web.SessionContext;
 import app.user.PasswordEncryptException;
 import app.user.PasswordEncryptHelper;
 import app.user.api.BOAdminWebService;
+import app.user.api.admin.BOCreateAdminRequest;
 import app.user.api.admin.BOGetAdminByEmailResponse;
 import app.web.error.NotFoundException;
 import app.web.error.WebException;
@@ -20,8 +22,18 @@ import java.util.stream.Collectors;
  */
 @Service
 public class AdminService {
+    private static final String REQUESTED_BY = "bo-iblog-site";
     @Autowired
     BOAdminWebService boAdminWebService;
+
+    public void create(CreateAdminAJAXRequest request) throws WebException {
+        BOCreateAdminRequest boRequest = new BOCreateAdminRequest();
+        boRequest.name = request.name;
+        boRequest.email = request.name;
+        boRequest.password = request.password;
+        boRequest.requestedBy = REQUESTED_BY;
+        boAdminWebService.create(boRequest);
+    }
 
     public boolean login(String email, String password, HttpServletRequest request) throws WebException {
         BOGetAdminByEmailResponse admin = boAdminWebService.getByEmail(email);
@@ -34,7 +46,7 @@ public class AdminService {
     }
 
     private String getEncryptedPassword(String password, BOGetAdminByEmailResponse admin) throws WebException {
-        String encryptPassword = null;
+        String encryptPassword;
         try {
             encryptPassword = PasswordEncryptHelper.encryptPassword(password, admin.salt, admin.iteratedTimes);
         } catch (PasswordEncryptException e) {

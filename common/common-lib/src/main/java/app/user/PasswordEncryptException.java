@@ -1,10 +1,14 @@
 package app.user;
 
+import app.web.error.WebException;
+
 /**
  * @author steve
  */
-public class PasswordEncryptException extends Exception {
-    public PasswordEncryptException(Throwable cause) {
-        super(cause);
+public class PasswordEncryptException extends WebException {
+    private static final String ERROR_CODE = "PASSWORD_ENCRYPT_ERROR";
+
+    public PasswordEncryptException(String message, Throwable cause) {
+        super(ERROR_CODE, message, cause);
     }
 }

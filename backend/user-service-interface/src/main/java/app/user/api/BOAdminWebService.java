@@ -3,6 +3,7 @@ package app.user.api;
 import app.user.api.admin.BOCreateAdminRequest;
 import app.user.api.admin.BOGetAdminByEmailResponse;
 import app.user.api.admin.role.BOCreateRoleRequest;
+import app.web.error.WebException;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 @FeignClient(name = "admin-web-service")
 public interface BOAdminWebService {
     @RequestMapping(value = "/bo/admin", method = RequestMethod.POST)
-    void create(BOCreateAdminRequest request) throws Exception;
+    void create(BOCreateAdminRequest request) throws WebException;
 
     @RequestMapping(value = "/bo/admin", method = RequestMethod.GET)
     BOGetAdminByEmailResponse getByEmail(@RequestParam("email") String email);

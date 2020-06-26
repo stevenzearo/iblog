@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * @author steve
  */
+// todo refactor
 @RestController
 public class UserAJAXWebService {
     @Autowired(required = false)

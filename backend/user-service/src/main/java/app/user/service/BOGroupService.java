@@ -1,5 +1,6 @@
 package app.user.service;
 
+import app.user.ErrorCodes;
 import app.user.api.admin.group.BOCreateGroupRequest;
 import app.user.api.admin.group.BOGetGroupResponse;
 import app.user.api.admin.group.BOListGroupResponse;
@@ -10,7 +11,9 @@ import app.user.dao.RoleRepository;
 import app.user.domain.Authority;
 import app.user.domain.Group;
 import app.user.domain.Role;
+import app.web.error.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.time.ZonedDateTime;
 import java.util.List;
@@ -20,6 +23,7 @@ import java.util.stream.Collectors;
 /**
  * @author steve
  */
+@Service
 public class BOGroupService {
     @Autowired
     GroupRepository groupRepository;
@@ -67,7 +71,10 @@ public class BOGroupService {
         groupRepository.removeById(id);
     }
 
-    public String createRole(String groupId, BOCreateRoleRequest request) {
+    public String createRole(String groupId, BOCreateRoleRequest request) throws NotFoundException {
+        Group group = groupRepository.getById(groupId);
+        if (group == null) throw new NotFoundException(ErrorCodes.GROUP_NOT_FOUND, String.format("group not found, group id = %s", groupId));
+
         Role role = new Role();
         role.id = UUID.randomUUID().toString();
         role.groupId = groupId;
@@ -79,9 +86,12 @@ public class BOGroupService {
         return role.id;
     }
 
-    public void removeRole(String groupId, String id) throws Exception {
+    public void removeRole(String groupId, String id) throws NotFoundException {
         Group group = groupRepository.getById(groupId);
-        if (group == null) throw new Exception(String.format("group not found, id = %s", groupId));
+        if (group == null) throw new NotFoundException(ErrorCodes.GROUP_NOT_FOUND, String.format("group not found, id = %s", groupId));
+        Role role = roleRepository.getById(id);
+        if (role == null) throw new NotFoundException(ErrorCodes.ROLE_NOT_FOUND, String.format("role not found, id = %s", id));
+
         roleRepository.removeById(id);
     }
 }

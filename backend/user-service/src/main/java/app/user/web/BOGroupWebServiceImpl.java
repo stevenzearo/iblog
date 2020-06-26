@@ -6,14 +6,16 @@ import app.user.api.admin.group.BOGetGroupResponse;
 import app.user.api.admin.group.BOListGroupResponse;
 import app.user.api.admin.role.BOCreateRoleRequest;
 import app.user.service.BOGroupService;
-import javassist.NotFoundException;
+import app.web.error.NotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 /**
  * @author steve
  */
+@Component
 public class BOGroupWebServiceImpl implements BOGroupWebService {
     private final Logger logger = LoggerFactory.getLogger(BOGroupWebServiceImpl.class);
     @Autowired
@@ -42,13 +44,13 @@ public class BOGroupWebServiceImpl implements BOGroupWebService {
     }
 
     @Override
-    public void createRole(String groupId, BOCreateRoleRequest request) {
+    public void createRole(String groupId, BOCreateRoleRequest request) throws NotFoundException {
         String roleId = boGroupService.createRole(groupId, request);
         logger.info("created role, id = {}", roleId);
     }
 
     @Override
-    public void removeRole(String groupId, String id) throws Exception {
+    public void removeRole(String groupId, String id) throws NotFoundException {
         logger.info("removed role, id = {}", id);
         boGroupService.removeRole(groupId, id);
     }

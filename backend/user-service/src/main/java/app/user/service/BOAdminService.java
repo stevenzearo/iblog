@@ -1,5 +1,6 @@
 package app.user.service;
 
+import app.user.ErrorCodes;
 import app.user.PasswordEncryptException;
 import app.user.PasswordEncryptHelper;
 import app.user.api.admin.BOCreateAdminRequest;
@@ -11,6 +12,9 @@ import app.user.dao.RoleRepository;
 import app.user.domain.Admin;
 import app.user.domain.Group;
 import app.user.domain.Role;
+import app.web.error.ConflictException;
+import app.web.error.NotFoundException;
+import app.web.error.WebException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,9 +36,11 @@ public class BOAdminService {
     @Autowired
     RoleRepository roleRepository;
 
-    public String create(BOCreateAdminRequest request) throws Exception {
+    public String create(BOCreateAdminRequest request) throws WebException {
         Admin existAdmin = adminRepository.getFirstByEmail(request.email);
-        if (existAdmin != null) throw new Exception(String.format("email already exist, %s", request.email));
+        if (existAdmin != null) throw new ConflictException(ErrorCodes.EMAIL_EXIST, String.format("email already exist, email = %s", request.email));
+        Group group = groupRepository.getById(request.groupId);
+        if (group == null) throw new NotFoundException(ErrorCodes.GROUP_NOT_FOUND, String.format("group not found, groupId = %s", request.groupId));
 
         int byteVal = (int) Math.round(Math.random() * (int) Byte.MAX_VALUE) + 1; // 1 ~ 127
         char[] saltChar = Character.toChars(byteVal);
@@ -83,11 +89,11 @@ public class BOAdminService {
         BOGetAdminByEmailResponse.Group groupView = new BOGetAdminByEmailResponse.Group();
         groupView.id = group.id;
         groupView.name = group.name;
-        groupView.roles = roles.stream().map(this::bulidRoleView).collect(Collectors.toList());
+        groupView.roles = roles.stream().map(this::buildRoleView).collect(Collectors.toList());
         return groupView;
     }
 
-    private BOGetAdminByEmailResponse.Role bulidRoleView(Role role) {
+    private BOGetAdminByEmailResponse.Role buildRoleView(Role role) {
         BOGetAdminByEmailResponse.Role roleView = new BOGetAdminByEmailResponse.Role();
         roleView.name = role.name;
         roleView.authority = AuthorityView.valueOf(role.authority.name());

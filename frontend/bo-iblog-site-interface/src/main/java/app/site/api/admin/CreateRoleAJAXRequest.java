@@ -1,17 +1,15 @@
 package app.site.api.admin;
 
+import app.user.AuthorityView;
 import org.springframework.lang.NonNull;
 
 /**
  * @author steve
  */
-public class CreateAdminAJAXRequest {
+public class CreateRoleAJAXRequest {
     @NonNull
     public String name;
+
     @NonNull
-    public String email;
-    @NonNull
-    public String password;
-    @NonNull
-    public String groupId;
+    public AuthorityView authority;
 }

@@ -4,6 +4,7 @@ import app.user.api.admin.group.BOCreateGroupRequest;
 import app.user.api.admin.group.BOGetGroupResponse;
 import app.user.api.admin.group.BOListGroupResponse;
 import app.user.api.admin.role.BOCreateRoleRequest;
+import app.web.error.NotFoundException;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -30,8 +31,8 @@ public interface BOGroupWebService {
     void remove(@PathVariable("groupId") String id);
 
     @RequestMapping(value = "/bo/group/{groupId}/role", method = RequestMethod.POST)
-    void createRole(@PathVariable("groupId") String groupId, @RequestBody BOCreateRoleRequest request);
+    void createRole(@PathVariable("groupId") String groupId, @RequestBody BOCreateRoleRequest request) throws NotFoundException;
 
     @RequestMapping(value = "/bo/group/{groupId}/role/{id}", method = RequestMethod.DELETE)
-    void removeRole(@PathVariable("groupId") String groupId, @PathVariable("id") String id) throws Exception;
+    void removeRole(@PathVariable("groupId") String groupId, @PathVariable("id") String id) throws NotFoundException;
 }

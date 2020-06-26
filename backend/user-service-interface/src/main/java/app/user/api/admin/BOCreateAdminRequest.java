@@ -18,5 +18,4 @@ public class BOCreateAdminRequest {
     public String password;
 
     public String requestedBy;
-
 }
