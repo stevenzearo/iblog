@@ -23,7 +23,6 @@ public class BOAdminWebServiceImpl implements BOAdminWebService {
     public void create(BOCreateAdminRequest request) throws WebException {
         String id = boAdminService.create(request);
         logger.info("created admin, id = {}", id);
-        boAdminService.create(request);
     }
 
     @Override

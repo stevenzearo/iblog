@@ -5,7 +5,7 @@ package app.web.error;
  */
 public class WebException extends Exception {
     int code = WebErrorCodes.SERVER_ERROR;
-    String errorCode;
+    String errorCode = "INTERNAL_ERROR";
 
     public WebException() {
     }
@@ -29,7 +29,12 @@ public class WebException extends Exception {
         this.code = code;
         this.errorCode = errorCode;
     }
+
     public int getCode() {
         return code;
+    }
+
+    public String getErrorCode() {
+        return errorCode;
     }
 }

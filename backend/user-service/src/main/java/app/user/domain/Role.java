@@ -12,7 +12,7 @@ import java.time.ZonedDateTime;
  * @author steve
  */
 @Entity
-@Table(name = "roles")
+@Table(name = "`roles`")
 public class Role {
     @Id
     @NotNull
@@ -31,7 +31,6 @@ public class Role {
     public String name;
 
     @NotNull
-    @NotBlank
     @Column(name = "authority")
     public Authority authority;
 

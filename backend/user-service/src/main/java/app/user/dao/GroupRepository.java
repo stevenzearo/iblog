@@ -13,7 +13,7 @@ import java.util.List;
 public interface GroupRepository extends JpaRepository<Group, String> {
     Group save(Group group);
 
-    List<Group> find();
+    List<Group> findAll();
 
     Group getById(String id);
 

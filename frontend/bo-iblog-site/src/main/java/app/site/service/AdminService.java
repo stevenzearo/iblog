@@ -28,8 +28,9 @@ public class AdminService {
 
     public void create(CreateAdminAJAXRequest request) throws WebException {
         BOCreateAdminRequest boRequest = new BOCreateAdminRequest();
+        boRequest.groupId = request.groupId;
         boRequest.name = request.name;
-        boRequest.email = request.name;
+        boRequest.email = request.email;
         boRequest.password = request.password;
         boRequest.requestedBy = REQUESTED_BY;
         boAdminWebService.create(boRequest);
@@ -37,7 +38,8 @@ public class AdminService {
 
     public boolean login(String email, String password, HttpServletRequest request) throws WebException {
         BOGetAdminByEmailResponse admin = boAdminWebService.getByEmail(email);
-        if (admin == null) throw new NotFoundException(ErrorCodes.ADMIN_NOT_FOUND, String.format("admin not found, email = %s", email));
+        if (admin == null)
+            throw new NotFoundException(ErrorCodes.ADMIN_NOT_FOUND, String.format("admin not found, email = %s", email));
         String encryptedPassword = getEncryptedPassword(password, admin);
         if (!encryptedPassword.equals(admin.password)) return false;
         Admin sessionAdmin = buildSessionAdmin(admin);

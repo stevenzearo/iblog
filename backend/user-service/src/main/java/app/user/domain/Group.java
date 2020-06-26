@@ -12,7 +12,7 @@ import java.time.ZonedDateTime;
  * @author steve
  */
 @Entity
-@Table(name = "groups")
+@Table(name = "`groups`")
 public class Group {
     @Id
     @NotNull

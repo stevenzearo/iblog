@@ -14,4 +14,14 @@ public class CreateAdminAJAXRequest {
     public String password;
     @NonNull
     public String groupId;
+
+    @Override
+    public String toString() {
+        return "CreateAdminAJAXRequest{" +
+            "name='" + name + '\'' +
+            ", email='" + email + '\'' +
+            ", password='" + password + '\'' +
+            ", groupId='" + groupId + '\'' +
+            '}';
+    }
 }

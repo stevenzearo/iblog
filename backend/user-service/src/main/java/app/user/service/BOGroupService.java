@@ -13,6 +13,7 @@ import app.user.domain.Group;
 import app.user.domain.Role;
 import app.web.error.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.time.ZonedDateTime;
@@ -41,7 +42,7 @@ public class BOGroupService {
     }
 
     public BOListGroupResponse list() {
-        List<Group> groups = groupRepository.find();
+        List<Group> groups = groupRepository.findAll(Sort.by("createdTime").descending());
         BOListGroupResponse response = new BOListGroupResponse();
         response.groups = groups.stream().map(group -> {
             BOListGroupResponse.Group groupView = new BOListGroupResponse.Group();

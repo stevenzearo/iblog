@@ -11,7 +11,6 @@ import app.user.api.admin.group.BOListGroupResponse;
 import app.user.api.admin.role.BOCreateRoleRequest;
 import app.web.error.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,8 +22,7 @@ import java.util.stream.Collectors;
 @Service
 public class GroupService {
     private static final String REQUESTED_BY = "bo-iblog-site";
-    @Qualifier("group-web-service")
-    @Autowired(required = false)
+    @Autowired
     BOGroupWebService boGroupWebService;
 
     public void create(CreateGroupAJAXRequest request) {

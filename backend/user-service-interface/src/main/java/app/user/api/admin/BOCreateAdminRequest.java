@@ -6,6 +6,7 @@ import org.springframework.lang.NonNull;
  * @author steve
  */
 public class BOCreateAdminRequest {
+    @NonNull
     public String groupId;
 
     @NonNull
@@ -17,5 +18,6 @@ public class BOCreateAdminRequest {
     @NonNull
     public String password;
 
+    @NonNull
     public String requestedBy;
 }

@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public interface GroupAJAXWebService {
-
     @RequestMapping(value = "/ajax/group", method = RequestMethod.POST)
     void create(@RequestBody CreateGroupAJAXRequest request);
 

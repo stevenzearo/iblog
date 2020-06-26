@@ -7,7 +7,6 @@ CREATE TABLE IF NOT EXISTS `roles`
     `created_by`   VARCHAR(50)  NOT NULL,
     `created_time` timestamp(6) NOT NULL,
     PRIMARY KEY (`id`),
-    INDEX ix_group_id_created_time ('group_id', 'created_time')
+    INDEX ix_group_id_created_time (`group_id`, `created_time`)
 )
-    ENGINE = InnoDB
-    DEFAULT CHARACTER SET = utf8;
+    ENGINE = InnoDB;
