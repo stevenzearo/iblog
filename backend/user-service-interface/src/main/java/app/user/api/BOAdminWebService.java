@@ -2,7 +2,6 @@ package app.user.api;
 
 import app.user.api.admin.BOCreateAdminRequest;
 import app.user.api.admin.BOGetAdminByEmailResponse;
-import app.web.error.WebException;
 import app.web.response.EmptyResponse;
 import app.web.response.Response;
 import org.springframework.cloud.openfeign.FeignClient;

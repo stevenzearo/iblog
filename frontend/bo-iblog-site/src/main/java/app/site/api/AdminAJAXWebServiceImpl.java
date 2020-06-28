@@ -5,7 +5,6 @@ import app.site.service.AdminService;
 import app.web.error.WebException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author steve

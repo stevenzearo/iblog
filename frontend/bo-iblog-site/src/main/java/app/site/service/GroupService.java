@@ -13,6 +13,7 @@ import app.web.error.NotFoundException;
 import app.web.error.WebException;
 import app.web.response.EmptyResponse;
 import app.web.response.Response;
+import app.web.response.ResponseHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,13 +33,13 @@ public class GroupService {
         BOCreateGroupRequest boRequest = new BOCreateGroupRequest();
         boRequest.name = request.name;
         boRequest.requestedBy = REQUESTED_BY;
-        EmptyResponse emptyResponse = boGroupWebService.create(boRequest);
-        emptyResponse.checkStatusCode();
+        EmptyResponse response = boGroupWebService.create(boRequest);
+        ResponseHelper.checkStatusCode(response);
     }
 
     public ListGroupAJAXResponse list() throws WebException {
         Response<BOListGroupResponse> boResponse = boGroupWebService.list();
-        BOListGroupResponse data = boResponse.getDataWithException();
+        BOListGroupResponse data = ResponseHelper.fetchDataWithException(boResponse);
         List<ListGroupAJAXResponse.Group> groups = data.groups.stream().map(this::buildListGroupView).collect(Collectors.toList());
         ListGroupAJAXResponse response = new ListGroupAJAXResponse();
         response.groups = groups;
@@ -47,7 +48,7 @@ public class GroupService {
 
     public GetGroupAJAXResponse get(String id) throws WebException {
         Response<BOGetGroupResponse> boResponse = boGroupWebService.get(id);
-        BOGetGroupResponse data = boResponse.getDataWithException();
+        BOGetGroupResponse data = ResponseHelper.fetchDataWithException(boResponse);
         GetGroupAJAXResponse response = new GetGroupAJAXResponse();
         response.id = data.id;
         response.name = data.name;
@@ -56,8 +57,8 @@ public class GroupService {
     }
 
     public void remove(String id) throws WebException {
-        EmptyResponse emptyResponse = boGroupWebService.remove(id);
-        emptyResponse.checkStatusCode();
+        EmptyResponse response = boGroupWebService.remove(id);
+        ResponseHelper.checkStatusCode(response);
     }
 
     public void createRole(String groupId, CreateRoleAJAXRequest request) throws WebException {
@@ -65,8 +66,8 @@ public class GroupService {
         boRequest.name = request.name;
         boRequest.authority = request.authority;
         boRequest.requestedBy = REQUESTED_BY;
-        EmptyResponse emptyResponse = boGroupWebService.createRole(groupId, boRequest);
-        emptyResponse.checkStatusCode();
+        EmptyResponse response = boGroupWebService.createRole(groupId, boRequest);
+        ResponseHelper.checkStatusCode(response);
     }
 
     public void removeRole(String groupId, String id) throws NotFoundException {

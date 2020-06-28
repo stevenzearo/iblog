@@ -1,10 +1,12 @@
 package app.web.error;
 
+import java.io.Serializable;
+
 /**
  * @author steve
  */
-public class WebException extends Exception {
-    int code = WebErrorCodes.SERVER_ERROR;
+public class WebException extends Exception implements Serializable {
+    int statusCode = WebErrorCodes.SERVER_ERROR;
     String errorCode = "INTERNAL_ERROR";
 
     public WebException() {
@@ -27,19 +29,19 @@ public class WebException extends Exception {
         this.errorCode = errorCode;
     }
 
-    public WebException(int code, String message) {
+    public WebException(int statusCode, String message) {
         super(message);
-        this.code = code;
+        this.statusCode = statusCode;
     }
 
-    public WebException(int code, String errorCode, String message) {
+    public WebException(int statusCode, String errorCode, String message) {
         super(message);
-        this.code = code;
+        this.statusCode = statusCode;
         this.errorCode = errorCode;
     }
 
-    public int getCode() {
-        return code;
+    public int getStatusCode() {
+        return statusCode;
     }
 
     public String getErrorCode() {

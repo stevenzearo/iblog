@@ -8,6 +8,7 @@ import app.user.api.admin.role.BOCreateRoleRequest;
 import app.user.service.BOGroupService;
 import app.web.response.EmptyResponse;
 import app.web.response.Response;
+import app.web.response.ResponseHelper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,38 +25,39 @@ public class BOGroupWebServiceImpl implements BOGroupWebService {
 
     @Override
     public EmptyResponse create(BOCreateGroupRequest request) {
-        String id = boGroupService.create(request);
-        logger.info("created group, id = {}", id);
-        return Response.ok();
+        Response<String> response = ResponseHelper.encloseWithException(() -> boGroupService.create(request));
+        logger.info("created group, id = {}", response.data);
+        return response;
     }
 
     @Override
     public Response<BOListGroupResponse> list() {
-        return Response.okOf(boGroupService.list());
+        return ResponseHelper.okOf(boGroupService.list());
     }
 
     @Override
     public Response<BOGetGroupResponse> get(String id) {
-        return Response.okOf(boGroupService.get(id));
+        return ResponseHelper.okOf(boGroupService.get(id));
     }
 
     @Override
     public EmptyResponse remove(String id) {
         logger.info("removed group, id = {}", id);
+        Response<Object> response = ResponseHelper.encloseWithException(() -> boGroupService.remove(id));
         boGroupService.remove(id);
-        return Response.ok();
+        return response;
     }
 
     @Override
     public EmptyResponse createRole(String groupId, BOCreateRoleRequest request) {
-        Response<String> response = Response.encloseWithException(() -> boGroupService.createRole(groupId, request));
-        logger.info("created role, id = {}", response.getData());
-        return Response.encloseWithException(() -> boGroupService.createRole(groupId, request));
+        Response<String> response = ResponseHelper.encloseWithException(() -> boGroupService.createRole(groupId, request));
+        logger.info("created role, id = {}", response.data);
+        return response;
     }
 
     @Override
     public EmptyResponse removeRole(String groupId, String id) {
         logger.info("removed role, id = {}", id);
-        return Response.encloseWithException(() -> boGroupService.removeRole(groupId, id));
+        return ResponseHelper.encloseWithException(() -> boGroupService.removeRole(groupId, id));
     }
 }

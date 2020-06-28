@@ -6,6 +6,7 @@ import app.user.api.admin.BOGetAdminByEmailResponse;
 import app.user.service.BOAdminService;
 import app.web.response.EmptyResponse;
 import app.web.response.Response;
+import app.web.response.ResponseHelper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,13 +23,13 @@ public class BOAdminWebServiceImpl implements BOAdminWebService {
 
     @Override
     public EmptyResponse create(BOCreateAdminRequest request) {
-        Response<String> response = Response.encloseWithException(() -> boAdminService.create(request));
-        logger.info("created admin, id = {}", response.getData());
+        Response<String> response = ResponseHelper.encloseWithException(() -> boAdminService.create(request));
+        logger.info("created admin, id = {}", response.data);
         return response;
     }
 
     @Override
     public Response<BOGetAdminByEmailResponse> getByEmail(String email) {
-        return Response.okOf(boAdminService.getByEmail(email));
+        return ResponseHelper.okOf(boAdminService.getByEmail(email));
     }
 }

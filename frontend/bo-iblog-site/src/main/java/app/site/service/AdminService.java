@@ -10,6 +10,7 @@ import app.user.api.admin.BOGetAdminByEmailResponse;
 import app.web.error.WebException;
 import app.web.response.EmptyResponse;
 import app.web.response.Response;
+import app.web.response.ResponseHelper;
 import app.web.session.Admin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,13 +34,13 @@ public class AdminService {
         boRequest.email = request.email;
         boRequest.password = request.password;
         boRequest.requestedBy = REQUESTED_BY;
-        EmptyResponse emptyResponse = boAdminWebService.create(boRequest);
-        emptyResponse.checkStatusCode();
+        EmptyResponse response = boAdminWebService.create(boRequest);
+        ResponseHelper.checkStatusCode(response);
     }
 
     public boolean login(String email, String password, HttpServletRequest request) throws WebException {
         Response<BOGetAdminByEmailResponse> boResponse = boAdminWebService.getByEmail(email);
-        BOGetAdminByEmailResponse data = boResponse.getDataWithException();
+        BOGetAdminByEmailResponse data = ResponseHelper.fetchDataWithException(boResponse);
         String encryptedPassword = getEncryptedPassword(password, data);
         if (!encryptedPassword.equals(data.password)) return false;
         Admin sessionAdmin = buildSessionAdmin(data);

@@ -4,6 +4,7 @@ import app.user.api.UserWebService;
 import app.user.api.user.GetUserResponse;
 import app.user.service.UserService;
 import app.web.response.Response;
+import app.web.response.ResponseHelper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,6 @@ public class UserWebServiceImpl implements UserWebService {
     @Override
     public Response<GetUserResponse> get(Long id) {
         logger.debug(String.format("id: %d", id));
-        return Response.okOf(userService.get(id));
+        return ResponseHelper.okOf(userService.get(id));
     }
 }
