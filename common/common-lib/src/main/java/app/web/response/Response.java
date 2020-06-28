@@ -7,53 +7,74 @@ import app.web.error.WebException;
 /**
  * @author steve
  */
-public class Response<T> {
-    public static <A> Response<A> ok() {
-        return new Response<>(WebErrorCodes.OK);
+public class Response<T> extends EmptyResponse {
+    public static EmptyResponse ok() {
+        return new Response<>(null);
     }
 
     public static <A> Response<A> okOf(A data) {
-        return new Response<>(WebErrorCodes.OK, data);
+        return new Response<>(WebErrorCodes.OK, data, null);
     }
 
-    public static <E extends WebException> Response<E> errorOf(E e) {
-        return new Response<>(e.getCode(), e);
+    public static <E extends WebException> EmptyResponse errorOf(E e) {
+        return new Response<>(e.getCode(), null, e);
     }
 
-    public static <D> Response<D> encloseWithException(Supplier<D> supplier) {
+    public static EmptyResponse encloseWithException(SupplierWithoutReturn supplierWithoutReturn) {
+        try {
+            supplierWithoutReturn.call();
+        } catch (Exception e) {
+            return encloseException(e);
+        }
+        return ok();
+    }
+
+    public static <D> Response<D> encloseWithException(SupplierWithReturn<D> supplierWithReturn) {
         D data;
         try {
-            data = supplier.getVal();
+            data = supplierWithReturn.get();
         } catch (Exception e) {
-            WebException webException = new WebException(e);
-            if (e instanceof WebException) {
-                webException = (WebException) e;
-                return new Response<>(webException.getCode(), null, webException);
-            }
-            return new Response<>(webException.getCode(), null, webException);
+            return encloseException(e);
         }
         return okOf(data);
     }
-    private final int statusCode;
-    private T data;
-    private WebException exception;
 
-    private Response(int statusCode) {
-        this.statusCode = statusCode;
+    private static <D> Response<D> encloseException(Exception e) {
+        WebException webException = new WebException(e);
+        if (e instanceof WebException) {
+            webException = (WebException) e;
+            return new Response<>(webException.getCode(), null, webException);
+        }
+        return new Response<>(webException.getCode(), null, webException);
     }
 
-    private Response(int statusCode, T data) {
-        this.statusCode = statusCode;
+    private final T data;
+
+    public Response(T data) {
         this.data = data;
     }
 
+    private Response(int statusCode) {
+        super(statusCode);
+        this.statusCode = statusCode;
+        this.data = null;
+    }
+
     private Response(int statusCode, T data, WebException exception) {
+        super(statusCode, exception);
         this.statusCode = statusCode;
         this.data = data;
         this.exception = exception;
     }
 
     public T getData() {
+        return data;
+    }
+
+    public T getDataWithException() throws WebException {
+        if (statusCode != WebErrorCodes.OK && exception != null) {
+            throw exception;
+        }
         return data;
     }
 

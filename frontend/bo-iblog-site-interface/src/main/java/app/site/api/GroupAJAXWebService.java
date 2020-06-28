@@ -18,19 +18,19 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public interface GroupAJAXWebService {
     @RequestMapping(value = "/ajax/group", method = RequestMethod.POST)
-    void create(@RequestBody CreateGroupAJAXRequest request);
+    void create(@RequestBody CreateGroupAJAXRequest request) throws WebException;
 
     @RequestMapping(value = "/ajax/group", method = RequestMethod.GET)
-    ListGroupAJAXResponse list();
+    ListGroupAJAXResponse list() throws WebException;
 
     @RequestMapping(value = "/ajax/group/{groupId}", method = RequestMethod.GET)
-    GetGroupAJAXResponse get(@PathVariable("groupId") String id);
+    GetGroupAJAXResponse get(@PathVariable("groupId") String id) throws WebException;
 
     @RequestMapping(value = "/ajax/group/{groupId}", method = RequestMethod.DELETE)
-    void remove(@PathVariable("groupId") String id);
+    void remove(@PathVariable("groupId") String id) throws WebException;
 
     @RequestMapping(value = "/ajax/group/{groupId}/role", method = RequestMethod.POST)
-    void createRole(@PathVariable("groupId") String groupId, @RequestBody CreateRoleAJAXRequest request) throws NotFoundException;
+    void createRole(@PathVariable("groupId") String groupId, @RequestBody CreateRoleAJAXRequest request) throws WebException;
 
     @RequestMapping(value = "/ajax/group/{groupId}/role/{id}", method = RequestMethod.DELETE)
     void removeRole(@PathVariable("groupId") String groupId, @PathVariable("id") String id) throws WebException;

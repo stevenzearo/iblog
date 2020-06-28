@@ -10,6 +10,9 @@ import app.user.api.admin.group.BOGetGroupResponse;
 import app.user.api.admin.group.BOListGroupResponse;
 import app.user.api.admin.role.BOCreateRoleRequest;
 import app.web.error.NotFoundException;
+import app.web.error.WebException;
+import app.web.response.EmptyResponse;
+import app.web.response.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,40 +28,45 @@ public class GroupService {
     @Autowired
     BOGroupWebService boGroupWebService;
 
-    public void create(CreateGroupAJAXRequest request) {
+    public void create(CreateGroupAJAXRequest request) throws WebException {
         BOCreateGroupRequest boRequest = new BOCreateGroupRequest();
         boRequest.name = request.name;
         boRequest.requestedBy = REQUESTED_BY;
-        boGroupWebService.create(boRequest);
+        EmptyResponse emptyResponse = boGroupWebService.create(boRequest);
+        emptyResponse.checkStatusCode();
     }
 
-    public ListGroupAJAXResponse list() {
-        BOListGroupResponse boResponse = boGroupWebService.list();
-        List<ListGroupAJAXResponse.Group> groups = boResponse.groups.stream().map(this::buildListGroupView).collect(Collectors.toList());
+    public ListGroupAJAXResponse list() throws WebException {
+        Response<BOListGroupResponse> boResponse = boGroupWebService.list();
+        BOListGroupResponse data = boResponse.getDataWithException();
+        List<ListGroupAJAXResponse.Group> groups = data.groups.stream().map(this::buildListGroupView).collect(Collectors.toList());
         ListGroupAJAXResponse response = new ListGroupAJAXResponse();
         response.groups = groups;
         return response;
     }
 
-    public GetGroupAJAXResponse get(String id) {
-        BOGetGroupResponse boResponse = boGroupWebService.get(id);
+    public GetGroupAJAXResponse get(String id) throws WebException {
+        Response<BOGetGroupResponse> boResponse = boGroupWebService.get(id);
+        BOGetGroupResponse data = boResponse.getDataWithException();
         GetGroupAJAXResponse response = new GetGroupAJAXResponse();
-        response.id = boResponse.id;
-        response.name = boResponse.name;
-        response.roles = boResponse.roles.stream().map(this::buildGetGroupRoleView).collect(Collectors.toList());
+        response.id = data.id;
+        response.name = data.name;
+        response.roles = data.roles.stream().map(this::buildGetGroupRoleView).collect(Collectors.toList());
         return response;
     }
 
-    public void remove(String id) {
-        boGroupWebService.remove(id);
+    public void remove(String id) throws WebException {
+        EmptyResponse emptyResponse = boGroupWebService.remove(id);
+        emptyResponse.checkStatusCode();
     }
 
-    public void createRole(String groupId, CreateRoleAJAXRequest request) throws NotFoundException {
+    public void createRole(String groupId, CreateRoleAJAXRequest request) throws WebException {
         BOCreateRoleRequest boRequest = new BOCreateRoleRequest();
         boRequest.name = request.name;
         boRequest.authority = request.authority;
         boRequest.requestedBy = REQUESTED_BY;
-        boGroupWebService.createRole(groupId, boRequest);
+        EmptyResponse emptyResponse = boGroupWebService.createRole(groupId, boRequest);
+        emptyResponse.checkStatusCode();
     }
 
     public void removeRole(String groupId, String id) throws NotFoundException {

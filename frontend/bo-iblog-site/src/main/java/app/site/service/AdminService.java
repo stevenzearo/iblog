@@ -1,15 +1,15 @@
 package app.site.service;
 
 import app.site.api.admin.CreateAdminAJAXRequest;
-import app.site.web.ErrorCodes;
 import app.site.web.SessionContext;
 import app.user.PasswordEncryptException;
 import app.user.PasswordEncryptHelper;
 import app.user.api.BOAdminWebService;
 import app.user.api.admin.BOCreateAdminRequest;
 import app.user.api.admin.BOGetAdminByEmailResponse;
-import app.web.error.NotFoundException;
 import app.web.error.WebException;
+import app.web.response.EmptyResponse;
+import app.web.response.Response;
 import app.web.session.Admin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,16 +33,16 @@ public class AdminService {
         boRequest.email = request.email;
         boRequest.password = request.password;
         boRequest.requestedBy = REQUESTED_BY;
-        boAdminWebService.create(boRequest);
+        EmptyResponse emptyResponse = boAdminWebService.create(boRequest);
+        emptyResponse.checkStatusCode();
     }
 
     public boolean login(String email, String password, HttpServletRequest request) throws WebException {
-        BOGetAdminByEmailResponse admin = boAdminWebService.getByEmail(email);
-        if (admin == null)
-            throw new NotFoundException(ErrorCodes.ADMIN_NOT_FOUND, String.format("admin not found, email = %s", email));
-        String encryptedPassword = getEncryptedPassword(password, admin);
-        if (!encryptedPassword.equals(admin.password)) return false;
-        Admin sessionAdmin = buildSessionAdmin(admin);
+        Response<BOGetAdminByEmailResponse> boResponse = boAdminWebService.getByEmail(email);
+        BOGetAdminByEmailResponse data = boResponse.getDataWithException();
+        String encryptedPassword = getEncryptedPassword(password, data);
+        if (!encryptedPassword.equals(data.password)) return false;
+        Admin sessionAdmin = buildSessionAdmin(data);
         request.getSession().setAttribute(SessionContext.CURRENT_ADMIN, sessionAdmin);
         return true;
     }

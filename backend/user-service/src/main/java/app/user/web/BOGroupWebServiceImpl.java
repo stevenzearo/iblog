@@ -6,7 +6,7 @@ import app.user.api.admin.group.BOGetGroupResponse;
 import app.user.api.admin.group.BOListGroupResponse;
 import app.user.api.admin.role.BOCreateRoleRequest;
 import app.user.service.BOGroupService;
-import app.web.error.NotFoundException;
+import app.web.response.EmptyResponse;
 import app.web.response.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,7 +23,7 @@ public class BOGroupWebServiceImpl implements BOGroupWebService {
     BOGroupService boGroupService;
 
     @Override
-    public Response<Object> create(BOCreateGroupRequest request) {
+    public EmptyResponse create(BOCreateGroupRequest request) {
         String id = boGroupService.create(request);
         logger.info("created group, id = {}", id);
         return Response.ok();
@@ -40,24 +40,22 @@ public class BOGroupWebServiceImpl implements BOGroupWebService {
     }
 
     @Override
-    public Response<Object> remove(String id) {
+    public EmptyResponse remove(String id) {
         logger.info("removed group, id = {}", id);
         boGroupService.remove(id);
         return Response.ok();
     }
 
     @Override
-    public Response<Object> createRole(String groupId, BOCreateRoleRequest request) {
-        Response.encloseWithException(() -> boGroupService.createRole(groupId, request));
-        String roleId = boGroupService.createRole(groupId, request);
-        logger.info("created role, id = {}", roleId);
-        return Response.ok();
+    public EmptyResponse createRole(String groupId, BOCreateRoleRequest request) {
+        Response<String> response = Response.encloseWithException(() -> boGroupService.createRole(groupId, request));
+        logger.info("created role, id = {}", response.getData());
+        return Response.encloseWithException(() -> boGroupService.createRole(groupId, request));
     }
 
     @Override
-    public Response<Object> removeRole(String groupId, String id) {
+    public EmptyResponse removeRole(String groupId, String id) {
         logger.info("removed role, id = {}", id);
-        boGroupService.removeRole(groupId, id);
-        return Response.ok();
+        return Response.encloseWithException(() -> boGroupService.removeRole(groupId, id));
     }
 }

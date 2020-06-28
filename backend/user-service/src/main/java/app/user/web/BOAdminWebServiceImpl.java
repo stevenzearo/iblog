@@ -4,7 +4,7 @@ import app.user.api.BOAdminWebService;
 import app.user.api.admin.BOCreateAdminRequest;
 import app.user.api.admin.BOGetAdminByEmailResponse;
 import app.user.service.BOAdminService;
-import app.web.error.WebException;
+import app.web.response.EmptyResponse;
 import app.web.response.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,10 +21,10 @@ public class BOAdminWebServiceImpl implements BOAdminWebService {
     BOAdminService boAdminService;
 
     @Override
-    public Response<Object> create(BOCreateAdminRequest request) throws WebException {
-        String id = boAdminService.create(request);
-        logger.info("created admin, id = {}", id);
-        return Response.ok();
+    public EmptyResponse create(BOCreateAdminRequest request) {
+        Response<String> response = Response.encloseWithException(() -> boAdminService.create(request));
+        logger.info("created admin, id = {}", response.getData());
+        return response;
     }
 
     @Override
