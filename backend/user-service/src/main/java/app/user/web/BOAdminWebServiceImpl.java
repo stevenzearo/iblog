@@ -5,6 +5,7 @@ import app.user.api.admin.BOCreateAdminRequest;
 import app.user.api.admin.BOGetAdminByEmailResponse;
 import app.user.service.BOAdminService;
 import app.web.error.WebException;
+import app.web.response.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,13 +21,14 @@ public class BOAdminWebServiceImpl implements BOAdminWebService {
     BOAdminService boAdminService;
 
     @Override
-    public void create(BOCreateAdminRequest request) throws WebException {
+    public Response<Object> create(BOCreateAdminRequest request) throws WebException {
         String id = boAdminService.create(request);
         logger.info("created admin, id = {}", id);
+        return Response.ok();
     }
 
     @Override
-    public BOGetAdminByEmailResponse getByEmail(String email) {
-        return boAdminService.getByEmail(email);
+    public Response<BOGetAdminByEmailResponse> getByEmail(String email) {
+        return Response.okOf(boAdminService.getByEmail(email));
     }
 }

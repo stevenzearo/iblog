@@ -7,6 +7,7 @@ import app.user.api.admin.group.BOListGroupResponse;
 import app.user.api.admin.role.BOCreateRoleRequest;
 import app.user.service.BOGroupService;
 import app.web.error.NotFoundException;
+import app.web.response.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,36 +23,41 @@ public class BOGroupWebServiceImpl implements BOGroupWebService {
     BOGroupService boGroupService;
 
     @Override
-    public void create(BOCreateGroupRequest request) {
+    public Response<Object> create(BOCreateGroupRequest request) {
         String id = boGroupService.create(request);
         logger.info("created group, id = {}", id);
+        return Response.ok();
     }
 
     @Override
-    public BOListGroupResponse list() {
-        return boGroupService.list();
+    public Response<BOListGroupResponse> list() {
+        return Response.okOf(boGroupService.list());
     }
 
     @Override
-    public BOGetGroupResponse get(String id) {
-        return boGroupService.get(id);
+    public Response<BOGetGroupResponse> get(String id) {
+        return Response.okOf(boGroupService.get(id));
     }
 
     @Override
-    public void remove(String id) {
+    public Response<Object> remove(String id) {
         logger.info("removed group, id = {}", id);
         boGroupService.remove(id);
+        return Response.ok();
     }
 
     @Override
-    public void createRole(String groupId, BOCreateRoleRequest request) throws NotFoundException {
+    public Response<Object> createRole(String groupId, BOCreateRoleRequest request) {
+        Response.encloseWithException(() -> boGroupService.createRole(groupId, request));
         String roleId = boGroupService.createRole(groupId, request);
         logger.info("created role, id = {}", roleId);
+        return Response.ok();
     }
 
     @Override
-    public void removeRole(String groupId, String id) throws NotFoundException {
+    public Response<Object> removeRole(String groupId, String id) {
         logger.info("removed role, id = {}", id);
         boGroupService.removeRole(groupId, id);
+        return Response.ok();
     }
 }

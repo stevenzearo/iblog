@@ -4,6 +4,7 @@ package app.web.error;
  * @author steve
  */
 public class WebErrorCodes {
+    public static final int OK = 200;
     public static final int NOT_ALLOWED = 400;
     public static final int UNAUTHORIZED = 401;
     public static final int FORBIDDEN = 403;

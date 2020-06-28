@@ -14,6 +14,14 @@ public class WebException extends Exception {
         super(message);
     }
 
+    public WebException(Throwable cause) {
+        super(cause);
+    }
+
+    public WebException(String message, Throwable cause) {
+        super(message, cause);
+    }
+
     public WebException(String errorCode, String message, Throwable cause) {
         super(message, cause);
         this.errorCode = errorCode;
