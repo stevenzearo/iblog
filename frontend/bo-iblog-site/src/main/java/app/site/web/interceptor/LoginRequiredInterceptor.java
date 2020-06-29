@@ -1,6 +1,7 @@
 package app.site.web.interceptor;
 
 import app.site.web.ErrorCodes;
+import app.site.web.RequestMethod;
 import app.site.web.SessionContextHelper;
 import app.web.error.UnAuthorizedException;
 import app.web.session.Admin;
@@ -18,6 +19,7 @@ import java.util.Optional;
 public class LoginRequiredInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+        if (RequestMethod.OPTIONS.equals(request.getMethod())) return false;
         if (request.getRequestURI().startsWith("/admin/login")) return true;
         Optional<Admin> currentUser = SessionContextHelper.getAdmin(request.getSession());
         if (currentUser.isEmpty()) throw new UnAuthorizedException(ErrorCodes.UNAUTHORIZED, "unauthorized, please sign in first!!!");

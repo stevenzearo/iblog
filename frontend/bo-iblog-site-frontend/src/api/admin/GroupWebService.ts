@@ -1,7 +1,8 @@
-import {Ajax, AjaxProps} from "../../util/ajax";
+import {Ajax, AjaxProps, Method} from "../../util/ajax";
+import {headers} from "./AdminWebService";
 
 export class ListGroupResponse {
-    public groups: Group[];
+    public groups: Group[] | null;
 
     constructor(groups: Group[]) {
         this.groups = groups;
@@ -38,27 +39,11 @@ export enum AuthorityView {
 
 
 export class GroupWebService {
-    static list(): Group[] {
-        let groups: Group[] = [];
-        let result2;
+    static list(func: (result: any) => any) {
         const props: AjaxProps = {
             url: "http://localhost:8410/ajax/group",
-            // alert(data.groups.length);
-        func: (result) => {
-                if (result.status === 200) {
-                    groups = result.data.groups;
-                } else {
-                    result.rejct();
-                }
-            // alert(result.data.groups[0].id + "");
-                // result = data.groups;
-                // result2 = result;
-            },
         };
-        Ajax.get(props);
-        // alert(JSON.stringify(result));
-        props.data = result2;
-        return groups;
+        Ajax.ajax(Method.GET, props).then(func);
     }
 
     static get(id: String): Group | null {

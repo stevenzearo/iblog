@@ -2,7 +2,6 @@ import axios from 'axios'
 
 export interface AjaxProps {
     url: string,
-    func: (value: any) => void,
     params?: any,
     data?: any,
     headers?: any,
@@ -22,15 +21,28 @@ export enum Method {
 }
 
 export const Ajax = {
-    get: (props: AjaxProps): void => {
-        axios.get(props.url, {params: props.params, data: props.data, headers: props.headers, withCredentials: true})
-            .then(props.func);
+    get: (props: AjaxProps): Promise<any> => {
+        return axios( {
+            method: "GET",
+            url: props.url,
+            params: props.params,
+            data: props.data,
+            headers: props.headers,
+            withCredentials: true
+        });
     },
 
-    ajax: (method: Method, props: AjaxProps): void => {
-        axios(props.url, {method: method, params: props.params, data: props.data, headers: props.headers, withCredentials: true})
-            .then(props.func, (result) => {alert(JSON.stringify(result))});
+    ajax: (method: Method, props: AjaxProps): Promise<any> => {
+        return axios({
+            url: props.url,
+            method: method,
+            params: props.params,
+            data: props.data,
+            headers: props.headers,
+            withCredentials: true,
+            validateStatus: status => {
+                return !!status
+            }
+        });
     }
 };
-
-
