@@ -16,4 +16,12 @@ public class EmptyResponse {
         this.statusCode = statusCode;
         this.error = error;
     }
+
+    @Override
+    public String toString() {
+        return "EmptyResponse{" +
+            "statusCode=" + statusCode +
+            ", error=" + error +
+            '}';
+    }
 }
