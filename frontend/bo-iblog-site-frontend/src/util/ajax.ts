@@ -2,24 +2,34 @@ import axios from 'axios'
 
 export interface AjaxProps {
     url: string,
-    func: ({}) => {} | any | void,
+    func: (value: any) => void,
     params?: any,
     data?: any,
     headers?: any,
-    onError?: (error: Error | {}) => {} | any | void
 }
 
-export interface Error {
+export interface RequestError {
     statusCode: number,
     errorCode: string | null,
     message: string
 }
 
+export enum Method {
+    GET = "GET",
+    PUT = "PUT",
+    POST = "POST",
+    DELETE = "DELETE"
+}
+
 export const Ajax = {
-    get: (props: AjaxProps) => {
-        axios.get(props.url, {params: props.params, data: props.data, headers: props.headers})
-            .then(props.func)
-            .catch(props.onError)
+    get: (props: AjaxProps): void => {
+        axios.get(props.url, {params: props.params, data: props.data, headers: props.headers, withCredentials: true})
+            .then(props.func);
+    },
+
+    ajax: (method: Method, props: AjaxProps): void => {
+        axios(props.url, {method: method, params: props.params, data: props.data, headers: props.headers, withCredentials: true})
+            .then(props.func, (result) => {alert(JSON.stringify(result))});
     }
 };
 

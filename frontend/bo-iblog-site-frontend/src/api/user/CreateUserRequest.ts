@@ -8,5 +8,3 @@ export class CreateUserRequest {
         this.password = password;
     }
 }
-
-// ((in_time < out_time) < 入住) or (离开 < (in_time < out_time))

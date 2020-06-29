@@ -1,57 +1,68 @@
 import React from 'react';
-import {User} from "./User";
-import {HomeProp, HomeState} from "./HomeProp";
-import {UserComponentProp, UserComponentState} from "./UserComponentProp";
+import User from './user';
+import UserComponent from "./userComponent";
+import {AdminWebService} from "../../api/admin/AdminWebService";
+import {Group, GroupWebService} from "../../api/admin/GroupWebService";
+
+export interface HomeProp {
+}
+
+export interface HomeState {
+    user: User | null,
+    data?: any,
+    isLogin: boolean
+}
 
 class Home extends React.Component<HomeProp, HomeState> {
-    public user: User | null;
 
     constructor(props: any) {
         super(props);
-        this.user = props.user;
+        this.state = {
+            user: props.user,
+            data: null,
+            isLogin: false
+        }
     }
+
+    login = () => {
+        if (this.state.isLogin) return;
+
+        var isLogin = AdminWebService.login("qq@qq.com", "aaaa");
+        this.setState((state) => {
+            let groupData: Group[] = [];
+            if (state.data == null) {
+                groupData = GroupWebService.list();
+            }
+            return {
+                user: state.user,
+                data: groupData.length > 0 ? groupData : state.data,
+                isLogin: isLogin
+            }
+        })
+    };
+
+    logout = () => {
+        if (this.state.isLogin) {
+            AdminWebService.logout();
+        }
+        this.setState((state) => {
+            return {
+                user: state.user,
+                data: state.data,
+                isLogin: false
+            }
+        })
+
+    };
 
     render() {
         return (
             <div>
                 <h1>Hello, world!</h1>
-                <UserComponent user={this.user}/>
-            </div>
-        );
-    }
-}
-
-class UserComponent extends React.Component<UserComponentProp, UserComponentState> {
-
-    constructor(props: any, context: any) {
-        super(props, context);
-        this.state = {user: props.user}
-    }
-
-    setUser(user: User) {
-        this.setState((state: UserComponentState): UserComponentState | any => {
-            return {id: user.id, name: user.name, age: user.age, email: user.email}
-        })
-    }
-
-    // parent method
-    componentDidMount() {
-    }
-
-    // parent method
-    componentWillUnmount() {
-    }
-
-    render() {
-        return (
-            <div>
-                <ul>
-                    user info:
-                    <li>{this.state.user?.id}</li>
-                    <li>{this.state.user?.name}</li>
-                    <li>{this.state.user?.age}</li>
-                    <li>{this.state.user?.email}</li>
-                </ul>
+                <UserComponent user={this.state.user}/>
+                <button onClick={this.login}>login</button>
+                <button onClick={this.logout}>logout</button>
+                <span>id: {this.state.data == null ? null : this.state.data[0].id}</span><span>name: {this.state.data == null ? null : this.state.data[0].name}</span>
             </div>
         );
     }
