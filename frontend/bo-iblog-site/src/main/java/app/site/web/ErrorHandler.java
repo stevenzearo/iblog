@@ -22,28 +22,24 @@ public class ErrorHandler {
     @ExceptionHandler(Exception.class)
     public ErrorResponse handleError(HttpServletResponse response, Exception exception) {
         WebException webException = new WebException(exception.getMessage());
+        ErrorResponse errorResponse = new ErrorResponse(webException);
+
         if (exception instanceof WebException) {
             webException = (WebException) exception;
-            handleError(response, webException);
-        } else {
-            logger.error(MarkerFactory.getMarker(webException.getErrorCode()), exception.getMessage(), exception);
+            errorResponse = new ErrorResponse(webException);
+        } else if (exception instanceof HttpRequestMethodNotSupportedException) {
+            HttpRequestMethodNotSupportedException methodNotSupportedException = (HttpRequestMethodNotSupportedException) exception;
+            errorResponse = handleError(methodNotSupportedException);
         }
-        response.setStatus(webException.getStatusCode());
-        return new ErrorResponse(webException);
-    }
 
-    @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
-    public ErrorResponse handleError(HttpServletResponse response, HttpRequestMethodNotSupportedException exception) {
-        MethodNotAllowedException webException = new MethodNotAllowedException(exception.getMessage());
         logger.error(MarkerFactory.getMarker(webException.getErrorCode()), exception.getMessage(), exception);
         response.setStatus(webException.getStatusCode());
-        return new ErrorResponse(webException);
+        return errorResponse;
     }
 
-    @ExceptionHandler(WebException.class)
-    public ErrorResponse handleError(HttpServletResponse response, WebException exception) {
-        logger.error(MarkerFactory.getMarker(exception.getErrorCode()), exception.getMessage(), exception);
-        response.setStatus(exception.getStatusCode());
-        return new ErrorResponse(exception);
+    private ErrorResponse handleError(HttpRequestMethodNotSupportedException exception) {
+        MethodNotAllowedException webException = new MethodNotAllowedException(exception.getMessage());
+        logger.error(MarkerFactory.getMarker(webException.getErrorCode()), exception.getMessage(), exception);
+        return new ErrorResponse(webException);
     }
 }
