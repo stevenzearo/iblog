@@ -29,7 +29,7 @@ class UserComponent extends React.Component<UserComponentProp, UserComponentStat
     }
 
     setUser(user: User) {
-        this.setState( (state: UserComponentState) : UserComponentState | any => {
+        this.setState((state: UserComponentState): UserComponentState | any => {
             return {id: user.id, name: user.name, age: user.age, email: user.email}
         })
     }
