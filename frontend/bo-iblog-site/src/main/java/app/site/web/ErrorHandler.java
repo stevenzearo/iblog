@@ -10,6 +10,8 @@ import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import javax.servlet.http.HttpServletResponse;
+
 /**
  * @author steve
  */
@@ -18,27 +20,30 @@ public class ErrorHandler {
     private final Logger logger = LoggerFactory.getLogger(ErrorHandler.class);
 
     @ExceptionHandler(Exception.class)
-    public ErrorResponse handleError(Exception exception) {
+    public ErrorResponse handleError(HttpServletResponse response, Exception exception) {
         WebException webException = new WebException(exception.getMessage());
         if (exception instanceof WebException) {
             webException = (WebException) exception;
-            handleError(webException);
+            handleError(response, webException);
         } else {
             logger.error(MarkerFactory.getMarker(webException.getErrorCode()), exception.getMessage(), exception);
         }
+        response.setStatus(webException.getStatusCode());
         return new ErrorResponse(webException);
     }
 
     @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
-    public ErrorResponse handleError(HttpRequestMethodNotSupportedException exception) {
+    public ErrorResponse handleError(HttpServletResponse response, HttpRequestMethodNotSupportedException exception) {
         MethodNotAllowedException webException = new MethodNotAllowedException(exception.getMessage());
         logger.error(MarkerFactory.getMarker(webException.getErrorCode()), exception.getMessage(), exception);
+        response.setStatus(webException.getStatusCode());
         return new ErrorResponse(webException);
     }
 
     @ExceptionHandler(WebException.class)
-    public ErrorResponse handleError(WebException exception) {
+    public ErrorResponse handleError(HttpServletResponse response, WebException exception) {
         logger.error(MarkerFactory.getMarker(exception.getErrorCode()), exception.getMessage(), exception);
+        response.setStatus(exception.getStatusCode());
         return new ErrorResponse(exception);
     }
 }
