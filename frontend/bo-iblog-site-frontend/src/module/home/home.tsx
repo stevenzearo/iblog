@@ -2,7 +2,7 @@ import React from 'react';
 import User from './user';
 import UserComponent from "./userComponent";
 import {AdminWebService} from "../../api/admin/AdminWebService";
-import {GroupWebService} from "../../api/admin/GroupWebService";
+import {GroupWebService, ListGroupResponse} from "../../api/admin/GroupWebService";
 
 export interface HomeProp {
 }
@@ -14,7 +14,6 @@ export interface HomeState {
 }
 
 class Home extends React.Component<HomeProp, HomeState> {
-
     constructor(props: any) {
         super(props);
         this.state = {
@@ -24,42 +23,39 @@ class Home extends React.Component<HomeProp, HomeState> {
         };
     }
 
-    static listGroups(func: (value: any) => void) {
-        return GroupWebService.list(func);
-    }
+    updateGroupInfo = (listGroupResponse: ListGroupResponse) => {
+        this.setState(state => {
+            return {
+                user: state.user,
+                data: listGroupResponse ? listGroupResponse.groups : state.data,
+                isLogin: true
+            }
+        });
+    };
+
+    setIsLogin = (result: any) => {
+        if (result.status === 200) {
+            this.setState((state) => {
+                return {
+                    user: state.user,
+                    data: null,
+                    isLogin: true
+                };
+            })
+        }
+        GroupWebService.list(this.updateGroupInfo);
+    };
 
     login = () => {
         if (this.state.isLogin) return;
-
-        AdminWebService.login("qq12@qq.com", "1234", (result) => {
-            if (result.status === 200 || result.status === 409) {
-                this.setState((state) => {
-                    return {
-                        user: state.user,
-                        data: null,
-                        isLogin: true
-                    }
-                });
-                Home.listGroups(
-                    (result) => {
-                        this.setState(state => {
-                            return {
-                                user: state.user,
-                                data: result.data ? result.data.groups : state.data,
-                                isLogin: state.isLogin
-                            }
-                        })
-                    }
-                );
-            }
-        });
-
+        // AdminWebService.login("qq12@qq.com", "1234", this.setIsLogin);
+        AdminWebService.login("qq@qq.com", "aaaa", this.setIsLogin);
     };
 
     logout = () => {
         if (this.state.isLogin) {
             AdminWebService.logout((result) => {
-                if (result.status == 200) {
+                if (result.status === 200) {
                     this.setState((state) => {
                         return {
                             user: state.user,

@@ -1,9 +1,10 @@
-import {Ajax, AjaxProps, Method, RequestError} from "../../util/ajax";
-export const headers = {userId: ""};
+import {Ajax, AjaxProps, Method} from "../../util/ajax";
+const SERVER_DOMAIN = "http://localhost:8410";
+
 export class AdminWebService {
     static login(email: String, password: string, func: (result: any) => void): void {
         const props: AjaxProps = {
-            url: "http://localhost:8410/admin/login",
+            url: `${SERVER_DOMAIN}/admin/login`,
             params: {email: email, password: password},
         };
         Ajax.ajax(Method.POST, props).then(func);
@@ -11,7 +12,7 @@ export class AdminWebService {
 
     static logout(func: (result: any) => void): void {
         const props: AjaxProps = {
-            url: "http://localhost:8410/admin/logout",
+            url: `${SERVER_DOMAIN}/admin/logout`,
         };
         Ajax.ajax(Method.GET, props).then(func);
     }

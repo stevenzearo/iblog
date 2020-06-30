@@ -21,17 +21,6 @@ export enum Method {
 }
 
 export const Ajax = {
-    get: (props: AjaxProps): Promise<any> => {
-        return axios( {
-            method: "GET",
-            url: props.url,
-            params: props.params,
-            data: props.data,
-            headers: props.headers,
-            withCredentials: true
-        });
-    },
-
     ajax: (method: Method, props: AjaxProps): Promise<any> => {
         return axios({
             url: props.url,
