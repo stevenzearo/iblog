@@ -19,7 +19,7 @@ public class InterceptorConfig implements WebMvcConfigurer {
     public void addCorsMappings(CorsRegistry registry) {
         // process error: Reason: CORS header "Access-Control-Allow-Origin" missing
         registry.addMapping("/**")
-            .allowedOrigins("http://localhost:3000")
+            .allowedOrigins("*")
             .allowedMethods("POST", "GET", "PUT", "OPTIONS", "DELETE")
             .maxAge(3600)
             .allowCredentials(true);
