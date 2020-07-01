@@ -17,9 +17,9 @@ mkdir -p 'package/backend/user-service'
 mkdir -p 'package/frontend/registry-site'
 mkdir -p 'package/frontend/bo-iblog-site'
 
-tar -xvf ./frontend/registry-site/build/distribution/registry-site-1.0-SNAPSHOT.tar
-tar -xvf ./backend/user-service/build/distribution/user-service-1.0-SNAPSHOT.tar
-tar -xvf ./frontend/bo-iblog-site/build/distribution/bo-iblog-site-1.0-SNAPSHOT.tar
+tar -xvf ./frontend/registry-site/build/distributions/registry-site-1.0-SNAPSHOT.tar
+tar -xvf ./backend/user-service/build/distributions/user-service-1.0-SNAPSHOT.tar
+tar -xvf ./frontend/bo-iblog-site/build/distributions/bo-iblog-site-1.0-SNAPSHOT.tar
 
 mv user-service-1.0-SNAPSHOT package/backend/user-service
 mv registry-site-1.0-SNAPSHOT package/frontend/registry-site
