@@ -28,9 +28,9 @@ mv bo-iblog-site-1.0-SNAPSHOT package/frontend/bo-iblog-site
 chmod +x ./package/frontend/registry-site/registry-site-1.0-SNAPSHOT/bin/registry-site
 nohup ./package/frontend/registry-site/bin/registry-site &
 
-chmod +x ./package/backend/user-service/user-service-1.0-SNAPSHOT/bin/registry-site
-nohup ./package/frontend/registry-site/user-service-1.0-SNAPSHOT/bin/registry-site &
+chmod +x ./package/backend/user-service/user-service-1.0-SNAPSHOT/bin/user-service
+nohup ./package/backend/user-service/user-service-1.0-SNAPSHOT/bin/user-service &
 
 
-chmod +x ./package/frontend/bo-iblog-site/bo-iblog-site-1.0-SNAPSHOT/bin/registry-site
-nohup ./package/frontend/bo-iblog-site/bo-iblog-site-1.0-SNAPSHOT/bin/registry-site &
+chmod +x ./package/frontend/bo-iblog-site/bo-iblog-site-1.0-SNAPSHOT/bin/bo-iblog-site
+nohup ./package/frontend/bo-iblog-site/bo-iblog-site-1.0-SNAPSHOT/bin/bo-iblog-site &
