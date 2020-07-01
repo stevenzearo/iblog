@@ -1,5 +1,5 @@
 import {Ajax, AjaxProps, Method} from "../../util/ajax";
-const SERVER_DOMAIN = "http://localhost:8410";
+import {SERVER_DOMAIN} from "../../react-app-env";
 
 export class AdminWebService {
     static login(email: String, password: string, func: (result: any) => void): void {

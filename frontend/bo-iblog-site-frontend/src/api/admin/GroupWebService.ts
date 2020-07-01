@@ -1,6 +1,5 @@
 import {Ajax, AjaxProps, Method} from "../../util/ajax";
-
-const SERVER_DOMAIN = "http://localhost:8410";
+import {SERVER_DOMAIN} from "../../react-app-env";
 
 export class CreateGroupAJAXRequest {
     public name: string;
