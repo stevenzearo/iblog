@@ -26,7 +26,7 @@ mv registry-site-1.0-SNAPSHOT package/frontend/registry-site
 mv bo-iblog-site-1.0-SNAPSHOT package/frontend/bo-iblog-site
 
 chmod +x ./package/frontend/registry-site/registry-site-1.0-SNAPSHOT/bin/registry-site
-nohup ./package/frontend/registry-site/bin/registry-site &
+nohup ./package/frontend/registry-site/registry-site-1.0-SNAPSHOT/bin/registry-site &
 
 chmod +x ./package/backend/user-service/user-service-1.0-SNAPSHOT/bin/user-service
 nohup ./package/backend/user-service/user-service-1.0-SNAPSHOT/bin/user-service &
