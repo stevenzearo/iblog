@@ -38,7 +38,7 @@ class RegisterPage extends React.Component<RegisterPageProps, RegisterPageState>
         }
     }
 
-    setUserName = (e: React.FocusEventHandler) => {
+    setUserName = () => {
         // var userName = e.prototype.val();
         alert(1)
     };
@@ -79,7 +79,7 @@ class RegisterPage extends React.Component<RegisterPageProps, RegisterPageState>
         return (
             <div className='login-page'>
                 <TextInput id='user-name' name='user-name' label='用户名' type='text' placeholder='请输入用户名'
-                           onBlur={this.setUserName}/>
+                           onBlur={this.setUserName.bind(this)}/>
                 <TextInput id='password' name='password' label='密码' type='password' placeholder='请输入密码'/>
                 <TextInput id='password-to-confirm' name='password-to-confirm' label='确认密码' type='password'
                            placeholder='请确认密码' onBlur={this.confirmPassword}/>

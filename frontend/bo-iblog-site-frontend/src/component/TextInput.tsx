@@ -1,15 +1,14 @@
 import React from 'react';
 import '../index.css';
 import './TextInput.css';
+import {ComponentProp} from "../module/login/component/component";
 
-export interface TextInputProp {
+export interface TextInputProp extends ComponentProp {
     id: string | undefined;
     name: any;
     label: any;
     type: any;
     placeholder: string | undefined;
-    onBlur?: (e: React.FocusEventHandler) => void;
-    onFocus?: (e: React.FocusEventHandler) => void;
 }
 
 export interface TextInputState {
@@ -19,10 +18,12 @@ export interface TextInputState {
 
 export class TextInput extends React.Component<TextInputProp, TextInputState> {
 
+    public input: any | null;
 
     constructor(props: Readonly<TextInputProp>) {
         super(props);
-        this.state = {id: "", value: ""}
+        this.state = {id: "", value: ""};
+        this.input = React.createRef();
     }
 
     setValue = () => {
@@ -37,9 +38,8 @@ export class TextInput extends React.Component<TextInputProp, TextInputState> {
         return (
             <div className='text-input'>
                 <label htmlFor={this.props.id}>{this.props.label} :</label>
-                <input id={this.props.id} name={this.props.name} type={this.props.type}
-                       placeholder={this.props.placeholder}
-                       onBlur={this.setValue}/>
+                <input ref={(ref) => this.input = ref} id={this.props.id} name={this.props.name} type={this.props.type}
+                       placeholder={this.props.placeholder} onBlur={this.props.onBlur}/>
             </div>
         );
     }
