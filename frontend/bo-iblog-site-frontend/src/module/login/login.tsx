@@ -1,5 +1,6 @@
 import React from 'react';
 import '../../index.css';
+import './login.css';
 import '../../component/SubmitButton.css';
 import TextInput from '../../component/TextInput'
 import {History} from "history";
@@ -54,6 +55,7 @@ export class LoginPage extends React.Component<LoginPageProps, LoginPageState> {
     render() {
         return (
             <div className='login-page'>
+                <div className='login-head'>sigin in</div>
                 <Email ref={this.setEmailInput} onBlur={this.alertEmail}/>
                 <TextInput id='password' name='password' label='密码' type='password' placeholder='请输入密码'/>
                 <button className='submit-button' onClick={this.loginCheck}>提交</button>
