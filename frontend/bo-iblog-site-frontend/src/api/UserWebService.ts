@@ -1,4 +1,3 @@
-import $ from 'jquery';
 import {CreateUserRequest} from "./user/CreateUserRequest";
 import {GetUserResponse} from "./user/GetUserResponse";
 

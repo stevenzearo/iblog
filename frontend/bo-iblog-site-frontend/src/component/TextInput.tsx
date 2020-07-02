@@ -9,6 +9,7 @@ export interface TextInputProp {
     type: any;
     placeholder: string | undefined;
     onBlur?: (e: React.FocusEventHandler) => void;
+    onFocus?: (e: React.FocusEventHandler) => void;
 }
 
 export interface TextInputState {
