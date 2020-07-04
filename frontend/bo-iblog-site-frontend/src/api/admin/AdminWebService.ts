@@ -7,10 +7,10 @@ export class AdminWebService {
             url: `${SERVER_DOMAIN}/admin/login`,
             params: {email: email, password: password},
         };
-        Ajax.ajax(Method.POST, props).then(func).catch((reason => {alert("login error!")}));
+        Ajax.ajax(Method.POST, props).then(func);
     }
 
-    static logout(func: (result: any) => void): void {
+    static logout(func?: (result: any) => void): void {
         const props: AjaxProps = {
             url: `${SERVER_DOMAIN}/admin/logout`,
         };

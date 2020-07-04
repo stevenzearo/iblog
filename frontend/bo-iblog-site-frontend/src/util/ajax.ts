@@ -30,8 +30,7 @@ export const Ajax = {
             headers: props.headers,
             withCredentials: true,
             validateStatus: status => {
-                alert(status);
-                return !!status
+                return true;
             }
         });
     }

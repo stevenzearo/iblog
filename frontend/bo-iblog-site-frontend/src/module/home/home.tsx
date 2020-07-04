@@ -1,32 +1,44 @@
 import React from 'react';
-import User from './user';
-import UserComponent from "./userComponent";
 import {AdminWebService} from "../../api/admin/AdminWebService";
 import {GroupWebService, ListGroupResponse} from "../../api/admin/GroupWebService";
+import Admin from "./admin";
+import {History} from "history";
 
 export interface HomeProp {
+    history: History;
 }
 
 export interface HomeState {
-    user: User | null,
+    admin: Admin | null,
     data?: any | null,
     isLogin: boolean
 }
 
 class Home extends React.Component<HomeProp, HomeState> {
+
     constructor(props: any) {
         super(props);
         this.state = {
-            user: props.user,
+            admin: props.admin,
             data: null,
             isLogin: false
         };
+
+    }
+
+    componentDidMount(): void {
+        if (!!this.props.history.location.state) {
+            let historyState: HomeState | any = this.props.history.location.state;
+            this.setState((state) => {
+                return {admin: historyState.admin, data: historyState.data, isLogin: historyState.isLogin}
+            })
+        }
     }
 
     updateGroupInfo = (listGroupResponse: ListGroupResponse) => {
         this.setState(state => {
             return {
-                user: state.user,
+                admin: state.admin,
                 data: listGroupResponse ? listGroupResponse.groups : state.data,
                 isLogin: true
             }
@@ -37,7 +49,7 @@ class Home extends React.Component<HomeProp, HomeState> {
         if (result.status === 200) {
             this.setState((state) => {
                 return {
-                    user: state.user,
+                    admin: state.admin,
                     data: null,
                     isLogin: true
                 };
@@ -53,19 +65,15 @@ class Home extends React.Component<HomeProp, HomeState> {
     };
 
     logout = () => {
+        this.setState((state) => {
+            return {
+                admin: null,
+                data: null,
+                isLogin: false
+            };
+        });
         if (this.state.isLogin) {
-            AdminWebService.logout((result) => {
-                if (result.status === 200) {
-                    this.setState((state) => {
-                        return {
-                            user: state.user,
-                            data: null,
-                            isLogin: false
-                        };
-                    })
-                }
-
-            });
+            AdminWebService.logout();
         }
     };
 
@@ -73,7 +81,12 @@ class Home extends React.Component<HomeProp, HomeState> {
         return (
             <div>
                 <h1>Hello, world!</h1>
-                <UserComponent user={this.state.user}/>
+                <div>
+                    <ul>
+                        <li>admin：{}</li>
+                        <li>email: {!!this.state.admin ? this.state.admin.email : ""}</li>
+                    </ul>
+                </div>
                 <button onClick={this.login}>login</button>
                 <button onClick={this.logout}>logout</button>
                 <span>id: {!!this.state.data ? this.state.data[0].id : null}</span><span>name: {!!this.state.data ? this.state.data[0].name : null}</span>

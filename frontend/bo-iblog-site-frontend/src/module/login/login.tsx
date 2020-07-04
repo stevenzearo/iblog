@@ -6,6 +6,7 @@ import {History} from "history";
 import {Email, EmailState} from './component/email';
 import Password, {PasswordState} from "./component/password";
 import {AdminWebService} from "../../api/admin/AdminWebService";
+import Admin from "../home/admin";
 
 export interface User {
     email: string | null;
@@ -54,10 +55,10 @@ export class LoginPage extends React.Component<LoginPageProps, LoginPageState> {
         const email: string = this.emailInput.textInput.input.value;
         const password: string = this.passwordInput.textInput.input.value;
         AdminWebService.login(email, password, (result) => {
-            if (result.code === 200) {
-
+            if (result.status && result.status === 200 || result.status === 409) {
+                this.props.history.push("/home", {admin: new Admin(null, null, null, "qq@qq.com", null), isLogin: true});
             } else {
-                 alert("login failed!!!");
+                alert("login failed!!!");
             }
         });
     };
