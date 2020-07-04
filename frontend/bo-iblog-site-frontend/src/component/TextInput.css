@@ -9,9 +9,9 @@
 
 .text-input label {
     display: inline-block;
-    text-align: left;
+    text-align: right;
     border: solid red 1px;
-    width: 160px;
+    width: 100px;
     margin: 10px 10px;
 }
 

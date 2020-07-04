@@ -2,9 +2,10 @@ import React from 'react';
 import '../../index.css';
 import './login.css';
 import '../../component/SubmitButton.css';
-import TextInput from '../../component/TextInput'
 import {History} from "history";
-import {Email} from './component/email';
+import {Email, EmailState} from './component/email';
+import Password, {PasswordState} from "./component/password";
+import {AdminWebService} from "../../api/admin/AdminWebService";
 
 export interface User {
     email: string | null;
@@ -23,6 +24,7 @@ export interface LoginPageState {
 
 export class LoginPage extends React.Component<LoginPageProps, LoginPageState> {
     private emailInput: any;
+    private passwordInput: any;
 
     constructor(props: LoginPageProps) {
         super(props);
@@ -35,6 +37,7 @@ export class LoginPage extends React.Component<LoginPageProps, LoginPageState> {
             }
         };
         this.emailInput = React.createRef();
+        this.passwordInput = React.createRef();
 
     }
 
@@ -42,22 +45,60 @@ export class LoginPage extends React.Component<LoginPageProps, LoginPageState> {
         this.emailInput = ref;
     };
 
+
+    setPasswordInput = (ref: any) => {
+        this.passwordInput = ref;
+    };
+
     loginCheck = () => {
+        const email: string = this.emailInput.textInput.input.value;
+        const password: string = this.passwordInput.textInput.input.value;
+        AdminWebService.login(email, password, (result) => {
+            if (result.code === 200) {
+
+            } else {
+                 alert("login failed!!!");
+            }
+        });
     };
 
     onSuccess = (result: any) => {
     };
 
-    alertEmail = () => {
-      alert(this.emailInput.textInput.input.value);
+    checkEmail = () => {
+        const email: string = this.emailInput.textInput.input.value;
+        if (email == null || email.trim() === '') {
+            this.emailInput.setState((state: EmailState) => {
+                return {emailIsValid: false, emailCheckResult: "email can not be null or blank"}
+            });
+        } else {
+            this.emailInput.setState((state: EmailState) => {
+                return {emailIsValid: true, emailCheckResult: "valid"}
+            });
+        }
+    };
+
+
+    checkPassword = () => {
+        const password: string = this.passwordInput.textInput.input.value;
+        if (password == null || password.trim() === '') {
+            this.passwordInput.setState((state: PasswordState) => {
+                return {passwordIsValid: false, passwordCheckResult: "password can not be null or blank"}
+            });
+        } else {
+
+            this.passwordInput.setState((state: PasswordState) => {
+                return {passwordIsValid: true, passwordCheckResult: "valid"};
+            });
+        }
     };
 
     render() {
         return (
             <div className='login-page'>
                 <div className='login-head'>sigin in</div>
-                <Email ref={this.setEmailInput} onBlur={this.alertEmail}/>
-                <TextInput id='password' name='password' label='密码' type='password' placeholder='请输入密码'/>
+                <Email ref={this.setEmailInput} onBlur={this.checkEmail}/>
+                <Password ref={this.setPasswordInput} onBlur={this.checkPassword}/>
                 <button className='submit-button' onClick={this.loginCheck}>提交</button>
             </div>
         );

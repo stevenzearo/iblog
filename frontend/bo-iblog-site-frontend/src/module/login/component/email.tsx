@@ -7,7 +7,8 @@ export interface EmailProp extends ComponentProp {
 
 
 export interface EmailState {
-
+    emailIsValid: boolean;
+    emailCheckResult: string;
 }
 
 export class Email extends React.Component<EmailProp, EmailState> {
@@ -16,6 +17,7 @@ export class Email extends React.Component<EmailProp, EmailState> {
     constructor(props: Readonly<EmailProp>) {
         super(props);
         this.textInput = React.createRef();
+        this.state = {emailIsValid: false, emailCheckResult: ""}
     }
 
     setEmailInput = (ref: any) => {
@@ -23,8 +25,11 @@ export class Email extends React.Component<EmailProp, EmailState> {
     };
 
     render() {
-        return <TextInput ref={this.setEmailInput} id='user-name' name='user-name' label='email' type='text'
-                          placeholder='please input your email' onBlur={this.props.onBlur}/>;
+        return <div>
+            <TextInput ref={this.setEmailInput} id='user-name' name='user-name' label='email' type='text'
+                       placeholder='please input your email' onBlur={this.props.onBlur}/>
+            <span>{this.state.emailCheckResult}</span>
+        </div>
     }
 }
 
