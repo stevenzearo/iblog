@@ -16,4 +16,11 @@ export class AdminWebService {
         };
         Ajax.ajax(Method.GET, props).then(func);
     }
+
+    static getCurrent(func: (result: any) => any): void {
+        const props: AjaxProps = {
+            url: `${SERVER_DOMAIN}/admin/current`,
+        };
+        Ajax.ajax(Method.GET, props).then(func);
+    }
 }

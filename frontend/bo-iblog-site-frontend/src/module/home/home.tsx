@@ -27,12 +27,25 @@ class Home extends React.Component<HomeProp, HomeState> {
     }
 
     componentDidMount(): void {
-        if (!!this.props.history.location.state) {
+        /*if (!!this.props.history.location.state) {
             let historyState: HomeState | any = this.props.history.location.state;
             this.setState((state) => {
-                return {admin: historyState.admin, data: historyState.data, isLogin: historyState.isLogin}
-            })
+                return {admin: state.admin, data: state.data, isLogin: historyState.isLogin}
+            });
+            if (!!historyState && !historyState.isLogin) {
+                this.props.history.push("/login", {isLogin: false});
+            }
         }
+        if (!this.state.isLogin) {
+            this.props.history.push("/login", {isLogin: false});
+        }*/
+        AdminWebService.getCurrent((result => {
+            if (result.status && result.status === 200 && !!result.data) {
+                this.setState( (state: HomeState) => {return {admin: result.data, data: state.data, isLogin: true};})
+            } else {
+                this.props.history.push("/login", {isLogin: false});
+            }
+        }));
     }
 
     updateGroupInfo = (listGroupResponse: ListGroupResponse) => {

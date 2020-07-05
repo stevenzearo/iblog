@@ -6,21 +6,13 @@ import {History} from "history";
 import {Email, EmailState} from './component/email';
 import Password, {PasswordState} from "./component/password";
 import {AdminWebService} from "../../api/admin/AdminWebService";
-import Admin from "../home/admin";
-
-export interface User {
-    email: string | null;
-    password: string | null;
-}
 
 export interface LoginPageProps {
     history: History;
 }
 
 export interface LoginPageState {
-    isToHome: boolean;
-    homePath: string | any;
-    user: User | null;
+    isLogin: boolean;
 }
 
 export class LoginPage extends React.Component<LoginPageProps, LoginPageState> {
@@ -30,16 +22,40 @@ export class LoginPage extends React.Component<LoginPageProps, LoginPageState> {
     constructor(props: LoginPageProps) {
         super(props);
         this.state = {
-            isToHome: false,
-            homePath: "/home",
-            user: {
-                email: null,
-                password: null
-            }
+            isLogin: false
         };
         this.emailInput = React.createRef();
         this.passwordInput = React.createRef();
 
+    }
+
+
+    componentWillMount(): void {
+
+    }
+
+    componentDidMount(): void {
+        if (!!this.props.history.location.state) {
+            let historyState: LoginPageState | any = this.props.history.location.state;
+            if (!!historyState.isLogin) {
+                this.setState((state) => {
+                    return {isLogin: historyState.isLogin}
+                });
+            }
+        }
+
+        AdminWebService.getCurrent((result => {
+            if (result.status === 200 && !!result.data) {
+                this.setState((state: LoginPageState) => {
+                    return {isLogin: true};
+                });
+                this.props.history.push("/home", {admin: null, data: null, isLogin: true});
+            } else {
+                this.setState((state: LoginPageState) => {
+                    return {isLogin: false};
+                });
+            }
+        }));
     }
 
     setEmailInput = (ref: any) => {
@@ -51,12 +67,16 @@ export class LoginPage extends React.Component<LoginPageProps, LoginPageState> {
         this.passwordInput = ref;
     };
 
-    loginCheck = () => {
+    login = () => {
+        if (this.state.isLogin) {
+            this.props.history.push("/home");
+        }
         const email: string = this.emailInput.textInput.input.value;
         const password: string = this.passwordInput.textInput.input.value;
         AdminWebService.login(email, password, (result) => {
             if (result.status && result.status === 200 || result.status === 409) {
-                this.props.history.push("/home", {admin: new Admin(null, null, null, "qq@qq.com", null), isLogin: true});
+                this.setState({isLogin: true});
+                this.props.history.push("/home", {admin: null, data: null, isLogin: true});
             } else {
                 alert("login failed!!!");
             }
@@ -100,7 +120,7 @@ export class LoginPage extends React.Component<LoginPageProps, LoginPageState> {
                 <div className='login-head'>sigin in</div>
                 <Email ref={this.setEmailInput} onBlur={this.checkEmail}/>
                 <Password ref={this.setPasswordInput} onBlur={this.checkPassword}/>
-                <button className='submit-button' onClick={this.loginCheck}>提交</button>
+                <button className='submit-button' onClick={this.login}>提交</button>
             </div>
         );
     }
