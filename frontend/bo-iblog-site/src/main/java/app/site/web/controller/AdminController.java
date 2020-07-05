@@ -40,4 +40,10 @@ public class AdminController {
     void logout(HttpServletRequest request) {
         request.getSession().setAttribute(SessionContext.CURRENT_ADMIN, null);
     }
+
+    @RequestMapping(value = "/admin/current", method = RequestMethod.GET)
+    Admin getCurrent(HttpServletRequest request) {
+        Optional<Admin> adminOptional = SessionContextHelper.getAdmin(request.getSession());
+        return adminOptional.orElse(null);
+    }
 }
