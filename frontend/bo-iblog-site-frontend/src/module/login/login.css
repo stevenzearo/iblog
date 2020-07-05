@@ -1,14 +1,17 @@
 .login-page {
+    margin: 5% 25%;
     display: block;
     align-content: center;
     border: red 1px solid;
+    width: 50%;
 }
 
 .login-head {
     align-content: center;
-    font-size: 2em;
+    font-size: 1.5em;
     display: block;
-    margin: 10% 0 0 0;
-    height: 70px;
+    margin: 5% 2% 2% 20%;
+    height: 50px;
+    width: 60%;
     border: red 1px solid;
 }

@@ -1,6 +1,5 @@
 import React from 'react';
 import {AdminWebService} from "../../api/admin/AdminWebService";
-import {GroupWebService, ListGroupResponse} from "../../api/admin/GroupWebService";
 import Admin from "./component/admin";
 import {History} from "history";
 import "./home.css"
@@ -27,7 +26,7 @@ class Home extends React.Component<HomeProp, HomeState> {
 
     }
 
-    componentDidMount(): void {
+    componentWillMount(): void {
         AdminWebService.getCurrent((result => {
             if (result.status && result.status === 200 && !!result.data) {
                 this.setState((state: HomeState) => {
@@ -38,29 +37,6 @@ class Home extends React.Component<HomeProp, HomeState> {
             }
         }));
     }
-
-    updateGroupInfo = (listGroupResponse: ListGroupResponse) => {
-        this.setState(state => {
-            return {
-                admin: state.admin,
-                data: listGroupResponse ? listGroupResponse.groups : state.data,
-                isLogin: true
-            }
-        });
-    };
-
-    setIsLogin = (result: any) => {
-        if (result.status === 200) {
-            this.setState((state) => {
-                return {
-                    admin: state.admin,
-                    data: null,
-                    isLogin: true
-                };
-            })
-        }
-        GroupWebService.list(this.updateGroupInfo);
-    };
 
     logout = () => {
         this.setState((state) => {
@@ -73,6 +49,7 @@ class Home extends React.Component<HomeProp, HomeState> {
         if (this.state.isLogin) {
             AdminWebService.logout();
         }
+        this.props.history.push("/login", {isLogin: false});
     };
 
     getAdminInfo() {
@@ -107,8 +84,7 @@ class Home extends React.Component<HomeProp, HomeState> {
             <div>
                 <h1>Hello, {!!this.state.admin ? this.state.admin.name : ""}!</h1>
                 {this.getAdminInfo()}
-                <button onClick={this.logout}>logout</button>
-                <span>id: {!!this.state.data ? this.state.data[0].id : null}</span><span>name: {!!this.state.data ? this.state.data[0].name : null}</span>
+                <button className={"submit-button"} onClick={this.logout}>SIGN OUT</button>
             </div>
         );
     }

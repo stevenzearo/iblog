@@ -117,10 +117,10 @@ export class LoginPage extends React.Component<LoginPageProps, LoginPageState> {
     render() {
         return (
             <div className='login-page'>
-                <div className='login-head'>sigin in</div>
+                <div className='login-head'>IBLOG BO SYSTEM</div>
                 <Email ref={this.setEmailInput} onBlur={this.checkEmail}/>
                 <Password ref={this.setPasswordInput} onBlur={this.checkPassword}/>
-                <button className='submit-button' onClick={this.login}>提交</button>
+                <button className='submit-button' onClick={this.login}>SIGN IN</button>
             </div>
         );
     }
