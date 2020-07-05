@@ -61,6 +61,7 @@ public class AdminService {
     private Admin buildSessionAdmin(BOGetAdminByEmailResponse admin) {
         Admin currentAdmin = new Admin();
         currentAdmin.id = admin.id;
+        currentAdmin.name = admin.name;
         currentAdmin.email = admin.email;
         Admin.Group group = new Admin.Group();
         group.id = admin.group.id;
