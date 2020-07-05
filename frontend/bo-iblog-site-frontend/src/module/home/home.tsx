@@ -1,8 +1,9 @@
 import React from 'react';
 import {AdminWebService} from "../../api/admin/AdminWebService";
 import {GroupWebService, ListGroupResponse} from "../../api/admin/GroupWebService";
-import Admin from "./admin";
+import Admin from "./component/admin";
 import {History} from "history";
+import "./home.css"
 
 export interface HomeProp {
     history: History;
@@ -27,21 +28,11 @@ class Home extends React.Component<HomeProp, HomeState> {
     }
 
     componentDidMount(): void {
-        /*if (!!this.props.history.location.state) {
-            let historyState: HomeState | any = this.props.history.location.state;
-            this.setState((state) => {
-                return {admin: state.admin, data: state.data, isLogin: historyState.isLogin}
-            });
-            if (!!historyState && !historyState.isLogin) {
-                this.props.history.push("/login", {isLogin: false});
-            }
-        }
-        if (!this.state.isLogin) {
-            this.props.history.push("/login", {isLogin: false});
-        }*/
         AdminWebService.getCurrent((result => {
             if (result.status && result.status === 200 && !!result.data) {
-                this.setState( (state: HomeState) => {return {admin: result.data, data: state.data, isLogin: true};})
+                this.setState((state: HomeState) => {
+                    return {admin: result.data, data: state.data, isLogin: true};
+                })
             } else {
                 this.props.history.push("/login", {isLogin: false});
             }
@@ -71,12 +62,6 @@ class Home extends React.Component<HomeProp, HomeState> {
         GroupWebService.list(this.updateGroupInfo);
     };
 
-    login = () => {
-        if (this.state.isLogin) return;
-        // AdminWebService.login("qq12@qq.com", "1234", this.setIsLogin);
-        AdminWebService.login("qq@qq.com", "aaaa", this.setIsLogin);
-    };
-
     logout = () => {
         this.setState((state) => {
             return {
@@ -90,17 +75,38 @@ class Home extends React.Component<HomeProp, HomeState> {
         }
     };
 
+    getAdminInfo() {
+        const admin = this.state.admin;
+        if (!!admin) {
+            const roles = admin.group.roles;
+            let roleNodes = {};
+            if (!!roles) {
+                roleNodes = roles.map(role => {
+                    return <li>{role.name}: {role.authority}</li>;
+                });
+            }
+
+
+            return <ul className={'admin-info'}>
+                admin info
+                <li>id: {admin.id}</li>
+                <li>name: {admin.name}</li>
+                <li>email: {admin.email}</li>
+                <li>
+                    group: {admin.group.name}
+                    {
+                        !!roles ? <ul>roles:{roleNodes}</ul> : null
+                    }
+                </li>
+            </ul>;
+        }
+    }
+
     render() {
         return (
             <div>
-                <h1>Hello, world!</h1>
-                <div>
-                    <ul>
-                        <li>admin：{}</li>
-                        <li>email: {!!this.state.admin ? this.state.admin.email : ""}</li>
-                    </ul>
-                </div>
-                <button onClick={this.login}>login</button>
+                <h1>Hello, {!!this.state.admin ? this.state.admin.name : ""}!</h1>
+                {this.getAdminInfo()}
                 <button onClick={this.logout}>logout</button>
                 <span>id: {!!this.state.data ? this.state.data[0].id : null}</span><span>name: {!!this.state.data ? this.state.data[0].name : null}</span>
             </div>

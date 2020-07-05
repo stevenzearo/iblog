@@ -1,0 +1,17 @@
+. {
+    align-content: center;
+}
+
+.admin-info {
+    margin: 1% 20%;
+    padding-left: 2%;
+    align-content: center;
+    text-align: left;
+    border: red 1px solid;
+}
+.admin-info ul {
+    padding-left: 2%;
+}
+.admin-info li {
+    margin-left: 5%;
+}
