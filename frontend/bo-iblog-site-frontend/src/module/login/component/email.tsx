@@ -27,7 +27,7 @@ export class Email extends React.Component<EmailProp, EmailState> {
     render() {
         return <div>
             <TextInput ref={this.setEmailInput} id='user-name' name='user-name' label='email' type='text'
-                       placeholder='please input your email' onBlur={this.props.onBlur}/>
+                       placeholder='please input your email' onBlur={this.props.onBlur} onMouseLeave={this.props.onMouseLeave}/>
             <span>{this.state.emailCheckResult}</span>
         </div>
     }

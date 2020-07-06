@@ -82,9 +82,19 @@ class Home extends React.Component<HomeProp, HomeState> {
     render() {
         return (
             <div>
-                <h1>Hello, {!!this.state.admin ? this.state.admin.name : ""}!</h1>
-                {this.getAdminInfo()}
-                <button className={"submit-button"} onClick={this.logout}>SIGN OUT</button>
+                <div className={'head'}>
+
+                </div>
+                <div className={'menu'}>
+
+                </div>
+                <div className={'center'}>
+                    <h1>Hello, {!!this.state.admin ? this.state.admin.name : ""}!</h1>
+                    {this.getAdminInfo()}
+                    <button className={"submit-button"} onClick={this.logout}>SIGN OUT</button>
+                </div>
+                <div className={'foot'}></div>
+
             </div>
         );
     }

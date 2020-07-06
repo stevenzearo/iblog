@@ -39,7 +39,7 @@ export class TextInput extends React.Component<TextInputProp, TextInputState> {
             <div className='text-input'>
                 <label htmlFor={this.props.id}>{this.props.label} :</label>
                 <input ref={(ref) => this.input = ref} id={this.props.id} name={this.props.name} type={this.props.type}
-                       placeholder={this.props.placeholder} onBlur={this.props.onBlur}/>
+                       placeholder={this.props.placeholder} onBlur={this.props.onBlur} onMouseLeave={this.props.onMouseLeave}/>
             </div>
         );
     }

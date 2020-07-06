@@ -37,7 +37,7 @@ export class LoginPage extends React.Component<LoginPageProps, LoginPageState> {
     componentDidMount(): void {
         if (!!this.props.history.location.state) {
             let historyState: LoginPageState | any = this.props.history.location.state;
-            if (!!historyState.isLogin) {
+            if (historyState.isLogin) {
                 this.setState((state) => {
                     return {isLogin: historyState.isLogin}
                 });
@@ -73,8 +73,12 @@ export class LoginPage extends React.Component<LoginPageProps, LoginPageState> {
         }
         const email: string = this.emailInput.textInput.input.value;
         const password: string = this.passwordInput.textInput.input.value;
+        if (!!email || email === '' || !!password || password === '') {
+            alert('please input email and password!');
+            return;
+        }
         AdminWebService.login(email, password, (result) => {
-            if (result.status && result.status === 200 || result.status === 409) {
+            if (!!result.status && (result.status === 200 || result.status === 409)) {
                 this.setState({isLogin: true});
                 this.props.history.push("/home", {admin: null, data: null, isLogin: true});
             } else {
@@ -83,7 +87,13 @@ export class LoginPage extends React.Component<LoginPageProps, LoginPageState> {
         });
     };
 
-    onSuccess = (result: any) => {
+    beforeSubmit = () => {
+        const email: string = this.emailInput.textInput.input.value;
+        const password: string = this.passwordInput.textInput.input.value;
+        if (!email || email === '' || !password || password === '') {
+            alert('please input email and password!');
+            return;
+        }
     };
 
     checkEmail = () => {
@@ -120,7 +130,7 @@ export class LoginPage extends React.Component<LoginPageProps, LoginPageState> {
                 <div className='login-head'>IBLOG BO SYSTEM</div>
                 <Email ref={this.setEmailInput} onBlur={this.checkEmail}/>
                 <Password ref={this.setPasswordInput} onBlur={this.checkPassword}/>
-                <button className='submit-button' onClick={this.login}>SIGN IN</button>
+                <button className='submit-button' onClick={this.login} onMouseEnter={this.beforeSubmit}>SIGN IN</button>
             </div>
         );
     }
