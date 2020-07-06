@@ -73,7 +73,7 @@ export class LoginPage extends React.Component<LoginPageProps, LoginPageState> {
         }
         const email: string = this.emailInput.textInput.input.value;
         const password: string = this.passwordInput.textInput.input.value;
-        if (!!email || email === '' || !!password || password === '') {
+        if (!email || email === '' || !password || password === '') {
             alert('please input email and password!');
             return;
         }

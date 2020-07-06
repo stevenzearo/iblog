@@ -2,16 +2,55 @@
     align-content: center;
 }
 
+.content {
+    position: relative;
+    border: greenyellow 1px solid;
+    height: 2000px;
+}
+
+.head {
+    float: none;
+    align-content: center;
+    position: relative;
+    height: 200px;
+    border: red 1px solid;
+}
+
+.menu {
+    float: left;
+    position: relative;
+    height: 500px;
+    border: red 1px solid;
+}
+
+.center {
+    float: none;
+    position: relative;
+    /*float: left;*/
+    height: 500px;
+    border: red 1px solid;
+}
+
+.foot {
+    float: none;
+    position: relative;
+    height: 200px;
+    border: red 1px solid;
+}
+
 .admin-info {
+    position: relative;
     margin: 1% 20%;
     padding-left: 2%;
     align-content: center;
     text-align: left;
     border: red 1px solid;
 }
+
 .admin-info ul {
     padding-left: 2%;
 }
+
 .admin-info li {
     margin-left: 5%;
 }

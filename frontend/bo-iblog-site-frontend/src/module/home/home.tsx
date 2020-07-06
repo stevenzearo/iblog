@@ -3,6 +3,7 @@ import {AdminWebService} from "../../api/admin/AdminWebService";
 import Admin from "./component/admin";
 import {History} from "history";
 import "./home.css"
+import "../../component/SubmitButton.css"
 
 export interface HomeProp {
     history: History;
@@ -63,8 +64,7 @@ class Home extends React.Component<HomeProp, HomeState> {
                 });
             }
 
-
-            return <ul className={'admin-info'}>
+            return <ul>
                 admin info
                 <li>id: {admin.id}</li>
                 <li>name: {admin.name}</li>
@@ -81,19 +81,21 @@ class Home extends React.Component<HomeProp, HomeState> {
 
     render() {
         return (
-            <div>
+            <div className={'content'}>
                 <div className={'head'}>
+                    <h1>Hello, {!!this.state.admin ? this.state.admin.name : ""}!</h1>
 
                 </div>
                 <div className={'menu'}>
+                    <h1>this is menu</h1>
 
                 </div>
                 <div className={'center'}>
-                    <h1>Hello, {!!this.state.admin ? this.state.admin.name : ""}!</h1>
-                    {this.getAdminInfo()}
+
+                    <div className={'admin-info'}>{this.getAdminInfo()}</div>
                     <button className={"submit-button"} onClick={this.logout}>SIGN OUT</button>
                 </div>
-                <div className={'foot'}></div>
+                <div className={'foot'}>this is foot</div>
 
             </div>
         );
