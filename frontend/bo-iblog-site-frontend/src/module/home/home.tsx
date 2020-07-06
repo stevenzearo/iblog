@@ -4,6 +4,7 @@ import Admin from "./component/admin";
 import {History} from "history";
 import "./home.css"
 import "../../component/SubmitButton.css"
+import {SlideComponent, SlideSettings, SlideDistanceType, SlideFrom} from "../../component/slide";
 
 export interface HomeProp {
     history: History;
@@ -60,7 +61,7 @@ class Home extends React.Component<HomeProp, HomeState> {
             let roleNodes = {};
             if (!!roles) {
                 roleNodes = roles.map(role => {
-                    return <li>{role.name}: {role.authority}</li>;
+                    return <li key={role.name}>{role.name}: {role.authority}</li>;
                 });
             }
 
@@ -88,10 +89,9 @@ class Home extends React.Component<HomeProp, HomeState> {
                 </div>
                 <div className={'menu'}>
                     <h1>this is menu</h1>
-
+                    <SlideComponent slideSettings={new SlideSettings(100, SlideDistanceType.RATE, SlideFrom.LEFT)}/>
                 </div>
                 <div className={'center'}>
-
                     <div className={'admin-info'}>{this.getAdminInfo()}</div>
                     <button className={"submit-button"} onClick={this.logout}>SIGN OUT</button>
                 </div>
