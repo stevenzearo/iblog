@@ -7,7 +7,7 @@ import app.web.error.WebException;
 /**
  * @author steve
  */
-public class ResponseHelper {
+public final class ResponseHelper {
     public static <T> Response<T> ok() {
         return new Response<>(WebErrorCodes.OK, null, null);
     }
