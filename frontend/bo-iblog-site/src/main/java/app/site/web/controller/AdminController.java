@@ -1,13 +1,13 @@
 package app.site.web.controller;
 
 import app.site.service.AdminService;
+import app.site.web.Context;
+import app.site.web.ContextHelper;
 import app.site.web.ErrorCodes;
-import app.site.web.SessionContext;
-import app.site.web.SessionContextHelper;
+import app.site.web.session.Admin;
 import app.web.error.ConflictException;
 import app.web.error.ForbiddenException;
 import app.web.error.WebException;
-import app.web.session.Admin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -28,7 +28,7 @@ public class AdminController {
 
     @RequestMapping(value = "/admin/login", method = RequestMethod.POST)
     void login(HttpServletRequest request, @RequestParam("email") String email, @RequestParam("password") String password) throws WebException {
-        Optional<Admin> admin = SessionContextHelper.getAdmin(request.getSession());
+        Optional<Admin> admin = ContextHelper.getAdmin(request.getSession());
         if (admin.isPresent()) throw new ConflictException(ErrorCodes.ADMIN_ALREADY_LOGIN, "admin already login!");
         boolean isLogin = adminService.login(email, password, request);
         if (isLogin) return;
@@ -38,12 +38,12 @@ public class AdminController {
 
     @RequestMapping(value = "/admin/logout", method = RequestMethod.GET)
     void logout(HttpServletRequest request) {
-        request.getSession().setAttribute(SessionContext.CURRENT_ADMIN, null);
+        request.getSession().setAttribute(Context.CURRENT_ADMIN, null);
     }
 
     @RequestMapping(value = "/admin/current", method = RequestMethod.GET)
     Admin getCurrent(HttpServletRequest request) {
-        Optional<Admin> adminOptional = SessionContextHelper.getAdmin(request.getSession());
+        Optional<Admin> adminOptional = ContextHelper.getAdmin(request.getSession());
         return adminOptional.orElse(null);
     }
 }

@@ -1,7 +1,7 @@
 package app.site.service;
 
 import app.site.api.admin.CreateAdminAJAXRequest;
-import app.site.web.SessionContext;
+import app.site.web.Context;
 import app.user.PasswordEncryptException;
 import app.user.PasswordEncryptHelper;
 import app.user.api.BOAdminWebService;
@@ -11,7 +11,7 @@ import app.web.error.WebException;
 import app.web.response.EmptyResponse;
 import app.web.response.Response;
 import app.web.response.ResponseHelper;
-import app.web.session.Admin;
+import app.site.web.session.Admin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -44,7 +44,7 @@ public class AdminService {
         String encryptedPassword = getEncryptedPassword(password, data);
         if (!encryptedPassword.equals(data.password)) return false;
         Admin sessionAdmin = buildSessionAdmin(data);
-        request.getSession().setAttribute(SessionContext.CURRENT_ADMIN, sessionAdmin);
+        request.getServletContext().setAttribute(Context.CURRENT_ADMIN, sessionAdmin);
         return true;
     }
 

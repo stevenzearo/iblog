@@ -1,4 +1,4 @@
-package app.web.session;
+package app.site.web.session;
 
 import app.user.AuthorityView;
 
