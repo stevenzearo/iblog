@@ -11,6 +11,10 @@ spring:
         one-indexed-parameters:
   main:
     allow-bean-definition-overriding: true
+  redis:
+    database: 0
+    host: localhost
+    port: 6379
 
 server:
   port: 8410

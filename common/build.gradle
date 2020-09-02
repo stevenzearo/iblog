@@ -10,6 +10,5 @@ subprojects {
 
 project('common-lib') {
     dependencies {
-        compile group: 'org.springframework.data', name: 'spring-data-redis', version: springBootVersion
     }
 }
