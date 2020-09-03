@@ -1,7 +1,5 @@
 import app.Application;
 import app.site.cache.AdminRedisRepository;
-import app.site.web.session.Admin;
-import app.user.AuthorityView;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -9,12 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import java.util.List;
-import java.util.Optional;
-import java.util.concurrent.TimeUnit;
 
 /**
  * @author steve
@@ -30,7 +23,7 @@ public class RedisDemo {
 
     @Test
     public void test() {
-        ValueOperations<String, String> valueOperations = redisTemplate.opsForValue();
+        /*ValueOperations<String, String> valueOperations = redisTemplate.opsForValue();
         valueOperations.append("hello", "world");
         redisTemplate.expire("hello", 20, TimeUnit.SECONDS);
         Admin admin = new Admin();
@@ -49,6 +42,6 @@ public class RedisDemo {
         admin.group = group;
         adminRedisRepository.save(admin);
         Optional<Admin> adminOptional = adminRedisRepository.findById("admin-1");
-        adminOptional.ifPresent(a -> logger.info(a.toString()));
+        adminOptional.ifPresent(a -> logger.info(a.toString()));*/
     }
 }
