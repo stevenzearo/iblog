@@ -3,14 +3,17 @@ package app.site.web.session;
 import app.user.AuthorityView;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
+import org.springframework.data.redis.core.TimeToLive;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author steve
  */
-@RedisHash("admin")
+@RedisHash(value = "admin", timeToLive = 60*60) // TTL = 1h
 public class Admin {
     @Id
     public String id;
