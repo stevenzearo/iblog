@@ -3,11 +3,10 @@ package app.site.web.controller;
 import app.site.service.AdminService;
 import app.site.web.Context;
 import app.site.web.ContextHelper;
-import app.site.web.ErrorCodes;
 import app.site.web.session.Admin;
-import app.web.error.ConflictException;
-import app.web.error.ForbiddenException;
 import app.web.error.WebException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,17 +22,14 @@ import java.util.Optional;
  */
 @RestController
 public class AdminController {
+    private final Logger logger = LoggerFactory.getLogger(AdminController.class);
     @Autowired
     AdminService adminService;
 
     @RequestMapping(value = "/admin/login", method = RequestMethod.POST)
-    void login(HttpServletRequest request, @RequestParam("email") String email, @RequestParam("password") String password) throws WebException {
-        Optional<Admin> admin = ContextHelper.getAdmin(request.getSession()); // todo
-        if (admin.isPresent()) throw new ConflictException(ErrorCodes.ADMIN_ALREADY_LOGIN, "admin already login!");
-        boolean isLogin = adminService.login(email, password, request);
-        if (isLogin) return;
-
-        throw new ForbiddenException(ErrorCodes.LOGIN_FAILED, "login failed, please check the email and password!");
+    Admin login(HttpServletRequest request, @RequestParam("email") String email, @RequestParam("password") String password) throws WebException {
+        logger.info(String.format("email: %s", email));
+        return adminService.login(email, password, request);
     }
 
     @RequestMapping(value = "/admin/logout", method = RequestMethod.GET)

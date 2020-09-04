@@ -3,12 +3,14 @@ package app.site.service;
 import app.site.api.admin.CreateAdminAJAXRequest;
 import app.site.cache.AdminCache;
 import app.site.web.Context;
+import app.site.web.ErrorCodes;
 import app.site.web.session.Admin;
 import app.user.PasswordEncryptException;
 import app.user.PasswordEncryptHelper;
 import app.user.api.BOAdminWebService;
 import app.user.api.admin.BOCreateAdminRequest;
 import app.user.api.admin.BOGetAdminByEmailResponse;
+import app.web.error.ConflictException;
 import app.web.error.WebException;
 import app.web.response.EmptyResponse;
 import app.web.response.Response;
@@ -17,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
@@ -41,15 +44,20 @@ public class AdminService {
         ResponseHelper.checkStatusCode(response);
     }
 
-    public boolean login(String email, String password, HttpServletRequest request) throws WebException {
+    public Admin login(String email, String password, HttpServletRequest request) throws WebException {
+        Optional<Admin> adminOptional = adminCache.findByEmail(email);
+        if (adminOptional.isPresent()) {
+            throw new ConflictException(ErrorCodes.ADMIN_ALREADY_LOGIN, "admin already login, no need login again");
+        }
+
         Response<BOGetAdminByEmailResponse> boResponse = boAdminWebService.getByEmail(email);
         BOGetAdminByEmailResponse data = ResponseHelper.fetchDataWithException(boResponse);
         String encryptedPassword = getEncryptedPassword(password, data);
-        if (!encryptedPassword.equals(data.password)) return false;
+        if (!encryptedPassword.equals(data.password)) throw new ConflictException(ErrorCodes.LOGIN_FAILED, "login failed, please your email and password.");
         Admin admin = buildAdminCache(data);
         request.getServletContext().setAttribute(Context.CURRENT_ADMIN, admin);
         adminCache.save(admin);
-        return true;
+        return admin;
     }
 
     private String getEncryptedPassword(String password, BOGetAdminByEmailResponse admin) throws WebException {
