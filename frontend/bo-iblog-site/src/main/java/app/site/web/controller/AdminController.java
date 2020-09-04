@@ -28,7 +28,7 @@ public class AdminController {
 
     @RequestMapping(value = "/admin/login", method = RequestMethod.POST)
     void login(HttpServletRequest request, @RequestParam("email") String email, @RequestParam("password") String password) throws WebException {
-        Optional<Admin> admin = ContextHelper.getAdmin(request.getSession());
+        Optional<Admin> admin = ContextHelper.getAdmin(request.getSession()); // todo
         if (admin.isPresent()) throw new ConflictException(ErrorCodes.ADMIN_ALREADY_LOGIN, "admin already login!");
         boolean isLogin = adminService.login(email, password, request);
         if (isLogin) return;

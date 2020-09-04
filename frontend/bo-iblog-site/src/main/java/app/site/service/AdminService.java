@@ -1,7 +1,9 @@
 package app.site.service;
 
 import app.site.api.admin.CreateAdminAJAXRequest;
+import app.site.cache.AdminCache;
 import app.site.web.Context;
+import app.site.web.session.Admin;
 import app.user.PasswordEncryptException;
 import app.user.PasswordEncryptHelper;
 import app.user.api.BOAdminWebService;
@@ -11,7 +13,6 @@ import app.web.error.WebException;
 import app.web.response.EmptyResponse;
 import app.web.response.Response;
 import app.web.response.ResponseHelper;
-import app.site.web.session.Admin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +27,8 @@ public class AdminService {
     private static final String REQUESTED_BY = "bo-iblog-site";
     @Autowired
     BOAdminWebService boAdminWebService;
+    @Autowired
+    AdminCache adminCache;
 
     public void create(CreateAdminAJAXRequest request) throws WebException {
         BOCreateAdminRequest boRequest = new BOCreateAdminRequest();
@@ -43,8 +46,9 @@ public class AdminService {
         BOGetAdminByEmailResponse data = ResponseHelper.fetchDataWithException(boResponse);
         String encryptedPassword = getEncryptedPassword(password, data);
         if (!encryptedPassword.equals(data.password)) return false;
-        Admin sessionAdmin = buildSessionAdmin(data);
-        request.getServletContext().setAttribute(Context.CURRENT_ADMIN, sessionAdmin);
+        Admin admin = buildAdminCache(data);
+        request.getServletContext().setAttribute(Context.CURRENT_ADMIN, admin);
+        adminCache.save(admin);
         return true;
     }
 
@@ -58,7 +62,7 @@ public class AdminService {
         return encryptPassword;
     }
 
-    private Admin buildSessionAdmin(BOGetAdminByEmailResponse admin) {
+    private Admin buildAdminCache(BOGetAdminByEmailResponse admin) {
         Admin currentAdmin = new Admin();
         currentAdmin.id = admin.id;
         currentAdmin.name = admin.name;

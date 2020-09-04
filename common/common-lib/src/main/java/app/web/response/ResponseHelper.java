@@ -47,6 +47,13 @@ public final class ResponseHelper {
         return new Response<>(webException.getStatusCode(), null, new ErrorResponse(webException));
     }
 
+    public static <T> T fetchData(Response<T> response) {
+        if (response.statusCode != WebErrorCodes.OK) {
+            return null;
+        }
+        return response.data;
+    }
+
     public static <T> T fetchDataWithException(Response<T> response) throws WebException {
         if (response.statusCode != WebErrorCodes.OK) {
             ErrorResponse error = response.error;

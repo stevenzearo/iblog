@@ -8,7 +8,7 @@ spring:
   data:
     web:
       pageable:
-        one-indexed-parameters:
+        one-indexed-parameters: false
   main:
     allow-bean-definition-overriding: true
   redis:

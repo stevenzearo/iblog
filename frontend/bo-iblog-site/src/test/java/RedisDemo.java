@@ -1,23 +1,44 @@
+import app.Application;
+import app.site.cache.AdminCache;
+import app.site.web.session.Admin;
+import app.user.AuthorityView;
+import org.junit.Ignore;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.concurrent.TimeUnit;
+
 /**
  * @author steve
  */
-//@SpringBootTest(classes = Application.class)
-//@RunWith(SpringRunner.class)
+@SpringBootTest(classes = Application.class)
+@RunWith(SpringRunner.class)
 public class RedisDemo {
-    /*private final Logger logger = LoggerFactory.getLogger(RedisDemo.class);
+    private final Logger logger = LoggerFactory.getLogger(RedisDemo.class);
     @Autowired
     RedisTemplate<String, String> redisTemplate;
     @Autowired
-    AdminRedisRepository adminRedisRepository;
+    AdminCache adminCache;
 
+    @Ignore
     @Test
-    public void test() {
+    public void test() throws InterruptedException {
         ValueOperations<String, String> valueOperations = redisTemplate.opsForValue();
         valueOperations.append("hello", "world");
         redisTemplate.expire("hello", 20, TimeUnit.SECONDS);
         Admin admin = new Admin();
         admin.id = "admin-1";
         admin.name = "admin";
+        admin.email = "email-1";
         Admin.Group group = new Admin.Group();
         group.id = "group-1";
         group.name = "group";
@@ -29,8 +50,12 @@ public class RedisDemo {
         role2.name = "bo authority user";
         group.roles = List.of(role, role2);
         admin.group = group;
-        adminRedisRepository.save(admin);
-        Optional<Admin> adminOptional = adminRedisRepository.findById("admin-1");
-        adminOptional.ifPresent(a -> logger.info(a.toString()));
-    }*/
+        adminCache.save(admin);
+        Thread.sleep(5000);
+
+        admin.name = "admin-admin";
+        adminCache.save(admin); // test for replace
+        Optional<Admin> adminOptional = adminCache.findByEmail("email-1");
+        adminOptional.ifPresentOrElse(a -> logger.warn(a.toString()), () -> logger.error("admin not found"));
+    }
 }
