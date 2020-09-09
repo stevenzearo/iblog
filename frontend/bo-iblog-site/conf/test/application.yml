@@ -11,6 +11,11 @@ spring:
         one-indexed-parameters: false
   main:
     allow-bean-definition-overriding: true
+  redis:
+    password: steve123!
+    database: 0
+    host: 47.99.152.254
+    port: 6379
 server:
   port: 8410
   undertow:
