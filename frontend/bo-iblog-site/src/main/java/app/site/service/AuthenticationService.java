@@ -2,7 +2,6 @@ package app.site.service;
 
 import app.site.web.Context;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.ListOperations;
 import org.springframework.data.redis.core.SetOperations;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
@@ -19,9 +18,9 @@ public class AuthenticationService {
     StringRedisTemplate redisTemplate;
 
     public String authentic() {
-        ListOperations<String, String> stringListOperations = redisTemplate.opsForList();
+        SetOperations<String, String> opsForSet = redisTemplate.opsForSet();
         String auth = UUID.randomUUID().toString();
-        stringListOperations.rightPush(Context.AUTHENTICATIONS, auth);
+        opsForSet.add(Context.AUTHENTICATIONS, auth);
         redisTemplate.expire(Context.AUTHENTICATIONS, Context.AUTH_MINUTES, TimeUnit.MINUTES);
         return auth;
     }
