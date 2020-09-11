@@ -1,8 +1,9 @@
 package app.site.web.interceptor;
 
+import app.site.service.AuthService;
+import app.site.web.Context;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
@@ -13,19 +14,20 @@ import javax.servlet.http.HttpServletResponse;
  * @author steve
  */
 @Component
-public class AuthenticationInterceptor implements HandlerInterceptor {
+public class AuthInterceptor implements HandlerInterceptor {
+    @Autowired
+    AuthService authService;
     @Autowired
     RedisTemplate<String, String> redisTemplate;
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        String authorizedId = request.getHeader("authorizedId");
-        if (authorizedId == null || !request.getRequestURI().equals("/authentication")) return false;
-        ValueOperations<String, String> valueOperations = redisTemplate.opsForValue();
-        String adminId = valueOperations.get(authorizedId);
-        if (adminId == null) {
-
-        }
-        return false;
+        AuthRequired annotation = handler.getClass().getAnnotation(AuthRequired.class);
+        if (annotation == null) return true;
+        String authId = request.getHeader(Context.AUTH_ID);
+        if (authId == null) return false;
+        if (authService.isExpired(authId)) return false;
+        authService.renew(authId);
+        return true;
     }
 }

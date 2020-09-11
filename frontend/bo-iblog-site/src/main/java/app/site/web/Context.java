@@ -5,8 +5,9 @@ package app.site.web;
  */
 
 public class Context {
-    public static final String CURRENT_ADMIN = "x-current-admin";
-    public static final String AUTHENTICATIONS = "authentications";
+    public static final String AUTH_ID = "x-auth-id";
+    public static final String AUTH_MAP = "auth:map";
+    public static final String AUTH_SET = "auth:set";
     public static final Integer AUTH_MINUTES = 60;
 }
 
