@@ -2,6 +2,7 @@ package app.site.service;
 
 import app.IntegrationTest;
 import app.web.error.ConflictException;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ public class AuthServiceTest extends IntegrationTest {
     @Autowired
     AuthService authService;
 
+    @Ignore
     @Test
     public void createAuth() throws ConflictException {
         String auth = authService.createAuth();
