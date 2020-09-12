@@ -1,4 +1,5 @@
 import app.Application;
+import app.IntegrationTest;
 import app.site.cache.AdminCache;
 import app.site.web.session.Admin;
 import app.user.AuthorityView;
@@ -20,9 +21,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * @author steve
  */
-@SpringBootTest(classes = Application.class)
-@RunWith(SpringRunner.class)
-public class RedisDemo {
+public class RedisDemo extends IntegrationTest {
     private final Logger logger = LoggerFactory.getLogger(RedisDemo.class);
     @Autowired
     RedisTemplate<String, String> redisTemplate;

@@ -1,6 +1,5 @@
 package app.site.web.session;
 
-import app.site.web.Context;
 import app.user.AuthorityView;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
@@ -12,7 +11,7 @@ import java.util.List;
 /**
  * @author steve
  */
-@RedisHash(value = "admin", timeToLive = Context.ADMIN_CACHE_TTL_SECONDS)
+@RedisHash(value = "admin", timeToLive = 60 * 60)
 public class Admin {
     @Id
     public String id;

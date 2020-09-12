@@ -9,6 +9,5 @@ public class Context {
     public static final String AUTH_MAP = "auth:map";
     public static final String AUTH_SET = "auth:set";
     public static final Integer AUTH_MINUTES = 60;
-    public static final Integer ADMIN_CACHE_TTL_SECONDS = 60 * 60;
 }
 

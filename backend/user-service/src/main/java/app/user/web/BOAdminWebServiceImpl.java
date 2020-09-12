@@ -3,6 +3,7 @@ package app.user.web;
 import app.user.api.BOAdminWebService;
 import app.user.api.admin.BOCreateAdminRequest;
 import app.user.api.admin.BOGetAdminByEmailResponse;
+import app.user.api.admin.BOGetAdminByIdResponse;
 import app.user.service.BOAdminService;
 import app.web.response.EmptyResponse;
 import app.web.response.Response;
@@ -29,7 +30,14 @@ public class BOAdminWebServiceImpl implements BOAdminWebService {
     }
 
     @Override
+    public Response<BOGetAdminByIdResponse> getById(String id) {
+        logger.info("get admin, id = {}", id);
+        return ResponseHelper.okOf(boAdminService.getById(id));
+    }
+
+    @Override
     public Response<BOGetAdminByEmailResponse> getByEmail(String email) {
+        logger.info("get admin by email, email = {}", email);
         return ResponseHelper.okOf(boAdminService.getByEmail(email));
     }
 }

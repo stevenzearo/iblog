@@ -26,7 +26,7 @@ import java.util.stream.Collectors;
 @Service
 public class GroupService {
     private static final String REQUESTED_BY = "bo-iblog-site";
-    @Autowired
+    @Autowired(required = false)
     BOGroupWebService boGroupWebService;
 
     public void create(CreateGroupAJAXRequest request) throws WebException {

@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
  * @author steve
  */
 @RestController
-@EnableFeignClients
 @EnableDiscoveryClient
 @SpringBootApplication
 @EnableCaching

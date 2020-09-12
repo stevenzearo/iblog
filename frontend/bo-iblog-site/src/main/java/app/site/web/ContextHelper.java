@@ -15,8 +15,9 @@ public class ContextHelper {
      * save admin info as a map structure (id -> admin) in cache which use redis to save cache
      * */
     public static Optional<Admin> getAdmin(HttpSession session) {
-        Admin admin = (Admin) session.getAttribute(Context.CURRENT_ADMIN);
+/*        Admin admin = (Admin) session.getAttribute(Context.CURRENT_ADMIN);
         if (admin == null) return Optional.empty();
-        return Optional.of(admin);
+        return Optional.of(admin);*/
+        return Optional.empty();
     }
 }

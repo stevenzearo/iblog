@@ -1,11 +1,12 @@
 package app.user.service;
 
+import app.user.AuthorityView;
 import app.user.ErrorCodes;
 import app.user.PasswordEncryptException;
 import app.user.PasswordEncryptHelper;
 import app.user.api.admin.BOCreateAdminRequest;
 import app.user.api.admin.BOGetAdminByEmailResponse;
-import app.user.AuthorityView;
+import app.user.api.admin.BOGetAdminByIdResponse;
 import app.user.dao.AdminRepository;
 import app.user.dao.GroupRepository;
 import app.user.dao.RoleRepository;
@@ -38,9 +39,11 @@ public class BOAdminService {
 
     public String create(BOCreateAdminRequest request) throws WebException {
         Admin existAdmin = adminRepository.getFirstByEmail(request.email);
-        if (existAdmin != null) throw new ConflictException(ErrorCodes.EMAIL_EXIST, String.format("email already exist, email = %s", request.email));
+        if (existAdmin != null)
+            throw new ConflictException(ErrorCodes.EMAIL_EXIST, String.format("email already exist, email = %s", request.email));
         Group group = groupRepository.getById(request.groupId);
-        if (group == null) throw new NotFoundException(ErrorCodes.GROUP_NOT_FOUND, String.format("group not found, groupId = %s", request.groupId));
+        if (group == null)
+            throw new NotFoundException(ErrorCodes.GROUP_NOT_FOUND, String.format("group not found, groupId = %s", request.groupId));
 
         int byteVal = (int) Math.round(Math.random() * (int) Byte.MAX_VALUE) + 1; // 1 ~ 127
         char[] saltChar = Character.toChars(byteVal);
@@ -50,6 +53,20 @@ public class BOAdminService {
         Admin admin = buildAdmin(request, salt, iteratedTimes);
         adminRepository.save(admin);
         return admin.id;
+    }
+
+    public BOGetAdminByIdResponse getById(String id) {
+        Admin admin = adminRepository.getOne(id);
+        Group group = groupRepository.getById(admin.groupId);
+        List<Role> roles = roleRepository.findByGroupId(admin.groupId);
+        return buildAdminForGetById(admin, group, roles);
+    }
+
+    public BOGetAdminByEmailResponse getByEmail(String email) {
+        Admin admin = adminRepository.getFirstByEmail(email);
+        Group group = groupRepository.getById(admin.groupId);
+        List<Role> roles = roleRepository.findByGroupId(admin.groupId);
+        return buildBoGetAdminResponse(admin, group, roles);
     }
 
     private Admin buildAdmin(BOCreateAdminRequest request, String salt, int iteratedTimes) throws PasswordEncryptException {
@@ -64,13 +81,6 @@ public class BOAdminService {
         admin.createBy = request.requestedBy;
         admin.createdTime = ZonedDateTime.now();
         return admin;
-    }
-
-    public BOGetAdminByEmailResponse getByEmail(String email) {
-        Admin admin = adminRepository.getFirstByEmail(email);
-        Group group = groupRepository.getById(admin.groupId);
-        List<Role> roles = roleRepository.findByGroupId(admin.groupId);
-        return buildBoGetAdminResponse(admin, group, roles);
     }
 
     private BOGetAdminByEmailResponse buildBoGetAdminResponse(Admin admin, Group group, List<Role> roles) {
@@ -95,6 +105,30 @@ public class BOAdminService {
 
     private BOGetAdminByEmailResponse.Role buildRoleView(Role role) {
         BOGetAdminByEmailResponse.Role roleView = new BOGetAdminByEmailResponse.Role();
+        roleView.name = role.name;
+        roleView.authority = AuthorityView.valueOf(role.authority.name());
+        return roleView;
+    }
+
+    private BOGetAdminByIdResponse buildAdminForGetById(Admin admin, Group group, List<Role> roles) {
+        BOGetAdminByIdResponse response = new BOGetAdminByIdResponse();
+        response.id = admin.id;
+        response.name = admin.name;
+        response.email = admin.email;
+        response.group = buildGroupForGetById(group, roles);
+        return response;
+    }
+
+    private BOGetAdminByIdResponse.Group buildGroupForGetById(Group group, List<Role> roles) {
+        BOGetAdminByIdResponse.Group groupView = new BOGetAdminByIdResponse.Group();
+        groupView.id = group.id;
+        groupView.name = group.name;
+        groupView.roles = roles.stream().map(this::buildRoleForGetById).collect(Collectors.toList());
+        return groupView;
+    }
+
+    private BOGetAdminByIdResponse.Role buildRoleForGetById(Role role) {
+        BOGetAdminByIdResponse.Role roleView = new BOGetAdminByIdResponse.Role();
         roleView.name = role.name;
         roleView.authority = AuthorityView.valueOf(role.authority.name());
         return roleView;
