@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * @author steve
  */
-// todo add response and error body to every api
 @RestController
 public interface AdminAJAXWebService {
     @RequestMapping(value = "/ajax/admin", method = RequestMethod.POST)

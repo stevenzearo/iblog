@@ -26,5 +26,5 @@ public interface BOAdminWebService {
     Response<BOGetAdminByIdResponse> getById(@PathVariable("id") String id);
 
     @RequestMapping(value = "/bo/admin", method = RequestMethod.GET)
-    Response<BOGetAdminByEmailResponse> getByEmail(@RequestParam("email") String email);
+    Response<BOGetAdminByEmailResponse> getByEmail(@RequestParam(name = "email", required = true) String email);
 }

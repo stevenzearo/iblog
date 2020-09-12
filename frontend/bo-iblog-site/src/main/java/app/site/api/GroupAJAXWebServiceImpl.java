@@ -5,6 +5,7 @@ import app.site.api.admin.CreateRoleAJAXRequest;
 import app.site.api.admin.GetGroupAJAXResponse;
 import app.site.api.admin.ListGroupAJAXResponse;
 import app.site.service.GroupService;
+import app.site.web.interceptor.LoginRequired;
 import app.web.error.WebException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Component;
  * @author steve
  */
 @Component
+@LoginRequired
 public class GroupAJAXWebServiceImpl implements GroupAJAXWebService {
     @Autowired
     GroupService groupService;

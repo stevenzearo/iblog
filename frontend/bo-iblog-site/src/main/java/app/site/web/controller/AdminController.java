@@ -4,6 +4,7 @@ import app.site.service.AdminService;
 import app.site.service.AuthService;
 import app.site.web.Context;
 import app.site.web.interceptor.AuthRequired;
+import app.site.web.interceptor.LoginRequired;
 import app.site.web.session.Admin;
 import app.web.error.ConflictException;
 import app.web.error.WebException;
@@ -37,12 +38,14 @@ public class AdminController {
         return adminService.login(email, password, auth);
     }
 
+    @LoginRequired
     @RequestMapping(value = "/admin/logout", method = RequestMethod.GET)
     void logout(HttpServletRequest request) throws ConflictException {
         String auth = request.getHeader(Context.AUTH_ID);
         adminService.logout(auth);
     }
 
+    @LoginRequired
     @RequestMapping(value = "/admin/current", method = RequestMethod.GET)
     Admin getCurrent(HttpServletRequest request) throws ConflictException {
         String auth = request.getHeader(Context.AUTH_ID);

@@ -51,12 +51,12 @@ public class AuthService {
         return opsForHash.get(Context.AUTH_MAP, auth);
     }
 
-    public void renew(String auth) throws ConflictException {
+    public void renew(String auth, String adminId) throws ConflictException {
         if (!isValid(auth))
             throw new ConflictException(ErrorCodes.AUTH_INVALID, String.format("auth invalid, %s", auth));
 
         HashOperations<String, String, String> hashOperations = redisTemplate.opsForHash();
-        hashOperations.put(Context.AUTH_MAP, auth, null);
+        hashOperations.put(Context.AUTH_MAP, auth, adminId);
         redisTemplate.expire(auth, Context.AUTH_MINUTES, TimeUnit.MINUTES);
     }
 

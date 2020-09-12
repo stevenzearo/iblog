@@ -1,5 +1,6 @@
 package app.site.web;
 
+import app.site.web.interceptor.AuthInterceptor;
 import app.site.web.interceptor.LoginRequiredInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -14,6 +15,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class InterceptorConfig implements WebMvcConfigurer {
     @Autowired
     LoginRequiredInterceptor loginRequiredInterceptor;
+    @Autowired
+    AuthInterceptor authInterceptor;
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
@@ -28,5 +31,6 @@ public class InterceptorConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(loginRequiredInterceptor).addPathPatterns("/**");
+        registry.addInterceptor(authInterceptor).addPathPatterns("/**");
     }
 }

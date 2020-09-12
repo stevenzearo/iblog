@@ -11,5 +11,7 @@ import org.springframework.stereotype.Repository;
 public interface AdminRepository extends JpaRepository<Admin, String> {
     Admin save(Admin admin);
 
+    Admin getById(String adminId);
+
     Admin getFirstByEmail(String email);
 }

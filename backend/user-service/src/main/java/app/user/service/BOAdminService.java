@@ -56,7 +56,7 @@ public class BOAdminService {
     }
 
     public BOGetAdminByIdResponse getById(String id) {
-        Admin admin = adminRepository.getOne(id);
+        Admin admin = adminRepository.getById(id);
         Group group = groupRepository.getById(admin.groupId);
         List<Role> roles = roleRepository.findByGroupId(admin.groupId);
         return buildAdminForGetById(admin, group, roles);

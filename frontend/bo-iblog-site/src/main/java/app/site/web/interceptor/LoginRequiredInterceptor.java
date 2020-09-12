@@ -1,28 +1,46 @@
 package app.site.web.interceptor;
 
+import app.site.service.AuthService;
+import app.site.web.Context;
 import app.site.web.ErrorCodes;
 import app.site.web.RequestMethod;
-import app.site.web.ContextHelper;
-import app.web.error.UnAuthorizedException;
-import app.site.web.session.Admin;
+import app.web.error.ConflictException;
+import app.web.error.WebException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.Optional;
 
 /**
  * @author steve
  */
 @Component
 public class LoginRequiredInterceptor implements HandlerInterceptor {
+    @Autowired
+    AuthInterceptor authInterceptor;
+    @Autowired
+    AuthService authService;
+
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         if (RequestMethod.OPTIONS.equals(request.getMethod())) return false;
-        if (request.getRequestURI().startsWith("/admin/login")) return true;
-        Optional<Admin> currentUser = ContextHelper.getAdmin(request.getSession());
-        if (currentUser.isEmpty()) throw new UnAuthorizedException(ErrorCodes.UNAUTHORIZED, "unauthorized, please sign in first!!!");
+        authInterceptor.preHandle(request, response, handler);
+        if (!(handler instanceof HandlerMethod)) {
+            throw new WebException(String.format("unknown handler type, type=%s", handler.getClass().getName()));
+        }
+        HandlerMethod handlerMethod = (HandlerMethod) handler;
+        LoginRequired loginRequiredInClass = handlerMethod.getBeanType().getAnnotation(LoginRequired.class);
+        LoginRequired loginRequiredInMethod = handlerMethod.getMethod().getAnnotation(LoginRequired.class);
+        if (loginRequiredInClass == null && loginRequiredInMethod == null) return true;
+
+        String authId = request.getHeader(Context.AUTH_ID);
+        String adminId = authService.getAuthedAdminId(authId);
+        if (adminId == null || adminId.isBlank()) {
+            throw new ConflictException(ErrorCodes.LOGIN_REQUIRED, "login required, please login first");
+        }
         return true;
     }
 }
