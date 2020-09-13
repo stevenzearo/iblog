@@ -27,7 +27,7 @@ public class AuthInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         if (!(handler instanceof HandlerMethod)) {
-            throw new WebException(String.format("unknown handler type, type=%s",handler.getClass().getName()));
+            throw new WebException(String.format("unknown handler type, type=%s", handler.getClass().getName()));
         }
         HandlerMethod handlerMethod = (HandlerMethod) handler;
         AuthRequired authRequiredInClass = handlerMethod.getBeanType().getAnnotation(AuthRequired.class);
@@ -38,7 +38,10 @@ public class AuthInterceptor implements HandlerInterceptor {
         if (authId == null) {
             throw new ConflictException(ErrorCodes.AUTH_INVALID, "auth is null, please get auth first.");
         }
-        if (authService.isExpired(authId)) return false;
+        if (authService.isExpired(authId)) {
+            authService.invalid(authId);
+            throw new ConflictException(ErrorCodes.AUTH_EXPIRED, String.format("auth expired, please get a new auth, auth=%s", authId));
+        }
         String adminId = authService.getAuthedAdminId(authId);
         authService.renew(authId, adminId);
         return true;

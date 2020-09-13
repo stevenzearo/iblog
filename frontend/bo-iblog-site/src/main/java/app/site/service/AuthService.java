@@ -38,7 +38,7 @@ public class AuthService {
 
     public void authAdmin(String auth, String adminId) throws ConflictException {
         if (isExpired(auth)) {
-            throw new ConflictException(ErrorCodes.AUTH_EXPIRED, String.format("auth expired, auth = %s", auth));
+            throw new ConflictException(ErrorCodes.AUTH_EXPIRED, String.format("auth expired, please get a new auth, auth=%s", auth));
         }
         HashOperations<String, String, String> opsForHash = redisTemplate.opsForHash();
         opsForHash.put(Context.AUTH_MAP, auth, adminId);
@@ -46,7 +46,7 @@ public class AuthService {
 
     public String getAuthedAdminId(String auth) throws ConflictException {
         if (isExpired(auth))
-            throw new ConflictException(ErrorCodes.AUTH_EXPIRED, String.format("auth expired, auth = %s", auth));
+            throw new ConflictException(ErrorCodes.AUTH_EXPIRED, String.format("auth expired, please get a new auth, auth=%s", auth));
         HashOperations<String, String, String> opsForHash = redisTemplate.opsForHash();
         return opsForHash.get(Context.AUTH_MAP, auth);
     }
