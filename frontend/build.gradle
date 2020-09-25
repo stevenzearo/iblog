@@ -40,6 +40,12 @@ project('bo-iblog-site') {
 
 project('iblog-site') {
     dependencies {
+        compile(group: 'org.springframework.cloud', name: 'spring-cloud-starter-openfeign', version: springCloudVersion)
+        compile(group: 'redis.clients', name: 'jedis', version: '3.3.0')
+        compile group: 'org.springframework.data', name: 'spring-data-redis', version: springBootVersion
+        compile(group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-eureka-client', version: springCloudVersion) {
+            exclude group: 'com.google.code.gson', module: 'gson'
+        }
         compile project(':frontend:iblog-site-interface')
     }
 }
