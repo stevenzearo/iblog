@@ -1,9 +1,9 @@
 package app.user.service;
 
-import app.user.AuthorityView;
+import app.view.user.AuthorityView;
 import app.user.ErrorCodes;
-import app.user.PasswordEncryptException;
-import app.user.PasswordEncryptHelper;
+import app.util.PasswordEncryptException;
+import app.util.PasswordEncryptHelper;
 import app.user.api.admin.BOCreateAdminRequest;
 import app.user.api.admin.BOGetAdminByEmailResponse;
 import app.user.api.admin.BOGetAdminByIdResponse;

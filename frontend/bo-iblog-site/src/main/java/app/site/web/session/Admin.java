@@ -1,6 +1,6 @@
 package app.site.web.session;
 
-import app.user.AuthorityView;
+import app.view.user.AuthorityView;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
 import org.springframework.data.redis.core.index.Indexed;

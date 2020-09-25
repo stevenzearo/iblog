@@ -1,4 +1,4 @@
-package app.user;
+package app.util;
 
 import app.web.error.WebException;
 

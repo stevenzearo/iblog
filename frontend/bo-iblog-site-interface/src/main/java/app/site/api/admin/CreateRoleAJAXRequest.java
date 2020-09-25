@@ -1,6 +1,6 @@
 package app.site.api.admin;
 
-import app.user.AuthorityView;
+import app.view.user.AuthorityView;
 import org.springframework.lang.NonNull;
 
 /**

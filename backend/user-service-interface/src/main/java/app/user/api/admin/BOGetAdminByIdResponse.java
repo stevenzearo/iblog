@@ -1,6 +1,6 @@
 package app.user.api.admin;
 
-import app.user.AuthorityView;
+import app.view.user.AuthorityView;
 import org.springframework.lang.NonNull;
 
 import java.util.ArrayList;

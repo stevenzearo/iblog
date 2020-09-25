@@ -1,7 +1,7 @@
 package app.user.admin;
 
-import app.user.PasswordEncryptException;
-import app.user.PasswordEncryptHelper;
+import app.util.PasswordEncryptException;
+import app.util.PasswordEncryptHelper;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

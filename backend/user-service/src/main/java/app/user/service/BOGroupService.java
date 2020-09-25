@@ -4,7 +4,7 @@ import app.user.ErrorCodes;
 import app.user.api.admin.group.BOCreateGroupRequest;
 import app.user.api.admin.group.BOGetGroupResponse;
 import app.user.api.admin.group.BOListGroupResponse;
-import app.user.AuthorityView;
+import app.view.user.AuthorityView;
 import app.user.api.admin.role.BOCreateRoleRequest;
 import app.user.dao.GroupRepository;
 import app.user.dao.RoleRepository;

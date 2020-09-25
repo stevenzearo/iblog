@@ -1,4 +1,4 @@
-package app.user;
+package app.util;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
