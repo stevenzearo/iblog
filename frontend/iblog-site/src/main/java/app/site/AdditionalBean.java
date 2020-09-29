@@ -1,5 +1,6 @@
 package app.site;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
@@ -7,6 +8,10 @@ import org.springframework.data.redis.listener.ChannelTopic;
 import org.springframework.data.redis.listener.RedisMessageListenerContainer;
 import org.springframework.data.redis.listener.Topic;
 import org.springframework.web.socket.server.standard.ServerEndpointExporter;
+
+import javax.websocket.Session;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author steve
@@ -25,5 +30,11 @@ public class AdditionalBean {
     @Bean
     public ServerEndpointExporter serverEndpointExporter() {
         return new ServerEndpointExporter();
+    }
+
+    @Qualifier(value = "wsSessionMap")
+    @Bean(name = "wsSessionMap")
+    public Map<String, Session> wsSessionMap() {
+        return new HashMap<>();
     }
 }
