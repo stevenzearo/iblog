@@ -1,25 +1,29 @@
 package app.site;
 
-import org.springframework.beans.factory.annotation.Qualifier;
+import app.site.ws.WSComponent;
 import org.springframework.data.redis.connection.Message;
 import org.springframework.data.redis.connection.MessageListener;
 import org.springframework.stereotype.Component;
 
-import javax.websocket.Session;
-import java.util.HashMap;
+import javax.websocket.server.ServerEndpoint;
+import java.io.IOException;
 
 /**
  * @author steve
  */
 @Component
-public class ChatMessageListener implements MessageListener {
-    @Qualifier(value = "wsSessionMap")
-    HashMap<String, Session> wsSessionMap;
+public class ChatMessageListener extends WSComponent implements MessageListener {
 
     @Override
     public void onMessage(Message message, byte[] pattern) {
         // todo subscribe message and send by ws
-        wsSessionMap.forEach((k, v) -> System.out.println(k + " -> " + v));
+        WS_SESSION_MAP.forEach((k, v) -> {
+            try {
+                v.getBasicRemote().sendText(String.format("(%s): %s", k, "hello, world!"));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            System.out.println(k + " -> " + v);});
         System.out.println(String.format("patern: %s received message: %s", new String(pattern), message.toString()));
     }
 }

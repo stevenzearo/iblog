@@ -32,8 +32,8 @@ public class AdditionalBean {
         return new ServerEndpointExporter();
     }
 
-    @Qualifier(value = "wsSessionMap")
     @Bean(name = "wsSessionMap")
+    @Qualifier(value = "wsSessionMap")
     public Map<String, Session> wsSessionMap() {
         return new HashMap<>();
     }

@@ -12,7 +12,5 @@ webSocket.onclose = function (event) {
 
 webSocket.onmessage = function (messageevent) {
     alert(JSON.stringify(messageevent.data));
-
-    webSocket.send("hello");
+    webSocket.send("hello, steve, fffffffffffffffffffffff");
 }
-webSocket.send("hello");

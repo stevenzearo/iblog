@@ -1,8 +1,10 @@
 package app.site.ws;
 
+import org.springframework.context.ApplicationContextAware;
+import org.springframework.data.redis.listener.ChannelTopic;
+import org.springframework.data.redis.listener.Topic;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.Resource;
 import javax.websocket.OnClose;
 import javax.websocket.OnError;
 import javax.websocket.OnMessage;
@@ -11,7 +13,6 @@ import javax.websocket.Session;
 import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
 import java.io.IOException;
-import java.util.HashMap;
 
 /**
  * @author steve
@@ -22,15 +23,12 @@ import java.util.HashMap;
  * */
 @Component
 @ServerEndpoint("/ws/chat/{groupId}")
-public class WSChatService {
-    @Resource(name = "wsSessionMap")
-    HashMap<String, Session> wsSessionMap;
+public class WSChatService extends WSComponent implements ApplicationContextAware {
 
     @OnOpen
     public void onOpen(@PathParam("groupId") String groupId, Session session) throws IOException {
         // todo get userId;
-        String userId = "user-0001";
-        wsSessionMap.put(userId, session);
+        WS_SESSION_MAP.put(groupId, session);
         // todo update group info in redis
         session.getBasicRemote().sendText(String.format("welcome to chat group: %s", groupId));
     }
@@ -39,9 +37,8 @@ public class WSChatService {
     public void onClose(@PathParam("groupId") String groupId, Session session) throws IOException {
         // todo get userId;
         String userId = "user-0001";
-        wsSessionMap.remove(userId);
+        WS_SESSION_MAP.remove(userId);
         // todo update group info in redis
-        session.getBasicRemote().sendText(String.format("you are closing chat channel which groupId is :%s", groupId));
     }
 
     @OnError
@@ -50,9 +47,9 @@ public class WSChatService {
     }
 
     @OnMessage
-    public void onMessage(@PathParam("groupId") String groupId, String message, Session session) throws IOException {
+    public void onMessage(@PathParam("groupId") String groupId, String message, Session session) {
         // todo publish message to redis
-        System.out.println(String.format("get message: %s", message));
-        session.getBasicRemote().sendText(String.format("group(%s): %s", groupId, "hello, world!"));
+        Topic chatTopic = new ChannelTopic("ws-chat");
+        REDIS_TEMPLATE.convertAndSend(chatTopic.getTopic(), message);
     }
 }
