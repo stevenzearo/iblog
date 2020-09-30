@@ -1,9 +1,6 @@
 package app.user.service;
 
-import app.view.user.AuthorityView;
 import app.user.ErrorCodes;
-import app.util.PasswordEncryptException;
-import app.util.PasswordEncryptHelper;
 import app.user.api.admin.BOCreateAdminRequest;
 import app.user.api.admin.BOGetAdminByEmailResponse;
 import app.user.api.admin.BOGetAdminByIdResponse;
@@ -13,6 +10,8 @@ import app.user.dao.RoleRepository;
 import app.user.domain.Admin;
 import app.user.domain.Group;
 import app.user.domain.Role;
+import app.util.PasswordEncryptHelper;
+import app.view.user.AuthorityView;
 import app.web.error.ConflictException;
 import app.web.error.NotFoundException;
 import app.web.error.WebException;
@@ -49,8 +48,8 @@ public class BOAdminService {
         char[] saltChar = Character.toChars(byteVal);
         String salt = new String(saltChar);
         int iteratedTimes = (int) (Math.random() * MAX_ITERATED_TIME) + 1;
-
-        Admin admin = buildAdmin(request, salt, iteratedTimes);
+        String password = PasswordEncryptHelper.encryptPassword(request.password, salt, iteratedTimes);
+        Admin admin = buildAdmin(request, salt, iteratedTimes, password);
         adminRepository.save(admin);
         return admin.id;
     }
@@ -69,7 +68,7 @@ public class BOAdminService {
         return buildBoGetAdminResponse(admin, group, roles);
     }
 
-    private Admin buildAdmin(BOCreateAdminRequest request, String salt, int iteratedTimes) throws PasswordEncryptException {
+    private Admin buildAdmin(BOCreateAdminRequest request, String salt, int iteratedTimes, String password) {
         Admin admin = new Admin();
         admin.id = UUID.randomUUID().toString();
         admin.groupId = request.groupId;
@@ -77,7 +76,7 @@ public class BOAdminService {
         admin.email = request.email;
         admin.salt = salt;
         admin.iteratedTimes = iteratedTimes;
-        admin.password = PasswordEncryptHelper.encryptPassword(request.password, admin.salt, iteratedTimes);
+        admin.password = password;
         admin.createBy = request.requestedBy;
         admin.createdTime = ZonedDateTime.now();
         return admin;

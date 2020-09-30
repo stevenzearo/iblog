@@ -16,7 +16,6 @@ import java.io.IOException;
  */
 @Component
 public class WebServiceInterceptor implements HandlerInterceptor {
-    @Autowired
     private static final Logger logger = LoggerFactory.getLogger(WebServiceInterceptor.class);
 
     @Override

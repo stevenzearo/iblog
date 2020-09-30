@@ -1,18 +1,19 @@
 package app.user.api.user;
 
-import org.springframework.stereotype.Component;
+import org.springframework.lang.NonNull;
 
 /**
  * @author steve
  */
-@Component
 public class GetUserResponse {
+    @NonNull
     public Long id;
 
     public String name;
 
     public Integer age;
 
+    @NonNull
     public String email;
 
     @Override
