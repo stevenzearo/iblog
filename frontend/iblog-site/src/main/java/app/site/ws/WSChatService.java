@@ -37,19 +37,20 @@ public class WSChatService extends WSComponent implements ApplicationContextAwar
     public void onClose(@PathParam("groupId") String groupId, Session session) throws IOException {
         // todo get userId;
         String userId = "user-0001";
-        WS_SESSION_MAP.remove(userId);
+        WS_SESSION_MAP.remove(groupId);
         // todo update group info in redis
     }
 
     @OnError
     public void onError(@PathParam("groupId") String groupId, Session session, Throwable throwable) {
+        WS_SESSION_MAP.remove(groupId);
         throwable.printStackTrace();
     }
 
     @OnMessage
     public void onMessage(@PathParam("groupId") String groupId, String message, Session session) {
         // todo publish message to redis
-        Topic chatTopic = new ChannelTopic("ws-chat");
+        Topic chatTopic = new ChannelTopic(WSConfig.CHAT_CHANNEL);
         REDIS_TEMPLATE.convertAndSend(chatTopic.getTopic(), message);
     }
 }

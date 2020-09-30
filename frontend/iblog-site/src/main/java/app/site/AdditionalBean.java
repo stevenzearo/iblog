@@ -1,5 +1,6 @@
 package app.site;
 
+import app.site.ws.WSConfig;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,7 +23,7 @@ public class AdditionalBean {
     public RedisMessageListenerContainer container(RedisConnectionFactory connectionFactory, ChatMessageListener listener) {
         RedisMessageListenerContainer container = new RedisMessageListenerContainer();
         container.setConnectionFactory(connectionFactory);
-        Topic chatTopic = new ChannelTopic("test-channel");
+        Topic chatTopic = new ChannelTopic(WSConfig.CHAT_CHANNEL);
         container.addMessageListener(listener, chatTopic);
         return container;
     }

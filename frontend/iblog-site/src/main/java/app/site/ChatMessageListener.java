@@ -5,7 +5,6 @@ import org.springframework.data.redis.connection.Message;
 import org.springframework.data.redis.connection.MessageListener;
 import org.springframework.stereotype.Component;
 
-import javax.websocket.server.ServerEndpoint;
 import java.io.IOException;
 
 /**
@@ -23,7 +22,8 @@ public class ChatMessageListener extends WSComponent implements MessageListener 
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            System.out.println(k + " -> " + v);});
-        System.out.println(String.format("patern: %s received message: %s", new String(pattern), message.toString()));
+            System.out.println(k + " -> " + v);
+        });
+        System.out.println(String.format("channel: %s received message: %s", new String(message.getChannel()), message.toString()));
     }
 }
