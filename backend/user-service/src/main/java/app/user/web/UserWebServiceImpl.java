@@ -5,10 +5,10 @@ import app.user.api.user.GetUserByEmailResponse;
 import app.user.api.user.GetUserResponse;
 import app.user.api.user.RegisterUserRequest;
 import app.user.service.UserService;
+import app.web.error.WebErrorCodes;
 import app.web.response.EmptyResponse;
 import app.web.response.Response;
 import app.web.response.ResponseHelper;
-import org.bouncycastle.util.Strings;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +27,10 @@ public class UserWebServiceImpl implements UserWebService {
     public EmptyResponse register(RegisterUserRequest request) {
         logger.debug(String.format("registering email: %s", request.email));
         Response<Long> response = ResponseHelper.encloseWithException(() -> userService.register(request));
-        logger.debug(String.format("registered user, id = %d", response.data));
-        return ResponseHelper.ok();
+        if (response.statusCode == WebErrorCodes.OK) {
+            logger.debug(String.format("registered user, id = %d", response.data));
+        }
+        return response;
     }
 
     @Override

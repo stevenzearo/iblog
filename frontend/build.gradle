@@ -40,6 +40,9 @@ project('bo-iblog-site') {
 
 project('iblog-site') {
     dependencies {
+        compile project(':backend:user-service-interface')
+        compile project(':backend:blog-service-interface')
+        compile project(':backend:stock-service-interface')
         compile(group: 'org.springframework.cloud', name: 'spring-cloud-starter-openfeign', version: springCloudVersion)
         compile(group: 'redis.clients', name: 'jedis', version: '3.3.0')
         compile group: 'org.springframework.data', name: 'spring-data-redis', version: springBootVersion
