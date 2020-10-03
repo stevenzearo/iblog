@@ -1,11 +1,11 @@
 package app.site.web.controller;
 
+import app.site.cache.Admin;
 import app.site.service.AdminService;
 import app.site.service.AuthService;
 import app.site.web.Context;
 import app.site.web.interceptor.AuthRequired;
 import app.site.web.interceptor.LoginRequired;
-import app.site.cache.Admin;
 import app.web.error.ConflictException;
 import app.web.error.WebException;
 import org.slf4j.Logger;
@@ -46,7 +46,7 @@ public class AdminController {
     }
 
     @LoginRequired
-    @RequestMapping(value = "/admin/current", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/current", method = RequestMethod.PUT)
     Admin getCurrent(HttpServletRequest request) throws ConflictException {
         String auth = request.getHeader(Context.AUTH_ID);
         return adminService.getCurrent(auth);
