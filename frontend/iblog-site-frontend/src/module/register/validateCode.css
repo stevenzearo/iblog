@@ -1,0 +1,20 @@
+#validate-code {
+    user-select: none;
+}
+
+#server-validate-code {
+    user-select: none;
+}
+
+.validate-code {
+    float: left;
+    margin-left: 10px;
+    border: solid red 1px;
+}
+
+.count-down {
+    float: right;
+    margin-right: 10px;
+    border: solid red 1px;
+
+}

@@ -1,0 +1,26 @@
+.text-input {
+
+}
+.text-input * {
+    font-size: 1.2em;
+    padding: 5px 5px;
+    height: 30px;
+}
+
+.text-input label {
+    display: inline-block;
+    text-align: right;
+    border: solid red 1px;
+    width: 100px;
+    margin: 10px 10px;
+}
+
+.text-input input {
+    display: inline-block;
+    border: solid red 1px;
+    margin: 10px 10px;
+}
+
+.text-input input::placeholder {
+    color: darkgray;
+}
