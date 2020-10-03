@@ -4,12 +4,17 @@ import app.site.cache.RedisTransaction;
 import app.site.web.Context;
 import app.site.web.ErrorCodes;
 import app.web.error.ConflictException;
+import app.web.error.WebException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.SetOperations;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.websocket.CloseReason;
+import javax.websocket.Session;
+import java.io.IOException;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
@@ -23,7 +28,7 @@ public class AuthService {
     @Autowired
     RedisTransaction redisTransaction;
 
-    public String createAuth() {
+    public String createAuth() throws WebException {
         String auth = UUID.randomUUID().toString();
 
         SetOperations<String, String> opsForSet = redisTemplate.opsForSet();
@@ -34,6 +39,23 @@ public class AuthService {
             redisTemplate.expire(auth, Context.AUTH_MINUTES, TimeUnit.MINUTES);
         });
         return auth;
+    }
+
+    public String getAuth(HttpServletRequest request) throws ConflictException {
+        String authId = request.getHeader(Context.AUTH_ID);
+        if (authId == null || authId.isBlank()) {
+            throw new ConflictException(ErrorCodes.AUTH_INVALID, "auth is null or blank, please get and set auth first.");
+        }
+        return authId;
+    }
+
+    public String getAuth(Session session) throws ConflictException, IOException {
+        String authId = session.getNegotiatedSubprotocol();
+        if (authId == null || authId.isBlank()) {
+            session.close(new CloseReason(CloseReason.CloseCodes.PROTOCOL_ERROR, "auth is null or blank, please get and set auth first."));
+            throw new ConflictException(ErrorCodes.AUTH_INVALID, "auth is null or blank, please get and set auth first.");
+        }
+        return authId;
     }
 
     public void authUser(String auth, Long userId) throws ConflictException {
@@ -61,7 +83,7 @@ public class AuthService {
         redisTemplate.expire(auth, Context.AUTH_MINUTES, TimeUnit.MINUTES);
     }
 
-    public void invalid(String auth) {
+    public void invalid(String auth) throws WebException {
         if (!isValid(auth)) return;
 
         SetOperations<String, String> opsForSet = redisTemplate.opsForSet();

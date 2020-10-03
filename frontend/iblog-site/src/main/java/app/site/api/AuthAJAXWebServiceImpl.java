@@ -1,6 +1,7 @@
 package app.site.api;
 
 import app.site.service.AuthService;
+import app.web.error.WebException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,7 @@ public class AuthAJAXWebServiceImpl implements AuthAJAXWebService {
     AuthService authService;
 
     @Override
-    public String getAuth() {
+    public String getAuth() throws WebException {
         String auth = authService.createAuth();
         logger.info(String.format("created auth, auth=%s", auth));
         return auth;

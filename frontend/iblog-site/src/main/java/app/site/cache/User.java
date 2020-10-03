@@ -1,4 +1,4 @@
-package app.site.session;
+package app.site.cache;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
@@ -11,8 +11,11 @@ import org.springframework.data.redis.core.index.Indexed;
 public class User {
     @Id
     public Long id;
+
     public String name;
+
     public Integer age;
+
     @Indexed
     public String email;
 

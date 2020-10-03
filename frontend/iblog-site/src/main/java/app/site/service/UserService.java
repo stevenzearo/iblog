@@ -2,7 +2,7 @@ package app.site.service;
 
 import app.site.api.user.RegisterUserAJAXRequest;
 import app.site.cache.UserCache;
-import app.site.session.User;
+import app.site.cache.User;
 import app.site.web.ErrorCodes;
 import app.user.api.UserWebService;
 import app.user.api.user.GetUserByEmailResponse;
@@ -46,6 +46,10 @@ public class UserService {
 
     public User getCurrent(String auth) throws ConflictException {
         Long userId = authService.getAuthedUserId(auth);
+        return get(userId);
+    }
+
+    public User get(Long userId) {
         return userCache.findById(userId).orElseGet(() -> {
             GetUserResponse data = userWebService.get(userId).data;
             User user = buildUserCache(data);
@@ -72,7 +76,7 @@ public class UserService {
         return user;
     }
 
-    public void logout(String auth) throws ConflictException {
+    public void logout(String auth) throws WebException {
         Long userId = authService.getAuthedUserId(auth);
         authService.invalid(auth);
         userCache.deleteById(userId);

@@ -34,10 +34,7 @@ public class AuthInterceptor implements HandlerInterceptor {
         AuthRequired authRequiredInMethod = handlerMethod.getMethod().getAnnotation(AuthRequired.class);
         if (authRequiredInClass == null && authRequiredInMethod == null) return true;
 
-        String authId = request.getHeader(Context.AUTH_ID);
-        if (authId == null) {
-            throw new ConflictException(ErrorCodes.AUTH_INVALID, "auth is null, please get auth first.");
-        }
+        String authId = authService.getAuth(request);
         if (authService.isExpired(authId)) {
             authService.invalid(authId);
             throw new ConflictException(ErrorCodes.AUTH_EXPIRED, String.format("auth expired, please get a new auth, auth=%s", authId));

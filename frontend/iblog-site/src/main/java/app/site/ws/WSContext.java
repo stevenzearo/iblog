@@ -12,8 +12,9 @@ import java.util.Map;
 /**
  * @author steve
  */
+// todo consider to remove
 @Component
-public class WSComponent implements ApplicationContextAware {
+public class WSContext implements ApplicationContextAware {
     protected static StringRedisTemplate REDIS_TEMPLATE;
     protected static Map<String, Session> WS_SESSION_MAP;
 

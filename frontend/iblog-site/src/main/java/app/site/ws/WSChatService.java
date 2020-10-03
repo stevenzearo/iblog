@@ -1,6 +1,10 @@
 package app.site.ws;
 
-import org.springframework.context.ApplicationContextAware;
+import app.site.service.ChatService;
+import app.site.web.interceptor.LoginRequired;
+import app.web.error.ConflictException;
+import app.web.error.WebException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.listener.ChannelTopic;
 import org.springframework.data.redis.listener.Topic;
 import org.springframework.stereotype.Component;
@@ -23,34 +27,27 @@ import java.io.IOException;
  * */
 @Component
 @ServerEndpoint("/ws/chat/{groupId}")
-public class WSChatService extends WSComponent implements ApplicationContextAware {
+public class WSChatService {
+    @Autowired
+    ChatService chatService;
 
     @OnOpen
-    public void onOpen(@PathParam("groupId") String groupId, Session session) throws IOException {
-        // todo get userId;
-        WS_SESSION_MAP.put(groupId, session);
-        // todo update group info in redis
-        session.getBasicRemote().sendText(String.format("welcome to chat group: %s", groupId));
+    public void onOpen(@PathParam("groupId") String groupId, Session session) throws IOException, WebException {
+        chatService.onOpen(groupId, session);
     }
 
     @OnClose
-    public void onClose(@PathParam("groupId") String groupId, Session session) throws IOException {
-        // todo get userId;
-        String userId = "user-0001";
-        WS_SESSION_MAP.remove(groupId);
-        // todo update group info in redis
+    public void onClose(@PathParam("groupId") String groupId, Session session) throws IOException, WebException {
+        chatService.onClose(groupId, session);
     }
 
     @OnError
-    public void onError(@PathParam("groupId") String groupId, Session session, Throwable throwable) {
-        WS_SESSION_MAP.remove(groupId);
-        throwable.printStackTrace();
+    public void onError(@PathParam("groupId") String groupId, Session session, Throwable throwable) throws ConflictException, IOException {
+        chatService.onError(groupId, session, throwable);
     }
 
     @OnMessage
-    public void onMessage(@PathParam("groupId") String groupId, String message, Session session) {
-        // todo publish message to redis
-        Topic chatTopic = new ChannelTopic(WSConfig.CHAT_CHANNEL);
-        REDIS_TEMPLATE.convertAndSend(chatTopic.getTopic(), message);
+    public void onMessage(@PathParam("groupId") String groupId, String message, Session session) throws WebException, IOException {
+        chatService.onMessage(groupId, message, session);
     }
 }

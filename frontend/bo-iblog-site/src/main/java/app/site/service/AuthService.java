@@ -10,6 +10,7 @@ import org.springframework.data.redis.core.SetOperations;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
@@ -34,6 +35,14 @@ public class AuthService {
             redisTemplate.expire(auth, Context.AUTH_MINUTES, TimeUnit.MINUTES);
         });
         return auth;
+    }
+
+    public String getAuth(HttpServletRequest request) throws ConflictException {
+        String authId = request.getHeader(Context.AUTH_ID);
+        if (authId == null || authId.isBlank()) {
+            throw new ConflictException(ErrorCodes.AUTH_INVALID, "auth is null or blank, please get and set auth first.");
+        }
+        return authId;
     }
 
     public void authAdmin(String auth, String adminId) throws ConflictException {

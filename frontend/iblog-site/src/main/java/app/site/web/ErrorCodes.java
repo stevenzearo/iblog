@@ -11,4 +11,5 @@ public class ErrorCodes {
     public static final String UNAUTHORIZED = "UNAUTHORIZED";
     public static final String AUTH_INVALID = "AUTH_INVALID";
     public static final String AUTH_EXPIRED = "AUTH_EXPIRED";
+    public static final String CHAT_MESSAGE_FORMAT_INVALID = "CHAT_MESSAGE_FORMAT_INVALID";
 }

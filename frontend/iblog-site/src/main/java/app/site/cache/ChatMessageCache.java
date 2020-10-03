@@ -1,24 +1,13 @@
 package app.site.cache;
 
+import org.springframework.data.repository.CrudRepository;
+
+import java.util.List;
+
 /**
  * @author steve
  */
-public class ChatMessageCache {
-    public String id;
-
-    public String groupId;
-
-    public ChatMember from;
-
-    public ChatMember to;
-
-    public byte[] content;
-
-    public boolean isRead;
-
-    public static class ChatMember {
-        public String userId;
-
-        public String name;
-    }
+public interface ChatMessageCache extends CrudRepository<ChatMessage, String> {
+    List<ChatMessage> findAllByGroupId(String groupId);
+    void deleteAllByGroupId(String groupId);
 }

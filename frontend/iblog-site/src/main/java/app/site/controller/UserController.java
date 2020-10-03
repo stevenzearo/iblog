@@ -2,7 +2,7 @@ package app.site.controller;
 
 import app.site.service.AuthService;
 import app.site.service.UserService;
-import app.site.session.User;
+import app.site.cache.User;
 import app.site.web.Context;
 import app.site.web.interceptor.AuthRequired;
 import app.site.web.interceptor.LoginRequired;
@@ -40,7 +40,7 @@ public class UserController {
 
     @LoginRequired
     @RequestMapping(value = "/user/logout", method = RequestMethod.GET)
-    void logout(HttpServletRequest request) throws ConflictException {
+    void logout(HttpServletRequest request) throws WebException {
         String auth = request.getHeader(Context.AUTH_ID);
         userService.logout(auth);
     }

@@ -36,7 +36,7 @@ public class LoginRequiredInterceptor implements HandlerInterceptor {
         LoginRequired loginRequiredInMethod = handlerMethod.getMethod().getAnnotation(LoginRequired.class);
         if (loginRequiredInClass == null && loginRequiredInMethod == null) return true;
 
-        String authId = request.getHeader(Context.AUTH_ID);
+        String authId = authService.getAuth(request);
         String adminId = authService.getAuthedAdminId(authId);
         if (adminId == null || adminId.isBlank()) {
             throw new ConflictException(ErrorCodes.LOGIN_REQUIRED, "login required, please login first");
