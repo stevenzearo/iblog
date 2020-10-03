@@ -7,7 +7,7 @@ import org.springframework.data.redis.core.index.Indexed;
 /**
  * @author steve
  */
-@RedisHash(value = "user", timeToLive = 60 * 60) // ttl = 1h
+@RedisHash(value = "users", timeToLive = 60 * 60) // ttl = 1h
 public class User {
     @Id
     public Long id;

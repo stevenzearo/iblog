@@ -1,12 +1,7 @@
 package app.site.ws;
 
-import app.site.service.ChatService;
-import app.site.web.interceptor.LoginRequired;
 import app.web.error.ConflictException;
 import app.web.error.WebException;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.listener.ChannelTopic;
-import org.springframework.data.redis.listener.Topic;
 import org.springframework.stereotype.Component;
 
 import javax.websocket.OnClose;
@@ -26,28 +21,25 @@ import java.io.IOException;
  *
  * */
 @Component
-@ServerEndpoint("/ws/chat/{groupId}")
-public class WSChatService {
-    @Autowired
-    ChatService chatService;
-
+@ServerEndpoint("/ws/chat/{groupId}/user-auth/{authId}")
+public class WSChatService extends WSContext {
     @OnOpen
-    public void onOpen(@PathParam("groupId") String groupId, Session session) throws IOException, WebException {
-        chatService.onOpen(groupId, session);
+    public void onOpen(@PathParam("groupId") String groupId, @PathParam("authId") String authId, Session session) throws IOException, WebException {
+        CHAT_SERVICE.onOpen(groupId, authId, session);
     }
 
     @OnClose
-    public void onClose(@PathParam("groupId") String groupId, Session session) throws IOException, WebException {
-        chatService.onClose(groupId, session);
+    public void onClose(@PathParam("groupId") String groupId, @PathParam("authId") String authId, Session session) throws IOException, WebException {
+        CHAT_SERVICE.onClose(groupId, authId, session);
     }
 
     @OnError
-    public void onError(@PathParam("groupId") String groupId, Session session, Throwable throwable) throws ConflictException, IOException {
-        chatService.onError(groupId, session, throwable);
+    public void onError(@PathParam("groupId") String groupId, @PathParam("authId") String authId, Session session, Throwable throwable) throws ConflictException, IOException {
+        CHAT_SERVICE.onError(groupId, authId, session, throwable);
     }
 
     @OnMessage
-    public void onMessage(@PathParam("groupId") String groupId, String message, Session session) throws WebException, IOException {
-        chatService.onMessage(groupId, message, session);
+    public void onMessage(@PathParam("groupId") String groupId, @PathParam("authId") String authId, String message, Session session) throws WebException, IOException {
+        CHAT_SERVICE.onMessage(groupId, authId, message, session);
     }
 }

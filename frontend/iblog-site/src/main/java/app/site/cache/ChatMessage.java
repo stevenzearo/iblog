@@ -11,7 +11,7 @@ import java.util.Arrays;
 /**
  * @author steve
  */
-@RedisHash(value = "user")
+@RedisHash(value = "messages")
 public class ChatMessage implements Serializable {
     @Id
     public String id;

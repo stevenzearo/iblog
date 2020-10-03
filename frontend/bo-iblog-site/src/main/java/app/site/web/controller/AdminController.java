@@ -5,7 +5,7 @@ import app.site.service.AuthService;
 import app.site.web.Context;
 import app.site.web.interceptor.AuthRequired;
 import app.site.web.interceptor.LoginRequired;
-import app.site.web.session.Admin;
+import app.site.cache.Admin;
 import app.web.error.ConflictException;
 import app.web.error.WebException;
 import org.slf4j.Logger;

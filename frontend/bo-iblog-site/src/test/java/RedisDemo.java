@@ -1,13 +1,12 @@
 import app.IntegrationTest;
 import app.site.cache.AdminCache;
-import app.site.web.session.Admin;
+import app.site.cache.Admin;
 import app.view.user.AuthorityView;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 

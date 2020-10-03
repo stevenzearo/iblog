@@ -3,7 +3,7 @@ package app.site.service;
 import app.site.api.admin.CreateAdminAJAXRequest;
 import app.site.cache.AdminCache;
 import app.site.web.ErrorCodes;
-import app.site.web.session.Admin;
+import app.site.cache.Admin;
 import app.util.PasswordEncryptException;
 import app.util.PasswordEncryptHelper;
 import app.user.api.BOAdminWebService;

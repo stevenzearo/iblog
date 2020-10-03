@@ -43,44 +43,40 @@ public class ChatService extends WSContext {
     @Autowired
     ChatMessageCache chatMessageCache;
 
-    public void onOpen(String groupId, Session session) throws IOException, WebException {
-        User currentUser = getCurrentUser(session);
+    public void onOpen(String groupId, String authId, Session session) throws IOException, WebException {
+        User currentUser = userService.getCurrent(authId);
 
-        redisTransaction.transaction(() -> {
-            SetOperations<String, String> opsForSet = REDIS_TEMPLATE.opsForSet();
-            opsForSet.add(String.format(Context.CHAT_GROUP_SET + ":%s", groupId), String.valueOf(currentUser.id));
-        });
+        SetOperations<String, String> opsForSet = REDIS_TEMPLATE.opsForSet();
+        opsForSet.add(String.format(Context.CHAT_GROUP_SET + ":%s", groupId), String.valueOf(currentUser.id));
 
         WS_SESSION_MAP.put(String.format("%s:%d", groupId, currentUser.id), session);
         session.getBasicRemote().sendText(String.format("welcome to chat group: %s", groupId));
     }
 
-    public void onClose(String groupId, Session session) throws IOException, WebException {
-        User currentUser = getCurrentUser(session);
-        redisTransaction.transaction(() -> {
-            SetOperations<String, String> opsForSet = REDIS_TEMPLATE.opsForSet();
-            Boolean containsGroup = opsForSet.isMember(Context.CHAT_GROUP_SET, groupId);
-            if (containsGroup == null) throw new WebException("server error");
-            opsForSet.remove(String.format(Context.CHAT_GROUP_SET + ":%s", groupId), String.valueOf(currentUser.id));
-            Long size = opsForSet.size(String.format(Context.CHAT_GROUP_SET + ":%s", groupId));
-            if (size == null) throw new WebException("server error.");
-            if (size == 0) {
-                REDIS_TEMPLATE.delete(String.format(Context.CHAT_GROUP_SET + ":%s", groupId));
-                chatMessageCache.deleteAllByGroupId(groupId);
-            }
-        });
+    public void onClose(String groupId, String authId, Session session) throws IOException, WebException {
+        User currentUser = userService.getCurrent(authId);
+
+        SetOperations<String, String> opsForSet = REDIS_TEMPLATE.opsForSet();
+        Boolean containsGroup = opsForSet.isMember(Context.CHAT_GROUP_SET, groupId);
+        if (containsGroup == null) throw new WebException("server error");
+        opsForSet.remove(String.format(Context.CHAT_GROUP_SET + ":%s", groupId), String.valueOf(currentUser.id));
+        Long size = opsForSet.size(String.format(Context.CHAT_GROUP_SET + ":%s", groupId));
+        if (size == null) throw new WebException("server error.");
+        if (size == 0) {
+            REDIS_TEMPLATE.delete(String.format(Context.CHAT_GROUP_SET + ":%s", groupId));
+        }
 
         WS_SESSION_MAP.remove(String.format("%s:%d", groupId, currentUser.id));
     }
 
-    public void onError(String groupId, Session session, Throwable throwable) throws ConflictException, IOException {
-        User currentUser = getCurrentUser(session);
+    public void onError(String groupId, String authId, Session session, Throwable throwable) throws ConflictException, IOException {
+        User currentUser = userService.getCurrent(authId);
         WS_SESSION_MAP.remove(String.format("%s:%d", groupId, currentUser.id));
         throwable.printStackTrace();
     }
 
-    public void onMessage(String groupId, String message, Session session) throws WebException, IOException {
-        User currentUser = getCurrentUser(session);
+    public void onMessage(String groupId, String authId, String message, Session session) throws WebException, IOException {
+        User currentUser = userService.getCurrent(authId);
 
         String[] strings = message.split("\0000");
         if (strings.length != 1 && strings.length != 2) {
@@ -108,10 +104,8 @@ public class ChatService extends WSContext {
         ChatMessage chatMessage = buildChatMessageCache(groupId, currentUser, content, toUser);
 
         Topic chatTopic = new ChannelTopic(WSConfig.CHAT_CHANNEL);
-        redisTransaction.transaction(() -> {
-            chatMessageCache.save(chatMessage);
-            REDIS_TEMPLATE.convertAndSend(chatTopic.getTopic(), chatMessage);
-        });
+        chatMessageCache.save(chatMessage);
+        REDIS_TEMPLATE.convertAndSend(chatTopic.getTopic(), chatMessage.id);
     }
 
     private ChatMessage buildChatMessageCache(String groupId, User currentUser, String content, User toUser) {
@@ -131,10 +125,5 @@ public class ChatService extends WSContext {
         chatMessage.content = content.getBytes();
         chatMessage.createdTime = ZonedDateTime.now();
         return chatMessage;
-    }
-
-    private User getCurrentUser(Session session) throws ConflictException, IOException {
-        String authId = authService.getAuth(session);
-        return userService.getCurrent(authId);
     }
 }
