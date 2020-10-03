@@ -1,7 +1,6 @@
 package app.site.web.interceptor;
 
 import app.site.service.AuthService;
-import app.site.web.Context;
 import app.site.web.ErrorCodes;
 import app.site.web.RequestMethod;
 import app.web.error.ConflictException;
@@ -26,7 +25,7 @@ public class LoginRequiredInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        if (RequestMethod.OPTIONS.equals(request.getMethod())) return false;
+        if (RequestMethod.OPTIONS.equals(request.getMethod())) return true;
         authInterceptor.preHandle(request, response, handler);
         if (!(handler instanceof HandlerMethod)) {
             throw new WebException(String.format("unknown handler type, type=%s", handler.getClass().getName()));

@@ -3,7 +3,6 @@ package app.site.web.interceptor;
 import app.site.service.AuthService;
 import app.site.web.ErrorCodes;
 import app.web.error.ConflictException;
-import app.web.error.WebException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
@@ -26,7 +25,7 @@ public class AuthInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         if (!(handler instanceof HandlerMethod)) {
-            throw new WebException(String.format("unknown handler type, type=%s", handler.getClass().getName()));
+            return true;
         }
         HandlerMethod handlerMethod = (HandlerMethod) handler;
         AuthRequired authRequiredInClass = handlerMethod.getBeanType().getAnnotation(AuthRequired.class);
