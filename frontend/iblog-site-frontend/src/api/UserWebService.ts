@@ -7,7 +7,7 @@ export class UserWebService {
         const props: AjaxProps = {
             url: `${SERVER_DOMAIN}/ajax/user`,
             headers: {"x-auth-id": authId},
-            params: {name: request.name, age: request.age, email: request.email, password: request.password},
+            data: {name: request.name, age: request.age, email: request.email, password: request.password},
         };
         Ajax.ajax(Method.POST, props).then(func);
     }

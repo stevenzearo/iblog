@@ -1,12 +1,8 @@
 import React from 'react';
 import ReactDOM from "react-dom";
-import {BrowserRouter, Route} from 'react-router-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 import App from "./App";
-import Home from "./module/home/home";
-import LoginPage from "./module/login/login";
-import RegisterPage from "./module/register/register";
 import {AuthWebService} from "./api/AuthWebService";
 
 const authId = localStorage.getItem("x-auth-id");
@@ -14,14 +10,7 @@ if (authId == null || authId.length === 0) {
     AuthWebService.setAuth();
 }
 ReactDOM.render(
-    <React.StrictMode>
-        <BrowserRouter>
-            <Route exact path='/' component={App}/>
-            <Route exact path='/home' component={Home}/>
-            <Route exact path='/register' component={RegisterPage}/>
-            <Route exact path='/login' component={LoginPage}/>
-        </BrowserRouter>
-    </React.StrictMode>,
+    <App/>,
     document.getElementById('root')
 );
 

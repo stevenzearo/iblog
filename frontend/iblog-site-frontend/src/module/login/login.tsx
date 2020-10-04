@@ -1,4 +1,5 @@
 import React from 'react';
+import CryptoJS from 'crypto-js';
 import '../../index.css';
 import './login.css';
 import '../../component/SubmitButton.css';
@@ -77,7 +78,8 @@ export class LoginPage extends React.Component<LoginPageProps, LoginPageState> {
             this.props.history.push("/home");
         }
         const email: string = this.emailInput.textInput.input.value;
-        const password: string = this.passwordInput.textInput.input.value;
+        var password: string = this.passwordInput.textInput.input.value;
+        password = CryptoJS.SHA256(password).toString();
         if (!email || email === '' || !password || password === '') {
             alert('please input email and password!');
             return;

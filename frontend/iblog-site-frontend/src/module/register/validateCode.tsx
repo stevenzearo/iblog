@@ -19,10 +19,9 @@ export class ValidateCode extends React.Component<ValidateCodeProps, ValidateCod
         this.state = {
             timeCounter: 0,
             refreshable: false,
-            validateCode: '000000'
+            validateCode: this.getVerifyCode()
         }
     }
-
 
     tick() {
         let refreshSecond = this.props.refreshSecond;
@@ -43,11 +42,21 @@ export class ValidateCode extends React.Component<ValidateCodeProps, ValidateCod
         clearInterval(this.timeId);
     }
 
-    getValidateCode = () => {
+    getVerifyCode = (): string => {
+        var num = Math.round(Math.random()*1000000);
+        var numStr = num.toString();
+        var code = numStr;
+        if (numStr.length < 6) {
+            for (let i = 0; i < 6 - numStr.length; i++) {
+                code = "0" + code;
+            }
+        }
+        return code;
         // todo use session to get a validate code
     };
 
     refreshValidateCode = () => {
+        var validateCode = this.getVerifyCode();
         this.setState(function (state: any) {
             var counter = state.timeCounter;
             if (counter <= 30) {
@@ -55,7 +64,6 @@ export class ValidateCode extends React.Component<ValidateCodeProps, ValidateCod
                 return state;
             }
             // todo get new validate code
-            var validateCode = '000001';
             counter = 0;
             return {timeCounter: 0, refreshable: false, validateCode: validateCode}
         })

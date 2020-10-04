@@ -32,7 +32,7 @@ class Home extends React.Component<HomeProp, HomeState> {
 
     componentWillMount(): void {
         UserWebService.getCurrent(AuthWebService.getAuthFromLocalStorage(), (result => {
-            if (result.status && result.status === 200 && !!result.data) {
+            if (!!result.status && result.status === 200 && !!result.data) {
                 this.setState((state: HomeState) => {
                     return {user: result.data, data: state.data, isLogin: true};
                 })
@@ -79,7 +79,7 @@ class Home extends React.Component<HomeProp, HomeState> {
 
     render() {
         return (
-            <div className={'content'}>
+            <div  className="content">
                 <div className={'head'}>
                     <h1>Hello, {!!this.state.user ? this.state.user.name : ""}!</h1>
 
