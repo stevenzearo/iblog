@@ -77,7 +77,8 @@ class RegisterPage extends React.Component<RegisterPageProps, RegisterPageState>
 
     render() {
         return (
-            <div className='login-page'>
+            <div className='register-page'>
+                <div className='register-head'>REGISTER PAGE</div>
                 <TextInput id='user-name' name='user-name' label='用户名' type='text' placeholder='请输入用户名'
                            onBlur={this.setUserName.bind(this)}/>
                 <TextInput id='password' name='password' label='密码' type='password' placeholder='请输入密码'/>
