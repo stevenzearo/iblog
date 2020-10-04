@@ -24,13 +24,14 @@ export class UserWebService {
         const props: AjaxProps = {
             url: `${SERVER_DOMAIN}/user/login`,
             headers: {"x-auth-id": authId},
+            params: {email: email, password: password}
         };
         Ajax.ajax(Method.POST, props).then(func);
     }
 
     static logout(authId: string | null, func?: (result: any) => void): void {
         const props: AjaxProps = {
-            url: `${SERVER_DOMAIN}/user/login`,
+            url: `${SERVER_DOMAIN}/user/logout`,
             headers: {"x-auth-id": authId},
         };
         Ajax.ajax(Method.PUT, props).then(func);

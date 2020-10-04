@@ -6,7 +6,8 @@ import {History} from "history";
 import {Email, EmailState} from './component/email';
 import Password, {PasswordState} from "./component/password";
 import {UserWebService} from "../../api/UserWebService";
-import {AUTH_ID} from "../../react-app-env";
+import {AuthWebService} from "../../api/AuthWebService";
+import {ErrorProcessService} from "../../common/ErrorProcessService";
 
 export interface LoginPageProps {
     history: History;
@@ -45,16 +46,19 @@ export class LoginPage extends React.Component<LoginPageProps, LoginPageState> {
             }
         }
 
-        UserWebService.getCurrent(AUTH_ID, (result => {
+        UserWebService.getCurrent(AuthWebService.getAuthFromLocalStorage(), (result => {
             if (result.status === 200 && !!result.data) {
                 this.setState((state: LoginPageState) => {
                     return {isLogin: true};
                 });
                 this.props.history.push("/home", {user: null, data: null, isLogin: true});
-            } else {
-                this.setState((state: LoginPageState) => {
-                    return {isLogin: false};
-                });
+            } else if (!!result.data) {
+                if (!!result.data.errorCode && result.data.errorCode === "LOGIN_REQUIRED") {
+                    this.setState((state: LoginPageState) => {
+                        return {isLogin: false};
+                    });
+                }
+                ErrorProcessService.processError(result.data, this.props.history);
             }
         }));
     }
@@ -78,7 +82,7 @@ export class LoginPage extends React.Component<LoginPageProps, LoginPageState> {
             alert('please input email and password!');
             return;
         }
-        UserWebService.login(AUTH_ID, email, password, (result) => {
+        UserWebService.login(AuthWebService.getAuthFromLocalStorage(), email, password, (result) => {
             if (!!result.status && (result.status === 200 || result.status === 409)) {
                 this.setState({isLogin: true});
                 this.props.history.push("/home", {user: null, data: null, isLogin: true});

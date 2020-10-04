@@ -15,9 +15,9 @@
 .validate-code {
     height: 40px;
     display: inline-block;
-    width: 45%;
+    width: 35%;
     float: left;
-    margin-left: 3%;
+    margin-left: 0;
     border: solid red 1px;
 }
 .validate-code-label {
@@ -30,11 +30,29 @@
 .validate-code-content {
     display: block;
     float: left;
-    margin: 0 6%;
+    margin-top: 0;
+    margin-left: 3%;
     border: solid blue 1px;
 }
 .count-down {
     float: right;
-    margin-right: 3%;
     border: solid red 1px;
+}
+
+.refresh-btn {
+    font-size: 0.6em;
+    position: relative;
+    display: inline-block;
+    margin: 10px 10px;
+    height: 5%;
+    width: 80px;
+    background-color: #61dafb;
+    border: none;
+    color: blue;
+    border-radius: 3%;
+}
+
+.refresh-btn:disabled {
+    background-color: lightsteelblue;
+    color: gray;
 }

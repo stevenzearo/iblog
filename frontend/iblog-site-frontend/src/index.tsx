@@ -7,7 +7,12 @@ import App from "./App";
 import Home from "./module/home/home";
 import LoginPage from "./module/login/login";
 import RegisterPage from "./module/register/register";
+import {AuthWebService} from "./api/AuthWebService";
 
+const authId = localStorage.getItem("x-auth-id");
+if (authId == null || authId.length === 0) {
+    AuthWebService.setAuth();
+}
 ReactDOM.render(
     <React.StrictMode>
         <BrowserRouter>

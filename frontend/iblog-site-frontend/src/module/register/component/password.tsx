@@ -26,7 +26,7 @@ export class Password extends React.Component<PasswordProp, PasswordState> {
 
     render() {
         return <div>
-            <TextInput ref={this.setPasswordInput} id='password' name='password' label='password' type='password'
+            <TextInput ref={this.setPasswordInput} id='password' name='password' label='Password' type='password'
                        placeholder='Input your password here' onBlur={this.props.onBlur} onMouseLeave={this.props.onMouseLeave}/>
             <span>
                 {this.state.passwordCheckResult}

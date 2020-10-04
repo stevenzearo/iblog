@@ -1,11 +1,13 @@
 .submit-button {
+    font-size: 0.6em;
     position: relative;
     display: inline-block;
     margin: 10px 10px;
     padding: 5px 5px;
     height: 5%;
-    width: 80px;
+    width: 100px;
     background-color: #61dafb;
     border: none;
     color: blue;
+    border-radius: 3%;
 }

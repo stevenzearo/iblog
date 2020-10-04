@@ -1,5 +1,4 @@
 import React from "react";
-import TextInput from "../../component/TextInput";
 
 export interface ValidateCodeProps {
     refreshSecond: number | any;
@@ -68,13 +67,13 @@ export class ValidateCode extends React.Component<ValidateCodeProps, ValidateCod
         return (
             <div id='validate-code'>
                 <div className='validate-code'>
-                    <label htmlFor='server-validate-code' className='validate-code-label'>验证码:</label>
+                    <label htmlFor='server-validate-code' className='validate-code-label'>Code:</label>
                     <p id='server-validate-code' className='validate-code-content'>{this.state.validateCode}</p>
                 </div>
                 <div className='count-down'>
-                    <span>{secondLeft > 0 ? secondLeft : 0}秒后可刷新</span>
+                    <span>refresh after {secondLeft > 0 ? secondLeft : 0} sec</span>
 
-                    <button disabled={!this.state.refreshable} onClick={this.refreshValidateCode}>重新获取验证码</button>
+                    <button className="refresh-btn" disabled={!this.state.refreshable} onClick={this.refreshValidateCode}>refresh</button>
                 </div>
             </div>
         );

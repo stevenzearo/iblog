@@ -1,50 +1,115 @@
 import React from 'react';
-import CryptoJS from 'crypto-js';
 import '../../index.css';
 import '../../component/SubmitButton.css';
 import './validateCode.css';
 import {Link} from 'react-router-dom';
 import {ValidateCode} from "./validateCode";
 import TextInput from "../../component/TextInput";
+import Email, {EmailState} from "./component/email";
+import Password, {PasswordState} from "./component/password";
+import Name from "../login/component/name";
+import Age from "../login/component/age";
+import {ConfirmPassword} from "../login/component/confirmPassword";
+import {VerifyCode} from "../login/component/verifyCode";
 
 export interface RegisterPageProps {
 }
 
 
 export interface RegisterPageState {
-    name: string | any;
-    email: string | any;
-    password: string | any;
-    passwordToConfirm: String | any;
-    validateCode: String | any;
-    userValidateCode: String | any;
-    confirmStatus: boolean;
-    confirmResult: string;
+
 }
 
 // todo use state replace jquery
 class RegisterPage extends React.Component<RegisterPageProps, RegisterPageState> {
+    private ageInput: any;
+    private nameInput: any;
+    private emailInput: any;
+    private passwordInput: any;
+    private confirmPasswordInput: any;
+    private verifyCodeInput: any;
+
+
     constructor(props: any) {
         super(props);
-        this.state = {
-            name: "",
-            email: "",
-            password: "",
-            passwordToConfirm: "",
-            validateCode: "",
-            userValidateCode: "",
-            confirmStatus: false,
-            confirmResult: "please check whether confirmed password is the same as password!"
-        }
+        this.state = {};
+
+        this.ageInput = React.createRef();
+        this.emailInput = React.createRef();
+        this.passwordInput = React.createRef();
+        this.confirmPasswordInput = React.createRef();
+        this.verifyCodeInput = React.createRef();
     }
 
-    setUserName = () => {
-        // var userName = e.prototype.val();
-        alert(1)
+
+    setNameInput = (ref: any) => {
+        this.nameInput = ref;
     };
-    confirmPassword = () => {
-        const password = this.state.password;
-        const passwordToConfirm = this.state.passwordToConfirm;
+
+    setAgeInput = (ref: any) => {
+        this.ageInput = ref;
+    };
+
+
+    setEmailInput = (ref: any) => {
+        this.emailInput = ref;
+    };
+
+
+    setPasswordInput = (ref: any) => {
+        this.passwordInput = ref;
+    };
+
+    setConfirmPasswordInput = (ref: any) => {
+        this.confirmPasswordInput = ref;
+    };
+
+
+    setVerifyCodeInput = (ref: any) => {
+        this.verifyCodeInput = ref;
+    };
+
+    checkName = () => {
+
+    };
+
+    checkAge = () => {
+
+    };
+
+    checkEmail = () => {
+        const email: string = this.emailInput.textInput.input.value;
+        if (email == null || email.trim() === '') {
+            this.emailInput.setState((state: EmailState) => {
+                return {emailIsValid: false, emailCheckResult: "email can not be null or blank"}
+            });
+        } else {
+            this.emailInput.setState((state: EmailState) => {
+                return {emailIsValid: true, emailCheckResult: "valid"}
+            });
+        }
+    };
+
+
+    checkPassword = () => {
+        const password: string = this.passwordInput.textInput.input.value;
+        if (password == null || password.trim() === '') {
+            this.passwordInput.setState((state: PasswordState) => {
+                return {passwordIsValid: false, passwordCheckResult: "password can not be null or blank"}
+            });
+        } else {
+
+            this.passwordInput.setState((state: PasswordState) => {
+                return {passwordIsValid: true, passwordCheckResult: "valid"};
+            });
+        }
+    };
+
+    checkConfirmPassword = () => {
+        const password: string = this.passwordInput.textInput.input.value;
+        const passwordToConfirm = this.confirmPasswordInput.textInput.input.value;
+
+
         this.setState((state: RegisterPageState) => {
             if (password && passwordToConfirm && password === passwordToConfirm) {
                 return {confirmStatus: true, confirmResult: "correct!"}
@@ -56,19 +121,15 @@ class RegisterPage extends React.Component<RegisterPageProps, RegisterPageState>
         })
     };
 
-    registerCheck = () => {
-        if (this.state.userValidateCode.trim() === '') {
-            alert('validate code can not be blank!');
-        }
+    checkVerifyCode = () => {
 
-        // todo check validate code
+    };
 
-        if (this.state.name.trim().isEmpty() || this.state.password.trim().isEmpty()) {
-            alert('user name and password can not be blank!');
-            return;
-        }
-        const password = CryptoJS.SHA256(this.state.password).toString();
-        alert(this.state.name + ':' + password);
+    checkAll = () => {
+
+    };
+
+    register = () => {
         /*var data = {
             'user_name': userName,
             'password': password
@@ -79,15 +140,16 @@ class RegisterPage extends React.Component<RegisterPageProps, RegisterPageState>
         return (
             <div className='register-page'>
                 <div className='register-head'>REGISTER PAGE</div>
-                <TextInput id='user-name' name='user-name' label='用户名' type='text' placeholder='请输入用户名'
-                           onBlur={this.setUserName.bind(this)}/>
-                <TextInput id='password' name='password' label='密码' type='password' placeholder='请输入密码'/>
-                <TextInput id='password-to-confirm' name='password-to-confirm' label='确认密码' type='password'
-                           placeholder='请确认密码' onBlur={this.confirmPassword}/>
+
+                <Name ref={this.setNameInput} onBlur={this.checkName}/>
+                <Age ref={this.setAgeInput} onBlur={this.checkAge}/>
+                <Email ref={this.setEmailInput} onBlur={this.checkEmail}/>
+                <Password ref={this.setPasswordInput} onBlur={this.checkPassword}/>
+
+                <ConfirmPassword ref={this.setConfirmPasswordInput} onBlur={this.checkConfirmPassword}/>
                 <ValidateCode refreshSecond={30}/>
-                <TextInput id='user-validate-code' name='user-validate-code' label='验证码' type='text'
-                           placeholder='请输入验证码'/>
-                <button className='submit-button' onClick={this.registerCheck}>提交</button>
+                <VerifyCode ref={this.setVerifyCodeInput} onBlur={this.checkVerifyCode}/>
+                <button className='submit-button' onFocus={this.checkAll} onClick={this.register}>Submit</button>
                 <Link to="/home">
                     <button className='submit-button'>Go Home</button>
                 </Link>

@@ -2,10 +2,11 @@ import React from 'react';
 import {History} from "history";
 import "./home.css"
 import "../../component/SubmitButton.css"
-import {SlideComponent, SlideSettings, SlideDistanceType, SlideFrom} from "../../component/slide";
+import {SlideComponent, SlideDistanceType, SlideFrom, SlideSettings} from "../../component/slide";
 import User from "./component/user";
 import {UserWebService} from "../../api/UserWebService";
-import {AUTH_ID} from "../../react-app-env";
+import {AuthWebService} from "../../api/AuthWebService";
+import {ErrorProcessService} from "../../common/ErrorProcessService";
 
 export interface HomeProp {
     history: History;
@@ -30,29 +31,38 @@ class Home extends React.Component<HomeProp, HomeState> {
     }
 
     componentWillMount(): void {
-        UserWebService.getCurrent(AUTH_ID, (result => {
+        UserWebService.getCurrent(AuthWebService.getAuthFromLocalStorage(), (result => {
             if (result.status && result.status === 200 && !!result.data) {
                 this.setState((state: HomeState) => {
                     return {user: result.data, data: state.data, isLogin: true};
                 })
-            } else {
-                this.props.history.push("/login", {isLogin: false});
+            } else if (!!result.data) {
+                ErrorProcessService.processError(result.data, this.props.history);
             }
         }));
     }
 
     logout = () => {
-        this.setState((state) => {
-            return {
-                user: null,
-                data: null,
-                isLogin: false
-            };
-        });
         if (this.state.isLogin) {
-            UserWebService.logout(AUTH_ID);
+            UserWebService.logout(AuthWebService.getAuthFromLocalStorage(), (result => {
+                if (result.status === 200) {
+                    this.setState((state) => {
+                        return {
+                            user: null,
+                            data: null,
+                            isLogin: false
+                        };
+                    });
+                    this.props.history.push("/login", {isLogin: false});
+                } else {
+                    if (!!result.data) {
+                        ErrorProcessService.processError(result.data, this.props.history);
+                    }
+                }
+
+            }));
         }
-        this.props.history.push("/login", {isLogin: false});
+
     };
 
     getUserInfo() {
