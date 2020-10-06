@@ -12,18 +12,18 @@ import java.util.Arrays;
  * @author steve
  */
 @RedisHash(value = "messages")
-public class ChatMessage implements Serializable {
+public class WSChatMessage implements Serializable {
     @Id
     public String id;
 
     @Indexed
     public String groupId;
 
-    public ChatMember from;
+    public WSChatMessageType type;
 
-    public ChatMember to;
+    public WSChatContentMessage chatContentMessage;
 
-    public byte[] content;
+    public WSUserJoinMessage userJoinMessage;
 
     public ZonedDateTime createdTime;
 
@@ -35,12 +35,12 @@ public class ChatMessage implements Serializable {
 
     @Override
     public String toString() {
-        return "ChatMessageCache{" +
+        return "WSChatMessage{" +
             "id='" + id + '\'' +
             ", groupId='" + groupId + '\'' +
-            ", from=" + from +
-            ", to=" + to +
-            ", content=" + Arrays.toString(content) +
+            ", type=" + type +
+            ", chatContentMessage=" + chatContentMessage +
+            ", userJoinMessage=" + userJoinMessage +
             ", createdTime=" + createdTime +
             '}';
     }

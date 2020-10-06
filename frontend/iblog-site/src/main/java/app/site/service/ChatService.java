@@ -1,15 +1,19 @@
 package app.site.service;
 
-import app.site.cache.ChatMessage;
+import app.site.cache.WSChatContentMessage;
+import app.site.cache.WSChatMessage;
 import app.site.cache.ChatMessageCache;
 import app.site.cache.RedisTransaction;
 import app.site.cache.User;
+import app.site.cache.WSChatMessageType;
+import app.site.cache.WSUserJoinMessage;
 import app.site.web.Context;
 import app.site.web.ErrorCodes;
 import app.site.ws.WSConfig;
 import app.site.ws.WSContext;
 import app.web.error.ConflictException;
 import app.web.error.WebException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.SetOperations;
 import org.springframework.data.redis.listener.ChannelTopic;
@@ -50,7 +54,15 @@ public class ChatService extends WSContext {
         opsForSet.add(String.format(Context.CHAT_GROUP_SET + ":%s", groupId), String.valueOf(currentUser.id));
 
         WS_SESSION_MAP.put(String.format("%s:%d", groupId, currentUser.id), session);
-        session.getBasicRemote().sendText(String.format("welcome to chat group: %s", groupId));
+        WSChatMessage chatMessage = new WSChatMessage();
+        chatMessage.id = UUID.randomUUID().toString();
+        chatMessage.groupId = groupId;
+        chatMessage.type = WSChatMessageType.USER_JOIN;
+        chatMessage.userJoinMessage = buildUserJoinMessage(currentUser);
+        Topic chatTopic = new ChannelTopic(WSConfig.CHAT_CHANNEL);
+
+        chatMessageCache.save(chatMessage);
+        REDIS_TEMPLATE.convertAndSend(chatTopic.getTopic(), chatMessage.id);
     }
 
     public void onClose(String groupId, String authId, Session session) throws IOException, WebException {
@@ -71,6 +83,7 @@ public class ChatService extends WSContext {
 
     public void onError(String groupId, String authId, Session session, Throwable throwable) throws ConflictException, IOException {
         User currentUser = userService.getCurrent(authId);
+        session.close(new CloseReason(CloseReason.CloseCodes.UNEXPECTED_CONDITION, "server error."));
         WS_SESSION_MAP.remove(String.format("%s:%d", groupId, currentUser.id));
         throwable.printStackTrace();
     }
@@ -101,29 +114,43 @@ public class ChatService extends WSContext {
             toUser = userService.get(Long.valueOf(toId));
         }
 
-        ChatMessage chatMessage = buildChatMessageCache(groupId, currentUser, content, toUser);
-
+        WSChatMessage WSChatMessage = buildChatMessageCache(groupId, currentUser, content, toUser);
         Topic chatTopic = new ChannelTopic(WSConfig.CHAT_CHANNEL);
-        chatMessageCache.save(chatMessage);
-        REDIS_TEMPLATE.convertAndSend(chatTopic.getTopic(), chatMessage.id);
+        chatMessageCache.save(WSChatMessage);
+        REDIS_TEMPLATE.convertAndSend(chatTopic.getTopic(), WSChatMessage.id);
     }
 
-    private ChatMessage buildChatMessageCache(String groupId, User currentUser, String content, User toUser) {
-        ChatMessage chatMessage = new ChatMessage();
+    private WSChatMessage buildChatMessageCache(String groupId, User currentUser, String content, User toUser) {
+        WSChatMessage chatMessage = new WSChatMessage();
         chatMessage.id = UUID.randomUUID().toString();
+        chatMessage.type = WSChatMessageType.USER_JOIN;
         chatMessage.groupId = groupId;
-        ChatMessage.ChatMember from = new ChatMessage.ChatMember();
-        from.userId = currentUser.id;
-        from.name = currentUser.name;
-        chatMessage.from = from;
-        if (toUser != null) {
-            ChatMessage.ChatMember to = new ChatMessage.ChatMember();
-            to.userId = toUser.id;
-            to.name = toUser.name;
-            chatMessage.to = to;
-        }
-        chatMessage.content = content.getBytes();
+        chatMessage.chatContentMessage = buildChatContentMessage(currentUser, toUser);
         chatMessage.createdTime = ZonedDateTime.now();
         return chatMessage;
+    }
+
+    private WSUserJoinMessage buildUserJoinMessage(User currentUser) {
+        WSChatMessage.ChatMember chatMember = new WSChatMessage.ChatMember();
+        chatMember.userId = currentUser.id;
+        chatMember.name = currentUser.name;
+        WSUserJoinMessage userJoinMessage = new WSUserJoinMessage();
+        userJoinMessage.chatMember = chatMember;
+        return userJoinMessage;
+    }
+
+    private WSChatContentMessage buildChatContentMessage(User currentUser, User toUser) {
+        WSChatMessage.ChatMember from = new WSChatMessage.ChatMember();
+        from.userId = currentUser.id;
+        from.name = currentUser.name;
+        WSChatContentMessage chatContentMessage = new WSChatContentMessage();
+        chatContentMessage.from = from;
+        if (toUser != null) {
+            WSChatMessage.ChatMember to = new WSChatMessage.ChatMember();
+            to.userId = toUser.id;
+            to.name = toUser.name;
+            chatContentMessage.to = to;
+        }
+        return chatContentMessage;
     }
 }
