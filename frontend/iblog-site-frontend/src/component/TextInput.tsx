@@ -27,7 +27,7 @@ export class TextInput extends React.Component<TextInputProp, TextInputState> {
     }
 
     setValue = () => {
-        this.setState(function (state: any) {
+        this.setState((state: TextInputState) => {
             var text = state.id.value;
             state = {id: state.id, value: text};
             return state;

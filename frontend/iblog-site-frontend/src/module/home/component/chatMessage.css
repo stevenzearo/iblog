@@ -1,0 +1,6 @@
+.chat-message {
+    position: relative;
+    border: blue 1px solid;
+    display: block;
+    width: 75%;
+}

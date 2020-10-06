@@ -25,7 +25,7 @@ export class ValidateCode extends React.Component<ValidateCodeProps, ValidateCod
 
     tick() {
         let refreshSecond = this.props.refreshSecond;
-        this.setState(function (state: ValidateCodeState) {
+        this.setState((state: ValidateCodeState) => {
             var refreshable = false;
             if (state.timeCounter >= refreshSecond) refreshable = true;
             return {timeCounter: state.timeCounter++, refreshable: refreshable, validateCode: state.validateCode}
@@ -57,7 +57,7 @@ export class ValidateCode extends React.Component<ValidateCodeProps, ValidateCod
 
     refreshValidateCode = () => {
         var validateCode = this.getVerifyCode();
-        this.setState(function (state: any) {
+        this.setState((state: ValidateCodeState) => {
             var counter = state.timeCounter;
             if (counter <= 30) {
                 alert('please refresh later');
