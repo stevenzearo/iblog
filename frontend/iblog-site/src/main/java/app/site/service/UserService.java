@@ -46,6 +46,7 @@ public class UserService {
 
     public User getCurrent(String auth) throws ConflictException {
         Long userId = authService.getAuthedUserId(auth);
+        if (userId == null) return null;
         return get(userId);
     }
 

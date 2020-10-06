@@ -1,10 +1,10 @@
 package app.site.service;
 
-import app.site.cache.WSChatContentMessage;
-import app.site.cache.WSChatMessage;
 import app.site.cache.ChatMessageCache;
 import app.site.cache.RedisTransaction;
 import app.site.cache.User;
+import app.site.cache.WSChatContentMessage;
+import app.site.cache.WSChatMessage;
 import app.site.cache.WSChatMessageType;
 import app.site.cache.WSUserJoinMessage;
 import app.site.web.Context;
@@ -13,7 +13,6 @@ import app.site.ws.WSConfig;
 import app.site.ws.WSContext;
 import app.web.error.ConflictException;
 import app.web.error.WebException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.SetOperations;
 import org.springframework.data.redis.listener.ChannelTopic;
@@ -49,6 +48,10 @@ public class ChatService extends WSContext {
 
     public void onOpen(String groupId, String authId, Session session) throws IOException, WebException {
         User currentUser = userService.getCurrent(authId);
+        if (currentUser == null) {
+            session.close(new CloseReason(CloseReason.CloseCodes.CANNOT_ACCEPT, "login required, please login first"));
+            throw new ConflictException(ErrorCodes.LOGIN_REQUIRED, "login required, please login first");
+        }
 
         SetOperations<String, String> opsForSet = REDIS_TEMPLATE.opsForSet();
         opsForSet.add(String.format(Context.CHAT_GROUP_SET + ":%s", groupId), String.valueOf(currentUser.id));
@@ -67,6 +70,8 @@ public class ChatService extends WSContext {
 
     public void onClose(String groupId, String authId, Session session) throws IOException, WebException {
         User currentUser = userService.getCurrent(authId);
+        if (currentUser == null)
+            throw new ConflictException(ErrorCodes.LOGIN_REQUIRED, "login required, please login first");
 
         SetOperations<String, String> opsForSet = REDIS_TEMPLATE.opsForSet();
         Boolean containsGroup = opsForSet.isMember(Context.CHAT_GROUP_SET, groupId);
@@ -123,9 +128,9 @@ public class ChatService extends WSContext {
     private WSChatMessage buildChatMessageCache(String groupId, User currentUser, String content, User toUser) {
         WSChatMessage chatMessage = new WSChatMessage();
         chatMessage.id = UUID.randomUUID().toString();
-        chatMessage.type = WSChatMessageType.USER_JOIN;
+        chatMessage.type = WSChatMessageType.CHAT;
         chatMessage.groupId = groupId;
-        chatMessage.chatContentMessage = buildChatContentMessage(currentUser, toUser);
+        chatMessage.chatContentMessage = buildChatContentMessage(currentUser, toUser, content);
         chatMessage.createdTime = ZonedDateTime.now();
         return chatMessage;
     }
@@ -139,12 +144,13 @@ public class ChatService extends WSContext {
         return userJoinMessage;
     }
 
-    private WSChatContentMessage buildChatContentMessage(User currentUser, User toUser) {
+    private WSChatContentMessage buildChatContentMessage(User currentUser, User toUser, String content) {
         WSChatMessage.ChatMember from = new WSChatMessage.ChatMember();
         from.userId = currentUser.id;
         from.name = currentUser.name;
         WSChatContentMessage chatContentMessage = new WSChatContentMessage();
         chatContentMessage.from = from;
+        chatContentMessage.content = content;
         if (toUser != null) {
             WSChatMessage.ChatMember to = new WSChatMessage.ChatMember();
             to.userId = toUser.id;

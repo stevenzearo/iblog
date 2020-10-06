@@ -30,11 +30,10 @@ public class AuthService {
 
         SetOperations<String, String> opsForSet = redisTemplate.opsForSet();
         HashOperations<String, String, String> opsForHash = redisTemplate.opsForHash();
-        redisTransaction.transaction(() -> {
-            opsForSet.add(Context.AUTH_SET, auth);
-            opsForHash.put(Context.AUTH_MAP, auth, "");
-            redisTemplate.expire(auth, Context.AUTH_MINUTES, TimeUnit.MINUTES);
-        });
+
+        opsForSet.add(Context.AUTH_SET, auth);
+        opsForHash.put(Context.AUTH_MAP, auth, "");
+        redisTemplate.expire(auth, Context.AUTH_MINUTES, TimeUnit.MINUTES);
         return auth;
     }
 
@@ -72,10 +71,8 @@ public class AuthService {
         SetOperations<String, String> opsForSet = redisTemplate.opsForSet();
         HashOperations<String, String, String> opsForHash = redisTemplate.opsForHash();
 
-        redisTransaction.transaction(() -> {
-            opsForSet.remove(Context.AUTH_SET, auth);
-            opsForHash.delete(Context.AUTH_MAP, auth);
-        });
+        opsForSet.remove(Context.AUTH_SET, auth);
+        opsForHash.delete(Context.AUTH_MAP, auth);
     }
 
     public boolean isValid(String auth) {
