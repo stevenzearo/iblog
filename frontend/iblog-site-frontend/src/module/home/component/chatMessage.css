@@ -1,6 +1,38 @@
+.chat-head {
+    text-align: center;
+    border: red 1px solid;
+    font-size: 1.2em;
+    font-weight: bold;
+}
 .chat-message {
     position: relative;
     border: blue 1px solid;
-    display: block;
+    display: inline-block;
     width: 75%;
+    height: 300px;
+}
+
+.group-users {
+    float: left;
+    border: red 1px solid;
+    display: inline-block;
+    width: 30%;
+}
+
+.chat-content {
+    float: left;
+    border: red 1px solid;
+    display: inline-block;
+    width: 69%;
+    height: 200px;
+    overflow-y: auto;
+}
+
+.message {
+    word-wrap:break-word;
+    border: red 1px solid;
+}
+
+p {
+    word-wrap:break-word;
 }

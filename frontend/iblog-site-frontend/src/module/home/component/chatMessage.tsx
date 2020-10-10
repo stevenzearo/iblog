@@ -23,9 +23,19 @@ export class ChatMessage extends React.Component<ChatMessageProp, ChatMessageSta
             return {messages: chatMessages};
         });
     };
+
     render(): React.ReactNode {
-        return <div className="chat-message">
-            chat message
+        return <div>
+            <div className="chat-message">
+                <div className="chat-head">chat message</div>
+                <div>
+                    <div className="group-users">group users</div>
+                    <div className="chat-content">
+                        <p className="message">chat content content content</p>
+
+                    </div>
+                </div>
+            </div>
         </div>;
     }
 }

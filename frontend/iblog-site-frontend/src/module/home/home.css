@@ -12,8 +12,9 @@
     float: none;
     align-content: center;
     position: relative;
-    height: 200px;
+    height: auto;
     border: red 1px solid;
+    text-align: center;
 }
 
 .menu {
