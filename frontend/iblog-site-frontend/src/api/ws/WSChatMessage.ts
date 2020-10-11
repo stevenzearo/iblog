@@ -43,10 +43,10 @@ export class WSUserJoinMessage {
 
 export class WSChatContentMessage {
     public from: ChatMember;
-    public to: ChatMember;
+    public to: ChatMember | null;
     public content: string;
 
-    constructor(from: ChatMember, to: ChatMember, content: string) {
+    constructor(from: ChatMember, to: ChatMember | null, content: string) {
         this.from = from;
         this.to = to;
         this.content = content;

@@ -8,8 +8,8 @@ import {UserWebService} from "../../api/UserWebService";
 import {AuthWebService} from "../../api/AuthWebService";
 import {ErrorProcessService} from "../../common/ErrorProcessService";
 import {WS_ENDPOINT_PREFIX} from "../../react-app-env";
-import {WSChatMessage, WSChatMessageType} from "../../api/ws/WSChatMessage";
-import {ChatMessage} from "./component/chatMessage";
+import {ChatMember, WSChatContentMessage, WSChatMessage, WSChatMessageType} from "../../api/ws/WSChatMessage";
+import {ChatMessage, ChatMessageState} from "./component/chatMessage";
 
 export interface HomeProp {
     history: History;
@@ -19,9 +19,59 @@ export interface HomeState {
     user: User | null,
     data?: any | null,
     isLogin: boolean,
+    messages: WSChatContentMessage[];
+    chatGroupUsers: ChatMember[];
 }
 
-function initWS(): WebSocket {
+function setGroupUsers(chatMessageRef: any, chatGroupUsers: ChatMember[], chatMember: ChatMember) {
+    let exist = chatGroupUsers.map(u => u.userId).filter(id => id === chatMember.userId).length > 0;
+    if (exist) return;
+
+    chatGroupUsers[chatGroupUsers.length] = chatMember;
+    let userNodes: React.ReactNode[] = [];
+    chatGroupUsers.forEach((value, index) => {
+        userNodes[userNodes.length] = <div key={index} className="group-info-user">
+            <p>id: {value.userId}</p>
+            <p>name: {value.name}</p>
+        </div>
+    });
+    chatMessageRef.setState((state: ChatMessageState) => {
+        return {messageNodes: state.messageNodes, userNodes: userNodes}
+    });
+}
+
+function setChatMessages(messages: WSChatContentMessage[], chatGroupUsers: ChatMember[], chatContentMessage: WSChatContentMessage, chatMessageRef: any) {
+    setGroupUsers(chatMessageRef, chatGroupUsers, chatContentMessage.from);
+    messages[messages.length] = chatContentMessage;
+
+    let messageNodes: React.ReactNode[] = [];
+    messages.forEach((value, index) => {
+        messageNodes[messageNodes.length] = <div key={index} className="chat-info">
+            <div className="chat-from-user">
+                <p>id:{value.from.userId}</p>
+                <p>name:{value.from.name}</p>
+            </div>
+            {
+                !!value.to ?
+                    <div>
+                        <p>{value.to.userId}</p>
+                        <p>{value.to.name}</p>
+                    </div>
+                    : ""
+            }
+            <div className="chat-content-message">says: {value.content}</div>
+        </div>
+    });
+    chatMessageRef.setState((state: ChatMessageState) => {
+        return {
+            messageNodes: messageNodes,
+            userNodes: state.userNodes,
+            messageInputRef: state.messageInputRef
+        }
+    });
+}
+
+function initWS(chatMessageRef: any, chatGroupUsers: ChatMember[], messages: WSChatContentMessage[]): WebSocket {
     let webSocket = new WebSocket(`${WS_ENDPOINT_PREFIX}/ws/chat/group-0001/user-auth/${AuthWebService.getAuthFromLocalStorage()}`)
     webSocket.onopen = function (event: any) {
     };
@@ -34,10 +84,10 @@ function initWS(): WebSocket {
         if (data) {
             console.log(data.type);
             if (data.type === WSChatMessageType.USER_JOIN) {
-                console.log(data.userJoinMessage.chatMember.name);
+                let chatMember = data.userJoinMessage.chatMember;
+                setGroupUsers(chatMessageRef, chatGroupUsers, chatMember);
             } else if (data.type === WSChatMessageType.CHAT) {
-                console.log(data.chatContentMessage.from.name);
-                console.log(data.chatContentMessage.content);
+                setChatMessages(messages, chatGroupUsers, data.chatContentMessage, chatMessageRef);
             }
         }
     };
@@ -55,6 +105,8 @@ class Home extends React.Component<HomeProp, HomeState> {
             user: props.user,
             data: null,
             isLogin: false,
+            chatGroupUsers: [],
+            messages: []
         };
         this.chatMessageRef = React.createRef();
     }
@@ -62,15 +114,21 @@ class Home extends React.Component<HomeProp, HomeState> {
     componentWillMount(): void {
         UserWebService.getCurrent(AuthWebService.getAuthFromLocalStorage(), (result => {
             if (!!result.status && result.status === 200 && !!result.data) {
-                webSocket = initWS();
+                webSocket = initWS(this.chatMessageRef, this.state.chatGroupUsers, this.state.messages);
                 this.setState((state: HomeState) => {
                     return {
                         user: result.data,
                         data: state.data,
                         isLogin: true,
+                        messages: state.messages,
+                        chatGroupUsers: state.chatGroupUsers
                     };
                 });
 
+                if (!!this.state.user) {
+                    var chatMember: ChatMember = new ChatMember(this.state.user.id, this.state.user?.name);
+                    setGroupUsers(this.chatMessageRef, this.state.chatGroupUsers, chatMember);
+                }
             } else if (!!result.data) {
                 ErrorProcessService.processError(result.data, this.props.history);
             }
@@ -89,7 +147,9 @@ class Home extends React.Component<HomeProp, HomeState> {
                         return {
                             user: null,
                             data: null,
-                            isLogin: false
+                            isLogin: false,
+                            messages: state.messages,
+                            chatGroupUsers: state.chatGroupUsers
                         };
                     });
                     this.props.history.push("/login", {isLogin: false});
@@ -105,11 +165,25 @@ class Home extends React.Component<HomeProp, HomeState> {
     };
 
     sendMsg = () => {
-        let message = "";
+        let message = this.chatMessageRef.state.messageInputRef.value;
+        if (message == null || message.trim().length === 0) return;
         if (webSocket == null || webSocket.readyState === webSocket.CLOSING || webSocket.readyState === webSocket.CLOSED) {
-            webSocket = initWS();
+            webSocket = initWS(this.chatMessageRef, this.state.chatGroupUsers, this.state.messages);
         }
-        webSocket.send(message)
+        let hasSent = false;
+        let triedTimes = 0;
+        while (!hasSent && triedTimes <= 10) {
+            if (!!webSocket && webSocket.readyState === webSocket.OPEN) {
+                webSocket.send(message);
+                hasSent = true;
+            }
+            triedTimes++;
+        }
+        if (!!this.state.user) {
+            var from = new ChatMember(this.state.user.id, this.state.user.name);
+            let content = new WSChatContentMessage(from, null, message);
+            setChatMessages(this.state.messages, this.state.chatGroupUsers, content, this.chatMessageRef);
+        }
     };
 
     getUserInfo = () => {
@@ -138,8 +212,10 @@ class Home extends React.Component<HomeProp, HomeState> {
                 <div className={'center'}>
                     <div className={'user-info'}>{this.getUserInfo()}</div>
                     <ChatMessage ref={this.setChatMessageRef}/>
-                    <button className={"submit-button"} onClick={this.sendMsg}>SEND MSG</button>
-                    <button className={"submit-button"} onClick={this.logout}>SIGN OUT</button>
+                    <div className={"btns"}>
+                        <button className={"submit-button"} onClick={this.sendMsg}>SEND MSG</button>
+                        <button className={"submit-button"} onClick={this.logout}>SIGN OUT</button>
+                    </div>
                 </div>
                 <div className={'foot'}>this is foot</div>
             </div>

@@ -55,3 +55,8 @@
 .user-info li {
     margin-left: 5%;
 }
+
+.btns {
+    border: red 1px solid;
+    margin: 1% 20%;
+}

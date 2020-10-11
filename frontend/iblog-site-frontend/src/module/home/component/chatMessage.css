@@ -9,30 +9,75 @@
     border: blue 1px solid;
     display: inline-block;
     width: 75%;
-    height: 300px;
 }
 
-.group-users {
+.group-info {
     float: left;
     border: red 1px solid;
     display: inline-block;
     width: 30%;
+    height: 200px;
+}
+
+.group-info-head {
+    border: red 1px solid;
+    text-align: center;
+    font-weight: bold;
+}
+
+.group-info-content {
+    border: red 1px solid;
 }
 
 .chat-content {
-    float: left;
     border: red 1px solid;
     display: inline-block;
     width: 69%;
     height: 200px;
+}
+
+
+.chat-content-head {
+    border: red 1px solid;
+    text-align: center;
+    font-weight: bold;
+}
+
+.chat-content-body {
+    border: red 1px solid;
+    text-align: center;
+    height: 75%;
     overflow-y: auto;
 }
 
+.chat-info {
+    border: blue 1px solid;
+    margin-top: 5px;
+}
+.chat-from-user {
+    border: red 1px solid;
+    text-align: left;
+}
+
+.chat-from-user p {
+    margin: 0;
+}
+.chat-content-message {
+    border: red 1px solid;
+    text-align: left;
+}
 .message {
     word-wrap:break-word;
     border: red 1px solid;
 }
 
 p {
+    margin-top: 0;
     word-wrap:break-word;
+}
+
+.input-content {
+
+    border: red 1px solid;
+    display: inline-block;
 }
