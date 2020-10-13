@@ -28,7 +28,8 @@ public class LoginRequiredInterceptor implements HandlerInterceptor {
         if (RequestMethod.OPTIONS.equals(request.getMethod())) return true;
         authInterceptor.preHandle(request, response, handler);
         if (!(handler instanceof HandlerMethod)) {
-            throw new WebException(String.format("unknown handler type, type=%s", handler.getClass().getName()));
+            // throw new WebException(String.format("unknown handler type, type=%s", handler.getClass().getName()));
+            return true;
         }
         HandlerMethod handlerMethod = (HandlerMethod) handler;
         LoginRequired loginRequiredInClass = handlerMethod.getBeanType().getAnnotation(LoginRequired.class);

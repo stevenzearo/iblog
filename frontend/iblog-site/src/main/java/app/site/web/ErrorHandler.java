@@ -19,20 +19,20 @@ import javax.servlet.http.HttpServletResponse;
 public class ErrorHandler {
     private final Logger logger = LoggerFactory.getLogger(ErrorHandler.class);
 
-    @ExceptionHandler(Exception.class)
-    public ErrorResponse handleError(HttpServletResponse response, Exception exception) {
-        WebException webException = new WebException(exception.getMessage());
+    @ExceptionHandler(Throwable.class)
+    public ErrorResponse handleError(HttpServletResponse response, Throwable throwable) {
+        WebException webException = new WebException(throwable.getMessage());
         ErrorResponse errorResponse = new ErrorResponse(webException);
 
-        if (exception instanceof WebException) {
-            webException = (WebException) exception;
+        if (throwable instanceof WebException) {
+            webException = (WebException) throwable;
             errorResponse = new ErrorResponse(webException);
-        } else if (exception instanceof HttpRequestMethodNotSupportedException) {
-            HttpRequestMethodNotSupportedException methodNotSupportedException = (HttpRequestMethodNotSupportedException) exception;
+        } else if (throwable instanceof HttpRequestMethodNotSupportedException) {
+            HttpRequestMethodNotSupportedException methodNotSupportedException = (HttpRequestMethodNotSupportedException) throwable;
             errorResponse = handleError(methodNotSupportedException);
         }
 
-        logger.error(MarkerFactory.getMarker(webException.getErrorCode()), exception.getMessage(), exception);
+        logger.error(MarkerFactory.getMarker(webException.getErrorCode()), throwable.getMessage(), throwable);
         response.setStatus(webException.getStatusCode());
         return errorResponse;
     }
