@@ -15,8 +15,8 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
  * @author steve
  */
 @RestControllerAdvice
-public class RestrictionHandler implements ResponseBodyAdvice<Object> {
-    private final Logger logger = LoggerFactory.getLogger(RestrictionHandler.class);
+public class ResponseRestrictionHandler implements ResponseBodyAdvice<Object> {
+    private final Logger logger = LoggerFactory.getLogger(ResponseRestrictionHandler.class);
 
     @Override
     public boolean supports(MethodParameter returnType, Class<? extends HttpMessageConverter<?>> converterType) {
