@@ -1,10 +1,10 @@
 package app.validation;
 
 import app.web.error.UnsupportedValidationClassException;
+import app.web.error.ValidationException;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
-import java.util.List;
 import java.util.Set;
 
 /**
@@ -28,7 +28,11 @@ public class MinValueValidator extends AbstractValidator {
     <T> void validateFieldClass(Field field, T t) throws Exception {
         Object o = field.get(t);
         Class<?> valueClass = o.getClass();
-        if (!VALID_CLASSES.contains(valueClass)) throw new UnsupportedValidationClassException("", "");
-
+        if (!VALID_CLASSES.contains(valueClass))
+            throw new UnsupportedValidationClassException(String.format("unsupported validation class %s", valueClass.getCanonicalName()));
+        double d = (Double) o;
+        Min minAnnotation = field.getDeclaredAnnotation(Min.class);
+        if (d < minAnnotation.value())
+            throw new ValidationException(String.format(minAnnotation.msg(), d, minAnnotation.value()));
     }
 }
