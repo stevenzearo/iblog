@@ -1,7 +1,5 @@
 package app.validation;
 
-import app.web.error.WebException;
-
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 
@@ -15,10 +13,12 @@ public abstract class AbstractValidator implements ValidatorInterface {
         this.annotation = annotation;
     }
 
-    abstract <T> void validate(Annotation annotation, Field field, T t) throws WebException;
+    abstract <T> void validate(Annotation annotation, Field field, T t) throws Exception;
+
+    abstract <T> void validateFieldClass(Field field, T t) throws Exception;
 
     @Override
-    public <T> void validate(Field field, T t) throws WebException {
+    public <T> void validate(Field field, T t) throws Exception {
         for (java.lang.annotation.Annotation a : field.getDeclaredAnnotations()) {
             Class<? extends java.lang.annotation.Annotation> annotationType = a.annotationType();
             if (annotationType.getDeclaredAnnotation(Validator.class) == null) continue;
