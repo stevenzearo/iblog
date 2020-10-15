@@ -1,6 +1,6 @@
 package app.validation;
 
-import app.web.error.UnsupportedValidationClassException;
+import app.validation.annotation.Max;
 import app.web.error.ValidationException;
 
 import java.lang.annotation.Annotation;

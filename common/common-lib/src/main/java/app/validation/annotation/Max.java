@@ -1,4 +1,4 @@
-package app.validation;
+package app.validation.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -11,8 +11,8 @@ import java.lang.annotation.Target;
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
 @Validator
-public @interface Min {
+public @interface Max {
     double value();
 
-    String msg() default "field value can not less than min value %d, value = %d";
+    String msg() default "field value can not greater than min value %s, value = %s";
 }

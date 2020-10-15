@@ -1,7 +1,6 @@
-package app.validation;
+package app.validation.annotation;
 
 import java.lang.annotation.ElementType;
-import java.lang.annotation.Inherited;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
@@ -9,8 +8,9 @@ import java.lang.annotation.Target;
 /**
  * @author steve
  */
+@Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.ANNOTATION_TYPE)
-@Inherited
-public @interface Validator {
+@Validator
+public @interface NotNull {
+    String msg() default "field value can not be null";
 }

@@ -1,5 +1,6 @@
 package app.validation;
 
+import app.validation.annotation.Size;
 import app.web.error.UnsupportedValidationValueException;
 import app.web.error.ValidationException;
 

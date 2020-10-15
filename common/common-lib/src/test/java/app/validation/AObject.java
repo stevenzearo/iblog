@@ -1,5 +1,11 @@
 package app.validation;
 
+import app.validation.annotation.Max;
+import app.validation.annotation.Min;
+import app.validation.annotation.NotBlank;
+import app.validation.annotation.NotNull;
+import app.validation.annotation.Size;
+
 /**
  * @author steve
  */

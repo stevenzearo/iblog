@@ -1,5 +1,6 @@
 package app.validation;
 
+import app.validation.annotation.NotBlank;
 import app.web.error.ValidationException;
 
 import java.lang.annotation.Annotation;
