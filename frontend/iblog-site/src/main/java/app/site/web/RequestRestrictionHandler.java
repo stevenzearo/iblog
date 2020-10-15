@@ -35,21 +35,21 @@ public class RequestRestrictionHandler implements RequestBodyAdvice {
 
     @Override
     public Object afterBodyRead(Object body, HttpInputMessage inputMessage, MethodParameter parameter, Type targetType, Class<? extends HttpMessageConverter<?>> converterType) {
-        try {
+       /* try {
             validatorInterface.validate(body);
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
-        }
+        }*/
         return body;
     }
 
     @Override
     public Object handleEmptyBody(Object body, HttpInputMessage inputMessage, MethodParameter parameter, Type targetType, Class<? extends HttpMessageConverter<?>> converterType) {
-        try {
+        /*try {
             validatorInterface.validate(body);
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
-        }
+        }*/
         return body;
     }
 }
