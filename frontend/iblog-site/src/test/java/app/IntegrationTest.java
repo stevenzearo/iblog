@@ -10,11 +10,11 @@ import org.springframework.test.context.web.WebAppConfiguration;
 /**
  * @author steve
  */
+@Ignore
 @RunWith(SpringRunner.class)
 @SpringBootTest(properties = "../../../conf/dev/application.yml", classes = Application.class)
 @WebAppConfiguration
 public class IntegrationTest {
-    @Ignore
     @Test
     public void testConfig() {
     }
