@@ -17,10 +17,30 @@ public class AObject {
     @Min(1.5)
     public Float wage;
 
-    public AObject(String id, String name, Integer age, Float wage) {
+    @NotNull
+    public ABObject abObject;
+
+    public AObject(String id, String name, Integer age, Float wage, ABObject abObject) {
         this.id = id;
         this.name = name;
         this.age = age;
         this.wage = wage;
+        this.abObject = abObject;
+    }
+
+    public static class ABObject {
+        @NotNull
+        @NotBlank
+        public String id;
+
+        @NotNull
+        @NotBlank
+        public String name;
+
+        @NotNull
+        @Min(0)
+        @Max(100)
+        public Float score;
+
     }
 }

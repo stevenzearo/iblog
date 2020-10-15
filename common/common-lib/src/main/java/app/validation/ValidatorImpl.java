@@ -26,6 +26,9 @@ public class ValidatorImpl implements ValidatorInterface {
                 AbstractValidator validator = validatorMap.get(annotationType);
                 validator.validate(a, f, t);
             }
+            Object fieldValue = f.get(t);
+            if (fieldValue.getClass().getClassLoader() != this.getClass().getClassLoader()) continue;
+            validate(fieldValue);
         }
     }
 }

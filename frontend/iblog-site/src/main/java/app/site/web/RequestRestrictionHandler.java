@@ -1,7 +1,9 @@
 package app.site.web;
 
+import app.validation.ValidatorInterface;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.HttpInputMessage;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -18,6 +20,8 @@ import java.lang.reflect.Type;
 @RestControllerAdvice
 public class RequestRestrictionHandler implements RequestBodyAdvice {
     private final Logger logger = LoggerFactory.getLogger(ResponseRestrictionHandler.class);
+    @Autowired
+    ValidatorInterface validatorInterface;
 
     @Override
     public boolean supports(MethodParameter methodParameter, Type targetType, Class<? extends HttpMessageConverter<?>> converterType) {
@@ -31,13 +35,21 @@ public class RequestRestrictionHandler implements RequestBodyAdvice {
 
     @Override
     public Object afterBodyRead(Object body, HttpInputMessage inputMessage, MethodParameter parameter, Type targetType, Class<? extends HttpMessageConverter<?>> converterType) {
-        logger.warn("executing validate restrictions after body ready");
+        try {
+            validatorInterface.validate(body);
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        }
         return body;
     }
 
     @Override
     public Object handleEmptyBody(Object body, HttpInputMessage inputMessage, MethodParameter parameter, Type targetType, Class<? extends HttpMessageConverter<?>> converterType) {
-        // todo
+        try {
+            validatorInterface.validate(body);
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        }
         return body;
     }
 }

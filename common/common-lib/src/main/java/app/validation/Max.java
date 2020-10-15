@@ -14,5 +14,5 @@ import java.lang.annotation.Target;
 public @interface Max {
     double value();
 
-    String msg() default "field value can not greater than min value %d, value = %d";
+    String msg() default "field value can not greater than min value %s, value = %s";
 }
