@@ -31,7 +31,6 @@ public class RequestRestrictionHandler implements RequestBodyAdvice {
 
     @Override
     public Object afterBodyRead(Object body, HttpInputMessage inputMessage, MethodParameter parameter, Type targetType, Class<? extends HttpMessageConverter<?>> converterType) {
-        // todo
         logger.warn("executing validate restrictions after body ready");
         return body;
     }

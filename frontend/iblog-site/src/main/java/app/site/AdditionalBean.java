@@ -1,6 +1,8 @@
 package app.site;
 
 import app.site.ws.WSConfig;
+import app.validation.ValidatorImpl;
+import app.validation.ValidatorInterface;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -37,5 +39,10 @@ public class AdditionalBean {
     @Qualifier(value = "wsSessionMap")
     public Map<String, Session> wsSessionMap() {
         return new HashMap<>();
+    }
+
+    @Bean
+    public ValidatorInterface validator() {
+        return new ValidatorImpl();
     }
 }

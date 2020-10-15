@@ -17,12 +17,15 @@ public class ValidatorImpl implements ValidatorInterface {
     );
 
     @Override
-    public <T> void validate(Field field, T t) throws Exception {
-        for (Annotation a : field.getDeclaredAnnotations()) {
-            Class<? extends Annotation> annotationType = a.annotationType();
-            if (annotationType.getDeclaredAnnotation(Validator.class) == null) continue;
-            AbstractValidator validator = validatorMap.get(annotationType);
-            validator.validate(a, field, t);
+    public <T> void validate(T t) throws Exception {
+        Field[] declaredFields = t.getClass().getDeclaredFields();
+        for (Field f : declaredFields) {
+            for (Annotation a : f.getDeclaredAnnotations()) {
+                Class<? extends Annotation> annotationType = a.annotationType();
+                if (annotationType.getDeclaredAnnotation(Validator.class) == null) continue;
+                AbstractValidator validator = validatorMap.get(annotationType);
+                validator.validate(a, f, t);
+            }
         }
     }
 }
