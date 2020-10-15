@@ -8,7 +8,13 @@ import java.util.Map;
  * @author steve
  */
 public class ValidatorImpl implements ValidatorInterface {
-    Map<Class<? extends Annotation>, AbstractValidator> validatorMap = Map.of(Min.class, new MinValueValidator());
+    Map<Class<? extends Annotation>, AbstractValidator> validatorMap = Map.of(
+        Min.class, new MinValueValidator(),
+        Max.class, new MaxValueValidator(),
+        NotNull.class, new NotNullValidator(),
+        NotBlank.class, new NotBlankValidator(),
+        Size.class, new SizeValidator()
+    );
 
     @Override
     public <T> void validate(Field field, T t) throws Exception {

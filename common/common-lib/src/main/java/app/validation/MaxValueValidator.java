@@ -1,5 +1,6 @@
 package app.validation;
 
+import app.web.error.UnsupportedValidationClassException;
 import app.web.error.ValidationException;
 
 import java.lang.annotation.Annotation;
@@ -9,19 +10,19 @@ import java.util.Set;
 /**
  * @author steve
  */
-class MinValueValidator extends AbstractValidator {
-    private static final Class<? extends Annotation> MIN_CLASS = Min.class;
+public class MaxValueValidator extends AbstractValidator {
+    private static final Class<? extends Annotation> MAX_CLASS = Max.class;
     private static final Set<Class<?>> VALID_CLASSES = Set.of(Integer.class, Long.class, Double.class, Float.class);
 
-    public MinValueValidator() {
-        super(MIN_CLASS, VALID_CLASSES);
+    public MaxValueValidator() {
+        super(MAX_CLASS, VALID_CLASSES);
     }
 
     @Override
-    protected void validateFieldValue(Field field, Object fieldValue) throws ValidationException {
+    protected void validateFieldValue(Field field, Object fieldValue) throws Exception {
         double d = Double.parseDouble(fieldValue.toString());
-        Min minAnnotation = field.getDeclaredAnnotation(Min.class);
-        if (d < minAnnotation.value())
+        Max minAnnotation = field.getDeclaredAnnotation(Max.class);
+        if (d > minAnnotation.value())
             throw new ValidationException(String.format(minAnnotation.msg(), d, minAnnotation.value()));
     }
 }

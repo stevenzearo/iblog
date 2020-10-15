@@ -12,4 +12,6 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Validator
 public @interface Size {
+    int min() default -1;
+    int max() default -1;
 }

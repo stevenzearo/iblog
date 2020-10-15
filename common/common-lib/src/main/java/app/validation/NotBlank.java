@@ -12,4 +12,5 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Validator
 public @interface NotBlank {
+    String msg() default "field value can not be blank";
 }
