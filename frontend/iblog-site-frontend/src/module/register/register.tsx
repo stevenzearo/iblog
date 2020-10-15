@@ -221,7 +221,7 @@ class RegisterPage extends React.Component<RegisterPageProps, RegisterPageState>
         var request = new RegisterUserRequest(name, age, email, password);
         UserWebService.register(AuthWebService.getAuthFromLocalStorage(), request, (result) => {
             if (!!result.status && result.status === 200) {
-                alert(1);
+                alert("registered success!!!");
                 this.props.history.push("/login", {isLogin: false});
             } else if (!!result.data) {
                 ErrorProcessService.processError(result.data, this.props.history);
