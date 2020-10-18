@@ -1,7 +1,5 @@
 package app.validation;
 
-import java.lang.reflect.Field;
-
 /**
  * @author steve
  */
@@ -12,7 +10,11 @@ public class ValidationTest {
         abObject.name = "world";
         abObject.score = 89.99f;
         AObject hello = new AObject("id-0001", "hello", 11, 15.2f, abObject);
-        ValidatorInterface validator = new ValidatorImpl();
+        ValidatorInterface validator = new ValidatorImpl(ValidationTest::restrict);
         validator.validate(hello);
+    }
+
+    private static boolean restrict(Object o) {
+        return o.getClass().getCanonicalName().startsWith("app");
     }
 }
