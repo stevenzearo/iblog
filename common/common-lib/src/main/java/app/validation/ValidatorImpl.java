@@ -15,6 +15,7 @@ import java.util.Map;
  * @author steve
  */
 public class ValidatorImpl implements ValidatorInterface {
+    private final ValidatorRestriction restriction;
     Map<Class<? extends Annotation>, AbstractValidator> validatorMap = Map.of(
         Min.class, new MinValueValidator(),
         Max.class, new MaxValueValidator(),
@@ -22,6 +23,10 @@ public class ValidatorImpl implements ValidatorInterface {
         NotBlank.class, new NotBlankValidator(),
         Size.class, new SizeValidator()
     );
+
+    public ValidatorImpl(ValidatorRestriction restriction) {
+        this.restriction = restriction;
+    }
 
     @Override
     public <T> void validate(T t) throws Exception {
@@ -34,7 +39,7 @@ public class ValidatorImpl implements ValidatorInterface {
                 validator.validate(a, f, t);
             }
             Object fieldValue = f.get(t);
-            if (fieldValue.getClass().getClassLoader() != this.getClass().getClassLoader()) continue;
+            if (!restriction.restrict(fieldValue)) continue;
             validate(fieldValue);
         }
     }

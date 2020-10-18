@@ -43,6 +43,10 @@ public class AdditionalBean {
 
     @Bean
     public ValidatorInterface validator() {
-        return new ValidatorImpl();
+        return new ValidatorImpl(this::restrict);
+    }
+
+    private boolean restrict(Object o) {
+        return o.getClass().getCanonicalName().startsWith("app");
     }
 }
