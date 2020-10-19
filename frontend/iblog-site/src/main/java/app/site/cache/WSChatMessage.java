@@ -19,6 +19,7 @@ public class WSChatMessage implements Serializable {
     @Indexed
     public String groupId;
 
+    @Indexed
     public WSChatMessageType type;
 
     public WSChatContentMessage chatContentMessage;
