@@ -1,6 +1,5 @@
 package app;
 
-import app.site.cache.User;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -32,15 +31,5 @@ public class Application {
     @RequestMapping(value = "/", method = RequestMethod.GET)
     String home() {
         return "Hello, world!";
-    }
-
-    @RequestMapping(value = "/u", method = RequestMethod.GET)
-    User user() {
-        User user = new User();
-        user.id = 1L;
-        user.name = "steve";
-        user.age = 23;
-        user.email = "qq@qq.com";
-        return user;
     }
 }

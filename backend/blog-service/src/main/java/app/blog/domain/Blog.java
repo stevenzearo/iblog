@@ -20,6 +20,9 @@ public class Blog {
     @Field(value = "user_id", targetType = FieldType.INT64)
     public Long userId;
 
+    @Field(value = "title", targetType = FieldType.BINARY)
+    public byte[] title;
+
     @Field(value = "content", targetType = FieldType.BINARY)
     public byte[] content;
 

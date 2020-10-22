@@ -32,6 +32,8 @@ public class User {
     @Column(name = "email")
     public String email;
 
+    public Gender gender;
+
     @Column(name = "password")
     public String password;
 
