@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
 @Service
 public class BlogService {
     @Autowired
-    MongoTemplate mongoTemplate; // cause mongoRepository dose'nt work
+    MongoTemplate mongoTemplate; // cause mongoRepository didn't work
 
     public GetBlogResponse get(String id) {
         Query query = new Query(Criteria.where("_id").is(id));
