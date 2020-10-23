@@ -1,27 +1,32 @@
 package app.user.api.user;
 
-import org.springframework.lang.NonNull;
+import app.validation.annotation.NotNull;
 
 /**
  * @author steve
  */
 public class GetUserByEmailResponse {
-    @NonNull
-    public Long id;
+    public User user;
 
-    public String name;
+    public static class User {
+        @NotNull
+        public Long id;
 
-    public Integer age;
+        public String name;
 
-    @NonNull
-    public String email;
+        public Integer age;
 
-    @NonNull
-    public String password;
+        @NotNull
+        public String email;
 
-    @NonNull
-    public String salt;
+        @NotNull
+        public String password;
 
-    @NonNull
-    public Integer iteratedTimes;
+        @NotNull
+        public String salt;
+
+        @NotNull
+        public Integer iteratedTimes;
+
+    }
 }

@@ -1,8 +1,11 @@
 package app.site.service;
 
-import app.site.api.user.RegisterUserAJAXRequest;
-import app.site.cache.UserCache;
+import app.site.api.user.GetCurrentUserAJAXResponse;
+import app.site.api.user.UserAJAXView;
+import app.site.api.user.UserLoginAJAXResponse;
+import app.site.api.user.UserRegisterAJAXRequest;
 import app.site.cache.User;
+import app.site.cache.UserCache;
 import app.site.web.ErrorCodes;
 import app.user.api.UserWebService;
 import app.user.api.user.GetUserByEmailResponse;
@@ -33,7 +36,7 @@ public class UserService {
     @Autowired
     AuthService authService;
 
-    public void register(RegisterUserAJAXRequest request) throws WebException {
+    public void register(UserRegisterAJAXRequest request) throws WebException {
         RegisterUserRequest registerRequest = new RegisterUserRequest();
         registerRequest.name = request.name;
         registerRequest.age = request.age;
@@ -44,10 +47,18 @@ public class UserService {
         ResponseHelper.checkStatusCode(response);
     }
 
-    public User getCurrent(String auth) throws ConflictException {
+    public User getCurrentUser(String auth) {
         Long userId = authService.getAuthedUserId(auth);
         if (userId == null) return null;
         return get(userId);
+    }
+
+    public GetCurrentUserAJAXResponse getCurrent(String auth) {
+        Long userId = authService.getAuthedUserId(auth);
+        if (userId == null) return null;
+        GetCurrentUserAJAXResponse response = new GetCurrentUserAJAXResponse();
+        response.user = buildUserAJAXView(get(userId));
+        return response;
     }
 
     public User get(Long userId) {
@@ -59,7 +70,7 @@ public class UserService {
         });
     }
 
-    public User login(String email, String password, String auth) throws WebException {
+    public UserLoginAJAXResponse login(String email, String password, String auth) throws WebException {
         Optional<User> userOptional = userCache.findByEmail(email);
         if (userOptional.isPresent()) {
             throw new ConflictException(ErrorCodes.USER_ALREADY_LOGIN, "user already login, no need login again");
@@ -68,13 +79,16 @@ public class UserService {
 
         Response<GetUserByEmailResponse> getUserByEmailResponse = userWebService.getByEmail(email);
         GetUserByEmailResponse data = ResponseHelper.fetchDataWithException(getUserByEmailResponse);
-        String encryptedPassword = getEncryptedPassword(password, data);
-        if (!encryptedPassword.equals(data.password))
-            throw new ConflictException(ErrorCodes.LOGIN_FAILED, "login failed, please your email and password.");
-        User user = buildUserCache(data);
+        GetUserByEmailResponse.User userFromDB = data.user;
+
+        validateLogin(password, userFromDB);
+        User user = buildUserCache(userFromDB);
         userCache.save(user);
         authService.authUser(auth, user.id);
-        return user;
+
+        UserLoginAJAXResponse response = new UserLoginAJAXResponse();
+        response.user = buildUserAJAXView(user);
+        return response;
     }
 
     public void logout(String auth) throws WebException {
@@ -83,7 +97,7 @@ public class UserService {
         userCache.deleteById(userId);
     }
 
-    private String getEncryptedPassword(String password, GetUserByEmailResponse user) throws WebException {
+    private String getEncryptedPassword(String password, GetUserByEmailResponse.User user) throws WebException {
         String encryptPassword;
         try {
             encryptPassword = PasswordEncryptHelper.encryptPassword(password, user.salt, user.iteratedTimes);
@@ -93,7 +107,7 @@ public class UserService {
         return encryptPassword;
     }
 
-    private User buildUserCache(GetUserByEmailResponse boResponse) {
+    private User buildUserCache(GetUserByEmailResponse.User boResponse) {
         User user = new User();
         user.id = boResponse.id;
         user.name = boResponse.name;
@@ -109,5 +123,23 @@ public class UserService {
         user.age = boResponse.age;
         user.email = boResponse.email;
         return user;
+    }
+
+    private void validateLogin(String password, GetUserByEmailResponse.User userFromDB) throws WebException {
+        if (userFromDB == null)
+            throw new ConflictException(ErrorCodes.LOGIN_FAILED, "login failed, please check your email and password.");
+
+        String encryptedPassword = getEncryptedPassword(password, userFromDB);
+        if (!encryptedPassword.equals(userFromDB.password))
+            throw new ConflictException(ErrorCodes.LOGIN_FAILED, "login failed, please check your email and password.");
+    }
+
+    private UserAJAXView buildUserAJAXView(User user) {
+        UserAJAXView userView = new UserAJAXView();
+        userView.id = user.id;
+        userView.email = user.email;
+        userView.name = user.name;
+        userView.age = user.age;
+        return userView;
     }
 }

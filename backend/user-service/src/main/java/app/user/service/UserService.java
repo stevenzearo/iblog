@@ -52,14 +52,21 @@ public class UserService {
 
     public GetUserByEmailResponse getByEmail(String email) {
         User user = userJpaRepository.getFirstByEmail(email);
+        if (user == null) return new GetUserByEmailResponse();
+        return buildGetUserByEmailResponse(user);
+    }
+
+    private GetUserByEmailResponse buildGetUserByEmailResponse(User user) {
+        GetUserByEmailResponse.User userView = new GetUserByEmailResponse.User();
+        userView.id = user.id;
+        userView.email = user.email;
+        userView.name = user.name;
+        userView.age = user.age;
+        userView.password = user.password;
+        userView.salt = user.salt;
+        userView.iteratedTimes = user.iteratedTimes;
         GetUserByEmailResponse response = new GetUserByEmailResponse();
-        response.id = user.id;
-        response.email = user.email;
-        response.name = user.name;
-        response.age = user.age;
-        response.password = user.password;
-        response.salt = user.salt;
-        response.iteratedTimes = user.iteratedTimes;
+        response.user = userView;
         return response;
     }
 

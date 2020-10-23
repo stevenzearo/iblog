@@ -65,7 +65,7 @@ public class AdminService {
         BOGetAdminByEmailResponse data = ResponseHelper.fetchDataWithException(boResponse);
         String encryptedPassword = getEncryptedPassword(password, data);
         if (!encryptedPassword.equals(data.password))
-            throw new ConflictException(ErrorCodes.LOGIN_FAILED, "login failed, please your email and password.");
+            throw new ConflictException(ErrorCodes.LOGIN_FAILED, "login failed, please check your email and password.");
         Admin admin = buildAdminCache(data);
         adminCache.save(admin);
         authService.authAdmin(auth, admin.id);

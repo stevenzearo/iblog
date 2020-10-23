@@ -1,5 +1,6 @@
 package app.site.service;
 
+import app.site.cache.ChatGroupCache;
 import app.site.cache.ChatMessageCache;
 import app.site.cache.RedisTransaction;
 import app.site.cache.User;
@@ -12,6 +13,7 @@ import app.site.web.ErrorCodes;
 import app.site.ws.WSConfig;
 import app.site.ws.WSContext;
 import app.web.error.ConflictException;
+import app.web.error.NotFoundException;
 import app.web.error.WebException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.SetOperations;
@@ -45,15 +47,21 @@ public class ChatService extends WSContext {
     RedisTransaction redisTransaction;
     @Autowired
     ChatMessageCache chatMessageCache;
+    @Autowired
+    ChatGroupCache chatGroupCache;
 
     public void onOpen(String groupId, String authId, Session session) throws IOException, WebException {
-        User currentUser = userService.getCurrent(authId);
+        User currentUser = userService.getCurrentUser(authId);
         if (currentUser == null) {
             session.close(new CloseReason(CloseReason.CloseCodes.CANNOT_ACCEPT, "login required, please login first"));
             throw new ConflictException(ErrorCodes.LOGIN_REQUIRED, "login required, please login first");
         }
 
+        chatGroupCache.findById(groupId).orElseThrow(() -> new NotFoundException(ErrorCodes.CHAT_GROUP_NOT_FOUND, String.format("chat group not found, groupId = %s", groupId)));
+
+        // todo move to group ops
         SetOperations<String, String> opsForSet = REDIS_TEMPLATE.opsForSet();
+        opsForSet.add(String.format(Context.CHAT_GROUP_SET + ":%s", groupId));
         opsForSet.add(String.format(Context.CHAT_GROUP_SET + ":%s", groupId), String.valueOf(currentUser.id));
 
         WS_SESSION_MAP.put(String.format("%s:%d", groupId, currentUser.id), session);
@@ -68,11 +76,14 @@ public class ChatService extends WSContext {
         REDIS_TEMPLATE.convertAndSend(chatTopic.getTopic(), chatMessage.id);
     }
 
-    public void onClose(String groupId, String authId, Session session) throws IOException, WebException {
-        User currentUser = userService.getCurrent(authId);
+    public void onClose(String groupId, String authId, Session session) throws WebException {
+        User currentUser = userService.getCurrentUser(authId);
         if (currentUser == null)
             throw new ConflictException(ErrorCodes.LOGIN_REQUIRED, "login required, please login first");
 
+        chatGroupCache.findById(groupId).orElseThrow(() -> new NotFoundException(ErrorCodes.CHAT_GROUP_NOT_FOUND, String.format("chat group not found, groupId = %s", groupId)));
+
+        // todo move to group ops
         SetOperations<String, String> opsForSet = REDIS_TEMPLATE.opsForSet();
         Boolean containsGroup = opsForSet.isMember(Context.CHAT_GROUP_SET, groupId);
         if (containsGroup == null) throw new WebException("server error");
@@ -86,43 +97,51 @@ public class ChatService extends WSContext {
         WS_SESSION_MAP.remove(String.format("%s:%d", groupId, currentUser.id));
     }
 
-    public void onError(String groupId, String authId, Session session, Throwable throwable) throws ConflictException, IOException {
-        User currentUser = userService.getCurrent(authId);
+    public void onError(String groupId, String authId, Session session, Throwable throwable) throws IOException {
+        User currentUser = userService.getCurrentUser(authId);
         session.close(new CloseReason(CloseReason.CloseCodes.UNEXPECTED_CONDITION, "server error."));
         WS_SESSION_MAP.remove(String.format("%s:%d", groupId, currentUser.id));
         throwable.printStackTrace();
     }
 
     public void onMessage(String groupId, String authId, String message, Session session) throws WebException, IOException {
-        User currentUser = userService.getCurrent(authId);
+        User currentUser = userService.getCurrentUser(authId);
 
-        String[] strings = message.split("\0000");
-        if (strings.length != 1 && strings.length != 2) {
-            session.close(new CloseReason(CloseReason.CloseCodes.CANNOT_ACCEPT, "invalid chat message format"));
-            throw new ConflictException(ErrorCodes.CHAT_MESSAGE_FORMAT_INVALID, "invalid chat message format");
-        }
-        String toId = null;
+        String[] strings = message.split("\000");
+        validateMessage(session, strings);
+
+        String toUserId = null;
         String content;
         if (strings.length == 2) {
-            toId = strings[0];
-            if (toId.isBlank()) {
-                session.close(new CloseReason(CloseReason.CloseCodes.CANNOT_ACCEPT, "invalid chat message format"));
-                throw new ConflictException(ErrorCodes.CHAT_MESSAGE_FORMAT_INVALID, "invalid chat message format");
-            }
+            toUserId = strings[0];
             content = strings[1];
         } else {
             content = strings[0];
         }
 
         User toUser = null;
-        if (toId != null) {
-            toUser = userService.get(Long.valueOf(toId));
+        if (toUserId != null) {
+            toUser = userService.get(Long.valueOf(toUserId));
         }
 
         WSChatMessage WSChatMessage = buildChatMessageCache(groupId, currentUser, content, toUser);
         Topic chatTopic = new ChannelTopic(WSConfig.CHAT_CHANNEL);
         chatMessageCache.save(WSChatMessage);
         REDIS_TEMPLATE.convertAndSend(chatTopic.getTopic(), WSChatMessage.id);
+    }
+
+    private void validateMessage(Session session, String[] strings) throws IOException, ConflictException {
+        if (strings.length != 1 && strings.length != 2) {
+            session.close(new CloseReason(CloseReason.CloseCodes.CANNOT_ACCEPT, "invalid chat message format"));
+            throw new ConflictException(ErrorCodes.CHAT_MESSAGE_FORMAT_INVALID, "invalid chat message format");
+        }
+        if (strings.length == 2) {
+            String toUserId = strings[0];
+            if (toUserId.isBlank()) {
+                session.close(new CloseReason(CloseReason.CloseCodes.CANNOT_ACCEPT, "invalid chat message format"));
+                throw new ConflictException(ErrorCodes.CHAT_MESSAGE_FORMAT_INVALID, "invalid chat message format");
+            }
+        }
     }
 
     private WSChatMessage buildChatMessageCache(String groupId, User currentUser, String content, User toUser) {
