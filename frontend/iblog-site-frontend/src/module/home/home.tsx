@@ -117,7 +117,7 @@ class Home extends React.Component<HomeProp, HomeState> {
                 webSocket = initWS(this.chatMessageRef, this.state.chatGroupUsers, this.state.messages);
                 this.setState((state: HomeState) => {
                     return {
-                        user: result.data,
+                        user: result.data.user,
                         data: state.data,
                         isLogin: true,
                         messages: state.messages,
