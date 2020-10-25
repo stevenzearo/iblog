@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * @author steve
  */
-public class SearchChatMessageAJAXResponse {
+public class GetCroupChatMessageAJAXResponse {
     @NotNull
     public List<Message> messages = List.of();
 

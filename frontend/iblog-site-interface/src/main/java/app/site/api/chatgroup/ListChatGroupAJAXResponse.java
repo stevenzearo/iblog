@@ -20,6 +20,9 @@ public class ListChatGroupAJAXResponse {
         public String groupName;
 
         @NotNull
+        public ChatMember owner;
+
+        @NotNull
         public List<ChatMember> chatMembers = List.of();
 
         @NotNull

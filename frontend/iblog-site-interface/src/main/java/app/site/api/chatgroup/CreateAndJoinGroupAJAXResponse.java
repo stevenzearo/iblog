@@ -12,5 +12,8 @@ public class CreateAndJoinGroupAJAXResponse {
     public String groupId;
 
     @NotNull
+    public String groupName;
+
+    @NotNull
     public ZonedDateTime createdTime;
 }

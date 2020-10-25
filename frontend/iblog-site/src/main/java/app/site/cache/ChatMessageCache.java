@@ -8,6 +8,6 @@ import java.util.List;
  * @author steve
  */
 public interface ChatMessageCache extends CrudRepository<WSChatMessage, String> {
-    List<WSChatMessage> findAllByGroupId(String groupId);
+    List<WSChatMessage> findAllByGroupIdAndType(String groupId, WSChatMessageType type);
     void deleteAllByGroupId(String groupId);
 }
