@@ -21,6 +21,21 @@ spring:
     hibernate:
       ddl-auto: update
     database: mysql
+  kafka:
+    bootstrap-servers: 127.0.0.1:9092
+    producer:
+      retries: 0
+      batch-size: 16384
+      buffer-memory: 33554432
+      acks: 1
+    consumer:
+      auto-commit-interval: 1s
+      auto-offset-reset: earliest
+      enable-auto-commit: true
+    listener:
+      concurrency: 5
+      ack-mode: manual_immediate
+      missing-topics-fatal: false
 server:
   port: 8403
   undertow:

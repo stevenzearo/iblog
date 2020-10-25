@@ -27,11 +27,15 @@ spring:
       retries: 0
       batch-size: 16384
       buffer-memory: 33554432
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer:  org.apache.kafka.common.serialization.StringSerializer
       acks: 1
     consumer:
       auto-commit-interval: 1s
       auto-offset-reset: earliest
       enable-auto-commit: true
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
     listener:
       concurrency: 5
       ack-mode: manual_immediate

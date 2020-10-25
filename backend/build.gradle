@@ -3,6 +3,7 @@ def springBootVersion = '2.2.5.RELEASE'
 def springCloudVersion = '2.2.2.RELEASE'
 def mysqlVersion = '8.0.16'
 def mybatisVersion = '2.1.2'
+def kafkaVersion = '2.4.9.RELEASE'
 subprojects {
     apply plugin: 'java'
 
@@ -27,6 +28,7 @@ project('blog-service-interface') {
         compile group: 'org.springframework.cloud', name: 'spring-cloud-context', version: springCloudVersion
         compile(group: 'org.springframework.cloud', name: 'spring-cloud-starter-config', version: springCloudVersion)
         compile(group: 'org.springframework.cloud', name: 'spring-cloud-starter-openfeign', version: springCloudVersion)
+        compile(group: 'org.springframework.kafka', name: 'spring-kafka', version: kafkaVersion)
     }
 }
 
@@ -58,6 +60,7 @@ project('stock-service-interface') {
         compile group: 'org.springframework.cloud', name: 'spring-cloud-context', version: springCloudVersion
         compile(group: 'org.springframework.cloud', name: 'spring-cloud-starter-config', version: springCloudVersion)
         compile(group: 'org.springframework.cloud', name: 'spring-cloud-starter-openfeign', version: springCloudVersion)
+        compile(group: 'org.springframework.kafka', name: 'spring-kafka', version: kafkaVersion)
     }
 }
 
@@ -96,6 +99,7 @@ project('user-service-interface') {
         compile group: 'org.springframework.cloud', name: 'spring-cloud-context', version: springCloudVersion
         compile(group: 'org.springframework.cloud', name: 'spring-cloud-starter-config', version: springCloudVersion)
         compile(group: 'org.springframework.cloud', name: 'spring-cloud-starter-openfeign', version: springCloudVersion)
+        compile(group: 'org.springframework.kafka', name: 'spring-kafka', version: kafkaVersion)
     }
 }
 project('user-service') {
