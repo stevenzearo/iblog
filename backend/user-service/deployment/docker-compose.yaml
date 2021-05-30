@@ -1,0 +1,11 @@
+user-service:
+  image: ""
+  ports:
+    - "8401:8401"
+  links:
+    - mysql
+mysql:
+  image: mysql:8.0.24
+  container_name: mysql
+  ports:
+    - "3306:3306"
