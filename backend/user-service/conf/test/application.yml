@@ -4,7 +4,7 @@ spring:
   profiles:
     active: local
   datasource:
-    url: jdbc:mysql://localhost:3306/iblog?characterEncoding=utf8&useSSL=false&serverTimezone=UTC
+    url: jdbc:mysql://0.0.0.0:3306/iblog?characterEncoding=utf8&useSSL=false&serverTimezone=UTC
     username: root_steve1
     password: root123!
     driver-class-name: com.mysql.cj.jdbc.Driver
