@@ -9,7 +9,7 @@ spec:
       ports:
         - containerPort: 3306
       env:
-        - name: MYSQL_ROOT_PASSWD
+        - name: MYSQL_ROOT_PASSWORD
           value: root123!
     - name: user-service
       image: stevenzearo/user-service:0.0.1
