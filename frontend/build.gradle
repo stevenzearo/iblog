@@ -1,7 +1,3 @@
-def javaxVersion = '2.3.1'
-def springBootVersion = '2.2.5.RELEASE'
-def springCloudVersion = '2.2.2.RELEASE'
-
 subprojects {
     apply plugin: 'java'
 
@@ -11,54 +7,50 @@ subprojects {
     }
 
     dependencies {
-        compile(group: 'javax.xml.bind', name: 'jaxb-api', version: javaxVersion)
-        compile(group: 'com.sun.xml.bind', name: 'jaxb-impl', version: javaxVersion)
-        compile(group: 'org.glassfish.jaxb', name: 'jaxb-runtime', version: javaxVersion)
-        compile(group: 'org.springframework.boot', name: 'spring-boot-starter', version: springBootVersion)
-        compile(group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: springBootVersion)
-        compile(group: 'org.springframework.boot', name: 'spring-boot-starter-logging', version: springBootVersion)
-        testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: springBootVersion
-        testCompile group: 'junit', name: 'junit', version: '4.12'
-        compile project(':common:common-lib')
+        compile("javax.xml.bind:jaxb-api:$javaxVersion")
+        compile("com.sun.xml.bind:jaxb-impl:$javaxVersion")
+        compile("org.glassfish.jaxb:jaxb-runtime:$javaxVersion")
+        compile("org.springframework.boot:spring-boot-starter:$springBootVersion")
+        compile("org.springframework.boot:spring-boot-starter-web:$springBootVersion")
+        compile("org.springframework.boot:spring-boot-starter-logging:$springBootVersion")
+        testImplementation("org.springframework.boot:spring-boot-starter-test:$springBootVersion")
+        testImplementation("junit:junit:$junitVersion")
+        implementation(project(':common:common-lib'))
     }
 }
 
 project('bo-iblog-site') {
     dependencies {
-        compile project(':backend:user-service-interface')
-        compile project(':backend:blog-service-interface')
-        compile project(':backend:stock-service-interface')
-        compile(group: 'org.springframework.cloud', name: 'spring-cloud-starter-openfeign', version: springCloudVersion)
-        compile(group: 'redis.clients', name: 'jedis', version: '3.3.0')
-        compile group: 'org.springframework.data', name: 'spring-data-redis', version: springBootVersion
-        compile(group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-eureka-client', version: springCloudVersion) {
-            exclude group: 'com.google.code.gson', module: 'gson'
-        }
-        compile project(':frontend:bo-iblog-site-interface')
+        implementation(project(':frontend:bo-iblog-site-interface'))
+        implementation(project(':backend:user-service-interface'))
+        implementation(project(':backend:blog-service-interface'))
+        implementation(project(':backend:stock-service-interface'))
+        implementation("org.springframework.cloud:spring-cloud-starter-openfeign:$springCloudVersion")
+        implementation("redis.clients:jedis:$jedisVersion")
+        implementation("org.springframework.data:spring-data-redis:$springDataVersion")
+        implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client:$springCloudVersion")
     }
 }
 
 project('iblog-site') {
     dependencies {
-        compile project(':backend:user-service-interface')
-        compile project(':backend:blog-service-interface')
-        compile project(':backend:stock-service-interface')
-        compile(group: 'org.springframework.cloud', name: 'spring-cloud-starter-openfeign', version: springCloudVersion)
-        compile(group: 'redis.clients', name: 'jedis', version: '3.3.0')
-        compile group: 'org.springframework.data', name: 'spring-data-redis', version: springBootVersion
-        compile(group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-eureka-client', version: springCloudVersion) {
-            exclude group: 'com.google.code.gson', module: 'gson'
-        }
-        compile(group: 'org.springframework.boot', name: 'spring-boot-starter-websocket', version: springBootVersion)
-        compile project(':frontend:iblog-site-interface')
+        implementation(project(':backend:user-service-interface'))
+        implementation(project(':backend:blog-service-interface'))
+        implementation(project(':backend:stock-service-interface'))
+        implementation(project(':frontend:iblog-site-interface'))
+        implementation("org.springframework.cloud:spring-cloud-starter-openfeign:$springCloudVersion")
+        implementation("redis.clients:jedis:$jedisVersion")
+        implementation("org.springframework.data:spring-data-redis:$springDataVersion")
+        implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client:$springCloudVersion")
+        implementation("org.springframework.boot:spring-boot-starter-websocket:$springBootVersion")
     }
 }
 
 project('registry-site') {
     dependencies {
-        compile(group: 'org.springframework.cloud', name: 'spring-cloud-starter', version: springCloudVersion)
-        compile(group: 'org.springframework.cloud', name: 'spring-cloud-starter-config', version: springCloudVersion)
-        compile(group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-eureka-server', version: springCloudVersion) {
+        implementation("org.springframework.cloud:spring-cloud-starter:$springCloudVersion")
+        implementation("org.springframework.cloud:spring-cloud-starter-config:$springCloudVersion")
+        implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-server:$springCloudVersion"){
             exclude group: 'com.google.code.gson', module: 'gson'
         }
     }
@@ -66,6 +58,6 @@ project('registry-site') {
 
 configure(subprojects.findAll { it.name.endsWith('-interface') }) {
     dependencies {
-        compile project(':common:common-lib')
+        implementation(project(':common:common-lib'))
     }
 }
