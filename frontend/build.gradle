@@ -7,6 +7,7 @@ subprojects {
     }
 
     dependencies {
+        implementation("javax.validation:validation-api:$javaxValidationVersion")
         compile("javax.xml.bind:jaxb-api:$javaxVersion")
         compile("com.sun.xml.bind:jaxb-impl:$javaxVersion")
         compile("org.glassfish.jaxb:jaxb-runtime:$javaxVersion")
