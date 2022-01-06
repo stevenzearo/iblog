@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author steve
  */
 @RestController
-@FeignClient(value = "user-web-service", qualifier = "user-web-service")
+@FeignClient(value = "user-web-service", qualifiers = "user-web-service")
 public interface UserWebService {
     @RequestMapping(value = "/user", method = RequestMethod.POST)
     EmptyResponse register(@RequestBody RegisterUserRequest request);

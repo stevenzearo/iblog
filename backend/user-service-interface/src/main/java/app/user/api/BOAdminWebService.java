@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author steve
  */
 @RestController
-@FeignClient(name = "user-web-service", qualifier = "admin-web-service")
+@FeignClient(name = "user-web-service", qualifiers = "admin-web-service")
 public interface BOAdminWebService {
     @RequestMapping(value = "/bo/admin", method = RequestMethod.POST)
     EmptyResponse create(@RequestBody BOCreateAdminRequest request);
