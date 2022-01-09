@@ -4,10 +4,12 @@ import app.user.ErrorCodes;
 import app.user.api.admin.BOCreateAdminRequest;
 import app.user.api.admin.BOGetAdminByEmailResponse;
 import app.user.api.admin.BOGetAdminByIdResponse;
+import app.user.dao.AdminActivityRepository;
 import app.user.dao.AdminRepository;
 import app.user.dao.GroupRepository;
 import app.user.dao.RoleRepository;
 import app.user.domain.Admin;
+import app.user.domain.AdminActivity;
 import app.user.domain.Group;
 import app.user.domain.Role;
 import app.util.PasswordEncryptHelper;
@@ -22,6 +24,7 @@ import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author steve
@@ -35,7 +38,10 @@ public class BOAdminService {
     GroupRepository groupRepository;
     @Autowired
     RoleRepository roleRepository;
+    @Autowired
+    AdminActivityRepository adminActivityRepository;
 
+    @Transactional
     public String create(BOCreateAdminRequest request) throws WebException {
         Admin existAdmin = adminRepository.getFirstByEmail(request.email);
         if (existAdmin != null)
@@ -50,7 +56,9 @@ public class BOAdminService {
         int iteratedTimes = (int) (Math.random() * MAX_ITERATED_TIME) + 1;
         String password = PasswordEncryptHelper.encryptPassword(request.password, salt, iteratedTimes);
         Admin admin = buildAdmin(request, salt, iteratedTimes, password);
+        AdminActivity adminActivity = buildAdminActivity(request, admin.id);
         adminRepository.save(admin);
+        adminActivityRepository.save(adminActivity);
         return admin.id;
     }
 
@@ -131,5 +139,14 @@ public class BOAdminService {
         roleView.name = role.name;
         roleView.authority = AuthorityView.valueOf(role.authority.name());
         return roleView;
+    }
+
+    private AdminActivity buildAdminActivity(BOCreateAdminRequest request, String adminId) {
+        AdminActivity adminActivity = new AdminActivity();
+        adminActivity.adminId = adminId;
+        adminActivity.comment = "create admin";
+        adminActivity.createdBy = request.requestedBy;
+        adminActivity.createdTime = ZonedDateTime.now();
+        return adminActivity;
     }
 }

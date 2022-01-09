@@ -3,6 +3,7 @@ package app.user.domain;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Index;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -12,7 +13,7 @@ import java.time.ZonedDateTime;
  * @author steve
  */
 @Entity
-@Table(name = "`roles`")
+@Table(name = "`roles`", indexes = {@Index(name = "ix_group_id_created_time", columnList = "group_id,created_time")})
 public class Role {
     @Id
     @NotNull

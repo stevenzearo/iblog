@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS `admins`
     `created_time`   TIMESTAMP(6) NULL,
     PRIMARY KEY (`id`),
     UNIQUE uix_email (`email`),
-    INDEX ix_group_id (`group_id`, `created_time`),
+    INDEX ix_group_id_created_time (`group_id`, `created_time`),
     INDEX ix_email_salt_iterated_times (`email`, `salt`, `iterated_times`)
 )
     ENGINE = InnoDB;

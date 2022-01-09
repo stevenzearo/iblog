@@ -5,6 +5,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Index;
 import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -16,7 +17,7 @@ import java.time.ZonedDateTime;
  * @author steve
  */
 @Entity
-@Table(name = "`users`")
+@Table(name = "`users`", indexes = {@Index(name = "uix_email", columnList = "email")})
 public class User {
     @Id
     @GeneratedValue

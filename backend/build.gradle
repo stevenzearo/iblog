@@ -64,3 +64,10 @@ project(':backend:user-service') {
         implementation(project(':backend:user-service-interface'))
     }
 }
+
+
+project(':backend:blog-service') {
+    dependencies {
+        implementation(project(':backend:blog-service-interface'))
+    }
+}
