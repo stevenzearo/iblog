@@ -1,6 +1,6 @@
 -- function assert_varchar_exist
-delimiter $$
 drop procedure if exists assert_varchar_exist;
+delimiter $$
 create procedure assert_varchar_exist(varchar_name varchar(50), varchar_value varchar(50))
     deterministic
 begin
@@ -11,9 +11,10 @@ begin
     end if;
 end $$
 delimiter ;
+
 -- function assert_int_exist
-delimiter $$
 drop procedure if exists assert_int_exist;
+delimiter $$
 create procedure assert_int_exist(int_name varchar(50), int_value int)
     deterministic
 begin
@@ -24,9 +25,10 @@ begin
     end if;
 end $$
 delimiter ;
+
 -- procedure mock_groups
-delimiter $$
 drop procedure if exists mock_groups;
+delimiter $$
 create procedure mock_groups(out mocked_count int,
                              in id_sufficient varchar(25),
                              in name_sufficient varchar(25),
